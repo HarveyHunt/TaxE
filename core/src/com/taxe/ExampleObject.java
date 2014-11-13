@@ -23,7 +23,7 @@ public class ExampleObject {
     private void create(){
         // Init the object
         tex = new Texture("image.png");
-        x = 0;
+        x = 100;
     }
 
     public void update(float delta){
@@ -34,7 +34,7 @@ public class ExampleObject {
 
     public void render(float delta){
         // Draw the object
-        game.main.batch.draw(tex, x, 300);
+        game.main.batch.draw(tex, x, 0);
     }
 
 }
