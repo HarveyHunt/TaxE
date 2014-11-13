@@ -15,6 +15,9 @@ public class GameCore implements Screen {
 
     public GameCore(final Main main){
         this.main = main;
+
+        // Set up the game
+        exampleObject = new ExampleObject(this);
     }
 
     @Override
@@ -37,8 +40,7 @@ public class GameCore implements Screen {
 
     @Override
     public void show(){
-        // This method is run when the gae screen is created or switched to
-        exampleObject = new ExampleObject(this);
+
     }
 
     @Override
