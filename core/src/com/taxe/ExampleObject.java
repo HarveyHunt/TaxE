@@ -18,7 +18,7 @@ public class ExampleObject {
     public ExampleObject(final GameCore game){
         this.game = game;
         // Init the object
-        tex = new Texture("image.png");
+        tex = new Texture("badlogic.jpg");
         x = 100;
     }
 
