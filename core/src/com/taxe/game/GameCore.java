@@ -1,8 +1,9 @@
-package com.taxe;
+package com.taxe.game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
+import com.taxe.Main;
 
 /**
  * Created by Owen on 08/11/2014.

@@ -2,6 +2,7 @@ package com.taxe;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.taxe.game.GameCore;
 
 /*
 ----------------
@@ -24,7 +25,7 @@ Features that this framework has that I thought sounded useful:
 
 
 public class Main extends Game {
-	SpriteBatch batch;
+	public SpriteBatch batch;
     GameCore game;
     Menu menu;
 	
