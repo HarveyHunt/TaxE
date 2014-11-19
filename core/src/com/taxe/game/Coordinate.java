@@ -3,7 +3,7 @@ package com.taxe.game;
 /**
  * Created by Owen on 18/11/2014.
  */
-public class Coordinate {
+public final class Coordinate {
 
     /*
     ----------------
@@ -12,8 +12,8 @@ public class Coordinate {
     ----------------
      */
 
-    private int x;
-    private int y;
+    private final int x;
+    private final int y;
 
     public Coordinate(int x, int y){
         this.x = x;
@@ -30,11 +30,6 @@ public class Coordinate {
 
     public int getY(){
         return y;
-    }
-
-    public void set(int x, int y){
-        this.x = x;
-        this.y = y;
     }
 
 }
