@@ -7,7 +7,8 @@ public class Gold {
 
     private int quantity;
 
-    public Gold(int quantity){
+    public Gold(int quantity) {
+        // Check for negative values?
         this.quantity = quantity;
     }
 
@@ -15,13 +16,15 @@ public class Gold {
         return quantity;
     }
 
-    public boolean doTransaction(int delta){
-        if (quantity - delta < 0) {
-            return false; // Failure, insufficient gold
+    public boolean changeQuantity(int delta) {
+        // New quantity is negative
+        if (quantity + delta < 0) {
+            return false;
         }
-        quantity -= delta;
-        return true; // Success
-    }
 
+        // New quantity is non-negative
+        quantity += delta;
+        return true;
+    }
 
 }

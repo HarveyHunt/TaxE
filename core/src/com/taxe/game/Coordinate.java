@@ -22,7 +22,8 @@ public final class Coordinate {
     }
 
     public Coordinate() {
-        this(0, 0); // Default coordinate position if x and y aren't defined is (0,0).
+        // Default Coordinate (0, 0)
+        this(0, 0);
     }
 
     public int getX() {
