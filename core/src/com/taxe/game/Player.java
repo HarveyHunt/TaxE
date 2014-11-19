@@ -41,6 +41,6 @@ public class Player {
 
     // Just an example to think about
     public void doStuff(Player p) {
-        p.getFuel().setUsedFuel(10);
+        p.getFuel().setUsedFuel(p.getFuel().getUsedFuel() + 10);
     }
 }
