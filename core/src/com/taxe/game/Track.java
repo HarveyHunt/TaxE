@@ -9,12 +9,16 @@ public class Track {
 
     private ArrayList <Coordinate> nodes;
 
-    public Track(){
-        nodes = new ArrayList<>();
+    public Track(ArrayList<Coordinate> nodes){
+       this.nodes = nodes;
 
         // This will all depend on how we decide to implement track
         // Example of adding coordinate to the end of the list.
         nodes.add(new Coordinate(100, 200));
+    }
+
+    public void draw(){
+        // Draw the track
     }
 
 }

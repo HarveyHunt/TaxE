@@ -11,6 +11,9 @@ import com.taxe.Main;
 public class GameCore implements Screen {
 
     final Main main;
+    private Player player1;
+    private Player player2;
+    private Map map;
 
     private ExampleObject exampleObject;
 
@@ -19,6 +22,9 @@ public class GameCore implements Screen {
 
         // Set up the game
         exampleObject = new ExampleObject(this);
+        //player1 = new Player(......);
+        //player2 = new Player(......);
+        map = new Map();
     }
 
     @Override

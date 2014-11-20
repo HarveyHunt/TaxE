@@ -9,13 +9,38 @@ public class City {
 
     private Coordinate position;
     private ArrayList <Task> tasks;
+    private Influence influence;
+    private ArrayList<Cargo> cargo;
 
-    public City(int x, int y){
-
+    public City(Coordinate position, ArrayList<Cargo> cargo){
+        this.position = position;
+        this.cargo = cargo;
+        this.influence = new Influence();
+        this.tasks = new ArrayList<Task>();
     }
 
-    public City(){
-        this(0, 0);
+    public void createTask(){
+        // Add a new task
+    }
+
+    public void removeTask(){
+        // Remove a task
+    }
+
+    public Coordinate getPosition(){
+        return position;
+    }
+
+    public ArrayList<Task> getTaskList(){
+        return tasks;
+    }
+
+    public ArrayList<Cargo> getCargo(){
+        return cargo;
+    }
+
+    public void draw(){
+        // Draw the city on da screen
     }
 
 }
