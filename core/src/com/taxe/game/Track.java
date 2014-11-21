@@ -7,16 +7,18 @@ import java.util.ArrayList;
  */
 public class Track {
 
-    private ArrayList nodes;
+    private ArrayList <Coordinate> nodes;
 
-    public Track(int i){
-        nodes = new ArrayList(i);
+    public Track(ArrayList<Coordinate> nodes){
+       this.nodes = nodes;
 
         // This will all depend on how we decide to implement track
-
-        nodes.add(new Coordinate(100, 200)); // Example of adding coordinate to the end of the list.
+        // Example of adding coordinate to the end of the list.
+        nodes.add(new Coordinate(100, 200));
     }
 
-
+    public void draw(){
+        // Draw the track
+    }
 
 }

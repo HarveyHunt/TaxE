@@ -15,20 +15,22 @@ public final class Coordinate {
     private final int x;
     private final int y;
 
-    public Coordinate(int x, int y){
+    public Coordinate(int x, int y) {
+        // Do we need any checking for invalid coordinates?
         this.x = x;
         this.y = y;
     }
 
-    public Coordinate(){
-        this(0, 0); // Default coordinate position if x and y aren't defined is (0,0).
+    public Coordinate() {
+        // Default Coordinate (0, 0)
+        this(0, 0);
     }
 
-    public int getX(){
+    public int getX() {
         return x;
     }
 
-    public int getY(){
+    public int getY() {
         return y;
     }
 
