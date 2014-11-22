@@ -1,13 +1,9 @@
 package com.taxe.game;
 
-import com.taxe.game.resources.Fuel;
-import com.taxe.game.resources.Gold;
-import com.taxe.game.trains.Train;
-
 import java.util.ArrayList;
 
 /**
- * Created by Vladimir on 19/11/2014.
+ * Created by Vlad on 19/11/2014.
  */
 public class Player {
 
@@ -39,8 +35,4 @@ public class Player {
         return fuel;
     }
 
-    // Just an example to think about
-    public void doStuff(Player p) {
-        p.getFuel().setUsedFuel(p.getFuel().getUsedFuel() + 10);
-    }
 }

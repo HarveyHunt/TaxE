@@ -15,7 +15,7 @@ public class City {
     public City(Coordinate position, ArrayList<Cargo> cargo){
         this.position = position;
         this.cargo = cargo;
-        this.influence = new Influence();
+        this.influence = null;
         this.tasks = new ArrayList<Task>();
     }
 

@@ -1,27 +1,25 @@
 package com.taxe.game;
 
-import com.taxe.game.trains.Train;
-import com.taxe.game.trains.TrainType;
-
 /**
- * Created by Vladimir on 19/11/2014.
+ * Created by Vlad on 19/11/2014.
+ * Class representing players' homebases in the game.
  */
 public class Homebase {
 
-    final private Coordinate position;
+    final private Node node;
     final private int maxHealth;
     private int health;
-    private TrainType currentlyBuiltTrain;
+    private TrainType currentBuild;
 
-    public Homebase(Coordinate position, int health) {
-        this.position = position;
+    public Homebase(Node node, int health) {
+        this.node = node;
         this.maxHealth = health;
         this.health = health;
-        this.currentlyBuiltTrain = null;
+        this.currentBuild= null;
     }
 
-    public Coordinate getPosition() {
-        return position;
+    public Node getNode() {
+        return node;
     }
 
     public int getMaxHealth() {
@@ -32,14 +30,15 @@ public class Homebase {
         return health;
     }
 
-    public void setHealth(int health) {
-        this.health = health;
+    public TrainType getCurrentBuild() {
+        return currentBuild;
     }
 
-    public void buildTrain(TrainType trainType) {
-        // How does this happen?
-        // Interacting with turns?
-        // Maybe create method updateBuildingProcess() ?
-        currentlyBuiltTrain = trainType;
+    public void startBuild(TrainType build) {
+        currentBuild = build;
+    }
+
+    public void updateBuild() {
+        // Not sure how this will interact with game loop and turns
     }
 }
