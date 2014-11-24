@@ -22,6 +22,10 @@ public class Cargo {
         this.quantity = quantity;
     }
 
+    public void changeQuantityBy(int delta) {
+        quantity += delta;
+    }
+
     public CargoType getCargoType() {
         return cargoType;
     }

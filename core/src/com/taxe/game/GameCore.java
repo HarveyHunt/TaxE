@@ -32,6 +32,9 @@ public class GameCore implements Screen {
         // delta is the elapsed time in milliseconds
 
         // Main game loop right here. Oh mama.
+
+
+
         exampleObject.update(delta);
 
         //Clear screen

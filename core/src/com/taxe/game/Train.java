@@ -29,6 +29,8 @@ public class Train {
         return cargo;
     }
 
+    public void setCargo(Cargo cargo) { this.cargo = cargo;}
+
     public Coordinate getCoordinate() {
         return coordinate;
     }
