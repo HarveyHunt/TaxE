@@ -30,6 +30,10 @@ public class Homebase {
         return health;
     }
 
+    public void changeHealthBy(int delta) {
+        health += delta;
+    }
+
     public TrainType getCurrentBuild() {
         return currentBuild;
     }

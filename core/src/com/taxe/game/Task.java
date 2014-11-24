@@ -5,12 +5,12 @@ package com.taxe.game;
  */
 public class Task {
     private String name, objective;
-    private int tasktime;
+    private int taskTime;
 
-    public Task(String name, String objective) {
+    public Task(String name, String objective, int taskTime) {
         this.name = name;
         this.objective = objective;
-        this.tasktime = 0;
+        this.taskTime = taskTime;
     }
 
     public String getName() {
@@ -30,11 +30,11 @@ public class Task {
     }
 
     public int getTasktime() {
-        return tasktime;
+        return taskTime;
     }
 
     public void setTasktime(int tasktime) {
-        this.tasktime = tasktime;
+        this.taskTime = tasktime;
     }
 }
 
