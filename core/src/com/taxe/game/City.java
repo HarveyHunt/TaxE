@@ -40,7 +40,7 @@ public class City {
     }
 
     public void draw(){
-        // Draw the city on da screen
+        // Draw the city on the screen
     }
 
 }
