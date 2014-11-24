@@ -10,9 +10,12 @@ public class Map {
     private ArrayList<City> cities;
     private ArrayList<Track> tracks;
 
-    public Map(){
-        this.cities = new ArrayList<City>();
-        this.tracks = new ArrayList<Track>();
+    private ArrayList<Homebase> homebases;
+
+    public Map(ArrayList<City> cities, ArrayList<Track> tracks, ArrayList<Homebase> homebases){
+        this.cities = cities;
+        this.tracks = tracks;
+        this.homebases = homebases;
     }
 
     public ArrayList<City> getCities(){
@@ -21,6 +24,10 @@ public class Map {
 
     public ArrayList<Track> getTracks(){
         return tracks;
+    }
+
+    public ArrayList<Homebase> getHomebases() {
+        return homebases;
     }
 
     public void draw(){

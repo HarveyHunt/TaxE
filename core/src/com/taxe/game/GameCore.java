@@ -31,16 +31,31 @@ public class GameCore implements Screen {
     public void render(float delta){
         // delta is the elapsed time in milliseconds
 
-        // Main game loop right here. Oh mama.
-        exampleObject.update(delta);
 
+
+
+        handleInput();
+        update(delta);
+        draw();
+
+    }
+
+    private void handleInput(){
+
+    }
+
+    private void update(float delta){
+        exampleObject.update(delta);
+    }
+
+    private void draw(){
         //Clear screen
         Gdx.gl.glClearColor(0, 0, 0.2f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         //Draw all the things!!!
         main.batch.begin();
         // --------- Draw specific items in order of depth ----------- //
-        exampleObject.render(delta);
+        exampleObject.draw();
         // ----------------------------------------------------------- //
         main.batch.end();
     }

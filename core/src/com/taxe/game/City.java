@@ -7,36 +7,48 @@ import java.util.ArrayList;
  */
 public class City {
 
-    private Coordinate position;
-    private ArrayList <Task> tasks;
+    private Node node;
+    private ArrayList<Task> tasks;
     private Influence influence;
-    private ArrayList<Cargo> cargo;
+    private ArrayList<CargoType> cargoTypes;
 
-    public City(Coordinate position, ArrayList<Cargo> cargo){
-        this.position = position;
-        this.cargo = cargo;
-        this.influence = null;
-        this.tasks = new ArrayList<Task>();
+    public City(Node node, ArrayList<Task> tasks, Influence influence, ArrayList<CargoType> cargoTypes){
+        this.node = node;
+        this.cargoTypes = cargoTypes;
+        this.influence = influence;
+        this.tasks = tasks;
     }
 
-    public void createTask(){
-        // Add a new task
+    public Node getNode(){
+        return node;
     }
 
-    public void removeTask(){
-        // Remove a task
+    public void addCargoType(CargoType cargoType){
+        cargoTypes.add(cargoType);
     }
 
-    public Coordinate getPosition(){
-        return position;
+    public void removeCargoType(CargoType cargoType){
+        if(cargoTypes.contains(cargoType)){
+            cargoTypes.remove(cargoType);
+        }
+    }
+
+    public void addTask(Task task){
+        tasks.add(task);
+    }
+
+    public void removeTask(Task task){
+        if(tasks.contains(task)){
+            tasks.remove(task);
+        }
     }
 
     public ArrayList<Task> getTaskList(){
         return tasks;
     }
 
-    public ArrayList<Cargo> getCargo(){
-        return cargo;
+    public ArrayList<CargoType> getCargoTypes(){
+        return cargoTypes;
     }
 
     public void draw(){

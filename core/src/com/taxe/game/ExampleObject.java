@@ -28,7 +28,7 @@ public class ExampleObject {
         x += 100 * (delta);
     }
 
-    public void render(float delta){
+    public void draw(){
         // Draw the object
         game.main.batch.draw(tex, x, 0);
     }

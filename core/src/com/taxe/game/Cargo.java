@@ -6,13 +6,11 @@ import java.awt.*;
  */
 public class Cargo {
     private int quantity;
-    private Image image;
-    private String type;
+    private CargoType cargoType;
 
-    public Cargo(int quantity, Image image, String type) {
+    public Cargo(int quantity, CargoType cargoType) {
         this.quantity = quantity;
-        this.image = image;
-        this.type = type;
+        this.cargoType = cargoType;
     }
 
     public int getQuantity() {
@@ -23,20 +21,8 @@ public class Cargo {
         this.quantity = quantity;
     }
 
-    public Image getImage() {
-        return image;
-    }
-
-    public void setImage(Image image) {
-        this.image = image;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
+    public CargoType getCargoType(){
+        return cargoType;
     }
 }
 
