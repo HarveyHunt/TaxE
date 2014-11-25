@@ -12,17 +12,17 @@ public class Map {
 
     private ArrayList<Homebase> homebases;
 
-    public Map(ArrayList<City> cities, ArrayList<Track> tracks, ArrayList<Homebase> homebases){
+    public Map(ArrayList<City> cities, ArrayList<Track> tracks, ArrayList<Homebase> homebases) {
         this.cities = cities;
         this.tracks = tracks;
         this.homebases = homebases;
     }
 
-    public ArrayList<City> getCities(){
+    public ArrayList<City> getCities() {
         return cities;
     }
 
-    public ArrayList<Track> getTracks(){
+    public ArrayList<Track> getTracks() {
         return tracks;
     }
 
@@ -30,7 +30,7 @@ public class Map {
         return homebases;
     }
 
-    public void draw(){
+    public void draw() {
         // Draw each city and track
     }
 

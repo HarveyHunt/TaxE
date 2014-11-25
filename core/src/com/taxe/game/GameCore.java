@@ -17,21 +17,19 @@ public class GameCore implements Screen {
 
     private ExampleObject exampleObject;
 
-    public GameCore(final Main main){
+    public GameCore(final Main main) {
         this.main = main;
 
         // Set up the game
         exampleObject = new ExampleObject(this);
         //player1 = new Player(......);
         //player2 = new Player(......);
-        map = new Map();
+        // map = new Map();
     }
 
     @Override
-    public void render(float delta){
+    public void render(float delta) {
         // delta is the elapsed time in milliseconds
-
-
 
 
         handleInput();
@@ -40,15 +38,15 @@ public class GameCore implements Screen {
 
     }
 
-    private void handleInput(){
+    private void handleInput() {
 
     }
 
-    private void update(float delta){
+    private void update(float delta) {
         exampleObject.update(delta);
     }
 
-    private void draw(){
+    private void draw() {
         //Clear screen
         Gdx.gl.glClearColor(0, 0, 0.2f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -61,32 +59,32 @@ public class GameCore implements Screen {
     }
 
     @Override
-    public void show(){
+    public void show() {
 
     }
 
     @Override
-    public void hide(){
+    public void hide() {
 
     }
 
     @Override
-    public void pause(){
+    public void pause() {
 
     }
 
     @Override
-    public void resume(){
+    public void resume() {
 
     }
 
     @Override
-    public void resize(int w, int h){
+    public void resize(int w, int h) {
 
     }
 
     @Override
-    public void dispose(){
+    public void dispose() {
         // Dispose of resources (textures, sounds)
     }
 

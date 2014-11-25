@@ -11,7 +11,7 @@ public class Train {
 
     private final TrainType trainType;
     private Cargo cargo;
-    private ArrayDeque <Node> path;         // Train travelling path
+    private ArrayDeque<Node> path;         // Train travelling path
     private Coordinate coordinate;          // For drawing and if train is not moving
 
     public Train(TrainType trainType, Coordinate coordinate) {
@@ -29,7 +29,9 @@ public class Train {
         return cargo;
     }
 
-    public void setCargo(Cargo cargo) { this.cargo = cargo;}
+    public void setCargo(Cargo cargo) {
+        this.cargo = cargo;
+    }
 
     public Coordinate getCoordinate() {
         return coordinate;
@@ -44,12 +46,11 @@ public class Train {
     }
 
     public Node nextPathNode() {
-        Iterator <Node> iterator = path.iterator();
+        Iterator<Node> iterator = path.iterator();
         if (iterator.hasNext()) {
             iterator.next();
             return (iterator.hasNext()) ? iterator.next() : null;
-        }
-        else {
+        } else {
             return null;
         }
 
