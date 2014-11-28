@@ -1,5 +1,4 @@
 package com.taxe.game;
-import java.awt.*;
 
 /**
  * Created by Owen on 19/11/2014.
@@ -21,7 +20,7 @@ public class Cargo {
         this.quantity = quantity;
     }
 
-    public CargoType getCargoType(){
+    public CargoType getCargoType() {
         return cargoType;
     }
 }

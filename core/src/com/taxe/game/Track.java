@@ -1,9 +1,7 @@
 package com.taxe.game;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -104,7 +102,7 @@ public class Track {
     }
 
     // returns an ArrayDeque listing nodes from the start node to the end node
-    public ArrayDeque<Node> getPath(){
+    public ArrayDeque<Node> getPath() {
         return new ArrayDeque<Node>(track);
     }
 

@@ -15,20 +15,20 @@ public class ExampleObject {
     // Variables related to the object
     private float x;
 
-    public ExampleObject(final GameCore game){
+    public ExampleObject(final GameCore game) {
         this.game = game;
         // Init the object
         tex = new Texture("fish.png");
         x = 100;
     }
 
-    public void update(float delta){
+    public void update(float delta) {
         // Update the object
 
         x += 100 * (delta);
     }
 
-    public void draw(){
+    public void draw() {
         // Draw the object
         game.main.batch.draw(tex, x, 0);
     }

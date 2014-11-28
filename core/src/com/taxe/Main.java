@@ -25,21 +25,21 @@ Features that this framework has that I thought sounded useful:
 
 
 public class Main extends Game {
-	public SpriteBatch batch;
+    public SpriteBatch batch;
     GameCore game;
     Menu menu;
-	
-	@Override
-	public void create () {
-		batch = new SpriteBatch();
+
+    @Override
+    public void create() {
+        batch = new SpriteBatch();
 
         //menu = new Menu(this);
         game = new GameCore(this);
         setScreen(game);
-	}
+    }
 
-	@Override
-	public void render () {
-		super.render(); // This runs the render method for the current screen class. This calls the default render method in the abstract class Game
-	}
+    @Override
+    public void render() {
+        super.render(); // This runs the render method for the current screen class. This calls the default render method in the abstract class Game
+    }
 }

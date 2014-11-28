@@ -15,7 +15,7 @@ public class Homebase {
         this.node = node;
         this.maxHealth = health;
         this.health = health;
-        this.currentBuild= null;
+        this.currentBuild = null;
     }
 
     public Node getNode() {

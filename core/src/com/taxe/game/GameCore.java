@@ -4,7 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.taxe.Main;
-
 import java.util.ArrayList;
 
 /**
@@ -21,7 +20,7 @@ public class GameCore implements Screen {
 
     private ExampleObject exampleObject;
 
-    public GameCore(final Main main){
+    public GameCore(final Main main) {
         this.main = main;
 
         // Set up the game
@@ -40,6 +39,7 @@ public class GameCore implements Screen {
         handleInput();
         update(delta);
         draw();
+
     }
 
     private void handleInput(){
@@ -52,12 +52,12 @@ public class GameCore implements Screen {
 
     private void draw(){
         //Clear screen
-        Gdx.gl.glClearColor(1, 1, 1, 1);
+        Gdx.gl.glClearColor(0, 0, 0.2f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         //Draw all the things!!!
         main.batch.begin();
         // --------- Draw specific items in order of depth ----------- //
-        track.draw(main.batch);
+        exampleObject.draw();
         // ----------------------------------------------------------- //
         main.batch.end();
     }
