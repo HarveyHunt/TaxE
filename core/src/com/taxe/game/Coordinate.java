@@ -12,10 +12,10 @@ public final class Coordinate {
     ----------------
      */
 
-    private final int x;
-    private final int y;
+    private final float x;
+    private final float y;
 
-    public Coordinate(int x, int y) {
+    public Coordinate(float x, float y) {
         // Do we need any checking for invalid coordinates?
         this.x = x;
         this.y = y;
@@ -26,12 +26,23 @@ public final class Coordinate {
         this(0, 0);
     }
 
-    public int getX() {
+    public float getX() {
         return x;
     }
 
-    public int getY() {
+    public float getY() {
         return y;
     }
+
+    public static float distanceBetween(Coordinate node1, Coordinate node2){
+        float dx = node2.x - node1.x;
+        float dy = node2.y - node1.y;
+        return (float)Math.sqrt(dx * dx + dy * dy);
+    }
+
+    public static float angleBetween(Coordinate node1, Coordinate node2){
+        return (float)Math.atan2(node2.y - node1.y, node2.x - node1.x);
+    }
+
 
 }
