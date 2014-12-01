@@ -34,14 +34,14 @@ public final class Coordinate {
         return y;
     }
 
-    public static float distanceBetween(Coordinate node1, Coordinate node2){
-        float dx = node2.x - node1.x;
-        float dy = node2.y - node1.y;
-        return (float)Math.sqrt(dx * dx + dy * dy);
+    public static float distanceBetween(Coordinate coordinate0, Coordinate coordinate1){
+        float dX = coordinate1.x - coordinate0.x;
+        float dY = coordinate1.y - coordinate0.y;
+        return (float)Math.sqrt(dX * dX + dY * dY);
     }
 
-    public static float angleBetween(Coordinate node1, Coordinate node2){
-        return (float)Math.atan2(node2.y - node1.y, node2.x - node1.x);
+    public static float angleBetween(Coordinate coordinate0, Coordinate coordinate1){
+        return (float)Math.atan2(coordinate1.y - coordinate0.y, coordinate1.x - coordinate0.x);
     }
 
 

@@ -52,12 +52,12 @@ public class GameCore implements Screen {
 
     private void draw(){
         //Clear screen
-        Gdx.gl.glClearColor(0, 0, 0.2f, 1);
+        Gdx.gl.glClearColor(1, 1, 1, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         //Draw all the things!!!
         main.batch.begin();
         // --------- Draw specific items in order of depth ----------- //
-        exampleObject.draw();
+        track.draw(main.batch);
         // ----------------------------------------------------------- //
         main.batch.end();
     }
