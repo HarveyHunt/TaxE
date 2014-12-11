@@ -5,21 +5,21 @@ package com.taxe.game;
  */
 public class Sleeper {
 
-    private Coordinate position;
+    private Coordinate coordinate;
     private double angle;
 
     // A sleeper is a horizontal plank on train tracks
 
-    public Sleeper(Coordinate position, double angle){
-        this.position = position;
+    public Sleeper(Coordinate coordinate, double angle) {
+        this.coordinate = coordinate;
         this.angle = angle;
     }
 
-    public Coordinate getPosition(){
-        return position;
+    public Coordinate getCoordinate() {
+        return coordinate;
     }
 
-    public double getAngle(){
+    public double getAngle() {
         return angle;
     }
 

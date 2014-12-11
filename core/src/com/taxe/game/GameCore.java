@@ -3,7 +3,9 @@ package com.taxe.game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.Texture;
 import com.taxe.Main;
+
 import java.util.ArrayList;
 
 /**
@@ -30,11 +32,11 @@ public class GameCore implements Screen {
         nodes.add(new Node(new Coordinate(397, 222), true));
         nodes.add(new Node(new Coordinate(533, 248), true));
         nodes.add(new Node(new Coordinate(600, 141), true));
-        track = new Track(nodes);
+        track = new Track(nodes, new Texture("sleeper.png"));
     }
 
     @Override
-    public void render(float delta){
+    public void render(float delta) {
         // delta is the elapsed time in milliseconds
         handleInput();
         update(delta);
@@ -42,15 +44,15 @@ public class GameCore implements Screen {
 
     }
 
-    private void handleInput(){
+    private void handleInput() {
 
     }
 
-    private void update(float delta){
+    private void update(float delta) {
 
     }
 
-    private void draw(){
+    private void draw() {
         //Clear screen
         Gdx.gl.glClearColor(1, 1, 1, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -63,32 +65,32 @@ public class GameCore implements Screen {
     }
 
     @Override
-    public void show(){
+    public void show() {
 
     }
 
     @Override
-    public void hide(){
+    public void hide() {
 
     }
 
     @Override
-    public void pause(){
+    public void pause() {
 
     }
 
     @Override
-    public void resume(){
+    public void resume() {
 
     }
 
     @Override
-    public void resize(int w, int h){
+    public void resize(int w, int h) {
 
     }
 
     @Override
-    public void dispose(){
+    public void dispose() {
         // Dispose of resources (textures, sounds)
     }
 

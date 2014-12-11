@@ -12,37 +12,34 @@ public final class Coordinate {
     ----------------
      */
 
-    private final float x;
-    private final float y;
+    private final double x;
+    private final double y;
 
-    public Coordinate(float x, float y) {
-        // Do we need any checking for invalid coordinates?
+    public Coordinate(double x, double y) {
         this.x = x;
         this.y = y;
     }
 
     public Coordinate() {
-        // Default Coordinate (0, 0)
-        this(0, 0);
+        this(0.0, 0.0);
     }
 
-    public float getX() {
+    public double getX() {
         return x;
     }
 
-    public float getY() {
+    public double getY() {
         return y;
     }
 
-    public static float distanceBetween(Coordinate coordinate0, Coordinate coordinate1){
-        float dX = coordinate1.x - coordinate0.x;
-        float dY = coordinate1.y - coordinate0.y;
-        return (float)Math.sqrt(dX * dX + dY * dY);
+    public static double distanceBetween(Coordinate cA, Coordinate cB) {
+        double dX = cB.x - cA.x;
+        double dY = cB.y - cA.y;
+        return Math.sqrt(dX * dX + dY * dY);
     }
 
-    public static float angleBetween(Coordinate coordinate0, Coordinate coordinate1){
-        return (float)Math.atan2(coordinate1.y - coordinate0.y, coordinate1.x - coordinate0.x);
+    public static double angleBetween(Coordinate cA, Coordinate cB) {
+        return Math.atan2(cB.y - cA.y, cB.x - cA.x);
     }
-
 
 }

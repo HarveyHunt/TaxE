@@ -2,6 +2,7 @@ package com.taxe.game;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -11,40 +12,32 @@ import java.util.Collections;
  */
 public class Track {
 
-    // constants
-    private final float INTERVAL;
-    private final int CURVE_SIZE;
-    private final float PRECISION;
-    private final int TEX_WIDTH;
-    private final int TEX_HEIGHT;
+    // Constants for drawing
+    private static final double DISTANCE_BETWEEN_SLEEPERS = 12.0;
+    private static final double PRECISION = 0.02;
+    private static final int CURVE_SIZE = 100;
+    private final int texWidth;
+    private final int texHeight;
+    private final Texture sleeperTexture;
 
-    private ArrayList<Node> track;
-    private ArrayList<Sleeper> sleepers;
-    private Texture sleeperTexture;
+    private final ArrayList<Node> track;
+    private final ArrayList<Sleeper> sleepers;
 
-    public Track(ArrayList<Node> track){
+
+    public Track(ArrayList<Node> track, Texture sleeperTexture) {
         this.track = track;
-        sleeperTexture = new Texture("sleeper.png");
+        this.sleeperTexture = sleeperTexture;
+        this.texWidth = sleeperTexture.getWidth();
+        this.texHeight = sleeperTexture.getHeight();
+        this.sleepers = new ArrayList<>();
 
-        // define constants
-        TEX_WIDTH = sleeperTexture.getWidth();
-        TEX_HEIGHT = sleeperTexture.getHeight();
-        INTERVAL = 12;
-        CURVE_SIZE = 100;
-        PRECISION = 0.05f;
-
-        sleepers = new ArrayList<Sleeper>(0);
-        if(track.size() >= 2){
-            Coordinate cA = track.get(0).getCoordinate();
-            Coordinate cB = track.get(1).getCoordinate();
-            float startAngle = Coordinate.angleBetween(cA, cB);
+        for (int i = 0; i < track.size() - 1; i++) {
+            Coordinate cA = track.get(i).getCoordinate();
+            Coordinate cB = track.get(i + 1).getCoordinate();
+            double startAngle = (i == 0) ?
+                    Coordinate.angleBetween(cA, cB) :
+                    Coordinate.angleBetween(sleepers.get(sleepers.size() - 2).getCoordinate(), cA);
             sleepers.addAll(getArc(cA, cB, startAngle));
-            for(int i = 1; i < track.size() - 1; i++){
-                cA = track.get(i).getCoordinate();
-                cB = track.get(i + 1).getCoordinate();
-                sleepers.addAll(getArc(cA, cB, startAngle));
-                startAngle = Coordinate.angleBetween(sleepers.get(sleepers.size() - 2).getPosition(), cB);
-            }
         }
     }
 
@@ -66,63 +59,52 @@ public class Track {
     Take a decimal value between 0 and 1, x. This represents a percentage along a line.
         xLine(A, C) = the coordinate that x distance along the line AC. 0 is start, 1 is end, 0.5 is middle.
         xLine(xLine(A, C), xLine(C, B)) is a point on the Bezier curve. x being the same value for each function.
-        xLine is represented by the method percentageAlongLine(A, B, x)
+        xLine is represented by the method coordinateAlongLine(A, B, x)
     ---------------------------------
      */
-    // return a list of sleepers that form a curve between 2 nodes based on a starting direction
-    private ArrayList<Sleeper> getArc(Coordinate coordinateA, Coordinate coordinateB, float startAngle){
-        // the difference between the start angle and the angle that points from node1 to node2
-        double theta = Coordinate.angleBetween(coordinateA, coordinateB) - startAngle;
-        // the 3rd point of the triangle
-        Coordinate coordinateC = new Coordinate(coordinateA.getX() + CURVE_SIZE * (float)Math.abs(theta) * (float)Math.cos(startAngle), coordinateA.getY() + CURVE_SIZE * (float)Math.abs(theta) * (float)Math.sin(startAngle));
 
-        // create a list of coordinates that plot out the arc but are not evenly spaced
-        // the line is divided into 1/precision number of segments
-        ArrayList<Coordinate> arc = new ArrayList<Coordinate>(Math.round(1 / PRECISION) + 1);
-        arc.add(coordinateA);
-        for (float i = PRECISION; i < 1; i += PRECISION){
-            Coordinate interval1 = percentageAlongLine(coordinateA, coordinateC, i);
-            Coordinate interval2 = percentageAlongLine(coordinateC, coordinateB, i);
-            arc.add(percentageAlongLine(interval1, interval2, i));
-        }
-        arc.add(coordinateB);
 
-        // use the coordinates in arc to create angled sleepers that are spaced out evenly
-        // using the total length of the arc, we work out the best separation to have between sleepers (to avoid bad spacing at the end)
-        float totalLength = 0;
-        for(int i = 0; i < arc.size() - 1; i++){
-            totalLength += Coordinate.distanceBetween(arc.get(i + 1), arc.get(i));
+    // Returns a list of sleepers that form a curve between 2 nodes based on a starting direction
+    private ArrayList<Sleeper> getArc(Coordinate cA, Coordinate cB, double startAngle) {
+
+        // Create a list of coordinates that plot out the arc but are not evenly spaced
+        // The line is divided into 1 / precision number of segments
+        double theta = Coordinate.angleBetween(cA, cB) - startAngle;
+        Coordinate cC = new Coordinate(
+                cA.getX() + CURVE_SIZE * Math.abs(theta) * Math.cos(startAngle),
+                cA.getY() + CURVE_SIZE * Math.abs(theta) * Math.sin(startAngle));
+
+        ArrayList<Coordinate> arc = new ArrayList<>();
+        for (double i = 0; i <= 1.0; i += PRECISION) {
+            Coordinate c1 = coordinateAlongLine(cA, cC, i);
+            Coordinate c2 = coordinateAlongLine(cC, cB, i);
+            arc.add(coordinateAlongLine(c1, c2, i));
         }
-        // set interval to be a close number that will divide perfectly into the total length
-        int numberOfSleepers = Math.round(totalLength / INTERVAL);
-        float interval = totalLength / numberOfSleepers;
-        ArrayList<Sleeper> sleeperArc = new ArrayList<Sleeper>(numberOfSleepers);
-        // first sleeper
-        sleeperArc.add(new Sleeper(coordinateA, startAngle));
-        // add intermediate sleepers
-        int arcPoint = 0; // which previously calculated point along the Bezier curve are we looking at currently
-        float angle = Coordinate.angleBetween(arc.get(arcPoint), arc.get(arcPoint + 1));
-        float x = Coordinate.distanceBetween(arc.get(arcPoint), arc.get(arcPoint + 1));
-        for(int i = 0; i < numberOfSleepers; i++){
-            while(x < interval & arcPoint < arc.size() - 2){
-                arcPoint++;
-                angle = Coordinate.angleBetween(arc.get(arcPoint), arc.get(arcPoint + 1));
-                x += Coordinate.distanceBetween(arc.get(arcPoint), arc.get(arcPoint + 1));
+
+        // Use the coordinates in arc to create angled sleepers that are spaced out evenly
+        ArrayList<Sleeper> sleeperArc = new ArrayList<>();
+        sleeperArc.add(new Sleeper(cA, startAngle));
+        double d = 0.0;
+        for (int i = 0; i + 1 < arc.size(); i++) {
+            Coordinate c1 = arc.get(i);
+            Coordinate c2 = arc.get(i + 1);
+            d += Coordinate.distanceBetween(c1, c2);
+            if (d >= DISTANCE_BETWEEN_SLEEPERS) {
+                d -= DISTANCE_BETWEEN_SLEEPERS;
+                double percentage = 1.0 - d / Coordinate.distanceBetween(c1, c2);
+                double angle = Coordinate.angleBetween(c1, c2);
+                sleeperArc.add(new Sleeper(coordinateAlongLine(c1, c2, percentage), angle));
             }
-            x -= interval;
-            float percentage = 1 - x / Coordinate.distanceBetween(arc.get(arcPoint), arc.get(arcPoint + 1));
-            sleeperArc.add(new Sleeper(percentageAlongLine(arc.get(arcPoint), arc.get(arcPoint + 1), percentage), angle));
         }
-
         return sleeperArc;
     }
 
-    private Coordinate percentageAlongLine(Coordinate coordinate0, Coordinate coordinate1, float percentage){
-        // returns the point a certain percentage along a line between nodes 1 and 2
+    private Coordinate coordinateAlongLine(Coordinate cA, Coordinate cB, double percentage) {
+        // Returns the point a certain percentage along a line between nodes 1 and 2
         // percentage as a decimal between 0 and 1.
-        float dX = coordinate1.getX() - coordinate0.getX(); // difference between the coordinate along the X-axis
-        float dY = coordinate1.getY() - coordinate0.getY(); // difference between the coordinate along the Y-axis
-        return new Coordinate(coordinate0.getX() + dX * percentage, coordinate0.getY() + dY * percentage);
+        double dX = cB.getX() - cA.getX();
+        double dY = cB.getY() - cA.getY();
+        return new Coordinate(cA.getX() + dX * percentage, cA.getY() + dY * percentage);
     }
 
     // returns an ArrayDeque listing nodes from the start node to the end node
@@ -131,35 +113,22 @@ public class Track {
     }
 
     // returns an ArrayDeque listing nodes from the end node to the start node
-    public ArrayDeque<Node> getReversedPath(){
+    public ArrayDeque<Node> getReversedPath() {
         ArrayList<Node> track = this.track;
         Collections.reverse(track);
         return new ArrayDeque<Node>(track);
     }
 
-    // returns the very first node
-    public Node getStartNode(){
-        return track.get(0);
-    }
-
-    // returns the very last node
-    public Node getEndNode(){
-        return track.get(track.size() - 1);
-    }
-
-    // draw an individual sleeper
-    public void drawSleeper(SpriteBatch batch, Coordinate coordinate, float angle){
-        batch.draw(sleeperTexture, coordinate.getX(), coordinate.getY(), TEX_WIDTH / 2, TEX_HEIGHT / 2, TEX_WIDTH, TEX_HEIGHT, 1, 1, angle, 0, 0, TEX_WIDTH, TEX_HEIGHT, false, false);
-    }
-
-    //
-    public void draw(SpriteBatch batch){
-        for(int i = 0; i < sleepers.size(); i++){
-            // sleeper angle +90 to rotate the image to the correct orientation
-            // *180/PI converts from radians to degrees
-            drawSleeper(batch, sleepers.get(i).getPosition(), (float)sleepers.get(i).getAngle() * 180 / (float)Math.PI + 90);
+    public void draw(SpriteBatch batch) {
+        // Sleeper angle +90 to rotate the image to the correct orientation
+        for (Sleeper s : sleepers) {
+            batch.draw(
+                    sleeperTexture, (float) s.getCoordinate().getX(), (float) s.getCoordinate().getY(),
+                    texWidth / 2, texHeight / 2, texWidth, texHeight, 1.0f, 1.0f,
+                    (float) Math.toDegrees(s.getAngle()) + 90,
+                    0, 0, texWidth, texHeight, false, false
+            );
         }
     }
-
 
 }
