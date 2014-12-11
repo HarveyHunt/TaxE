@@ -23,7 +23,6 @@ public class Track {
     private final ArrayList<Node> track;
     private final ArrayList<Sleeper> sleepers;
 
-
     public Track(ArrayList<Node> track, Texture sleeperTexture) {
         this.track = track;
         this.sleeperTexture = sleeperTexture;
@@ -126,8 +125,7 @@ public class Track {
                     sleeperTexture, (float) s.getCoordinate().getX(), (float) s.getCoordinate().getY(),
                     texWidth / 2, texHeight / 2, texWidth, texHeight, 1.0f, 1.0f,
                     (float) Math.toDegrees(s.getAngle()) + 90,
-                    0, 0, texWidth, texHeight, false, false
-            );
+                    0, 0, texWidth, texHeight, false, false);
         }
     }
 
