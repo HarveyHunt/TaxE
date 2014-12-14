@@ -1,26 +1,29 @@
 package com.taxe.game;
 
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+
 import java.util.ArrayList;
 
 /**
  * Created by Owen on 19/11/2014.
  */
-public class City {
+public class City extends Node{
 
-    private Node node;
     private ArrayList<Task> tasks;
     private Influence influence;
     private ArrayList<CargoType> cargoTypes;
+    private Texture texture = new Texture("city.png");
 
-    public City(Node node, ArrayList<Task> tasks, Influence influence, ArrayList<CargoType> cargoTypes) {
-        this.node = node;
-        this.cargoTypes = cargoTypes;
+    public City(Coordinate coordinate, boolean passable, String id, Influence influence) {
+        super(coordinate, passable);
+        this.cargoTypes = new ArrayList<>();
         this.influence = influence;
-        this.tasks = tasks;
+        this.tasks = new ArrayList<>();
     }
 
-    public Node getNode() {
-        return node;
+    public Coordinate getCoordinate() {
+        return super.getCoordinate();
     }
 
     public void addCargoType(CargoType cargoType) {
@@ -51,8 +54,8 @@ public class City {
         return cargoTypes;
     }
 
-    public void draw() {
-        // Draw the city on the screen
+    public void draw(SpriteBatch batch) {
+        batch.draw(texture, (float)getCoordinate().getX(), (float)getCoordinate().getY());
     }
 
 }

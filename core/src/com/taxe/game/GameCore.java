@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.taxe.Main;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -19,6 +20,7 @@ public class GameCore implements Screen {
     private Map map;
 
     private Track track; //THIS SHOULD BE IN MAP, NOT GAMECORE
+    private ArrayList<Node> nodes;
 
     private ExampleObject exampleObject;
 
@@ -26,13 +28,18 @@ public class GameCore implements Screen {
         this.main = main;
 
         // Set up the game
-        ArrayList<Node> nodes = new ArrayList<Node>();
-        nodes.add(new Node(new Coordinate(137, 120), true));
-        nodes.add(new Node(new Coordinate(294, 120), true));
-        nodes.add(new Node(new Coordinate(397, 222), true));
-        nodes.add(new Node(new Coordinate(533, 248), true));
-        nodes.add(new Node(new Coordinate(600, 141), true));
-        track = new Track(nodes, new Texture("sleeper.png"));
+        try {
+            //Node.writeNode(nodes, "nodes.json");
+            nodes = Node.readNodes("nodes.json");
+            track = new Track(nodes, new Texture("sleeper.png"));
+            for (Node n: nodes) {
+                System.out.println(n);
+            }
+        }
+        catch (IOException e) {
+            System.out.println("Something went wrong :(");
+        }
+
     }
 
     @Override
@@ -60,6 +67,14 @@ public class GameCore implements Screen {
         main.batch.begin();
         // --------- Draw specific items in order of depth ----------- //
         track.draw(main.batch);
+        for (Node n: nodes) {
+            if (n instanceof Homebase) {
+                //System.out.println("True!!!");
+                Homebase t = (Homebase)n;
+                t.draw(main.batch);
+            }
+        }
+
         // ----------------------------------------------------------- //
         main.batch.end();
     }
