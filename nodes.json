@@ -1,0 +1,7 @@
+[
+    {"class": "com.taxe.game.Node", "passable": true, "coordinate": {"x": 137, "y": 120}, "id": "a"},
+    {"class": "com.taxe.game.Homebase", "passable": true, "coordinate": {"x": 294, "y": 120}, "id": "b", "maxHealth": 500, "health": 500},
+    {"class": "com.taxe.game.Node", "passable": true, "coordinate": {"x": 397, "y": 222}, "id": "c"},
+    {"class": "com.taxe.game.Node", "passable": true, "coordinate": {"x": 533, "y": 248}, "id": "d"},
+    {"class": "com.taxe.game.Node", "passable": true, "coordinate": {"x": 600, "y": 141}, "id": "e"}
+]
