@@ -14,7 +14,9 @@ public class Homebase extends Node {
     private TrainType currentBuild;
     private Texture texture = new Texture("city.png");
 
-    public Homebase() {super(); maxHealth = 0; health = 0; currentBuild = null;}
+    public Homebase() {
+        super(); maxHealth = 0; health = 0; currentBuild = null;
+    }
 
     public Homebase(Coordinate coordinate, boolean passable, int maxHealth) {
         super(coordinate, passable);
