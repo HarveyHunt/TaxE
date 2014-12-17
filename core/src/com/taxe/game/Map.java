@@ -1,5 +1,7 @@
 package com.taxe.game;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+
 import java.util.ArrayList;
 
 /**
@@ -8,7 +10,7 @@ import java.util.ArrayList;
 public class Map {
 
     private ArrayList<City> cities;
-    private ArrayList<Track> tracks;
+    static private ArrayList<Track> tracks;
 
     private ArrayList<Homebase> homebases;
 
@@ -22,7 +24,7 @@ public class Map {
         return cities;
     }
 
-    public ArrayList<Track> getTracks() {
+    public static ArrayList<Track> getTracks() {
         return tracks;
     }
 
@@ -30,8 +32,11 @@ public class Map {
         return homebases;
     }
 
-    public void draw() {
+    public void draw(SpriteBatch batch) {
         // Draw each city and track
+        for(Track t : tracks) {
+            t.draw(batch);
+        }
     }
 
 }

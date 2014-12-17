@@ -74,12 +74,20 @@ public class Track {
                 cA.getY() + CURVE_SIZE * Math.abs(theta) * Math.sin(startAngle));
 
         ArrayList<Coordinate> arc = new ArrayList<>();
+        double length = 0.0;
+        Coordinate cPrevious = cA;
         for (double i = 0; i <= 1.0; i += PRECISION) {
-            Coordinate c1 = coordinateAlongLine(cA, cC, i);
-            Coordinate c2 = coordinateAlongLine(cC, cB, i);
-            arc.add(coordinateAlongLine(c1, c2, i));
+            Coordinate c1 = Coordinate.coordinateAlongLine(cA, cC, i);
+            Coordinate c2 = Coordinate.coordinateAlongLine(cC, cB, i);
+            Coordinate c3 = Coordinate.coordinateAlongLine(c1, c2, i);
+            arc.add(c3);
+            length += Coordinate.distanceBetween(cPrevious, c3);
+            cPrevious = c3;
         }
+        length += Coordinate.distanceBetween(cPrevious, cB);
 
+        // Work out the closest value to DISTANCE_BETWEEN_SLEEPERS that spaces evenly
+        double spacing = length / Math.round(length / DISTANCE_BETWEEN_SLEEPERS);
         // Use the coordinates in arc to create angled sleepers that are spaced out evenly
         ArrayList<Sleeper> sleeperArc = new ArrayList<>();
         sleeperArc.add(new Sleeper(cA, startAngle));
@@ -88,34 +96,26 @@ public class Track {
             Coordinate c1 = arc.get(i);
             Coordinate c2 = arc.get(i + 1);
             d += Coordinate.distanceBetween(c1, c2);
-            if (d >= DISTANCE_BETWEEN_SLEEPERS) {
-                d -= DISTANCE_BETWEEN_SLEEPERS;
+            if (d >= spacing) {
+                d -= spacing;
                 double percentage = 1.0 - d / Coordinate.distanceBetween(c1, c2);
                 double angle = Coordinate.angleBetween(c1, c2);
-                sleeperArc.add(new Sleeper(coordinateAlongLine(c1, c2, percentage), angle));
+                sleeperArc.add(new Sleeper(Coordinate.coordinateAlongLine(c1, c2, percentage), angle));
             }
         }
         return sleeperArc;
     }
 
-    private Coordinate coordinateAlongLine(Coordinate cA, Coordinate cB, double percentage) {
-        // Returns the point a certain percentage along a line between nodes 1 and 2
-        // percentage as a decimal between 0 and 1.
-        double dX = cB.getX() - cA.getX();
-        double dY = cB.getY() - cA.getY();
-        return new Coordinate(cA.getX() + dX * percentage, cA.getY() + dY * percentage);
-    }
-
     // returns an ArrayDeque listing nodes from the start node to the end node
     public ArrayDeque<Node> getPath() {
-        return new ArrayDeque<Node>(track);
+        return new ArrayDeque<>(track);
     }
 
     // returns an ArrayDeque listing nodes from the end node to the start node
     public ArrayDeque<Node> getReversedPath() {
         ArrayList<Node> track = this.track;
         Collections.reverse(track);
-        return new ArrayDeque<Node>(track);
+        return new ArrayDeque<>(track);
     }
 
     public void draw(SpriteBatch batch) {

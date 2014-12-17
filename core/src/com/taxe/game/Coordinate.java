@@ -46,6 +46,14 @@ public final class Coordinate {
         return Math.sqrt(dX * dX + dY * dY);
     }
 
+    public static Coordinate coordinateAlongLine(Coordinate cA, Coordinate cB, double percentage) {
+        // Returns the point a certain percentage along a line between nodes 1 and 2
+        // percentage as a decimal between 0 and 1.
+        double dX = cB.getX() - cA.getX();
+        double dY = cB.getY() - cA.getY();
+        return new Coordinate(cA.getX() + dX * percentage, cA.getY() + dY * percentage);
+    }
+
     public static double angleBetween(Coordinate cA, Coordinate cB) {
         return Math.atan2(cB.y - cA.y, cB.x - cA.x);
     }

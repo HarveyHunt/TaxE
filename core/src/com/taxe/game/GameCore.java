@@ -22,11 +22,11 @@ public class GameCore implements Screen {
     private Track track; //THIS SHOULD BE IN MAP, NOT GAMECORE
     private ArrayList<Node> nodes;
 
-    private ExampleObject exampleObject;
+    private double x; // Used to test track moving
+    private Train train;
 
     public GameCore(final Main main) {
         this.main = main;
-
         // Set up the game
         try {
             //Node.writeNode(nodes, "nodes.json");
@@ -40,6 +40,10 @@ public class GameCore implements Screen {
             System.out.println("Something went wrong :(");
         }
 
+        //test of train movement
+        x = 0;
+        train = new Train(new TrainType(2,2,2,"choo choo"), new Node(new Coordinate(100,100),true));
+        train.beginTravel();
     }
 
     @Override
@@ -48,7 +52,6 @@ public class GameCore implements Screen {
         handleInput();
         update(delta);
         draw();
-
     }
 
     private void handleInput() {
@@ -56,7 +59,11 @@ public class GameCore implements Screen {
     }
 
     private void update(float delta) {
-
+        x += delta / 5;
+        if(x < 1) {
+            train.travel(x);
+        }
+        System.out.println(x);
     }
 
     private void draw() {
@@ -67,6 +74,7 @@ public class GameCore implements Screen {
         main.batch.begin();
         // --------- Draw specific items in order of depth ----------- //
         track.draw(main.batch);
+        train.draw(main.batch);
         for (Node n: nodes) {
             if (n instanceof Homebase) {
                 //System.out.println("True!!!");
