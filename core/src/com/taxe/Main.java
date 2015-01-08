@@ -34,7 +34,7 @@ public class Main extends Game {
         batch = new SpriteBatch();
 
         //menu = new Menu(this);
-        game = new GameCore(this);
+        game = new GameCore();
         setScreen(game);
     }
 

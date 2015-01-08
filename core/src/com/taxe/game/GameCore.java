@@ -4,6 +4,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.utils.viewport.ScalingViewport;
+import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.taxe.Main;
 
 import java.io.IOException;
@@ -13,16 +15,14 @@ import java.io.IOException;
  */
 public class GameCore implements Screen {
 
-    final Main main;
     private Stage stage;
     private Player player1;
     private Player player2;
     private Map map;
 
-    public GameCore(final Main main) {
-        this.main = main;
+    public GameCore() {
         // Set up the game
-        stage = new Stage();
+        stage = new Stage(new ScreenViewport());
         Gdx.input.setInputProcessor(stage);
         try {
             map = new Map("nodes.json", "tracks.json");

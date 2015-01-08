@@ -19,7 +19,7 @@ public class DesktopLauncher {
         config.title = "Game Titles are Boring";
         config.width = 800;
         config.height = 640;
-        config.resizable = false; // Makes it easier to handle resolution if it cannot be changing all the time
+        config.resizable = true; // Makes it easier to handle resolution if it cannot be changing all the time
         config.fullscreen = false;
         config.samples = 4;
 
