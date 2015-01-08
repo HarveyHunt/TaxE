@@ -2,9 +2,13 @@ package com.taxe.game;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.Json;
 
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 
 /**
@@ -18,14 +22,13 @@ public class Track {
     private static final int CURVE_SIZE = 100;
     private final int texWidth;
     private final int texHeight;
-    private final Texture sleeperTexture;
+    private final Texture sleeperTexture = new Texture("sleeper.png");
 
     private final ArrayList<Node> track;
     private final ArrayList<Sleeper> sleepers;
 
-    public Track(ArrayList<Node> track, Texture sleeperTexture) {
+    public Track(ArrayList<Node> track) {
         this.track = track;
-        this.sleeperTexture = sleeperTexture;
         this.texWidth = sleeperTexture.getWidth();
         this.texHeight = sleeperTexture.getHeight();
         this.sleepers = new ArrayList<>();
@@ -116,6 +119,32 @@ public class Track {
         ArrayList<Node> track = this.track;
         Collections.reverse(track);
         return new ArrayDeque<>(track);
+    }
+
+    public static ArrayList<Track> readTracks(String fileName, ArrayList<Node> nodes) throws IOException {
+        Json json = new Json();
+        FileReader f = new FileReader(fileName);
+        String[][] trackIds = json.fromJson(String[][].class, f);
+        f.close();
+        System.out.println(nodes);
+
+        ArrayList<Track> tracks = new ArrayList<>();
+        for (String[] ids: trackIds) {
+            ArrayList<Node> t = new ArrayList<>();
+            for (String id: ids) {
+                Node n = Node.getNodeWithId(id, nodes);
+                if (n != null) {
+                    t.add(Node.getNodeWithId(id, nodes));
+                }
+                else {
+                    throw new RuntimeException("Can't construct track with Node.id = " + id);
+                }
+            }
+            tracks.add(new Track(t));
+        }
+        return tracks;
+
+
     }
 
     public void draw(SpriteBatch batch) {

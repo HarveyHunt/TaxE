@@ -21,6 +21,7 @@ public class GameCore implements Screen {
 
     private Track track; //THIS SHOULD BE IN MAP, NOT GAMECORE
     private ArrayList<Node> nodes;
+    private ArrayList<Track> tracks;
 
     private double x; // Used to test track moving
     private Train train;
@@ -30,20 +31,22 @@ public class GameCore implements Screen {
         // Set up the game
         try {
             //Node.writeNode(nodes, "nodes.json");
-            nodes = Node.readNodes("nodes.json");
-            track = new Track(nodes, new Texture("sleeper.png"));
-            for (Node n: nodes) {
-                System.out.println(n);
-            }
+//            nodes = Node.readNodes("nodes.json");
+//            track = new Track(nodes);
+            map = new Map("nodes.json", "tracks.json");
+//            tracks = Track.readTracks("tracks.json", nodes);
+//            for (Node n: nodes) {
+//                System.out.println(n);
+//            }
         }
         catch (IOException e) {
             System.out.println("Something went wrong :(");
         }
 
         //test of train movement
-        x = 0;
-        train = new Train(new TrainType(2,2,2,"choo choo"), new Node(new Coordinate(100,100),true));
-        train.beginTravel();
+//        x = 0;
+//        train = new Train(new TrainType(2,2,2,"choo choo"), new Node(new Coordinate(100,100),true));
+//        train.beginTravel();
     }
 
     @Override
@@ -59,11 +62,11 @@ public class GameCore implements Screen {
     }
 
     private void update(float delta) {
-        x += delta / 5;
-        if(x < 1) {
-            train.travel(x);
-        }
-        System.out.println(x);
+//        x += delta / 5;
+//        if(x < 1) {
+//            train.travel(x);
+//        }
+//        System.out.println(x);
     }
 
     private void draw() {
@@ -73,15 +76,14 @@ public class GameCore implements Screen {
         //Draw all the things!!!
         main.batch.begin();
         // --------- Draw specific items in order of depth ----------- //
-        track.draw(main.batch);
-        train.draw(main.batch);
-        for (Node n: nodes) {
-            if (n instanceof Homebase) {
-                //System.out.println("True!!!");
-                Homebase t = (Homebase)n;
-                t.draw(main.batch);
-            }
-        }
+//        for (Track t: tracks) {
+//            t.draw(main.batch);
+////        train.draw(main.batch);
+//        }
+//        for (Node n: nodes) {
+//            n.draw(main.batch);
+//        }
+        map.draw(main.batch);
 
         // ----------------------------------------------------------- //
         main.batch.end();

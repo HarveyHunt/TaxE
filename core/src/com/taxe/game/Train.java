@@ -130,7 +130,7 @@ public class Train {
 
     public void draw(SpriteBatch batch) {
         batch.draw(
-                tokenTexture, (float) coordinate.getX(), (float) coordinate.getY(),
+                tokenTexture, (float)coordinate.getX(), (float)coordinate.getY(),
                 texWidth / 2, texHeight / 2, texWidth, texHeight, 1.0f, 1.0f,
                 0,
                 0, 0, texWidth, texHeight, false, false);

@@ -12,17 +12,12 @@ public class Homebase extends Node {
     final private int maxHealth;
     private int health;
     private TrainType currentBuild;
-    private Texture texture = new Texture("city.png");
 
     public Homebase() {
-        super(); maxHealth = 0; health = 0; currentBuild = null;
-    }
-
-    public Homebase(Coordinate coordinate, boolean passable, int maxHealth) {
-        super(coordinate, passable);
-        this.maxHealth = maxHealth;
-        this.health = maxHealth;
-        this.currentBuild = null;
+        super(new Texture("homebase.png"));
+        maxHealth = 0;
+        health = 0;
+        currentBuild = null;
     }
 
     public String toString() {
@@ -56,8 +51,4 @@ public class Homebase extends Node {
         // Not sure how this will interact with game loop and turns
     }
 
-    public void draw(SpriteBatch batch) {
-        Coordinate c = getCoordinate();
-        batch.draw(texture, (float)c.getX(), (float)c.getY(), 150, 150);
-    }
 }
