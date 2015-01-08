@@ -1,7 +1,7 @@
 package com.taxe.game;
 
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.scenes.scene2d.Group;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 /**
  * Created by Owen on 19/11/2014.
  */
-public class Map {
+public class Map extends Group {
 
     private ArrayList<City> cities;
     private ArrayList<Homebase> homebases;
@@ -27,7 +27,7 @@ public class Map {
         for (Node n : nodes) {
             System.out.println(n);
             if (n instanceof City)
-                cities.add((City)n);
+                cities.add((City) n);
             else if (n instanceof Homebase)
                 homebases.add((Homebase) n);
             else if (n instanceof Junction)
@@ -36,6 +36,12 @@ public class Map {
                 intermediatePoints.add((IntermediatePoint) n);
         }
         tracks = Track.readTracks(tracksFileName, nodes);
+        for (Track t : tracks) {
+            this.addActor(t);
+        }
+        for (Node n : nodes) {
+            this.addActor(n);
+        }
     }
 
     public ArrayList<City> getCities() {
@@ -58,8 +64,9 @@ public class Map {
         return tracks;
     }
 
-    public void draw(SpriteBatch batch) {
-        for (Track t: tracks) {
+    @Override
+    public void draw(Batch batch, float parentAlpha) {
+/*        for (Track t: tracks) {
             t.draw(batch);
         }
         for (City c: cities) {
@@ -73,7 +80,8 @@ public class Map {
         }
         for (IntermediatePoint i: intermediatePoints) {
             i.draw(batch);
-        }
+        }*/
+        this.drawChildren(batch, parentAlpha);
     }
 
 }

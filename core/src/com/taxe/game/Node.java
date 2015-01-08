@@ -1,7 +1,9 @@
 package com.taxe.game;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.utils.Json;
 
 import java.io.FileReader;
@@ -18,7 +20,7 @@ import java.util.List;
  * For each Node, only one instance exists in the game.
  * Nodes are specified and read from JSON file.
  */
-public abstract class Node {
+public abstract class Node extends Actor {
 
     private final Coordinate coordinate;
     private boolean passable;
@@ -77,7 +79,8 @@ public abstract class Node {
         return new ArrayList<>(Arrays.asList(nodes));
     }
 
-    public void draw(SpriteBatch batch) {
+    @Override
+    public void draw(Batch batch, float parentAlpha) {
         batch.draw(texture, (float)coordinate.getX(), (float)coordinate.getY());
     }
 

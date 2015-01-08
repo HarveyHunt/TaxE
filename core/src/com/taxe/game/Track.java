@@ -1,7 +1,9 @@
 package com.taxe.game;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.utils.Json;
 
 import java.io.FileReader;
@@ -14,7 +16,7 @@ import java.util.Collections;
 /**
  * Created by Owen on 18/11/2014.
  */
-public class Track {
+public class Track extends Actor {
 
     // Constants for drawing
     private static final double DISTANCE_BETWEEN_SLEEPERS = 12.0;
@@ -147,7 +149,8 @@ public class Track {
 
     }
 
-    public void draw(SpriteBatch batch) {
+    @Override
+    public void draw(Batch batch, float parentAlpha) {
         // Sleeper angle +90 to rotate the image to the correct orientation
         for (Sleeper s : sleepers) {
             batch.draw(
