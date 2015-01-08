@@ -19,13 +19,6 @@ public class GameCore implements Screen {
     private Player player2;
     private Map map;
 
-    private Track track; //THIS SHOULD BE IN MAP, NOT GAMECORE
-    private ArrayList<Node> nodes;
-    private ArrayList<Track> tracks;
-
-    private double x; // Used to test track moving
-    private Train train;
-
     public GameCore(final Main main) {
         this.main = main;
         // Set up the game
@@ -42,11 +35,6 @@ public class GameCore implements Screen {
         catch (IOException e) {
             System.out.println("Something went wrong :(");
         }
-
-        //test of train movement
-//        x = 0;
-//        train = new Train(new TrainType(2,2,2,"choo choo"), new Node(new Coordinate(100,100),true));
-//        train.beginTravel();
     }
 
     @Override
@@ -62,11 +50,7 @@ public class GameCore implements Screen {
     }
 
     private void update(float delta) {
-//        x += delta / 5;
-//        if(x < 1) {
-//            train.travel(x);
-//        }
-//        System.out.println(x);
+//        
     }
 
     private void draw() {
