@@ -59,6 +59,9 @@ public class Map {
     }
 
     public void draw(SpriteBatch batch) {
+        for (Track t: tracks) {
+            t.draw(batch);
+        }
         for (City c: cities) {
             c.draw(batch);
         }
@@ -70,9 +73,6 @@ public class Map {
         }
         for (IntermediatePoint i: intermediatePoints) {
             i.draw(batch);
-        }
-        for (Track t: tracks) {
-            t.draw(batch);
         }
     }
 
