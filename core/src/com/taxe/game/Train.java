@@ -16,12 +16,10 @@ public class Train {
     private final TrainType trainType;
     private Cargo cargo;
     private ArrayDeque<Node> path;         // Train travelling path
-    private Coordinate coordinate;          // For drawing and if train is moving
+    private Coordinate coordinate;         // For drawing and if train is moving
 
     // variables to handle the moving during the execution phase.
-    private boolean moving;
-    private ArrayList<Sleeper> sleeperPath;
-    private double distance;
+    private ArrayList<Coordinate> coordinatePath;
 
     //constants for drawing
     private final int texWidth;
@@ -35,9 +33,7 @@ public class Train {
         path.add(startNode);
         this.coordinate = startNode.getCoordinate();
 
-        this.moving = false;
-        this.sleeperPath = null;
-        this.distance = 0.0;
+        this.coordinatePath = null;
 
         this.tokenTexture = new Texture("image.png");
         this.texWidth = tokenTexture.getWidth();
@@ -45,49 +41,35 @@ public class Train {
     }
 
     public void beginTravel() {
-        // Do the initial calculations and set up the travel variables
-        // ACCESSING SLEEPERS GOES HERE - for now, using temporary sleeperPath
-        sleeperPath = new ArrayList<>();
-        sleeperPath.add(new Sleeper(new Coordinate(100,100),0));
-        sleeperPath.add(new Sleeper(new Coordinate(200,100),0));
-        sleeperPath.add(new Sleeper(new Coordinate(300,100),0));
+        // Create a list of sleepers that the train will travel along in this execution phase
+        coordinatePath = new ArrayList<>();
 
-        // Calculate total distance of path to travel (so we don't have to do it every time)
-        distance = 0.0;
-        for (int i = 1; i < sleeperPath.size(); i++) {
-            distance += Coordinate.distanceBetween(
-                    sleeperPath.get(i).getCoordinate(),
-                    sleeperPath.get(i - 1).getCoordinate());
+        int nodesToMove = 0;
+        if (path.size() - 1 >= trainType.getSpeed()) {
+            nodesToMove = trainType.getSpeed();
+        } else {
+            nodesToMove = path.size() - 1;
         }
 
-        moving = true;
-    }
+        if (nodesToMove > 0) {
+            Node nodeA = path.pop();
+            Node nodeB;
+            for (int i = 0; i < nodesToMove - 1; i++) {
+                nodeB = path.pop();
+                // Search for the Track which contains both nodes (there should be only one if the map data is correct)
+                Track track = null;
 
-    public void travel(double x) {
-        // Moves the train to the position that is x percentage along its sleeperPath
-        // x is a percentage in decimal form, 0.0 - 1.0
-        double xDistance = distance * x; // Distance along the path
-        double iDistance = 0.0; // counter
-        int i = 0;
-        double spacing = 0;
-        while (iDistance < xDistance) {
-            i++;
-            if (i == sleeperPath.size()) {
-                return; // Stopping list size errors
+                while (track == null) {
+
+                }
             }
-            spacing = Coordinate.distanceBetween(
-                    sleeperPath.get(i - 1).getCoordinate(),
-                    sleeperPath.get(i).getCoordinate());
-            iDistance += spacing;
         }
-        double overShoot = iDistance - xDistance; // How far past xDistance we went
-        double percentage = 1 - overShoot / spacing;
-        coordinate = Coordinate.coordinateAlongLine(sleeperPath.get(i - 1).getCoordinate(), sleeperPath.get(i).getCoordinate(), percentage);
+
+        coordinatePath.add(new Coordinate(100,100));
     }
 
     public void endTravel() {
-        moving = false;
-        sleeperPath = null; // Is this a clean deletion??
+        coordinatePath = null; // Is this a clean deletion??
     }
 
     public TrainType getTrainType() {

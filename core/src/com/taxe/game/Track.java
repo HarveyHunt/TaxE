@@ -92,7 +92,7 @@ public class Track extends Actor {
         length += Coordinate.distanceBetween(cPrevious, cB);
 
         // Work out the closest value to DISTANCE_BETWEEN_SLEEPERS that spaces evenly
-        double spacing = length / Math.round(length / DISTANCE_BETWEEN_SLEEPERS);
+        double spacing = length / (double) Math.round(length / DISTANCE_BETWEEN_SLEEPERS);
         // Use the coordinates in arc to create angled sleepers that are spaced out evenly
         ArrayList<Sleeper> sleeperArc = new ArrayList<>();
         sleeperArc.add(new Sleeper(cA, startAngle));
@@ -101,7 +101,7 @@ public class Track extends Actor {
             Coordinate c1 = arc.get(i);
             Coordinate c2 = arc.get(i + 1);
             d += Coordinate.distanceBetween(c1, c2);
-            if (d >= spacing) {
+            while (d >= spacing) {
                 d -= spacing;
                 double percentage = 1.0 - d / Coordinate.distanceBetween(c1, c2);
                 double angle = Coordinate.angleBetween(c1, c2);
@@ -155,7 +155,7 @@ public class Track extends Actor {
         for (Sleeper s : sleepers) {
             batch.draw(
                     sleeperTexture, (float) s.getCoordinate().getX(), (float) s.getCoordinate().getY(),
-                    texWidth / 2, texHeight / 2, texWidth, texHeight, 1.0f, 1.0f,
+                    texWidth / 2.0f, texHeight / 2.0f, texWidth, texHeight, 1.0f, 1.0f,
                     (float) Math.toDegrees(s.getAngle()) + 90,
                     0, 0, texWidth, texHeight, false, false);
         }
