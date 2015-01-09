@@ -2,8 +2,10 @@ package com.taxe.game;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.Touchable;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Json;
 
 import java.io.FileReader;
@@ -11,7 +13,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
 
 /**
  * Created by Vlad on 22/11/14.
@@ -25,18 +26,22 @@ public abstract class Node extends Actor {
     private final Coordinate coordinate;
     private boolean passable;
     private final String id;
-    private Texture texture;
+
+    private Texture[] textures;
+    private int currentTexture;
 
     public Node() {
         coordinate = null;
         passable = false;
         id = null;
-        texture = null;
+        textures = null;
+        currentTexture = -1;
     }
 
-    public Node(Texture texture) {
+    public Node(Texture[] textures) {
         this();
-        this.texture = texture;
+        this.textures = textures;
+        this.currentTexture = Textures.ORIGINAL;
     }
 
     public String toString() {
@@ -58,10 +63,6 @@ public abstract class Node extends Actor {
         return id;
     }
 
-    public Texture getTexture() {
-        return texture;
-    }
-
     public static Node getNodeWithId(String id, Collection<Node> nodes) {
         for (Node n: nodes) {
             System.out.println(n.id);
@@ -76,12 +77,32 @@ public abstract class Node extends Actor {
         FileReader f = new FileReader(fileName);
         Node[] nodes = json.fromJson(Node[].class, f);
         f.close();
+
+        for (Node n : nodes) {
+            n.prepareActor();
+        }
         return new ArrayList<>(Arrays.asList(nodes));
+    }
+
+    public void prepareActor() {
+        setBounds((float) coordinate.getX(), (float) coordinate.getY(),
+                textures[currentTexture].getWidth(), textures[currentTexture].getHeight());
+        setTouchable(Touchable.enabled);
+    }
+
+    public int getCurrentTexture() {
+        return currentTexture;
+    }
+
+    public void setCurrentTexture(int texture) {
+        currentTexture = texture;
     }
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
-        batch.draw(texture, (float)coordinate.getX(), (float)coordinate.getY());
+        float x = (float) coordinate.getX();
+        float y = (float) coordinate.getY();
+        batch.draw(textures[currentTexture], x, y);
     }
 
 }

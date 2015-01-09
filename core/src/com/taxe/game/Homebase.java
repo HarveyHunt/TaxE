@@ -14,7 +14,7 @@ public class Homebase extends Node {
     private TrainType currentBuild;
 
     public Homebase() {
-        super(new Texture("homebase.png"));
+        super(Textures.HOMEBASE);
         maxHealth = 0;
         health = 0;
         currentBuild = null;

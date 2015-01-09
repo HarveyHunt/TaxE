@@ -31,6 +31,7 @@ public class GameCore implements Screen {
             System.out.println("Something went wrong :(");
         }
         stage.addActor(map);
+        Gdx.input.setInputProcessor(stage);
     }
 
     @Override

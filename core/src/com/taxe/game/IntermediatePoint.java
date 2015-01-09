@@ -8,7 +8,7 @@ import com.badlogic.gdx.graphics.Texture;
 public class IntermediatePoint extends Node {
 
     public IntermediatePoint() {
-        super(new Texture("image.png"));
+        super(Textures.INTERMEDIATE);
     }
 
 }

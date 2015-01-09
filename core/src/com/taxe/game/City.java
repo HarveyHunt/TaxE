@@ -15,7 +15,7 @@ public class City extends Node {
     private ArrayList<CargoType> cargoTypes;
 
     public City() {
-        super(new Texture("city.png"));
+        super(Textures.CITY);
         tasks = null;
         influence = null;
         cargoTypes = null;

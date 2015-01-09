@@ -8,7 +8,7 @@ import com.badlogic.gdx.graphics.Texture;
 public class Junction extends Node {
 
     public Junction() {
-        super(new Texture("junction.png"));
+        super(Textures.JUNCTION);
     }
 
 }
