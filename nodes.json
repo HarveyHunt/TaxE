@@ -10,7 +10,6 @@
     {"class": "com.taxe.game.City", "passable": true, "coordinate": {"x": 662, "y": 431}, "id": "H"},
     {"class": "com.taxe.game.City", "passable": true, "coordinate": {"x": 570, "y": 757}, "id": "I"},
     {"class": "com.taxe.game.City", "passable": true, "coordinate": {"x": 866, "y": 751}, "id": "J"},
-    {"class": "com.taxe.game.City", "passable": true, "coordinate": {"x": 1144, "y": 639}, "id": "K"},
     {"class": "com.taxe.game.City", "passable": true, "coordinate": {"x": 957, "y": 356}, "id": "L"},
 
 
@@ -47,7 +46,7 @@
     {"class": "com.taxe.game.IntermediatePoint", "passable": true, "coordinate": {"x": 679, "y": 312}, "id": "EH-3"},
     {"class": "com.taxe.game.IntermediatePoint", "passable": true, "coordinate": {"x": 691, "y": 377}, "id": "EH-4"},
     {"class": "com.taxe.game.IntermediatePoint", "passable": true, "coordinate": {"x": 320, "y": 272}, "id": "AJ1-1"},
-    {"class": "com.taxe.game.IntermediatePoint", "passable": true, "coordinate": {"x": 390, "y": 304}, "id": "AJ1-2"},
+    {"class": "com.taxe.game.IntermediatePoint", "passable": true, "coordinate": {"x": 390, "y": 304}, "id": "AJ1-2"}
 //    {"class": "com.taxe.game.IntermediatePoint", "passable": true, "coordinate": {"x": , "y": }, "id": ""},
 //    {"class": "com.taxe.game.IntermediatePoint", "passable": true, "coordinate": {"x": , "y": }, "id": ""},
 //    {"class": "com.taxe.game.IntermediatePoint", "passable": true, "coordinate": {"x": , "y": }, "id": ""},
