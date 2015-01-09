@@ -4,9 +4,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
-import com.taxe.Main;
+import com.taxe.game.UI.GUI;
 
 import java.io.IOException;
 
@@ -16,6 +15,7 @@ import java.io.IOException;
 public class GameCore implements Screen {
 
     private Stage stage;
+    private GUI gui;
     private Player player1;
     private Player player2;
     private Map map;
@@ -31,6 +31,8 @@ public class GameCore implements Screen {
             System.out.println("Something went wrong :(");
         }
         stage.addActor(map);
+        gui = new GUI();
+        stage.addActor(gui);
     }
 
     @Override
@@ -81,6 +83,7 @@ public class GameCore implements Screen {
     @Override
     public void resize(int w, int h) {
         stage.getViewport().update(w, h, true);
+        gui.getHUD().resize();
     }
 
     @Override

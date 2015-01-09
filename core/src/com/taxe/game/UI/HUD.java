@@ -1,36 +1,52 @@
 package com.taxe.game.UI;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.scenes.scene2d.Group;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.Touchable;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.taxe.game.Coordinate;
 
 /**
- * Created by Owen on 08/01/2015.
+ * Created by Owen on 09/01/2015.
  */
-public class HUD {
+public class HUD extends Group {
 
-    private Stage stage;
-    private Table table;
-
-    //For debug drawing
-    private ShapeRenderer shapeRenderer;
+    private Texture texture;
+    private Button endTurn;
+    private TextDisplay textTest;
 
     public HUD() {
-        // stage is the entire screen itself
-        stage = new Stage();
-        Gdx.input.setInputProcessor(stage);
+        texture = new Texture("HUD.png");
 
-        // the table takes up the whole screen too, but allows us to position widgets on the screen nicely
-        table = new Table();
-        table.setFillParent(true);
-        stage.addActor(table);
+        endTurn = new Button(new Texture("endturn.png"), new Coordinate(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() - texture.getHeight() / 2));
+        addActor(endTurn);
+        endTurn.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                System.out.println("Button Clicked");
+            }
+        });
 
-        // debug drawing allows us to see what the layout looks like
-        shapeRenderer = new ShapeRenderer();
+        textTest = new TextDisplay("This is a sentence!", new Coordinate(50, 50));
+        addActor(textTest);
+    }
 
-        // Add Widgets to table here
-        // Widgets are elements of the HUD
+    public void resize(){
+        endTurn.setCoordinate(new Coordinate(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() - texture.getHeight() / 2));
+    }
+
+    @Override
+    public void draw(Batch batch, float parentAlpha) {
+        batch.draw(
+                texture, 0, Gdx.graphics.getHeight() - texture.getHeight(),
+                0, 0, Gdx.graphics.getWidth(), texture.getHeight(),
+                1, 1, 0,
+                0, 0, texture.getWidth(), texture.getHeight(),
+                false, false);
+        drawChildren(batch, parentAlpha);
     }
 
 }
