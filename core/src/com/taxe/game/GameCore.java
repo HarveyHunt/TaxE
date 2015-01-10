@@ -3,11 +3,16 @@ package com.taxe.game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.taxe.game.UI.GUI;
 
 import java.io.IOException;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
 
 /**
  * Created by Owen on 08/11/2014.
@@ -31,8 +36,19 @@ public class GameCore implements Screen {
             System.out.println("Something went wrong :(");
         }
         stage.addActor(map);
+        stage.addListener(new MapClickListener());
         gui = new GUI();
         stage.addActor(gui);
+
+        player1 = new Player(map.getHomebases().get(0), new ArrayList<Train>(), new Gold(500), new Fuel(10, 0));
+        player2 = new Player(map.getHomebases().get(1), new ArrayList<Train>(), new Gold(500), new Fuel(10, 0));
+        player1.addTrain(new BasicTrain(player1.getHomebase(), player1));
+        player2.addTrain(new BasicTrain(player2.getHomebase(), player2));
+
+
+        stage.addActor(player1);
+        stage.addActor(player2);
+
     }
 
     @Override
@@ -90,6 +106,42 @@ public class GameCore implements Screen {
     public void dispose() {
         // Dispose of resources (stage, textures, sounds)
         stage.dispose();
+    }
+
+    private class MapClickListener extends ClickListener {
+        private ArrayDeque<Node> trainPath;
+
+        @Override
+        public void clicked(InputEvent event, float x, float y) {
+            Actor target = event.getTarget();
+            if (target instanceof Node) {
+                processNodeClick((Node) target);
+            }
+        }
+
+        void processNodeClick(Node n) {
+            if (n.getCurrentTexture() == Textures.ORIGINAL) {
+                n.setCurrentTexture(Textures.SELECTED);
+                map.changeNeighbourTexture(n, Textures.ORIGINAL, Textures.HIGHLIGHTED);
+                trainPath = new ArrayDeque<>();
+                trainPath.add(n);
+            } else if (n.getCurrentTexture() == Textures.HIGHLIGHTED) {
+                map.changeAllTextures(Textures.HIGHLIGHTED, Textures.ORIGINAL);
+                n.setCurrentTexture(Textures.SELECTED);
+                map.changeTrackTexture(Textures.SELECTED, Textures.SELECTED, Textures.SELECTED);
+                map.changeNeighbourTexture(n, Textures.ORIGINAL, Textures.HIGHLIGHTED);
+                trainPath.add(n);
+            } else if (n.getCurrentTexture() == Textures.SELECTED) {
+                while (trainPath.getLast() != n) {
+                    Node c = trainPath.getLast();
+                    map.changeNeighbourTexture(c, Textures.HIGHLIGHTED, Textures.ORIGINAL);
+                    map.changeNeighbourTexture(c, Textures.SELECTED, Textures.ORIGINAL);
+                    trainPath.removeLast();
+                }
+                n.setCurrentTexture(Textures.SELECTED);
+                map.changeNeighbourTexture(n, Textures.ORIGINAL, Textures.HIGHLIGHTED);
+            }
+        }
     }
 
 }

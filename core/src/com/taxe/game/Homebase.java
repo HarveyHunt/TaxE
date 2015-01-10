@@ -1,8 +1,5 @@
 package com.taxe.game;
 
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-
 /**
  * Created by Vlad on 19/11/2014.
  * Class representing players' homebases in the game.
@@ -11,7 +8,7 @@ public class Homebase extends Node {
 
     final private int maxHealth;
     private int health;
-    private TrainType currentBuild;
+    private Train currentBuild;
 
     public Homebase() {
         super(Textures.HOMEBASE);
@@ -39,11 +36,11 @@ public class Homebase extends Node {
         health += delta;
     }
 
-    public TrainType getCurrentBuild() {
+    public Train getCurrentBuild() {
         return currentBuild;
     }
 
-    public void startBuild(TrainType build) {
+    public void startBuild(Train build) {
         currentBuild = build;
     }
 

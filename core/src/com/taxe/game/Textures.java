@@ -30,4 +30,11 @@ public class Textures {
             new Texture("intermediate.png"),
             new Texture("intermediate-highlighted.png"),
             new Texture("intermediate-selected.png")};
+
+    public static final Texture[] BASIC_TRAIN = {
+            new Texture("basic-train.png"),
+            new Texture("basic-train-highlighted.png"),
+            new Texture("basic-train-selected.png")};
+
+
 }

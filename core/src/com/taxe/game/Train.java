@@ -1,79 +1,58 @@
 package com.taxe.game;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 
 import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Iterator;
 
 /**
- * Created by Vlad on 19/11/2014.
- * Class representing players' trains in the game.
+ * Created by vlad on 10/01/15.
  */
-public class Train {
+public abstract class Train extends Actor {
 
-    private final TrainType trainType;
+    private int speed;
+    private int cargoCap;
+    private int fuelCost;
+    private final String id;
+
     private Cargo cargo;
-    private ArrayDeque<Node> path;         // Train travelling path
-    private Coordinate coordinate;         // For drawing and if train is moving
+    private ArrayDeque<Node> path;
+    private Node node;
+    private Coordinate coordinate;
 
-    // variables to handle the moving during the execution phase.
-    private ArrayList<Coordinate> coordinatePath;
+    private Player owner;
+    private Texture[] textures;
+    private int currentTexture;
 
-    //constants for drawing
-    private final int texWidth;
-    private final int texHeight;
-    private final Texture tokenTexture;
-
-    public Train(TrainType trainType, Node startNode) {
-        this.trainType = trainType;
+    public Train(int speed, int cargoCap, int fuelCost, String id, Node node, Player owner, Texture[] textures) {
+        this.speed = speed;
+        this.cargoCap = cargoCap;
+        this.fuelCost = fuelCost;
+        this.id = id;
         this.cargo = null;
-        this.path = new ArrayDeque<>();
-        path.add(startNode);
-        this.coordinate = startNode.getCoordinate();
-
-        this.coordinatePath = null;
-
-        this.tokenTexture = new Texture("image.png");
-        this.texWidth = tokenTexture.getWidth();
-        this.texHeight = tokenTexture.getHeight();
+        this.path = null;
+        this.node = node;
+        this.coordinate = node.getCoordinate();
+        this.owner = owner;
+        this.textures = textures;
+        this.currentTexture = Textures.ORIGINAL;
     }
 
-    public void beginTravel() {
-        // Create a list of sleepers that the train will travel along in this execution phase
-        coordinatePath = new ArrayList<>();
-
-        int nodesToMove = 0;
-        if (path.size() - 1 >= trainType.getSpeed()) {
-            nodesToMove = trainType.getSpeed();
-        } else {
-            nodesToMove = path.size() - 1;
-        }
-
-        if (nodesToMove > 0) {
-            Node nodeA = path.pop();
-            Node nodeB;
-            for (int i = 0; i < nodesToMove - 1; i++) {
-                nodeB = path.pop();
-                // Search for the Track which contains both nodes (there should be only one if the map data is correct)
-                Track track = null;
-
-                while (track == null) {
-
-                }
-            }
-        }
-
-        coordinatePath.add(new Coordinate(100,100));
+    public int getSpeed() {
+        return speed;
     }
 
-    public void endTravel() {
-        coordinatePath = null; // Is this a clean deletion??
+    public int getFuelCost() {
+        return fuelCost;
     }
 
-    public TrainType getTrainType() {
-        return trainType;
+    public String getId() {
+        return id;
+    }
+
+    public int getCargoCap() {
+        return cargoCap;
     }
 
     public Cargo getCargo() {
@@ -84,38 +63,44 @@ public class Train {
         this.cargo = cargo;
     }
 
+    public ArrayDeque<Node> getPath() {
+        return path;
+    }
+
+    public Node getNode() {
+        return node;
+    }
+
+    public void setNode(Node node) {
+        this.node = node;
+    }
+
     public Coordinate getCoordinate() {
         return coordinate;
     }
 
-    public void createPath(ArrayDeque<Node> path) {
-        this.path = path;
+    public void setCoordinate(Coordinate coordinate) {
+        this.coordinate = coordinate;
     }
 
-    public Node currentPathNode() {
-        return path.getFirst();
+    public Player getOwner() {
+        return owner;
     }
 
-    public Node nextPathNode() {
-        Iterator<Node> iterator = path.iterator();
-        if (iterator.hasNext()) {
-            iterator.next();
-            return (iterator.hasNext()) ? iterator.next() : null;
-        } else {
-            return null;
-        }
+    public int getCurrentTexture() {
+        return currentTexture;
     }
 
-    public Node popPathNode() {
-        return path.removeFirst();
+    public boolean isActive() {
+        return currentTexture == Textures.HIGHLIGHTED;
     }
 
-    public void draw(SpriteBatch batch) {
-        batch.draw(
-                tokenTexture, (float)coordinate.getX(), (float)coordinate.getY(),
-                texWidth / 2, texHeight / 2, texWidth, texHeight, 1.0f, 1.0f,
-                0,
-                0, 0, texWidth, texHeight, false, false);
+    @Override
+    public void draw(Batch batch, float parentAlpha) {
+        float x = (float) coordinate.getX();
+        float y = (float) coordinate.getY();
+        batch.draw(textures[currentTexture], x, y);
     }
+
 
 }

@@ -1,11 +1,14 @@
 package com.taxe.game;
 
+import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.scenes.scene2d.Group;
+
 import java.util.ArrayList;
 
 /**
  * Created by Vlad on 19/11/2014.
  */
-public class Player {
+public class Player extends Group {
 
     private final ArrayList<Train> trains;
     private final Gold gold;
@@ -17,6 +20,9 @@ public class Player {
         this.trains = trains;
         this.gold = gold;
         this.fuel = fuel;
+        for (Train t : trains) {
+            this.addActor(t);
+        }
     }
 
     public ArrayList<Train> getTrains() {
@@ -34,5 +40,16 @@ public class Player {
     public Fuel getFuel() {
         return fuel;
     }
+
+    public void addTrain(Train t) {
+        trains.add(t);
+        this.addActor(t);
+    }
+
+    @Override
+    public void draw(Batch batch, float parentAlpha) {
+        this.drawChildren(batch, parentAlpha);
+    }
+
 
 }
