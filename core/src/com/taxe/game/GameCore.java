@@ -5,16 +5,15 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
+import com.taxe.game.InputHandling.Clickable;
 import com.taxe.game.Nodes.Node;
 import com.taxe.game.Resources.Fuel;
 import com.taxe.game.Resources.Gold;
 import com.taxe.game.Trains.BasicTrain;
 import com.taxe.game.Trains.Train;
-import com.taxe.game.UI.Button;
 import com.taxe.game.UI.GUI;
 
 import java.io.IOException;
@@ -30,6 +29,7 @@ public class GameCore implements Screen {
     private Player player1;
     private Player player2;
     private Map map;
+    private ArrayList<Node> selectedPath = new ArrayList<>();
 
     public GameCore() {
         // Set up the game
@@ -37,13 +37,10 @@ public class GameCore implements Screen {
         Gdx.input.setInputProcessor(stage);
         try {
             map = new Map("nodes.json", "tracks.json");
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             System.out.println("Something went wrong :(");
         }
         stage.addActor(map);
-        stage.addListener(new PathClickListener());
-        stage.addListener(new PathInputListener());
 
         player1 = new Player(map.getHomebases().get(0), new ArrayList<Train>(), new Gold(500), new Fuel(10, 0));
         player2 = new Player(map.getHomebases().get(1), new ArrayList<Train>(), new Gold(500), new Fuel(10, 0));
@@ -55,8 +52,17 @@ public class GameCore implements Screen {
 
         gui = new GUI();
         stage.addActor(gui);
-        stage.addListener(new GuiClickListener());
+        stage.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                Actor target = event.getTarget();
+                if (target instanceof Clickable) {
+                    ((Clickable) target).clicked(GameCore.this);
+                }
+            }
+        });
     }
+
 
     @Override
     public void render(float delta) {
@@ -115,47 +121,26 @@ public class GameCore implements Screen {
         stage.dispose();
     }
 
-    private class GuiClickListener extends ClickListener {
-        @Override
-        public void clicked(InputEvent event, float x, float y) {
-            Actor target = event.getTarget();
-            if (target instanceof Button) {
-                ((Button) target).clicked(GameCore.this);
-            }
-        }
+    public void clearSelectedPath() {
+        selectedPath.clear();
     }
 
-    private class PathClickListener extends ClickListener {
-        @Override
-        public void clicked(InputEvent event, float x, float y) {
-            Actor target = event.getTarget();
-            if (target instanceof Node) {
-                map.handleNodeClick((Node) target);
-            }
-            if (target instanceof Train) {
-                Train t = (Train) target;
-                t.processTrainClick(map);
-            }
-        }
+    public void addToSelectedPath(Node n) {
+        selectedPath.add(n);
     }
 
-    private class PathInputListener extends InputListener {
-        @Override
-        public boolean keyTyped(InputEvent event, char c) {
-            if ((int) c == 13) {
-                Train th = null;
-                for (Train t : player1.getTrains()) {
-                    if (t.getCurrentTexture() == Textures.SELECTED)
-                        th = t;
-                }
-                for (Train t : player2.getTrains()) {
-                    if (t.getCurrentTexture() == Textures.SELECTED)
-                        th = t;
-                }
-                //th.setPath(map.getTrainPath());
-            }
-            return true;
-        }
+    public Node lastInSelectedPath() {
+        int s = selectedPath.size();
+        return (s == 0) ? null : selectedPath.get(s - 1);
+    }
+
+    public void removeLastInSelectedPath() {
+        int s = selectedPath.size();
+        if (s > 0) selectedPath.remove(s - 1);
+    }
+
+    public Map getMap() {
+        return map;
     }
 
 }

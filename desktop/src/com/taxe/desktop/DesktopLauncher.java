@@ -13,9 +13,9 @@ public class DesktopLauncher {
     ---------------------------------
      */
 
-	public static void main (String[] arg) {
+    public static void main(String[] arg) {
         // Config
-		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
+        LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
         config.title = "Game Titles are Boring";
         config.width = 1024;
         config.height = 768;
@@ -24,6 +24,6 @@ public class DesktopLauncher {
         config.samples = 4;
 
         // Create the Main class instance
-		new LwjglApplication(new Main(), config);
-	}
+        new LwjglApplication(new Main(), config);
+    }
 }

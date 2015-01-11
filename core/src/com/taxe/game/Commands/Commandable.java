@@ -3,10 +3,10 @@ package com.taxe.game.Commands;
 import com.taxe.game.GameCore;
 
 /**
- * Created by Owen on 11/01/2015.
+ * Created by vlad on 11/01/15.
  */
 public interface Commandable {
 
-    public void executeCommand(GameCore game);
+    public void executeCommand(GameCore game, Object o);
 
 }

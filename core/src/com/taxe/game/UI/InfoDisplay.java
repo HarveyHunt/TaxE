@@ -51,7 +51,7 @@ public class InfoDisplay extends Group {
         resize();
     }
 
-    public void resize(){
+    public void resize() {
         minimise.setCoordinate(new Coordinate(268, Gdx.graphics.getHeight() - background.getHeight() - 135 + 18));
         maximise.setCoordinate(new Coordinate(218, Gdx.graphics.getHeight() - topMax.getHeight() - 91));
     }

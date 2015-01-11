@@ -5,27 +5,29 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class InfluenceTest {
 
-    private Player p1, p2, p3;
-    private List <Player> l1, l2, l3;
-    private Influence i1, i2, i3;
     private final double delta = 0.000001;
+    private Player p1, p2, p3;
+    private List<Player> l1, l2, l3;
+    private Influence i1, i2, i3;
 
     @Before
     public void setUp() {
         p1 = new Player(null, null, null, null);
         p2 = new Player(null, null, null, null);
         p3 = new Player(null, null, null, null);
-        l1 = new ArrayList<>(); Collections.addAll(l1, p1);
-        l2 = new ArrayList<>(); Collections.addAll(l2, p1, p2);
-        l3 = new ArrayList<>(); Collections.addAll(l3, p1, p2, p3);
+        l1 = new ArrayList<>();
+        Collections.addAll(l1, p1);
+        l2 = new ArrayList<>();
+        Collections.addAll(l2, p1, p2);
+        l3 = new ArrayList<>();
+        Collections.addAll(l3, p1, p2, p3);
         i1 = new Influence(l1);
         i2 = new Influence(l2);
         i3 = new Influence(l3);

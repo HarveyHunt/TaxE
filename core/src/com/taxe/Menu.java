@@ -9,12 +9,12 @@ public class Menu implements Screen {
 
     final Main main;
 
-    public Menu(final Main main){
+    public Menu(final Main main) {
         this.main = main;
     }
 
     @Override
-    public void render(float delta){
+    public void render(float delta) {
         // Loopy loop
 
         // Draw draw draw
@@ -24,32 +24,32 @@ public class Menu implements Screen {
     }
 
     @Override
-    public void show(){
+    public void show() {
 
     }
 
     @Override
-    public void hide(){
+    public void hide() {
 
     }
 
     @Override
-    public void pause(){
+    public void pause() {
 
     }
 
     @Override
-    public void resume(){
+    public void resume() {
 
     }
 
     @Override
-    public void resize(int w, int h){
+    public void resize(int w, int h) {
 
     }
 
     @Override
-    public void dispose(){
+    public void dispose() {
 
     }
 

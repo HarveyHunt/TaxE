@@ -4,9 +4,9 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Group;
+import com.taxe.game.Commands.EndTurnCommand;
 import com.taxe.game.Coordinate;
 import com.taxe.game.GameCore;
-import com.taxe.game.Commands.EndTurnCommand;
 
 /**
  * Created by Owen on 09/01/2015.
@@ -38,7 +38,7 @@ public class HUD extends Group {
             @Override
             public void clicked(GameCore gameCore) {
                 // endturn clicked
-                new EndTurnCommand().executeCommand(gameCore);
+                new EndTurnCommand().executeCommand(gameCore, this);
             }
         };
         addActor(endTurn);
@@ -46,7 +46,7 @@ public class HUD extends Group {
         resize();
     }
 
-    public void resize(){
+    public void resize() {
         endTurn.setCoordinate(new Coordinate(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() - 36.75));
     }
 

@@ -26,7 +26,7 @@ public class TextDisplay extends Actor {
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
-        if (isVisible()){
+        if (isVisible()) {
             font.draw(batch, text, (float) coordinate.getX(), (float) coordinate.getY());
         }
     }

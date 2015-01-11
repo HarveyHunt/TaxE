@@ -17,24 +17,6 @@ public final class Coordinate {
         this.y = y;
     }
 
-    @Override
-    public boolean equals(Object other) {
-        if (other == this)
-            return true;
-        if (!(other instanceof Coordinate))
-            return false;
-        Coordinate c = (Coordinate) other;
-        return (x == c.getX() && y == c.getY());
-    }
-
-    public double getX() {
-        return x;
-    }
-
-    public double getY() {
-        return y;
-    }
-
     public static double distanceBetween(Coordinate cA, Coordinate cB) {
         double dX = cB.x - cA.x;
         double dY = cB.y - cA.y;
@@ -51,6 +33,24 @@ public final class Coordinate {
 
     public static double angleBetween(Coordinate cA, Coordinate cB) {
         return Math.atan2(cB.y - cA.y, cB.x - cA.x);
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == this)
+            return true;
+        if (!(other instanceof Coordinate))
+            return false;
+        Coordinate c = (Coordinate) other;
+        return (x == c.getX() && y == c.getY());
+    }
+
+    public double getX() {
+        return x;
+    }
+
+    public double getY() {
+        return y;
     }
 
 }

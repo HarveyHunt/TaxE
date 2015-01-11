@@ -5,7 +5,11 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.Json;
+import com.taxe.game.Commands.ContinuePathCommand;
+import com.taxe.game.Commands.UndoPathCommand;
 import com.taxe.game.Coordinate;
+import com.taxe.game.GameCore;
+import com.taxe.game.InputHandling.Clickable;
 import com.taxe.game.Textures;
 
 import java.io.FileReader;
@@ -18,12 +22,12 @@ import java.util.List;
  * Base-class for representing nodes in the game.
  * Nodes are units on the map player can interact with.
  */
-public abstract class Node extends Actor {
+public abstract class Node extends Actor implements Clickable {
 
     private final Coordinate coordinate;
     private final String id;
     private boolean passable;
-    private ArrayList <Texture> textures;
+    private ArrayList<Texture> textures;
     private int state;
 
     public Node() {
@@ -31,13 +35,12 @@ public abstract class Node extends Actor {
         passable = true;
         id = null;
         textures = null;
-        state = 0;
+        state = Textures.ORIGINAL;
     }
 
     public Node(Texture[] textures) {
         this();
         this.textures = new ArrayList<>(Arrays.asList(textures));
-        this.state = Textures.ORIGINAL;
     }
 
     public Node(Coordinate coordinate, String id, Texture[] textures) {
@@ -45,7 +48,6 @@ public abstract class Node extends Actor {
         this.id = id;
         this.passable = true;
         this.textures = new ArrayList<>(Arrays.asList(textures));
-        this.state = 0;
     }
 
     public static Node getNodeWithId(String id, List<Node> nodes) {
@@ -62,7 +64,7 @@ public abstract class Node extends Actor {
         Node[] nodes = json.fromJson(Node[].class, f);
         f.close();
         for (Node n : nodes) {
-            n.prepareActor();
+            n.setState(Textures.ORIGINAL);
         }
         return Arrays.asList(nodes);
     }
@@ -93,20 +95,17 @@ public abstract class Node extends Actor {
         return id;
     }
 
-    private void prepareActor() {
-        float x = (float) coordinate.getX();
-        float y = (float) coordinate.getY();
-        Texture t = getTexture();
-        setBounds(x - t.getWidth() / 2, y - t.getHeight() / 2, t.getWidth(), t.getHeight());
-        setTouchable(Touchable.enabled);
-    }
-
     public int getState() {
         return state;
     }
 
     public void setState(int state) {
         this.state = state;
+        float x = (float) coordinate.getX();
+        float y = (float) coordinate.getY();
+        Texture t = getTexture();
+        setBounds(x - t.getWidth() / 2, y - t.getHeight() / 2, t.getWidth(), t.getHeight());
+        setTouchable(Touchable.enabled);
     }
 
     public Texture getTexture() {
@@ -123,6 +122,14 @@ public abstract class Node extends Actor {
         float y = (float) coordinate.getY();
         Texture t = getTexture();
         batch.draw(t, x - t.getWidth() / 2, y - t.getHeight() / 2);
+    }
+
+    public void clicked(GameCore game) {
+        if (getState() == Textures.HIGHLIGHTED) {
+            new ContinuePathCommand().executeCommand(game, this);
+        } else if (getState() == Textures.SELECTED) {
+            new UndoPathCommand().executeCommand(game, this);
+        }
     }
 
 }

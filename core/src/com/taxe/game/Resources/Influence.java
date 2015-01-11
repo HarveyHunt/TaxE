@@ -21,9 +21,8 @@ public class Influence {
     }
 
     /**
-     *
      * @param player
-     * @param delta Must be in range 0..1
+     * @param delta  Must be in range 0..1
      */
     public void changeInfluenceBy(Player player, double delta) {
         // Updating influence of the player and making sure it is in range 0..1

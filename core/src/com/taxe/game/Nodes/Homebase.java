@@ -1,11 +1,8 @@
 package com.taxe.game.Nodes;
 
-import com.badlogic.gdx.graphics.Texture;
 import com.taxe.game.Coordinate;
 import com.taxe.game.Textures;
 import com.taxe.game.Trains.Train;
-
-import java.util.Collection;
 
 /**
  * Homebase is a place where player starts the game and builds trains.
@@ -69,11 +66,9 @@ public class Homebase extends Node {
     private void validateHealth() throws RuntimeException {
         if (health < 0) {
             throw new RuntimeException("health must be non-negative");
-        }
-        else if (health > maxHealth) {
+        } else if (health > maxHealth) {
             throw new RuntimeException("health must not be greater than maxHealth");
-        }
-        else if (maxHealth < 0) {
+        } else if (maxHealth < 0) {
             throw new RuntimeException("health must be non-negative");
         }
     }

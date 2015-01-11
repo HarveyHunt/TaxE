@@ -18,7 +18,7 @@ public class Button extends Actor implements Clickable {
     private Texture texture;
     private Coordinate coordinate;
     private int state; // 0 idle; 1 hover; 2 pressed
-    
+
     public Button(Texture texture, Coordinate coordinate) {
         this.texture = texture;
         state = 0;
@@ -32,16 +32,19 @@ public class Button extends Actor implements Clickable {
                 state = ButtonState.PRESSED;
                 return true;
             }
+
             @Override
             public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
                 state = ButtonState.HOVERED;
             }
+
             @Override
             public void enter(InputEvent event, float x, float y, int pointer, Actor fromActor) {
                 if (pointer == -1) { // only sets the state if the mouse is not down (pointer is -1) otherwise it would interfere with touchDown
                     state = ButtonState.HOVERED;
                 }
             }
+
             @Override
             public void exit(InputEvent event, float x, float y, int pointer, Actor fromActor) {
                 if (pointer == -1) {
@@ -59,7 +62,7 @@ public class Button extends Actor implements Clickable {
         //bugger all happens
     }
 
-    public void setCoordinate(Coordinate coordinate){
+    public void setCoordinate(Coordinate coordinate) {
         this.coordinate = coordinate;
         setBounds(
                 (float) coordinate.getX() - texture.getWidth() / 2, (float) coordinate.getY() - texture.getHeight() / 6,
@@ -67,9 +70,9 @@ public class Button extends Actor implements Clickable {
     }
 
     public void draw(Batch batch, float parentAlpha) {
-        if(isVisible()) {
+        if (isVisible()) {
             batch.draw(
-                    texture, (float)coordinate.getX() - texture.getWidth() / 2, (float)coordinate.getY() - texture.getHeight() / 6,
+                    texture, (float) coordinate.getX() - texture.getWidth() / 2, (float) coordinate.getY() - texture.getHeight() / 6,
                     0, 0, texture.getWidth(), texture.getHeight() / 3,
                     1, 1, 0,
                     0, (texture.getHeight() / 3) * state, texture.getWidth(), texture.getHeight() / 3,

@@ -66,6 +66,29 @@ public class Track extends Actor {
     ---------------------------------
      */
 
+    public static ArrayList<Track> readTracks(String fileName, ArrayList<Node> nodes) throws IOException {
+        Json json = new Json();
+        FileReader f = new FileReader(fileName);
+        String[][] trackIds = json.fromJson(String[][].class, f);
+        f.close();
+
+        ArrayList<Track> tracks = new ArrayList<>();
+        for (String[] ids : trackIds) {
+            ArrayList<Node> t = new ArrayList<>();
+            for (String id : ids) {
+                Node n = Node.getNodeWithId(id, nodes);
+                if (n != null) {
+                    t.add(Node.getNodeWithId(id, nodes));
+                } else {
+                    throw new RuntimeException("Can't construct track with Nodes.id = " + id);
+                }
+            }
+            tracks.add(new Track(t));
+        }
+        return tracks;
+
+
+    }
 
     // Returns a list of sleepers that form a curve between 2 nodes based on a starting direction
     private ArrayList<Sleeper> getArc(Coordinate cA, Coordinate cB, double startAngle) {
@@ -120,32 +143,6 @@ public class Track extends Actor {
         ArrayList<Node> track = this.track;
         Collections.reverse(track);
         return new ArrayDeque<>(track);
-    }
-
-    public static ArrayList<Track> readTracks(String fileName, ArrayList<Node> nodes) throws IOException {
-        Json json = new Json();
-        FileReader f = new FileReader(fileName);
-        String[][] trackIds = json.fromJson(String[][].class, f);
-        f.close();
-        System.out.println(nodes);
-
-        ArrayList<Track> tracks = new ArrayList<>();
-        for (String[] ids: trackIds) {
-            ArrayList<Node> t = new ArrayList<>();
-            for (String id: ids) {
-                Node n = Node.getNodeWithId(id, nodes);
-                if (n != null) {
-                    t.add(Node.getNodeWithId(id, nodes));
-                }
-                else {
-                    throw new RuntimeException("Can't construct track with Nodes.id = " + id);
-                }
-            }
-            tracks.add(new Track(t));
-        }
-        return tracks;
-
-
     }
 
     @Override

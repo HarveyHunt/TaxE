@@ -5,7 +5,6 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.taxe.game.GameCore;
 
 /**
  * Created by Owen on 08/01/2015.
@@ -41,14 +40,6 @@ public class GUI extends Group {
         addActor(cityMenu);
     }
 
-    public HUD getHUD(){
-        return hud;
-    }
-
-    public InfoDisplay getInfoDisplay(){
-        return infoDisplay;
-    }
-
     public static void drawElement(Batch batch, Texture tex, float x, float y) {
         drawElement(batch, tex, x, y, tex.getWidth(), tex.getHeight(), 0, false, false);
     }
@@ -68,6 +59,14 @@ public class GUI extends Group {
                 1, 1, rotation,
                 0, 0, tex.getWidth(), tex.getHeight(),
                 flipX, flipY);
+    }
+
+    public HUD getHUD() {
+        return hud;
+    }
+
+    public InfoDisplay getInfoDisplay() {
+        return infoDisplay;
     }
 
     @Override

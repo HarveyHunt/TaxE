@@ -5,32 +5,35 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.taxe.game.Cargo.Cargo;
+import com.taxe.game.Commands.ResetPathCommand;
+import com.taxe.game.Commands.StartPathCommand;
 import com.taxe.game.Coordinate;
-import com.taxe.game.Map;
+import com.taxe.game.GameCore;
+import com.taxe.game.InputHandling.Clickable;
 import com.taxe.game.Nodes.Node;
 import com.taxe.game.Player;
 import com.taxe.game.Textures;
 
 import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Created by vlad on 10/01/15.
  */
-public abstract class Train extends Actor {
+public abstract class Train extends Actor implements Clickable {
 
+    private final String id;
     private int speed;
     private int cargoCap;
     private int fuelCost;
-    private final String id;
-
     private Cargo cargo;
     private ArrayDeque<Node> path;
     private Node node;
     private Coordinate coordinate;
 
-    private Player owner;
-    private Texture[] textures;
-    private int currentTexture;
+    private ArrayList<Texture> textures;
+    private int state;
 
     public Train(int speed, int cargoCap, int fuelCost, String id, Node node, Player owner, Texture[] textures) {
         this.speed = speed;
@@ -41,12 +44,8 @@ public abstract class Train extends Actor {
         this.path = null;
         this.node = node;
         this.coordinate = node.getCoordinate();
-        this.owner = owner;
-        this.textures = textures;
-        this.currentTexture = Textures.ORIGINAL;
-        setBounds((float) coordinate.getX() - textures[currentTexture].getWidth() / 2, (float) coordinate.getY() - textures[currentTexture].getHeight() / 2,
-                textures[currentTexture].getWidth(), textures[currentTexture].getHeight());
-        setTouchable(Touchable.enabled);
+        this.textures = new ArrayList<>(Arrays.asList(textures));
+        this.setState(Textures.HIGHLIGHTED);
     }
 
     public int getSpeed() {
@@ -83,6 +82,7 @@ public abstract class Train extends Actor {
 
     public void setNode(Node node) {
         this.node = node;
+        this.coordinate = node.getCoordinate();
     }
 
     public Coordinate getCoordinate() {
@@ -93,43 +93,37 @@ public abstract class Train extends Actor {
         this.coordinate = coordinate;
     }
 
-    public Player getOwner() {
-        return owner;
+    public Texture getTexture() {
+        return textures.get(state);
     }
 
-    public int getCurrentTexture() {
-        return currentTexture;
+    public int getState() {
+        return state;
     }
 
-    public void setCurrentTexture(int texture) {
-        currentTexture = texture;
-    }
-
-    public boolean isActive() {
-        return currentTexture == Textures.HIGHLIGHTED;
+    public void setState(int state) {
+        this.state = state;
+        float x = (float) coordinate.getX();
+        float y = (float) coordinate.getY();
+        Texture t = getTexture();
+        setBounds(x - t.getWidth() / 2, y - t.getHeight() / 2, t.getWidth(), t.getHeight());
+        setTouchable((state == Textures.ORIGINAL) ? Touchable.disabled : Touchable.enabled);
     }
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
         float x = (float) coordinate.getX();
         float y = (float) coordinate.getY();
-        batch.draw(textures[currentTexture], x - textures[currentTexture].getWidth() / 2, y - textures[currentTexture].getHeight() / 2);
+        Texture t = getTexture();
+        batch.draw(t, x - t.getWidth() / 2, y - t.getHeight() / 2);
     }
 
-    public void processTrainClick(Map m) {
-        if (getCurrentTexture() == Textures.SELECTED) {
-            setCurrentTexture(Textures.ORIGINAL);
-            m.changeAllTextures(Textures.SELECTED, Textures.ORIGINAL);
-            m.changeAllTextures(Textures.HIGHLIGHTED, Textures.ORIGINAL);
-            m.clearTrainPath();
-        } else if (getCurrentTexture() == Textures.ORIGINAL) {
-            setCurrentTexture(Textures.SELECTED);
-            Node n = getNode();
-            n.setState(Textures.SELECTED);
-            m.changeNeighbourTexture(n, Textures.ORIGINAL, Textures.HIGHLIGHTED);
-            m.initTrainPath(n);
+    public void clicked(GameCore game) {
+        if (getState() == Textures.HIGHLIGHTED) {
+            new StartPathCommand().executeCommand(game, this);
+        } else if (getState() == Textures.SELECTED) {
+            new ResetPathCommand().executeCommand(game, this);
         }
     }
-
 
 }
