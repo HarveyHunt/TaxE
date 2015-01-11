@@ -1,8 +1,15 @@
-package com.taxe.game;
+package com.taxe.game.Trains;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.Touchable;
+import com.taxe.game.Cargo.Cargo;
+import com.taxe.game.Coordinate;
+import com.taxe.game.Map;
+import com.taxe.game.Nodes.Node;
+import com.taxe.game.Player;
+import com.taxe.game.Textures;
 
 import java.util.ArrayDeque;
 
@@ -37,6 +44,9 @@ public abstract class Train extends Actor {
         this.owner = owner;
         this.textures = textures;
         this.currentTexture = Textures.ORIGINAL;
+        setBounds((float) coordinate.getX(), (float) coordinate.getY(),
+                textures[currentTexture].getWidth(), textures[currentTexture].getHeight());
+        setTouchable(Touchable.enabled);
     }
 
     public int getSpeed() {
@@ -91,6 +101,10 @@ public abstract class Train extends Actor {
         return currentTexture;
     }
 
+    public void setCurrentTexture(int texture) {
+        currentTexture = texture;
+    }
+
     public boolean isActive() {
         return currentTexture == Textures.HIGHLIGHTED;
     }
@@ -100,6 +114,21 @@ public abstract class Train extends Actor {
         float x = (float) coordinate.getX();
         float y = (float) coordinate.getY();
         batch.draw(textures[currentTexture], x, y);
+    }
+
+    public void processTrainClick(Map m) {
+        if (getCurrentTexture() == Textures.SELECTED) {
+            setCurrentTexture(Textures.ORIGINAL);
+            m.changeAllTextures(Textures.SELECTED, Textures.ORIGINAL);
+            m.changeAllTextures(Textures.HIGHLIGHTED, Textures.ORIGINAL);
+            m.clearTrainPath();
+        } else if (getCurrentTexture() == Textures.ORIGINAL) {
+            setCurrentTexture(Textures.SELECTED);
+            Node n = getNode();
+            n.setState(Textures.SELECTED);
+            m.changeNeighbourTexture(n, Textures.ORIGINAL, Textures.HIGHLIGHTED);
+            m.initTrainPath(n);
+        }
     }
 
 

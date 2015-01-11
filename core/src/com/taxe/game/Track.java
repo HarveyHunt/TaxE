@@ -2,15 +2,14 @@ package com.taxe.game;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.utils.Json;
+import com.taxe.game.Nodes.Node;
 
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 
 /**
@@ -139,7 +138,7 @@ public class Track extends Actor {
                     t.add(Node.getNodeWithId(id, nodes));
                 }
                 else {
-                    throw new RuntimeException("Can't construct track with Node.id = " + id);
+                    throw new RuntimeException("Can't construct track with Nodes.id = " + id);
                 }
             }
             tracks.add(new Track(t));

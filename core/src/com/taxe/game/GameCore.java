@@ -5,14 +5,18 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
-import com.taxe.game.UI.Button;
+import com.taxe.game.Nodes.Node;
+import com.taxe.game.Resources.Fuel;
+import com.taxe.game.Resources.Gold;
+import com.taxe.game.Trains.BasicTrain;
+import com.taxe.game.Trains.Train;
 import com.taxe.game.UI.GUI;
 
 import java.io.IOException;
-import java.util.ArrayDeque;
 import java.util.ArrayList;
 
 /**
@@ -37,19 +41,20 @@ public class GameCore implements Screen {
             System.out.println("Something went wrong :(");
         }
         stage.addActor(map);
-        stage.addListener(new MapClickListener());
+        stage.addListener(new PathClickListener());
+        stage.addListener(new PathInputListener());
+        gui = new GUI();
+        stage.addActor(gui);
 
         player1 = new Player(map.getHomebases().get(0), new ArrayList<Train>(), new Gold(500), new Fuel(10, 0));
         player2 = new Player(map.getHomebases().get(1), new ArrayList<Train>(), new Gold(500), new Fuel(10, 0));
         player1.addTrain(new BasicTrain(player1.getHomebase(), player1));
         player2.addTrain(new BasicTrain(player2.getHomebase(), player2));
 
+
         stage.addActor(player1);
         stage.addActor(player2);
 
-        gui = new GUI();
-        stage.addActor(gui);
-        stage.addListener(new GuiClickListener());
     }
 
     @Override
@@ -65,7 +70,6 @@ public class GameCore implements Screen {
     }
 
     private void update(float delta) {
-//
     }
 
     private void draw() {
@@ -109,49 +113,36 @@ public class GameCore implements Screen {
         stage.dispose();
     }
 
-    public class GuiClickListener extends ClickListener {
-        @Override
-        public void clicked(InputEvent event, float x, float y) {
-            Actor target = event.getTarget();
-            if (target instanceof Button) {
-                ((Button) target).clicked();
-            }
-        }
-    }
-
-    private class MapClickListener extends ClickListener {
-        private ArrayDeque<Node> trainPath;
-
+    private class PathClickListener extends ClickListener {
         @Override
         public void clicked(InputEvent event, float x, float y) {
             Actor target = event.getTarget();
             if (target instanceof Node) {
-                processNodeClick((Node)target);
+                map.handleNodeClick((Node) target);
+            }
+            if (target instanceof Train) {
+                Train t = (Train) target;
+                t.processTrainClick(map);
             }
         }
+    }
 
-        void processNodeClick(Node n) {
-            if (n.getCurrentTexture() == Textures.ORIGINAL) {
-                n.setCurrentTexture(Textures.SELECTED);
-                map.changeNeighbourTexture(n, Textures.ORIGINAL, Textures.HIGHLIGHTED);
-                trainPath = new ArrayDeque<>();
-                trainPath.add(n);
-            } else if (n.getCurrentTexture() == Textures.HIGHLIGHTED) {
-                map.changeAllTextures(Textures.HIGHLIGHTED, Textures.ORIGINAL);
-                n.setCurrentTexture(Textures.SELECTED);
-                map.changeTrackTexture(Textures.SELECTED, Textures.SELECTED, Textures.SELECTED);
-                map.changeNeighbourTexture(n, Textures.ORIGINAL, Textures.HIGHLIGHTED);
-                trainPath.add(n);
-            } else if (n.getCurrentTexture() == Textures.SELECTED) {
-                while (trainPath.getLast() != n) {
-                    Node c = trainPath.getLast();
-                    map.changeNeighbourTexture(c, Textures.HIGHLIGHTED, Textures.ORIGINAL);
-                    map.changeNeighbourTexture(c, Textures.SELECTED, Textures.ORIGINAL);
-                    trainPath.removeLast();
+    private class PathInputListener extends InputListener {
+        @Override
+        public boolean keyTyped(InputEvent event, char c) {
+            if ((int) c == 13) {
+                Train th = null;
+                for (Train t : player1.getTrains()) {
+                    if (t.getCurrentTexture() == Textures.SELECTED)
+                        th = t;
                 }
-                n.setCurrentTexture(Textures.SELECTED);
-                map.changeNeighbourTexture(n, Textures.ORIGINAL, Textures.HIGHLIGHTED);
+                for (Train t : player2.getTrains()) {
+                    if (t.getCurrentTexture() == Textures.SELECTED)
+                        th = t;
+                }
+                //th.setPath(map.getTrainPath());
             }
+            return true;
         }
     }
 

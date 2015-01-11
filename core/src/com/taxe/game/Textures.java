@@ -36,5 +36,4 @@ public class Textures {
             new Texture("basic-train-highlighted.png"),
             new Texture("basic-train-selected.png")};
 
-
 }

@@ -2,8 +2,10 @@ package com.taxe.game;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Group;
+import com.taxe.game.Nodes.*;
 
 import java.io.IOException;
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 
 /**
@@ -16,6 +18,7 @@ public class Map extends Group {
     private ArrayList<Junction> junctions;
     private ArrayList<IntermediatePoint> intermediatePoints;
     private ArrayList<Track> tracks;
+    private ArrayDeque<Node> trainPath;
 
 
     //private Texture texture = new Texture("map-background.png");
@@ -25,9 +28,8 @@ public class Map extends Group {
         homebases = new ArrayList<>();
         junctions = new ArrayList<>();
         intermediatePoints = new ArrayList<>();
-        ArrayList<Node> nodes = Node.readNodes(nodesFileName);
+        ArrayList<Node> nodes = new ArrayList<>(Node.readNodes(nodesFileName));
         for (Node n : nodes) {
-            System.out.println(n);
             if (n instanceof City)
                 cities.add((City) n);
             else if (n instanceof Homebase)
@@ -38,6 +40,7 @@ public class Map extends Group {
                 intermediatePoints.add((IntermediatePoint) n);
         }
         tracks = Track.readTracks(tracksFileName, nodes);
+        trainPath = null;
         for (Track t : tracks) {
             this.addActor(t);
         }
@@ -70,8 +73,8 @@ public class Map extends Group {
         for (Track t : tracks) {
             if (t.getPath().contains(n)) {
                 for (Node nt : t.getPath()) {
-                    if (nt.getCurrentTexture() == oldTexture) {
-                        nt.setCurrentTexture(newTexture);
+                    if (nt.getState() == oldTexture) {
+                        nt.setState(newTexture);
                     }
                 }
             }
@@ -81,19 +84,19 @@ public class Map extends Group {
     public void changeAllTextures(int oldTexture, int newTexture) {
         for (Track t : tracks) {
             for (Node nt : t.getPath()) {
-                if (nt.getCurrentTexture() == oldTexture)
-                    nt.setCurrentTexture(newTexture);
+                if (nt.getState() == oldTexture)
+                    nt.setState(newTexture);
             }
         }
     }
 
     public void changeTrackTexture(int fillTexture, int startTexture, int endTexture) {
         for (Track t : tracks) {
-            int t0 = t.getPath().getFirst().getCurrentTexture();
-            int t1 = t.getPath().getLast().getCurrentTexture();
+            int t0 = t.getPath().getFirst().getState();
+            int t1 = t.getPath().getLast().getState();
             if ((t0 == startTexture && t1 == endTexture) || (t0 == endTexture && t1 == startTexture)) {
                 for (Node nt : t.getPath()) {
-                    nt.setCurrentTexture(fillTexture);
+                    nt.setState(fillTexture);
                 }
             }
         }
@@ -102,6 +105,40 @@ public class Map extends Group {
     @Override
     public void draw(Batch batch, float parentAlpha) {
         this.drawChildren(batch, parentAlpha);
+    }
+
+    void handleNodeClick(Node n) {
+        if (n.getState() == Textures.ORIGINAL || n instanceof IntermediatePoint) {
+            // Do nothing
+        } else if (n.getState() == Textures.HIGHLIGHTED) {
+            changeAllTextures(Textures.HIGHLIGHTED, Textures.ORIGINAL);
+            n.setState(Textures.SELECTED);
+            changeTrackTexture(Textures.SELECTED, Textures.SELECTED, Textures.SELECTED);
+            changeNeighbourTexture(n, Textures.ORIGINAL, Textures.HIGHLIGHTED);
+            trainPath.add(n);
+        } else if (n.getState() == Textures.SELECTED) {
+            while (trainPath.getLast() != n) {
+                Node c = trainPath.getLast();
+                changeNeighbourTexture(c, Textures.HIGHLIGHTED, Textures.ORIGINAL);
+                changeNeighbourTexture(c, Textures.SELECTED, Textures.ORIGINAL);
+                trainPath.removeLast();
+            }
+            n.setState(Textures.SELECTED);
+            changeNeighbourTexture(n, Textures.ORIGINAL, Textures.HIGHLIGHTED);
+        }
+    }
+
+    public void clearTrainPath() {
+        trainPath = null;
+    }
+
+    public void initTrainPath(Node n) {
+        trainPath = new ArrayDeque<>();
+        trainPath.add(n);
+    }
+
+    public ArrayDeque<Node> getTrainPath() {
+        return trainPath;
     }
 
 }

@@ -1,13 +1,13 @@
-package com.taxe.game;
+package com.taxe.game.Resources;
 
 /**
- * Created by Vlad on 19/11/2014.
- * Class representing players' Fuel resource in the game.
+ * Represents players fuel resource.
+ * Having trains takes up some fuel, and player can only build train if building it won't exceed fuelCap.
  */
 public class Fuel {
 
-    private int fuelCap;        // Must be always >= 0
-    private int usedFuel;       // Must be always >= 0
+    private int fuelCap;
+    private int usedFuel;
 
     public Fuel(int fuelCap, int usedFuel) {
         this.fuelCap = fuelCap;
