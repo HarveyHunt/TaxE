@@ -113,7 +113,7 @@ public abstract class Train extends Actor {
     public void draw(Batch batch, float parentAlpha) {
         float x = (float) coordinate.getX();
         float y = (float) coordinate.getY();
-        batch.draw(textures[currentTexture], x, y);
+        batch.draw(textures[currentTexture], x - textures[currentTexture].getWidth() / 2, y - textures[currentTexture].getHeight() / 2);
     }
 
     public void processTrainClick(Map m) {

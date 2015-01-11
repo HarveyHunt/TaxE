@@ -118,7 +118,7 @@ public abstract class Node extends Actor {
     public void draw(Batch batch, float parentAlpha) {
         float x = (float) coordinate.getX();
         float y = (float) coordinate.getY();
-        batch.draw(textures[state], x, y);
+        batch.draw(textures[state], x - textures[state].getWidth() / 2, y - textures[state].getHeight() / 2);
     }
 
 }
