@@ -46,63 +46,46 @@ public class HUD extends Group {
         endTurn.setCoordinate(new Coordinate(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() - 36.75));
     }
 
-    private void drawElement(Batch batch, Texture tex, float x, float y, float w, float h) {
-        drawElement(batch, tex, x, y, w, h, 0, false, false);
-    }
-
-    private void drawElement(Batch batch, Texture tex, float x, float y, float w, float h, boolean flipX, boolean flipY) {
-        drawElement(batch, tex, x, y, w, h, 0, flipX, flipY);
-    }
-
-    private void drawElement(Batch batch, Texture tex, float x, float y, float w, float h, float rotation, boolean flipX, boolean flipY) {
-        batch.draw( // Draw main hud background
-                tex, x, y,
-                0, 0, w, h,
-                1, 1, rotation,
-                0, 0, tex.getWidth(), tex.getHeight(),
-                flipX, flipY);
-    }
-
     @Override
     public void draw(Batch batch, float parentAlpha) {
-        drawElement( // HUD background
+        GUI.drawElement( // HUD background
                 batch, texHUD,
                 0, Gdx.graphics.getHeight() - texHUD.getHeight(),
                 Gdx.graphics.getWidth(), texHUD.getHeight());
 
-        drawElement( // Player 1 HP Red
+        GUI.drawElement( // Player 1 HP Red
                 batch, texHealthbarRed,
                 60, Gdx.graphics.getHeight() - 30 - texHealthbarRed.getHeight(),
                 Gdx.graphics.getWidth() / 2 - 100, texHealthbarRed.getHeight()
         );
 
-        drawElement( // Player 2 HP Red
+        GUI.drawElement( // Player 2 HP Red
                 batch, texHealthbarRed,
                 Gdx.graphics.getWidth() - 60 - (Gdx.graphics.getWidth() / 2 - 100), Gdx.graphics.getHeight() - 30 - texHealthbarRed.getHeight(),
                 Gdx.graphics.getWidth() / 2 - 100, texHealthbarRed.getHeight(),
                 true, false
         );
 
-        drawElement( // Player 1 HP
+        GUI.drawElement( // Player 1 HP
                 batch, texHealthbarGreen,
                 60, Gdx.graphics.getHeight() - 30 - texHealthbarGreen.getHeight(),
                 (Gdx.graphics.getWidth() / 2 - 100) * 0.01f * player1Health, texHealthbarGreen.getHeight()
         );
 
-        drawElement( // Player 2 HP Red
+        GUI.drawElement( // Player 2 HP Red
                 batch, texHealthbarGreen,
                 Gdx.graphics.getWidth() - 60 - ((Gdx.graphics.getWidth() / 2 - 100) * 0.01f * player2Health), Gdx.graphics.getHeight() - 30 - texHealthbarGreen.getHeight(),
                 (Gdx.graphics.getWidth() / 2 - 100) * 0.01f * player2Health, texHealthbarGreen.getHeight(),
                 true, false
         );
 
-        drawElement( // Player 1 Icon
+        GUI.drawElement( // Player 1 Icon
                 batch, texPlayer1Icon,
                 -20, Gdx.graphics.getHeight() - texPlayer1Icon.getHeight() + 20,
                 texPlayer1Icon.getWidth(), texPlayer1Icon.getHeight()
         );
 
-        drawElement( // Player 2 Icon
+        GUI.drawElement( // Player 2 Icon
                 batch, texPlayer2Icon,
                 Gdx.graphics.getWidth() + 20 - texPlayer2Icon.getWidth(), Gdx.graphics.getHeight() - texPlayer2Icon.getHeight() + 20,
                 texPlayer1Icon.getWidth(), texPlayer1Icon.getHeight()

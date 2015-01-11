@@ -10,31 +10,29 @@ import com.badlogic.gdx.scenes.scene2d.Group;
  */
 public class InfoDisplay extends Group {
 
-    private Texture texture;
-    private boolean minimised;
+    private boolean maximised;
 
 
     public InfoDisplay() {
-        this.texture = new Texture("UI/HUD.png");
-        minimised = false;
+        maximised = true;
     }
 
-    public void toggleMinimised() {
-        if (minimised) {
-            minimised = false;
+    public void toggleMaximised() {
+        if (maximised) {
+            maximised = false;
         } else {
-            minimised = true;
+            maximised = true;
         }
     }
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
-        batch.draw(
-                texture, 30, Gdx.graphics.getHeight() - 300, // location temporary and can be changed later
-                0, 0, texture.getWidth(), texture.getHeight(),
-                1, 1, 0,
-                0, 0, texture.getWidth(), texture.getHeight(),
-                false, false);
+        if (maximised) {
+            // Draw maximised stuff!
+        } else {
+            // Draw minimised stuff!
+        }
+
         drawChildren(batch, parentAlpha);
     }
 

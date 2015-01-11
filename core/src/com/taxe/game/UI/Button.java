@@ -16,6 +16,7 @@ public class Button extends Actor {
     private Texture texture;
     private Coordinate coordinate;
     private int state; // 0 idle; 1 hover; 2 pressed
+    private boolean visible;
     
     public Button(Texture texture, Coordinate coordinate) {
         this.texture = texture;
@@ -53,6 +54,10 @@ public class Button extends Actor {
         return state;
     }
 
+    public void setVisible(boolean visible) {
+        this.visible = visible;
+    }
+
     public void clicked() {
         //bugger all happens
     }
@@ -65,12 +70,14 @@ public class Button extends Actor {
     }
 
     public void draw(Batch batch, float parentAlpha) {
-        batch.draw(
-                texture, (float)coordinate.getX() - texture.getWidth() / 2, (float)coordinate.getY() - texture.getHeight() / 6,
-                0, 0, texture.getWidth(), texture.getHeight() / 3,
-                1, 1, 0,
-                0, (texture.getHeight() / 3) * state, texture.getWidth(), texture.getHeight() / 3,
-                false, false);
+        if(isVisible()) {
+            batch.draw(
+                    texture, (float)coordinate.getX() - texture.getWidth() / 2, (float)coordinate.getY() - texture.getHeight() / 6,
+                    0, 0, texture.getWidth(), texture.getHeight() / 3,
+                    1, 1, 0,
+                    0, (texture.getHeight() / 3) * state, texture.getWidth(), texture.getHeight() / 3,
+                    false, false);
+        }
     }
 
 }
