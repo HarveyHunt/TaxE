@@ -15,7 +15,7 @@ public class InfoDisplay extends Group {
 
 
     public InfoDisplay() {
-        this.texture = new Texture("HUD.png");
+        this.texture = new Texture("UI/HUD.png");
         minimised = false;
     }
 

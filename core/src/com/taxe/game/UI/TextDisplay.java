@@ -13,6 +13,7 @@ public class TextDisplay extends Actor {
     private CharSequence text;
     private Coordinate coordinate;
     private BitmapFont font;
+    private boolean visible;
 
     public TextDisplay(CharSequence text, Coordinate coordinate) {
         this.text = text;
@@ -20,9 +21,15 @@ public class TextDisplay extends Actor {
         font = new BitmapFont();
     }
 
+    public void setVisible(boolean visible) {
+        this.visible = visible;
+    }
+
     @Override
     public void draw(Batch batch, float parentAlpha) {
-        font.draw(batch, text, (float) coordinate.getX(), (float) coordinate.getY());
+        if (visible){
+            font.draw(batch, text, (float) coordinate.getX(), (float) coordinate.getY());
+        }
     }
 
 }

@@ -12,8 +12,8 @@ public class Homebase extends Node {
 
     public Homebase() {
         super(Textures.HOMEBASE);
-        maxHealth = 0;
-        health = 0;
+        maxHealth = 100;
+        health = 100;
         currentBuild = null;
     }
 

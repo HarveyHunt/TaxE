@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.taxe.game.GameCore;
 
 /**
  * Created by Owen on 08/01/2015.
@@ -31,7 +32,7 @@ public class GUI extends Group {
 
         // Add Widgets to table here
         // Widgets are elements of the
-        hud = new HUD();
+        hud = new HUD(50, 50);
         addActor(hud);
     }
 

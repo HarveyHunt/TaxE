@@ -28,26 +28,34 @@ public class Button extends Actor {
         addListener(new ClickListener() {
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                state = 2;
+                state = ButtonState.PRESSED;
                 return true;
             }
             @Override
             public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-                state = 1;
+                state = ButtonState.HOVERED;
             }
             @Override
             public void enter(InputEvent event, float x, float y, int pointer, Actor fromActor) {
                 if (pointer == -1) { // only sets the state if the mouse is not down (pointer is -1) otherwise it would interfere with touchDown
-                    state = 1;
+                    state = ButtonState.HOVERED;
                 }
             }
             @Override
             public void exit(InputEvent event, float x, float y, int pointer, Actor fromActor) {
                 if (pointer == -1) {
-                    state = 0;
+                    state = ButtonState.IDLE;
                 }
             }
         });
+    }
+
+    public int getState() {
+        return state;
+    }
+
+    public void clicked() {
+        //bugger all happens
     }
 
     public void setCoordinate(Coordinate coordinate){

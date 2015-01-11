@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
+import com.taxe.game.UI.Button;
 import com.taxe.game.UI.GUI;
 
 import java.io.IOException;
@@ -37,18 +38,18 @@ public class GameCore implements Screen {
         }
         stage.addActor(map);
         stage.addListener(new MapClickListener());
-        gui = new GUI();
-        stage.addActor(gui);
 
         player1 = new Player(map.getHomebases().get(0), new ArrayList<Train>(), new Gold(500), new Fuel(10, 0));
         player2 = new Player(map.getHomebases().get(1), new ArrayList<Train>(), new Gold(500), new Fuel(10, 0));
         player1.addTrain(new BasicTrain(player1.getHomebase(), player1));
         player2.addTrain(new BasicTrain(player2.getHomebase(), player2));
 
-
         stage.addActor(player1);
         stage.addActor(player2);
 
+        gui = new GUI();
+        stage.addActor(gui);
+        stage.addListener(new GuiClickListener());
     }
 
     @Override
@@ -108,6 +109,16 @@ public class GameCore implements Screen {
         stage.dispose();
     }
 
+    public class GuiClickListener extends ClickListener {
+        @Override
+        public void clicked(InputEvent event, float x, float y) {
+            Actor target = event.getTarget();
+            if (target instanceof Button) {
+                ((Button) target).clicked();
+            }
+        }
+    }
+
     private class MapClickListener extends ClickListener {
         private ArrayDeque<Node> trainPath;
 
@@ -115,7 +126,7 @@ public class GameCore implements Screen {
         public void clicked(InputEvent event, float x, float y) {
             Actor target = event.getTarget();
             if (target instanceof Node) {
-                processNodeClick((Node) target);
+                processNodeClick((Node)target);
             }
         }
 
