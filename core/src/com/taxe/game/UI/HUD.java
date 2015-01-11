@@ -21,7 +21,6 @@ public class HUD extends Group {
     private int player2Health;
 
     private Button endTurn;
-    private TextDisplay timer;
 
     public HUD(int player1Health, int player2Health) {
         texHUD = new Texture("UI/HUD.png");
@@ -41,14 +40,10 @@ public class HUD extends Group {
             }
         };
         addActor(endTurn);
-
-        timer = new TextDisplay("34s", new Coordinate(Gdx.graphics.getWidth() / 2 - 20, Gdx.graphics.getHeight() - 35));
-        addActor(timer);
     }
 
     public void resize(){
-        endTurn.setCoordinate(new Coordinate(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() - 35));
-        timer.setCoordinate(new Coordinate(Gdx.graphics.getWidth() / 2 - 20, Gdx.graphics.getHeight() - 35));
+        endTurn.setCoordinate(new Coordinate(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() - 37.5));
     }
 
     private void drawElement(Batch batch, Texture tex, float x, float y, float w, float h) {
@@ -112,12 +107,6 @@ public class HUD extends Group {
                 Gdx.graphics.getWidth() + 20 - texPlayer2Icon.getWidth(), Gdx.graphics.getHeight() - texPlayer2Icon.getHeight() + 20,
                 texPlayer1Icon.getWidth(), texPlayer1Icon.getHeight()
         );
-
-        if (endTurn.getState() == ButtonState.IDLE) {
-            timer.setVisible(true);
-        } else {
-            timer.setVisible(false);
-        }
 
         drawChildren(batch, parentAlpha);
     }

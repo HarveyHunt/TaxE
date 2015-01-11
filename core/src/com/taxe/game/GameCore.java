@@ -14,6 +14,7 @@ import com.taxe.game.Resources.Fuel;
 import com.taxe.game.Resources.Gold;
 import com.taxe.game.Trains.BasicTrain;
 import com.taxe.game.Trains.Train;
+import com.taxe.game.UI.Button;
 import com.taxe.game.UI.GUI;
 
 import java.io.IOException;
@@ -54,6 +55,7 @@ public class GameCore implements Screen {
 
         gui = new GUI();
         stage.addActor(gui);
+        stage.addListener(new GuiClickListener());
     }
 
     @Override
@@ -110,6 +112,16 @@ public class GameCore implements Screen {
     public void dispose() {
         // Dispose of resources (stage, textures, sounds)
         stage.dispose();
+    }
+
+    private class GuiClickListener extends ClickListener {
+        @Override
+        public void clicked(InputEvent event, float x, float y) {
+            Actor target = event.getTarget();
+            if (target instanceof Button) {
+                ((Button) target).clicked();
+            }
+        }
     }
 
     private class PathClickListener extends ClickListener {
