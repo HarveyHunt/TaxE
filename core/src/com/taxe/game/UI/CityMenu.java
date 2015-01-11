@@ -48,7 +48,7 @@ public class CityMenu extends Group {
 
         close = new Button(new Texture("UI/x button.png"), new Coordinate()) {
             @Override
-            public void executeCommand(GameCore game) {
+            public void clicked(GameCore game) {
                 // Close the city menu
             }
         };
@@ -56,7 +56,7 @@ public class CityMenu extends Group {
 
         plus = new Button(new Texture("UI/+ button.png"), new Coordinate()) {
             @Override
-            public void executeCommand(GameCore game) {
+            public void clicked(GameCore game) {
                 // cargo ++
             }
         };
@@ -64,7 +64,7 @@ public class CityMenu extends Group {
 
         minus = new Button(new Texture("UI/- button.png"), new Coordinate()) {
             @Override
-            public void executeCommand(GameCore game) {
+            public void clicked(GameCore game) {
                 // cargo --
             }
         };

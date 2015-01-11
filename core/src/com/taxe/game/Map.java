@@ -1,5 +1,6 @@
 package com.taxe.game;
 
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.taxe.game.Nodes.*;
@@ -7,12 +8,14 @@ import com.taxe.game.Nodes.*;
 import java.io.IOException;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Owen on 19/11/2014.
  */
 public class Map extends Group {
 
+    private ArrayList<Node> nodes;
     private ArrayList<City> cities;
     private ArrayList<Homebase> homebases;
     private ArrayList<Junction> junctions;
@@ -28,7 +31,7 @@ public class Map extends Group {
         homebases = new ArrayList<>();
         junctions = new ArrayList<>();
         intermediatePoints = new ArrayList<>();
-        ArrayList<Node> nodes = new ArrayList<>(Node.readNodes(nodesFileName));
+        nodes = new ArrayList<>(Node.readNodes(nodesFileName));
         for (Node n : nodes) {
             if (n instanceof City)
                 cities.add((City) n);
@@ -67,6 +70,26 @@ public class Map extends Group {
 
     public ArrayList<Track> getTracks() {
         return tracks;
+    }
+
+    public ArrayList<Track> getTracksWith(Node n) {
+        ArrayList<Track> nt = new ArrayList<>();
+        for (Track t: tracks) {
+            if (t.getPath().contains(n)) {
+                nt.add(t);
+            }
+        }
+        return nt;
+    }
+
+    public ArrayList<Track> getTracksWith(List<Node> n) {
+        ArrayList<Track> nt = new ArrayList<>();
+        for (Track t: tracks) {
+            if (t.getPath().containsAll(n)) {
+                nt.add(t);
+            }
+        }
+        return nt;
     }
 
     public void changeNeighbourTexture(Node n, int oldTexture, int newTexture) {

@@ -29,7 +29,7 @@ public class InfoDisplay extends Group {
 
         minimise = new Button(new Texture("UI/minimise.png"), new Coordinate()) {
             @Override
-            public void executeCommand(GameCore game) {
+            public void clicked(GameCore game) {
                 maximised = false;
                 this.setVisible(false);
                 maximise.setVisible(true);
@@ -40,7 +40,7 @@ public class InfoDisplay extends Group {
 
         maximise = new Button(new Texture("UI/maximise.png"), new Coordinate()) {
             @Override
-            public void executeCommand(GameCore game) {
+            public void clicked(GameCore game) {
                 maximised = true;
                 this.setVisible(false);
                 minimise.setVisible(true);

@@ -5,23 +5,16 @@ package com.taxe.game;
  */
 public final class Coordinate {
 
-    /*
-    ----------------
-    Stores an X and a Y position
-    Not sure this needs any explaining really :3
-    ----------------
-     */
-
     private final double x;
     private final double y;
+
+    public Coordinate() {
+        this(0, 0);
+    }
 
     public Coordinate(double x, double y) {
         this.x = x;
         this.y = y;
-    }
-
-    public Coordinate() {
-        this(0.0, 0.0);
     }
 
     @Override
@@ -32,12 +25,6 @@ public final class Coordinate {
             return false;
         Coordinate c = (Coordinate) other;
         return (x == c.getX() && y == c.getY());
-    }
-
-    public String toString() {
-        return "Coordinate <" +
-                "x = " + Double.toString(x) + ", " +
-                "y = " + Double.toString(y) + ">";
     }
 
     public double getX() {

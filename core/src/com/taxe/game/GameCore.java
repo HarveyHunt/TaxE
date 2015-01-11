@@ -120,7 +120,7 @@ public class GameCore implements Screen {
         public void clicked(InputEvent event, float x, float y) {
             Actor target = event.getTarget();
             if (target instanceof Button) {
-                ((Button) target).executeCommand(GameCore.this);
+                ((Button) target).clicked(GameCore.this);
             }
         }
     }

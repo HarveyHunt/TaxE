@@ -8,12 +8,12 @@ import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.taxe.game.Coordinate;
 import com.taxe.game.GameCore;
-import com.taxe.game.InputHandling.Commandable;
+import com.taxe.game.InputHandling.Clickable;
 
 /**
  * Created by Owen on 09/01/2015.
  */
-public class Button extends Actor implements Commandable{
+public class Button extends Actor implements Clickable {
 
     private Texture texture;
     private Coordinate coordinate;
@@ -55,7 +55,7 @@ public class Button extends Actor implements Commandable{
         return state;
     }
 
-    public void executeCommand(GameCore gameCore) {
+    public void clicked(GameCore gameCore) {
         //bugger all happens
     }
 

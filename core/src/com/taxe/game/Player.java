@@ -24,8 +24,10 @@ public class Player extends Group {
         this.trains = trains;
         this.gold = gold;
         this.fuel = fuel;
-        for (Train t : trains) {
-            this.addActor(t);
+        if (this.trains != null) {
+            for (Train t : trains) {
+                this.addActor(t);
+            }
         }
     }
 

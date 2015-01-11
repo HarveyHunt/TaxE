@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.taxe.game.Coordinate;
 import com.taxe.game.GameCore;
+import com.taxe.game.Commands.EndTurnCommand;
 
 /**
  * Created by Owen on 09/01/2015.
@@ -35,9 +36,9 @@ public class HUD extends Group {
 
         endTurn = new Button(new Texture("UI/Clock Square.png"), new Coordinate()) {
             @Override
-            public void executeCommand(GameCore gameCore) {
+            public void clicked(GameCore gameCore) {
                 // endturn clicked
-                System.out.println("STRING");
+                new EndTurnCommand().executeCommand(gameCore);
             }
         };
         addActor(endTurn);

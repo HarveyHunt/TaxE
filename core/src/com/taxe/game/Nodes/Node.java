@@ -10,6 +10,7 @@ import com.taxe.game.Textures;
 
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -22,7 +23,7 @@ public abstract class Node extends Actor {
     private final Coordinate coordinate;
     private final String id;
     private boolean passable;
-    private Texture[] textures;
+    private ArrayList <Texture> textures;
     private int state;
 
     public Node() {
@@ -35,7 +36,7 @@ public abstract class Node extends Actor {
 
     public Node(Texture[] textures) {
         this();
-        this.textures = textures;
+        this.textures = new ArrayList<>(Arrays.asList(textures));
         this.state = Textures.ORIGINAL;
     }
 
@@ -43,7 +44,7 @@ public abstract class Node extends Actor {
         this.coordinate = coordinate;
         this.id = id;
         this.passable = true;
-        this.textures = textures;
+        this.textures = new ArrayList<>(Arrays.asList(textures));
         this.state = 0;
     }
 
@@ -76,7 +77,7 @@ public abstract class Node extends Actor {
         return (coordinate.equals(n.getCoordinate()) &&
                 id.equals(n.getId()) &&
                 passable == n.isPassable() &&
-                textures == n.getTextures() &&
+                textures.equals(n.getTextures()) &&
                 state == n.getState());
     }
 
@@ -93,8 +94,10 @@ public abstract class Node extends Actor {
     }
 
     private void prepareActor() {
-        setBounds((float) coordinate.getX() - textures[state].getWidth() / 2, (float) coordinate.getY() - textures[state].getHeight() / 2,
-                textures[state].getWidth(), textures[state].getHeight());
+        float x = (float) coordinate.getX();
+        float y = (float) coordinate.getY();
+        Texture t = getTexture();
+        setBounds(x - t.getWidth() / 2, y - t.getHeight() / 2, t.getWidth(), t.getHeight());
         setTouchable(Touchable.enabled);
     }
 
@@ -107,18 +110,19 @@ public abstract class Node extends Actor {
     }
 
     public Texture getTexture() {
-        return textures[state];
+        return textures.get(state);
     }
 
-    public Texture[] getTextures() {
-        return getTextures();
+    public List<Texture> getTextures() {
+        return textures;
     }
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
         float x = (float) coordinate.getX();
         float y = (float) coordinate.getY();
-        batch.draw(textures[state], x - textures[state].getWidth() / 2, y - textures[state].getHeight() / 2);
+        Texture t = getTexture();
+        batch.draw(t, x - t.getWidth() / 2, y - t.getHeight() / 2);
     }
 
 }

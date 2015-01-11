@@ -1,4 +1,4 @@
-package com.taxe.game.InputHandling;
+package com.taxe.game.Commands;
 
 import com.taxe.game.GameCore;
 

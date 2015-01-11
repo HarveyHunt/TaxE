@@ -15,22 +15,22 @@ import java.util.ArrayList;
  */
 public class City extends Node {
 
-    private ArrayList<Task> taskList;
     private Influence influence;
+    private ArrayList<Task> taskList;
     private ArrayList<Cargo> cargoList;
 
     public City() {
         super(Textures.CITY);
-        taskList = null;
         influence = null;
+        taskList = new ArrayList<>();
         cargoList = new ArrayList<>();
     }
 
     public City(Coordinate coordinate, String id) {
         super(coordinate, id, Textures.CITY);
-        taskList = null;
         influence = null;
-        cargoList = null;
+        taskList = new ArrayList<>();
+        cargoList = new ArrayList<>();
     }
 
     public void addCargo(Cargo cargo) {
@@ -67,10 +67,6 @@ public class City extends Node {
 
     public double getInfluence(Player p) {
         return influence.getInfluence(p);
-    }
-
-    public double getMaxInfluence() {
-        return influence.getMaxInfluence();
     }
 
     public void changeInfluenceBy(Player player, double delta) {

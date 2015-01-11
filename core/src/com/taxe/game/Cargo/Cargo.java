@@ -15,6 +15,7 @@ public abstract class Cargo {
         this.quantity = quantity;
         this.id = id;
         this.texture = texture;
+        validateQuantity();
     }
 
     public int getQuantity() {
@@ -23,6 +24,7 @@ public abstract class Cargo {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+        validateQuantity();
     }
 
     public String getId() {
@@ -31,6 +33,11 @@ public abstract class Cargo {
 
     public Texture getTexture() {
         return texture;
+    }
+
+    private void validateQuantity() throws RuntimeException {
+        if (quantity < 0)
+            throw new RuntimeException("quantity must be non-negative");
     }
 }
 
