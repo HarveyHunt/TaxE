@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.taxe.game.Coordinate;
+import com.taxe.game.GameCore;
 
 /**
  * Created by Owen on 09/01/2015.
@@ -26,9 +27,9 @@ public class InfoDisplay extends Group {
         topMax = new Texture("UI/Top maximised.png");
         topMin = new Texture("UI/Top minimised.png");
 
-        minimise = new Button(new Texture("UI/minimise.png"), new Coordinate(268, Gdx.graphics.getHeight() - background.getHeight() - 135 + 18)) {
+        minimise = new Button(new Texture("UI/minimise.png"), new Coordinate()) {
             @Override
-            public void clicked() {
+            public void executeCommand(GameCore game) {
                 maximised = false;
                 this.setVisible(false);
                 maximise.setVisible(true);
@@ -37,15 +38,17 @@ public class InfoDisplay extends Group {
         addActor(minimise);
         minimise.setVisible(false);
 
-        maximise = new Button(new Texture("UI/maximise.png"), new Coordinate(218, Gdx.graphics.getHeight() - topMax.getHeight() - 91)) {
+        maximise = new Button(new Texture("UI/maximise.png"), new Coordinate()) {
             @Override
-            public void clicked() {
+            public void executeCommand(GameCore game) {
                 maximised = true;
                 this.setVisible(false);
                 minimise.setVisible(true);
             }
         };
         addActor(maximise);
+
+        resize();
     }
 
     public void resize(){

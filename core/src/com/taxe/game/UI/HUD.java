@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.taxe.game.Coordinate;
+import com.taxe.game.GameCore;
 
 /**
  * Created by Owen on 09/01/2015.
@@ -32,14 +33,16 @@ public class HUD extends Group {
         this.player1Health = player1Health;
         this.player2Health = player2Health;
 
-        endTurn = new Button(new Texture("UI/Clock Square.png"), new Coordinate(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() - 36.75)) {
+        endTurn = new Button(new Texture("UI/Clock Square.png"), new Coordinate()) {
             @Override
-            public void clicked() {
+            public void executeCommand(GameCore gameCore) {
                 // endturn clicked
-                System.out.println("CLICKED MATE! GET IN!");
+                System.out.println("STRING");
             }
         };
         addActor(endTurn);
+
+        resize();
     }
 
     public void resize(){

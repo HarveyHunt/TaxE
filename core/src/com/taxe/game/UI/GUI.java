@@ -15,6 +15,7 @@ public class GUI extends Group {
     private Table table;
     private HUD hud;
     private InfoDisplay infoDisplay;
+    private CityMenu cityMenu;
 
     //For debug drawing
     private ShapeRenderer shapeRenderer;
@@ -35,6 +36,9 @@ public class GUI extends Group {
 
         infoDisplay = new InfoDisplay();
         addActor(infoDisplay);
+
+        cityMenu = new CityMenu();
+        addActor(cityMenu);
     }
 
     public HUD getHUD(){
