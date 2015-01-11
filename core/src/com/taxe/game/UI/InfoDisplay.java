@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Group;
+import com.taxe.game.Coordinate;
 
 /**
  * Created by Owen on 09/01/2015.
@@ -11,26 +12,67 @@ import com.badlogic.gdx.scenes.scene2d.Group;
 public class InfoDisplay extends Group {
 
     private boolean maximised;
+    private Texture background;
+    private Texture topMax;
+    private Texture topMin;
 
+    private Button maximise;
+    private Button minimise;
 
     public InfoDisplay() {
         maximised = true;
+
+        background = new Texture("UI/info background.png");
+        topMax = new Texture("UI/Top maximised.png");
+        topMin = new Texture("UI/Top minimised.png");
+
+        minimise = new Button(new Texture("UI/minimise.png"), new Coordinate(268, Gdx.graphics.getHeight() - background.getHeight() - 135 + 18)) {
+            @Override
+            public void clicked() {
+                maximised = false;
+                this.setVisible(false);
+                maximise.setVisible(true);
+            }
+        };
+        addActor(minimise);
+
+        maximise = new Button(new Texture("UI/maximise.png"), new Coordinate(218, Gdx.graphics.getHeight() - topMax.getHeight() - 91)) {
+            @Override
+            public void clicked() {
+                maximised = true;
+                this.setVisible(false);
+                minimise.setVisible(true);
+            }
+        };
+        addActor(maximise);
+        maximise.setVisible(false);
     }
 
-    public void toggleMaximised() {
-        if (maximised) {
-            maximised = false;
-        } else {
-            maximised = true;
-        }
+    public void resize(){
+        minimise.setCoordinate(new Coordinate(268, Gdx.graphics.getHeight() - background.getHeight() - 135 + 18));
+        maximise.setCoordinate(new Coordinate(218, Gdx.graphics.getHeight() - topMax.getHeight() - 91));
     }
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
         if (maximised) {
             // Draw maximised stuff!
+            GUI.drawElement( // Background
+                    batch, background,
+                    30, Gdx.graphics.getHeight() - background.getHeight() - 135
+            );
+
+            GUI.drawElement(
+                    batch, topMax,
+                    30, Gdx.graphics.getHeight() - topMax.getHeight() - 110
+            );
+
         } else {
             // Draw minimised stuff!
+            GUI.drawElement(
+                    batch, topMin,
+                    30, Gdx.graphics.getHeight() - topMin.getHeight() - 110
+            );
         }
 
         drawChildren(batch, parentAlpha);

@@ -106,6 +106,7 @@ public class GameCore implements Screen {
     public void resize(int w, int h) {
         stage.getViewport().update(w, h, true);
         gui.getHUD().resize();
+        gui.getInfoDisplay().resize();
     }
 
     @Override

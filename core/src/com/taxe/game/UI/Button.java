@@ -16,7 +16,6 @@ public class Button extends Actor {
     private Texture texture;
     private Coordinate coordinate;
     private int state; // 0 idle; 1 hover; 2 pressed
-    private boolean visible;
     
     public Button(Texture texture, Coordinate coordinate) {
         this.texture = texture;
@@ -52,10 +51,6 @@ public class Button extends Actor {
 
     public int getState() {
         return state;
-    }
-
-    public void setVisible(boolean visible) {
-        this.visible = visible;
     }
 
     public void clicked() {
