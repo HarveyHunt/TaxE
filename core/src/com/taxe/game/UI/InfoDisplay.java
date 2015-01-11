@@ -20,7 +20,7 @@ public class InfoDisplay extends Group {
     private Button minimise;
 
     public InfoDisplay() {
-        maximised = true;
+        maximised = false;
 
         background = new Texture("UI/info background.png");
         topMax = new Texture("UI/Top maximised.png");
@@ -35,6 +35,7 @@ public class InfoDisplay extends Group {
             }
         };
         addActor(minimise);
+        minimise.setVisible(false);
 
         maximise = new Button(new Texture("UI/maximise.png"), new Coordinate(218, Gdx.graphics.getHeight() - topMax.getHeight() - 91)) {
             @Override
@@ -45,7 +46,6 @@ public class InfoDisplay extends Group {
             }
         };
         addActor(maximise);
-        maximise.setVisible(false);
     }
 
     public void resize(){
