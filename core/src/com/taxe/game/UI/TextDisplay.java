@@ -25,6 +25,10 @@ public class TextDisplay extends Actor {
         this.visible = visible;
     }
 
+    public void setCoordinate(Coordinate coordinate) {
+        this.coordinate = coordinate;
+    }
+
     @Override
     public void draw(Batch batch, float parentAlpha) {
         if (visible){

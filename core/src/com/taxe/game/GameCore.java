@@ -43,18 +43,17 @@ public class GameCore implements Screen {
         stage.addActor(map);
         stage.addListener(new PathClickListener());
         stage.addListener(new PathInputListener());
-        gui = new GUI();
-        stage.addActor(gui);
 
         player1 = new Player(map.getHomebases().get(0), new ArrayList<Train>(), new Gold(500), new Fuel(10, 0));
         player2 = new Player(map.getHomebases().get(1), new ArrayList<Train>(), new Gold(500), new Fuel(10, 0));
         player1.addTrain(new BasicTrain(player1.getHomebase(), player1));
         player2.addTrain(new BasicTrain(player2.getHomebase(), player2));
 
-
         stage.addActor(player1);
         stage.addActor(player2);
 
+        gui = new GUI();
+        stage.addActor(gui);
     }
 
     @Override
