@@ -153,7 +153,7 @@ public class Track extends Actor {
         // Sleeper angle +90 to rotate the image to the correct orientation
         for (Sleeper s : sleepers) {
             batch.draw(
-                    sleeperTexture, (float) s.getCoordinate().getX(), (float) s.getCoordinate().getY(),
+                    sleeperTexture, (float) s.getCoordinate().getX() - sleeperTexture.getWidth() / 2, (float) s.getCoordinate().getY() - sleeperTexture.getHeight() / 2,
                     texWidth / 2.0f, texHeight / 2.0f, texWidth, texHeight, 1.0f, 1.0f,
                     (float) Math.toDegrees(s.getAngle()) + 90,
                     0, 0, texWidth, texHeight, false, false);

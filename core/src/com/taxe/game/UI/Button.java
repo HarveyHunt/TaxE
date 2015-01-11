@@ -65,12 +65,14 @@ public class Button extends Actor {
     }
 
     public void draw(Batch batch, float parentAlpha) {
-        batch.draw(
-                texture, (float)coordinate.getX() - texture.getWidth() / 2, (float)coordinate.getY() - texture.getHeight() / 6,
-                0, 0, texture.getWidth(), texture.getHeight() / 3,
-                1, 1, 0,
-                0, (texture.getHeight() / 3) * state, texture.getWidth(), texture.getHeight() / 3,
-                false, false);
+        if(isVisible()) {
+            batch.draw(
+                    texture, (float)coordinate.getX() - texture.getWidth() / 2, (float)coordinate.getY() - texture.getHeight() / 6,
+                    0, 0, texture.getWidth(), texture.getHeight() / 3,
+                    1, 1, 0,
+                    0, (texture.getHeight() / 3) * state, texture.getWidth(), texture.getHeight() / 3,
+                    false, false);
+        }
     }
 
 }

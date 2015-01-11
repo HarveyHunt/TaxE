@@ -4,37 +4,77 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Group;
+import com.taxe.game.Coordinate;
 
 /**
  * Created by Owen on 09/01/2015.
  */
 public class InfoDisplay extends Group {
 
-    private Texture texture;
-    private boolean minimised;
+    private boolean maximised;
+    private Texture background;
+    private Texture topMax;
+    private Texture topMin;
 
+    private Button maximise;
+    private Button minimise;
 
     public InfoDisplay() {
-        this.texture = new Texture("UI/HUD.png");
-        minimised = false;
+        maximised = true;
+
+        background = new Texture("UI/info background.png");
+        topMax = new Texture("UI/Top maximised.png");
+        topMin = new Texture("UI/Top minimised.png");
+
+        minimise = new Button(new Texture("UI/minimise.png"), new Coordinate(268, Gdx.graphics.getHeight() - background.getHeight() - 135 + 18)) {
+            @Override
+            public void clicked() {
+                maximised = false;
+                this.setVisible(false);
+                maximise.setVisible(true);
+            }
+        };
+        addActor(minimise);
+
+        maximise = new Button(new Texture("UI/maximise.png"), new Coordinate(218, Gdx.graphics.getHeight() - topMax.getHeight() - 91)) {
+            @Override
+            public void clicked() {
+                maximised = true;
+                this.setVisible(false);
+                minimise.setVisible(true);
+            }
+        };
+        addActor(maximise);
+        maximise.setVisible(false);
     }
 
-    public void toggleMinimised() {
-        if (minimised) {
-            minimised = false;
-        } else {
-            minimised = true;
-        }
+    public void resize(){
+        minimise.setCoordinate(new Coordinate(268, Gdx.graphics.getHeight() - background.getHeight() - 135 + 18));
+        maximise.setCoordinate(new Coordinate(218, Gdx.graphics.getHeight() - topMax.getHeight() - 91));
     }
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
-        batch.draw(
-                texture, 30, Gdx.graphics.getHeight() - 300, // location temporary and can be changed later
-                0, 0, texture.getWidth(), texture.getHeight(),
-                1, 1, 0,
-                0, 0, texture.getWidth(), texture.getHeight(),
-                false, false);
+        if (maximised) {
+            // Draw maximised stuff!
+            GUI.drawElement( // Background
+                    batch, background,
+                    30, Gdx.graphics.getHeight() - background.getHeight() - 135
+            );
+
+            GUI.drawElement(
+                    batch, topMax,
+                    30, Gdx.graphics.getHeight() - topMax.getHeight() - 110
+            );
+
+        } else {
+            // Draw minimised stuff!
+            GUI.drawElement(
+                    batch, topMin,
+                    30, Gdx.graphics.getHeight() - topMin.getHeight() - 110
+            );
+        }
+
         drawChildren(batch, parentAlpha);
     }
 
