@@ -32,7 +32,7 @@ public class HUD extends Group {
         this.player1Health = player1Health;
         this.player2Health = player2Health;
 
-        endTurn = new Button(new Texture("UI/Clock Square.png"), new Coordinate(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() - 35)) {
+        endTurn = new Button(new Texture("UI/Clock Square.png"), new Coordinate(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() - 36.75)) {
             @Override
             public void clicked() {
                 // endturn clicked
@@ -43,7 +43,7 @@ public class HUD extends Group {
     }
 
     public void resize(){
-        endTurn.setCoordinate(new Coordinate(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() - 37.5));
+        endTurn.setCoordinate(new Coordinate(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() - 36.75));
     }
 
     private void drawElement(Batch batch, Texture tex, float x, float y, float w, float h) {
