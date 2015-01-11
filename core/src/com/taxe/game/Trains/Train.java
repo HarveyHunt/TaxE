@@ -44,7 +44,7 @@ public abstract class Train extends Actor {
         this.owner = owner;
         this.textures = textures;
         this.currentTexture = Textures.ORIGINAL;
-        setBounds((float) coordinate.getX(), (float) coordinate.getY(),
+        setBounds((float) coordinate.getX() - textures[currentTexture].getWidth() / 2, (float) coordinate.getY() - textures[currentTexture].getHeight() / 2,
                 textures[currentTexture].getWidth(), textures[currentTexture].getHeight());
         setTouchable(Touchable.enabled);
     }

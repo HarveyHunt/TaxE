@@ -93,7 +93,7 @@ public abstract class Node extends Actor {
     }
 
     private void prepareActor() {
-        setBounds((float) coordinate.getX(), (float) coordinate.getY(),
+        setBounds((float) coordinate.getX() - textures[state].getWidth() / 2, (float) coordinate.getY() - textures[state].getHeight() / 2,
                 textures[state].getWidth(), textures[state].getHeight());
         setTouchable(Touchable.enabled);
     }
