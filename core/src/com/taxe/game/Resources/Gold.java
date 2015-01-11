@@ -1,4 +1,4 @@
-package com.taxe.game;
+package com.taxe.game.Resources;
 
 /**
  * Created by Owen on 18/11/2014.
@@ -6,7 +6,7 @@ package com.taxe.game;
  */
 public class Gold {
 
-    private int quantity;           // Must be always >= 0
+    private int quantity;
 
     public Gold(int quantity) {
         this.quantity = quantity;

@@ -1,9 +1,9 @@
-package com.taxe.game;
+package com.taxe.game.Nodes;
 
-import com.badlogic.gdx.graphics.Texture;
+import com.taxe.game.Textures;
 
 /**
- * Created by vlad on 08/01/15.
+ * Intermediate points are nodes located between the end-points of tracks.
  */
 public class IntermediatePoint extends Node {
 

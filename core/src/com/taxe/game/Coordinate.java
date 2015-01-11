@@ -1,7 +1,5 @@
 package com.taxe.game;
 
-import java.util.DoubleSummaryStatistics;
-
 /**
  * Created by Owen on 18/11/2014.
  */
@@ -24,6 +22,16 @@ public final class Coordinate {
 
     public Coordinate() {
         this(0.0, 0.0);
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == this)
+            return true;
+        if (!(other instanceof Coordinate))
+            return false;
+        Coordinate c = (Coordinate) other;
+        return (x == c.getX() && y == c.getY());
     }
 
     public String toString() {

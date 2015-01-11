@@ -1,27 +1,25 @@
-package com.taxe.game;
+package com.taxe.game.Nodes;
+
+import com.taxe.game.Textures;
+import com.taxe.game.Trains.Train;
 
 /**
- * Created by Vlad on 19/11/2014.
- * Class representing players' homebases in the game.
+ * Homebase is a place where player starts the game and builds trains.
+ * In order to win the game, player must destroy opponent's homebase.
  */
 public class Homebase extends Node {
 
-    final private int maxHealth;
+    private final int maxHealth;
     private int health;
     private Train currentBuild;
+    private int turnsTillBuilt;
 
     public Homebase() {
         super(Textures.HOMEBASE);
         maxHealth = 0;
         health = 0;
         currentBuild = null;
-    }
-
-    public String toString() {
-        return "Homebase <" +
-                super.toString() +  ", " +
-                "maxHealth = " + Integer.toString(maxHealth) + ", " +
-                "health = " + Integer.toString(health) + ">";
+        turnsTillBuilt = 0;
     }
 
     public int getMaxHealth() {
@@ -40,12 +38,17 @@ public class Homebase extends Node {
         return currentBuild;
     }
 
-    public void startBuild(Train build) {
+    public void startBuild(Train build, int turns) {
         currentBuild = build;
+        turnsTillBuilt = turns;
     }
 
     public void updateBuild() {
-        // Not sure how this will interact with game loop and turns
+        turnsTillBuilt = Integer.max(0, turnsTillBuilt - 1);
+    }
+
+    public boolean buildFinished() {
+        return turnsTillBuilt == 0;
     }
 
 }
