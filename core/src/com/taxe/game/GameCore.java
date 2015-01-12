@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
+import com.taxe.game.Commands.ActivatePlayerCommand;
 import com.taxe.game.InputHandling.Clickable;
 import com.taxe.game.Nodes.Node;
 import com.taxe.game.Resources.Fuel;
@@ -18,6 +19,7 @@ import com.taxe.game.UI.GUI;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Created by Owen on 08/11/2014.
@@ -26,8 +28,8 @@ public class GameCore implements Screen {
 
     private Stage stage;
     private GUI gui;
-    private Player player1;
-    private Player player2;
+    private ArrayList<Player> players;
+    private int activePlayer;
     private Map map;
     private ArrayList<Node> selectedPath = new ArrayList<>();
 
@@ -42,13 +44,17 @@ public class GameCore implements Screen {
         }
         stage.addActor(map);
 
-        player1 = new Player(map.getHomebases().get(0), new ArrayList<Train>(), new Gold(500), new Fuel(10, 0));
-        player2 = new Player(map.getHomebases().get(1), new ArrayList<Train>(), new Gold(500), new Fuel(10, 0));
-        player1.addTrain(new BasicTrain(player1.getHomebase(), player1));
-        player2.addTrain(new BasicTrain(player2.getHomebase(), player2));
-
-        stage.addActor(player1);
-        stage.addActor(player2);
+        // Setting up players and their trains
+        Player p1 =  new Player(map.getHomebases().get(0), new ArrayList<Train>(), new Gold(500), new Fuel(10, 0));
+        Player p2 = new Player(map.getHomebases().get(1), new ArrayList<Train>(), new Gold(500), new Fuel(10, 0));
+        p1.addTrain(new BasicTrain(p1.getHomebase()));
+        p2.addTrain(new BasicTrain(p2.getHomebase()));
+        players = new ArrayList<>();
+        Collections.addAll(players, p1, p2);
+        for (Player p: players) {
+            stage.addActor(p);
+        }
+        activePlayer = 0;
 
         gui = new GUI();
         stage.addActor(gui);
@@ -61,6 +67,7 @@ public class GameCore implements Screen {
                 }
             }
         });
+        new ActivatePlayerCommand().executeCommand(this, getActivePlayer());
     }
 
 
@@ -142,6 +149,23 @@ public class GameCore implements Screen {
 
     public Map getMap() {
         return map;
+    }
+
+    public ArrayList <Player> getPlayers() {
+        return players;
+    }
+
+    public void switchActivePlayer() {
+        activePlayer = (activePlayer  + 1 == players.size()) ? 0 : activePlayer + 1;
+    }
+
+    public Player getActivePlayer() {
+        return players.get(activePlayer);
+    }
+
+    public Player nextActivePlayer() {
+        int p = (activePlayer + 1 == players.size()) ? 0 : activePlayer + 1;
+        return players.get(p);
     }
 
 }

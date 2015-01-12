@@ -9,8 +9,8 @@ import com.taxe.game.Textures;
  */
 public class BasicTrain extends Train {
 
-    public BasicTrain(Node currentNode, Player owner) {
-        super(1, 1, 1, "Basic Trains", currentNode, owner, Textures.BASIC_TRAIN);
+    public BasicTrain(Node currentNode) {
+        super(1, 1, 1, "Basic Trains", currentNode, Textures.BASIC_TRAIN);
     }
 
 }

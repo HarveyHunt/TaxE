@@ -35,7 +35,7 @@ public abstract class Train extends Actor implements Clickable {
     private ArrayList<Texture> textures;
     private int state;
 
-    public Train(int speed, int cargoCap, int fuelCost, String id, Node node, Player owner, Texture[] textures) {
+    public Train(int speed, int cargoCap, int fuelCost, String id, Node node, Texture[] textures) {
         this.speed = speed;
         this.cargoCap = cargoCap;
         this.fuelCost = fuelCost;
