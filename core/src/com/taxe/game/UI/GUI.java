@@ -69,6 +69,10 @@ public class GUI extends Group {
         return infoDisplay;
     }
 
+    public CityMenu getCityMenu() {
+        return cityMenu;
+    }
+
     @Override
     public void draw(Batch batch, float parentAlpha) {
         table.drawDebug(shapeRenderer); // Draws the debug view of the table layout

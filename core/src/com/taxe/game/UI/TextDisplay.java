@@ -24,6 +24,10 @@ public class TextDisplay extends Actor {
         this.coordinate = coordinate;
     }
 
+    public void setText(CharSequence text) {
+        this.text = text;
+    }
+
     @Override
     public void draw(Batch batch, float parentAlpha) {
         if (isVisible()) {

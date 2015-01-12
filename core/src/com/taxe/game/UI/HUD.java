@@ -24,6 +24,8 @@ public class HUD extends Group {
 
     private Button endTurn;
 
+    private TextDisplay turnText;
+
     public HUD(int player1Health, int player2Health) {
         texHUD = new Texture("UI/HUD.png");
         texHealthbarGreen = new Texture("UI/Healthbar green.png");
@@ -43,11 +45,19 @@ public class HUD extends Group {
         };
         addActor(endTurn);
 
+        turnText = new TextDisplay("Player 1 : Turn 1", new Coordinate());
+        addActor(turnText);
+
         resize();
+    }
+
+    public TextDisplay getTurnText() {
+        return turnText;
     }
 
     public void resize() {
         endTurn.setCoordinate(new Coordinate(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() - 36.75));
+        turnText.setCoordinate(new Coordinate(200, Gdx.graphics.getHeight() - 9));
     }
 
     @Override
