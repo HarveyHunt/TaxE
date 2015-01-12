@@ -23,6 +23,7 @@ public class HUD extends Group {
     private int player2Health;
 
     private Button endTurn;
+    private Button setPath;
 
     private TextDisplay turnText;
 
@@ -44,6 +45,14 @@ public class HUD extends Group {
             }
         };
         addActor(endTurn);
+        setPath = new Button(new Texture("UI/Clock Square.png"), new Coordinate()) {
+            @Override
+            public void clicked(GameCore gameCore) {
+                // endturn clicked
+                new EndTurnCommand().executeCommand(gameCore, this); // CHANGE THIS COMMAND HERE
+            }
+        };
+        addActor(setPath);
 
         turnText = new TextDisplay("Player 1 : Turn 1", new Coordinate());
         addActor(turnText);
@@ -57,6 +66,7 @@ public class HUD extends Group {
 
     public void resize() {
         endTurn.setCoordinate(new Coordinate(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() - 36.75));
+        setPath.setCoordinate(new Coordinate(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() - 109));
         turnText.setCoordinate(new Coordinate(200, Gdx.graphics.getHeight() - 9));
     }
 
