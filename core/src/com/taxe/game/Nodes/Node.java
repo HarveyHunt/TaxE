@@ -115,8 +115,7 @@ public abstract class Node extends Actor implements Clickable {
         float x = (float) coordinate.getX();
         float y = (float) coordinate.getY();
         Texture t = getTexture();
-        Vector2 stagePosition = screenToLocalCoordinates(new Vector2(x - t.getWidth() / 2, y - t.getHeight() / 2));
-        setBounds(stagePosition.x, stagePosition.y, t.getWidth(), t.getHeight());
+        setBounds(x - t.getWidth() / 2, y - t.getHeight() / 2, t.getWidth(), t.getHeight());
         setTouchable(Touchable.enabled);
     }
 
