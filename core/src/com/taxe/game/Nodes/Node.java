@@ -84,6 +84,16 @@ public abstract class Node extends Actor implements Clickable {
                 state == n.getState());
     }
 
+    //EXAMPLE
+    public void setPositionWithOrigin(float x, float y) {
+        setPosition(x - getOriginX(), y - getOriginY());
+    }
+
+    public float getPosX() {
+        return getX() + getOriginX();
+    }
+    //EXAMPLE END
+
     public Coordinate getCoordinate() {
         return coordinate;
     }

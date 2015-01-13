@@ -93,6 +93,7 @@ public class Map extends Group {
         return null;
     }
 
+/*  ------ Bad code. Commented for reference when implementing scaling properly later
     @Override
     public void draw(Batch batch, float parentAlpha) {
         batch.flush();
@@ -111,5 +112,5 @@ public class Map extends Group {
 
         this.drawChildren(batch, parentAlpha);
     }
-
+*/
 }
