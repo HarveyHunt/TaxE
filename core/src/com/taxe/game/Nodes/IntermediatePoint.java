@@ -1,7 +1,7 @@
 package com.taxe.game.Nodes;
 
-import com.taxe.game.Coordinate;
-import com.taxe.game.Textures;
+import com.taxe.game.Util.Coordinate;
+import com.taxe.game.Util.Textures;
 
 /**
  * Intermediate points are nodes located between the end-points of tracks.

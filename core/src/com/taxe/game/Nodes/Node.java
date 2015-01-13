@@ -8,10 +8,10 @@ import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.Json;
 import com.taxe.game.Commands.ContinuePathCommand;
 import com.taxe.game.Commands.UndoPathCommand;
-import com.taxe.game.Coordinate;
+import com.taxe.game.Util.Coordinate;
 import com.taxe.game.GameCore;
 import com.taxe.game.InputHandling.Clickable;
-import com.taxe.game.Textures;
+import com.taxe.game.Util.Textures;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -25,18 +25,16 @@ import java.util.List;
  */
 public abstract class Node extends Actor implements Clickable {
 
-    private final Coordinate coordinate;
     private final String id;
     private boolean passable;
     private ArrayList<Texture> textures;
     private int state;
 
     public Node() {
-        coordinate = null;
         passable = true;
         id = null;
         textures = null;
-        state = Textures.ORIGINAL;
+        state = -1;
     }
 
     public Node(Texture[] textures) {
@@ -45,7 +43,7 @@ public abstract class Node extends Actor implements Clickable {
     }
 
     public Node(Coordinate coordinate, String id, Texture[] textures) {
-        this.coordinate = coordinate;
+        setPosition((float)coordinate.getX(), (float)coordinate.getY());
         this.id = id;
         this.passable = true;
         this.textures = new ArrayList<>(Arrays.asList(textures));
@@ -77,25 +75,15 @@ public abstract class Node extends Actor implements Clickable {
         if (!(other instanceof Node))
             return false;
         Node n = (Node) other;
-        return (coordinate.equals(n.getCoordinate()) &&
+        return (getCoordinate().equals(n.getCoordinate()) &&
                 id.equals(n.getId()) &&
                 passable == n.isPassable() &&
                 textures.equals(n.getTextures()) &&
                 state == n.getState());
     }
 
-    //EXAMPLE
-    public void setPositionWithOrigin(float x, float y) {
-        setPosition(x - getOriginX(), y - getOriginY());
-    }
-
-    public float getPosX() {
-        return getX() + getOriginX();
-    }
-    //EXAMPLE END
-
     public Coordinate getCoordinate() {
-        return coordinate;
+        return new Coordinate(getX() + getOriginX(), getY() + getOriginY());
     }
 
     public boolean isPassable() {
@@ -112,10 +100,9 @@ public abstract class Node extends Actor implements Clickable {
 
     public void setState(int state) {
         this.state = state;
-        float x = (float) coordinate.getX();
-        float y = (float) coordinate.getY();
         Texture t = getTexture();
-        setBounds(x - t.getWidth() / 2, y - t.getHeight() / 2, t.getWidth(), t.getHeight());
+        setBounds(getX(), getY(), t.getWidth(), t.getHeight());
+        setOrigin(getWidth() / 2, getHeight() / 5);
         setTouchable(Touchable.enabled);
     }
 
@@ -129,10 +116,13 @@ public abstract class Node extends Actor implements Clickable {
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
-        float x = (float) coordinate.getX();
-        float y = (float) coordinate.getY();
-        Texture t = getTexture();
-        batch.draw(t, x - t.getWidth() / 2, y - t.getHeight() / 2);
+        batch.draw(getTexture(),
+                getX(), getY(),
+                getOriginX(), getOriginY(),
+                getWidth(), getHeight(),
+                getScaleX(), getScaleY(),
+                getRotation(),
+                0, 0, getTexture().getWidth(), getTexture().getHeight(), false, false);
     }
 
     public void clicked(GameCore game) {

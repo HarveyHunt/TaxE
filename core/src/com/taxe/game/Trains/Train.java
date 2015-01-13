@@ -4,19 +4,22 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
+import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.taxe.game.Cargo.Cargo;
 import com.taxe.game.Commands.ResetPathCommand;
 import com.taxe.game.Commands.StartPathCommand;
-import com.taxe.game.Coordinate;
+import com.taxe.game.Tracks.Sleeper;
+import com.taxe.game.Util.Coordinate;
 import com.taxe.game.GameCore;
 import com.taxe.game.InputHandling.Clickable;
 import com.taxe.game.Nodes.Node;
-import com.taxe.game.Player;
-import com.taxe.game.Textures;
+import com.taxe.game.Util.Textures;
 
+import javax.swing.*;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Deque;
 
 /**
  * Created by vlad on 10/01/15.
@@ -28,9 +31,9 @@ public abstract class Train extends Actor implements Clickable {
     private int cargoCap;
     private int fuelCost;
     private Cargo cargo;
-    private ArrayDeque<Node> path;
+    private ArrayDeque<Node> pathNodes;
+    private ArrayDeque<Sleeper> pathCoordinates;
     private Node node;
-    private Coordinate coordinate;
 
     private ArrayList<Texture> textures;
     private int state;
@@ -41,10 +44,11 @@ public abstract class Train extends Actor implements Clickable {
         this.fuelCost = fuelCost;
         this.id = id;
         this.cargo = null;
-        this.path = null;
+        this.pathNodes = new ArrayDeque<>();
+        this.pathCoordinates = new ArrayDeque<>();
         this.node = node;
-        this.coordinate = node.getCoordinate();
         this.textures = new ArrayList<>(Arrays.asList(textures));
+        this.setPosition(node.getX(), node.getY());
         this.setState(Textures.HIGHLIGHTED);
     }
 
@@ -72,8 +76,17 @@ public abstract class Train extends Actor implements Clickable {
         this.cargo = cargo;
     }
 
-    public ArrayDeque<Node> getPath() {
-        return path;
+    public Deque<Node> getPathNodes() {
+        return pathNodes;
+    }
+
+    public Deque<Sleeper> getPathCoordinates() {
+        return pathCoordinates;
+    }
+
+    public void setPath(Deque<Node> nodes, Deque<Sleeper> sleepers) {
+        this.pathNodes = new ArrayDeque<>(nodes);
+        this.pathCoordinates = new ArrayDeque<>(sleepers);
     }
 
     public Node getNode() {
@@ -82,15 +95,6 @@ public abstract class Train extends Actor implements Clickable {
 
     public void setNode(Node node) {
         this.node = node;
-        this.coordinate = node.getCoordinate();
-    }
-
-    public Coordinate getCoordinate() {
-        return coordinate;
-    }
-
-    public void setCoordinate(Coordinate coordinate) {
-        this.coordinate = coordinate;
     }
 
     public Texture getTexture() {
@@ -103,19 +107,22 @@ public abstract class Train extends Actor implements Clickable {
 
     public void setState(int state) {
         this.state = state;
-        float x = (float) coordinate.getX();
-        float y = (float) coordinate.getY();
         Texture t = getTexture();
-        setBounds(x - t.getWidth() / 2, y - t.getHeight() / 2, t.getWidth(), t.getHeight());
-        setTouchable((state == Textures.ORIGINAL) ? Touchable.disabled : Touchable.enabled);
+        setBounds(getX(), getY(), t.getWidth(), t.getHeight());
+        setOrigin(getWidth() / 2, getHeight() / 2);
+        setTouchable(Touchable.enabled);
+
     }
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
-        float x = (float) coordinate.getX();
-        float y = (float) coordinate.getY();
-        Texture t = getTexture();
-        batch.draw(t, x - t.getWidth() / 2, y - t.getHeight() / 2);
+        batch.draw(getTexture(),
+                getX(), getY(),
+                getOriginX(), getOriginY(),
+                getWidth(), getHeight(),
+                getScaleX(), getScaleY(),
+                getRotation(),
+                0, 0, getTexture().getWidth(), getTexture().getHeight(), false, false);
     }
 
     public void clicked(GameCore game) {

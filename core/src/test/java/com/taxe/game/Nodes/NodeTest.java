@@ -1,7 +1,7 @@
 package com.taxe.game.Nodes;
 
 import com.taxe.GdxTestRunner;
-import com.taxe.game.Coordinate;
+import com.taxe.game.Util.Coordinate;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

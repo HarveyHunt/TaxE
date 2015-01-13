@@ -4,9 +4,10 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Group;
-import com.taxe.game.Commands.EndTurnCommand;
+import com.taxe.game.Commands.ExecutionPhaseCommand;
+import com.taxe.game.Commands.SavePathCommand;
 import com.taxe.game.Commands.SwitchPlayerCommand;
-import com.taxe.game.Coordinate;
+import com.taxe.game.Util.Coordinate;
 import com.taxe.game.GameCore;
 
 /**
@@ -42,16 +43,16 @@ public class HUD extends Group {
             @Override
             public void clicked(GameCore gameCore) {
                 // endturn clicked
+                new ExecutionPhaseCommand().executeCommand(gameCore, this);
                 new SwitchPlayerCommand().executeCommand(gameCore, this);
             }
-        };
-        addActor(endTurn);
-        setPath = new Button(new Texture("UI/Clock Square.png"), new Coordinate()) {
-            @Override
-            public void clicked(GameCore gameCore) {
-                // endturn clicked
-                new EndTurnCommand().executeCommand(gameCore, this); // CHANGE THIS COMMAND HERE
-            }
+    };
+    addActor(endTurn);
+    setPath = new Button(new Texture("UI/Clock Square.png"), new Coordinate()) {
+        @Override
+        public void clicked(GameCore gameCore) {
+            new SavePathCommand().executeCommand(gameCore, this); // CHANGE THIS COMMAND HERE
+        }
         };
         addActor(setPath);
 
@@ -71,7 +72,7 @@ public class HUD extends Group {
     }
 
     public void resize() {
-        endTurn.setCoordinate(new Coordinate(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() - 36.75));
+        endTurn.setCoordinate(new Coordinate(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() - 36.75f));
         setPath.setCoordinate(new Coordinate(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() - 109));
         turnText.setCoordinate(new Coordinate(200, Gdx.graphics.getHeight() - 9));
     }

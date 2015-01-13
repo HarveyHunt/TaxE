@@ -3,7 +3,7 @@ package com.taxe.game.Commands;
 import com.taxe.game.GameCore;
 import com.taxe.game.Nodes.Node;
 import com.taxe.game.Player;
-import com.taxe.game.Textures;
+import com.taxe.game.Util.Textures;
 import com.taxe.game.Trains.Train;
 
 /**
@@ -19,7 +19,7 @@ public class ResetPathCommand implements Commandable {
         for (Node n : game.getMap().getNodes()) {
             n.setState(Textures.ORIGINAL);
         }
-        game.clearSelectedPath();
+        game.getSelectedPath().clear();
     }
 
 }

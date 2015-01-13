@@ -1,7 +1,7 @@
 package com.taxe.game.Nodes;
 
-import com.taxe.game.Coordinate;
-import com.taxe.game.Textures;
+import com.taxe.game.Util.Coordinate;
+import com.taxe.game.Util.Textures;
 
 /**
  * Junction represents intersection of tracks.

@@ -1,13 +1,14 @@
 package com.taxe.game.Nodes;
 
 import com.taxe.game.Cargo.Cargo;
-import com.taxe.game.Coordinate;
+import com.taxe.game.Util.Coordinate;
 import com.taxe.game.Player;
 import com.taxe.game.Resources.Influence;
-import com.taxe.game.Task;
-import com.taxe.game.Textures;
+import com.taxe.game.Tasks.Task;
+import com.taxe.game.Util.Textures;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * City is a place that issues tasks and trades cargo.
@@ -33,31 +34,11 @@ public class City extends Node {
         cargoList = new ArrayList<>();
     }
 
-    public void addCargo(Cargo cargo) {
-        cargoList.add(cargo);
-    }
-
-    public void removeCargo(Cargo cargo) {
-        if (cargoList.contains(cargo)) {
-            cargoList.remove(cargo);
-        }
-    }
-
-    public void addTask(Task task) {
-        taskList.add(task);
-    }
-
-    public void removeTask(Task task) {
-        if (taskList.contains(task)) {
-            taskList.remove(task);
-        }
-    }
-
-    public ArrayList<Task> getTaskList() {
+    public List<Task> getTaskList() {
         return taskList;
     }
 
-    public ArrayList<Cargo> getCargoList() {
+    public List<Cargo> getCargoList() {
         return cargoList;
     }
 
