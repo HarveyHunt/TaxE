@@ -61,6 +61,11 @@ public class HUD extends Group {
         resize();
     }
 
+    public void setHealth(int player1Health, int player2Health) {
+        this.player1Health = player1Health;
+        this.player2Health = player2Health;
+    }
+
     public TextDisplay getTurnText() {
         return turnText;
     }

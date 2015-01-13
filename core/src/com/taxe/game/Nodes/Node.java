@@ -2,6 +2,7 @@ package com.taxe.game.Nodes;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.Json;
@@ -104,7 +105,8 @@ public abstract class Node extends Actor implements Clickable {
         float x = (float) coordinate.getX();
         float y = (float) coordinate.getY();
         Texture t = getTexture();
-        setBounds(x - t.getWidth() / 2, y - t.getHeight() / 2, t.getWidth(), t.getHeight());
+        Vector2 stagePosition = screenToLocalCoordinates(new Vector2(x - t.getWidth() / 2, y - t.getHeight() / 2));
+        setBounds(stagePosition.x, stagePosition.y, t.getWidth(), t.getHeight());
         setTouchable(Touchable.enabled);
     }
 

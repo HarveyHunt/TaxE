@@ -17,8 +17,8 @@ public class DesktopLauncher {
         // Config
         LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
         config.title = "Game Titles are Boring";
-        config.width = 1024;
-        config.height = 768;
+        config.width = 1480;
+        config.height = 890;
         config.resizable = true; // Makes it easier to handle resolution if it cannot be changing all the time
         config.fullscreen = false;
         config.samples = 4;
