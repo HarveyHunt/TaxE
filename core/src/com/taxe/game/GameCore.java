@@ -127,6 +127,7 @@ public class GameCore implements Screen {
         gui.getHUD().resize();
         gui.getInfoDisplay().resize();
         gui.getCityMenu().resize();
+        scene.scale();
     }
 
     @Override
