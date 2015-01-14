@@ -2,10 +2,9 @@ package com.taxe.game.Commands;
 
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.actions.SequenceAction;
-import com.taxe.game.Tracks.Sleeper;
-import com.taxe.game.Util.Coordinate;
 import com.taxe.game.GameCore;
 import com.taxe.game.Nodes.Node;
+import com.taxe.game.Tracks.Sleeper;
 import com.taxe.game.Trains.Train;
 
 import java.util.Deque;
@@ -16,27 +15,26 @@ import java.util.Deque;
 public class ExecutionPhaseCommand implements Commandable {
 
     public void executeCommand(GameCore game, Object target) {
-        for (Train train: game.getActivePlayer().getTrains()) {
-            Deque <Node> nodes = train.getPathNodes();
-            Deque <Sleeper> sleepers = train.getPathCoordinates();
-            if (nodes != null) {
-                Node n = nodes.pollFirst();
+        for (Train train : game.getActivePlayer().getTrains()) {
+            Deque<Node> nodes = train.getPathNodes();
+            Deque<Sleeper> sleepers = train.getPathSleepers();
+            System.out.println(nodes);
+            if (nodes != null && !nodes.isEmpty()) {
+                Node n = null;
                 Sleeper s = null;
+                System.out.println(n);
                 SequenceAction seq = new SequenceAction();
-                for (int i = 0; i < train.getSpeed(); i++) {
-                    n = (i == train.getSpeed() - 1) ? nodes.peekFirst(): nodes.pollFirst();
-                    if (n != null) {
-                        do {
-                            s = sleepers.removeFirst();
-                            seq.addAction(Actions.moveTo(s.getX(), s.getY(), 0.25f));
-                            System.out.println(s.getX() + ", " + s.getY());
-                        } while (! s.isEnding());
-                    }
+                for (int i = 0; i < train.getSpeed() && !nodes.isEmpty(); i++) {
+                    n = nodes.pollFirst();
+                    System.out.println(n);
+                    do {
+                        s = sleepers.removeFirst();
+                        seq.addAction(Actions.moveTo(s.getX(), s.getY(), 0.1f));
+                        System.out.println(s.getX() + ", " + s.getY());
+                    } while (!s.isEnding());
                 }
                 train.addAction(seq);
-                if (n != null) {
-                    train.setNode(n);
-                }
+                train.setNode(n);
             }
         }
     }

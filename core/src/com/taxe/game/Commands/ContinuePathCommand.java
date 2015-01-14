@@ -3,7 +3,7 @@ package com.taxe.game.Commands;
 import com.taxe.game.GameCore;
 import com.taxe.game.Nodes.IntermediatePoint;
 import com.taxe.game.Nodes.Node;
-import com.taxe.game.Util.Textures;
+import com.taxe.game.Nodes.NodeStates;
 import com.taxe.game.Tracks.Track;
 
 /**
@@ -24,27 +24,27 @@ public class ContinuePathCommand implements Commandable {
         if (previous != null) {
             for (Track t : game.getMap().getTracksWith(previous)) {
                 for (Node n : t.getNodes())
-                    if (n.getState() == Textures.HIGHLIGHTED)
-                        n.setState(Textures.ORIGINAL);
+                    if (n.getState() == NodeStates.HIGHLIGHTED)
+                        n.setState(NodeStates.ORIGINAL);
             }
         }
 
         // Neighbours of the current selected node become available for path selection
         for (Track t : game.getMap().getTracksWith(current)) {
             for (Node n : t.getNodes())
-                n.setState(Textures.HIGHLIGHTED);
+                n.setState(NodeStates.HIGHLIGHTED);
         }
 
         // Track between previous and current selected nodes gets marked as SELECTED
         Track track = game.getMap().getTrackWith(previous, current);
         if (track != null) {
             for (Node n : track.getNodes()) {
-                n.setState(Textures.SELECTED);
+                n.setState(NodeStates.SELECTED);
             }
         }
 
         // Adding current selected node to path
-        current.setState(Textures.SELECTED);
+        current.setState(NodeStates.SELECTED);
         game.getSelectedPath().addLast(current);
     }
 

@@ -49,7 +49,7 @@ public class GameCore implements Screen {
         scene.addActor(map);
 
         // Setting up players and their trains
-        Player p1 =  new Player(map.getHomebases().get(0), new ArrayList<Train>(), new Gold(500), new Fuel(10, 0));
+        Player p1 = new Player(map.getHomebases().get(0), new ArrayList<Train>(), new Gold(500), new Fuel(10, 0));
         Player p2 = new Player(map.getHomebases().get(1), new ArrayList<Train>(), new Gold(500), new Fuel(10, 0));
         p1.addTrain(new BasicTrain(p1.getHomebase()));
         p2.addTrain(new BasicTrain(p2.getHomebase()));
@@ -124,7 +124,6 @@ public class GameCore implements Screen {
     @Override
     public void resize(int w, int h) {
         stage.getViewport().update(w, h, true);
-        scene.scale();
         gui.getHUD().resize();
         gui.getInfoDisplay().resize();
         gui.getCityMenu().resize();
@@ -149,7 +148,7 @@ public class GameCore implements Screen {
     }
 
     public void switchActivePlayer() {
-        activePlayer = (activePlayer  + 1 == players.size()) ? 0 : activePlayer + 1;
+        activePlayer = (activePlayer + 1 == players.size()) ? 0 : activePlayer + 1;
     }
 
     public Player getActivePlayer() {

@@ -4,21 +4,15 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
-import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.taxe.game.Cargo.Cargo;
 import com.taxe.game.Commands.ResetPathCommand;
 import com.taxe.game.Commands.StartPathCommand;
-import com.taxe.game.Tracks.Sleeper;
-import com.taxe.game.Util.Coordinate;
 import com.taxe.game.GameCore;
 import com.taxe.game.InputHandling.Clickable;
 import com.taxe.game.Nodes.Node;
-import com.taxe.game.Util.Textures;
+import com.taxe.game.Tracks.Sleeper;
 
-import javax.swing.*;
 import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Deque;
 
 /**
@@ -32,24 +26,22 @@ public abstract class Train extends Actor implements Clickable {
     private int fuelCost;
     private Cargo cargo;
     private ArrayDeque<Node> pathNodes;
-    private ArrayDeque<Sleeper> pathCoordinates;
+    private ArrayDeque<Sleeper> pathSleepers;
     private Node node;
 
-    private ArrayList<Texture> textures;
     private int state;
 
-    public Train(int speed, int cargoCap, int fuelCost, String id, Node node, Texture[] textures) {
+    public Train(int speed, int cargoCap, int fuelCost, String id, Node node) {
         this.speed = speed;
         this.cargoCap = cargoCap;
         this.fuelCost = fuelCost;
         this.id = id;
         this.cargo = null;
         this.pathNodes = new ArrayDeque<>();
-        this.pathCoordinates = new ArrayDeque<>();
+        this.pathSleepers = new ArrayDeque<>();
         this.node = node;
-        this.textures = new ArrayList<>(Arrays.asList(textures));
         this.setPosition(node.getX(), node.getY());
-        this.setState(Textures.HIGHLIGHTED);
+        this.setState(TrainStates.ACTIVE);
     }
 
     public int getSpeed() {
@@ -80,13 +72,13 @@ public abstract class Train extends Actor implements Clickable {
         return pathNodes;
     }
 
-    public Deque<Sleeper> getPathCoordinates() {
-        return pathCoordinates;
+    public Deque<Sleeper> getPathSleepers() {
+        return pathSleepers;
     }
 
     public void setPath(Deque<Node> nodes, Deque<Sleeper> sleepers) {
         this.pathNodes = new ArrayDeque<>(nodes);
-        this.pathCoordinates = new ArrayDeque<>(sleepers);
+        this.pathSleepers = new ArrayDeque<>(sleepers);
     }
 
     public Node getNode() {
@@ -97,9 +89,9 @@ public abstract class Train extends Actor implements Clickable {
         this.node = node;
     }
 
-    public Texture getTexture() {
-        return textures.get(state);
-    }
+    public abstract Texture getTexture();
+
+    public abstract void adjustActor();
 
     public int getState() {
         return state;
@@ -107,11 +99,7 @@ public abstract class Train extends Actor implements Clickable {
 
     public void setState(int state) {
         this.state = state;
-        Texture t = getTexture();
-        setSize(t.getWidth(), t.getHeight());
-        setOrigin(getWidth() / 2f, getHeight() / 2f);
-        setTouchable(Touchable.enabled);
-
+        adjustActor();
     }
 
     @Override
@@ -128,13 +116,13 @@ public abstract class Train extends Actor implements Clickable {
     @Override
     public Actor hit(float x, float y, boolean touchable) {
         if (touchable && this.getTouchable() != Touchable.enabled) return null;
-        return x >= -getOriginX() && x < getWidth() - getOriginX() && y >= -getOriginY() && y < getHeight() -getOriginY() ? this : null;
+        return x >= -getOriginX() && x < getWidth() - getOriginX() && y >= -getOriginY() && y < getHeight() - getOriginY() ? this : null;
     }
 
     public void clicked(GameCore game) {
-        if (getState() == Textures.HIGHLIGHTED) {
+        if (getState() == TrainStates.ACTIVE) {
             new StartPathCommand().executeCommand(game, this);
-        } else if (getState() == Textures.SELECTED) {
+        } else if (getState() == TrainStates.SELECTED) {
             new ResetPathCommand().executeCommand(game, this);
         }
     }

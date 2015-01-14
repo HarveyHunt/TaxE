@@ -2,8 +2,6 @@ package com.taxe.game.Nodes;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
-import com.taxe.game.Util.Coordinate;
-import com.taxe.game.Util.Textures;
 import com.taxe.game.Trains.Train;
 
 /**
@@ -18,7 +16,7 @@ public class Homebase extends Node {
     private int turnsTillBuilt;
 
     public Homebase() {
-        super(Textures.HOMEBASE);
+        super();
         maxHealth = 0;
         health = 0;
         currentBuild = null;
@@ -26,22 +24,14 @@ public class Homebase extends Node {
         validateHealth();
     }
 
-    public Homebase(Coordinate coordinate, String id) {
-        super(coordinate, id, Textures.HOMEBASE);
-        maxHealth = 0;
-        health = 0;
-        currentBuild = null;
-        turnsTillBuilt = 0;
-        validateHealth();
+    public Texture getTexture() {
+        return NodeTextures.HOMEBASE[getState()];
     }
 
-    public void setState(int state) {
-        this.state = state;
+    public void adjustActor() {
         Texture t = getTexture();
         setSize(t.getWidth(), t.getHeight());
         setOrigin(getWidth() / 2f, getHeight() / 5f);
-        setBounds(getX() - getOriginX(), getY() - getOriginY(), t.getWidth(), t.getHeight());
-        setPosition(getX() + getOriginX(), getY() + getOriginY());
         setTouchable(Touchable.enabled);
     }
 

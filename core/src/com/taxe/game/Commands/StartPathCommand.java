@@ -1,8 +1,8 @@
 package com.taxe.game.Commands;
 
 import com.taxe.game.GameCore;
-import com.taxe.game.Util.Textures;
 import com.taxe.game.Trains.Train;
+import com.taxe.game.Trains.TrainStates;
 
 /**
  * Created by vlad on 11/01/15.
@@ -15,7 +15,7 @@ public class StartPathCommand implements Commandable {
         }
         new ResetPathCommand().executeCommand(game, target);
         Train t = (Train) target;
-        t.setState(Textures.SELECTED);
+        t.setState(TrainStates.SELECTED);
         new ContinuePathCommand().executeCommand(game, t.getNode());
     }
 
