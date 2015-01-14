@@ -39,7 +39,7 @@ public class Homebase extends Node {
         this.state = state;
         Texture t = getTexture();
         setSize(t.getWidth(), t.getHeight());
-        setOrigin(getWidth() / 2, getHeight() / 5);
+        setOrigin(getWidth() / 2f, getHeight() / 5f);
         setBounds(getX() - getOriginX(), getY() - getOriginY(), t.getWidth(), t.getHeight());
         setPosition(getX() + getOriginX(), getY() + getOriginY());
         setTouchable(Touchable.enabled);

@@ -23,7 +23,7 @@ public class IntermediatePoint extends Node {
         this.state = state;
         Texture t = getTexture();
         setSize(t.getWidth(), t.getHeight());
-        setOrigin(getWidth() / 2, getHeight() / 2);
+        setOrigin(getWidth() / 2f, getHeight() / 2f);
         setBounds(getX() - getOriginX(), getY() - getOriginY(), t.getWidth(), t.getHeight());
         setPosition(getX() + getOriginX(), getY() + getOriginY());
         setTouchable(Touchable.enabled);

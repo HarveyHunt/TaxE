@@ -41,7 +41,7 @@ public class City extends Node {
         this.state = state;
         Texture t = getTexture();
         setSize(t.getWidth(), t.getHeight());
-        setOrigin(getWidth() / 2, getHeight() / 5);
+        setOrigin(getWidth() / 2f, getHeight() / 5f);
         setTouchable(Touchable.enabled);
     }
 
