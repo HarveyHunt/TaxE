@@ -30,18 +30,23 @@ public class GameCore implements Screen {
     private ArrayList<Player> players;
     private int activePlayer;
     private Map map;
+    private Scene scene;
     private ArrayDeque<Node> selectedPath = new ArrayDeque<>();
 
     public GameCore() {
         // Set up the game
         stage = new Stage(new ScreenViewport());
         Gdx.input.setInputProcessor(stage);
+
+        scene = new Scene();
+        stage.addActor(scene);
+
         try {
             map = new Map("nodes.json", "tracks.json");
         } catch (IOException e) {
             System.out.println("Something went wrong :(");
         }
-        stage.addActor(map);
+        scene.addActor(map);
 
         // Setting up players and their trains
         Player p1 =  new Player(map.getHomebases().get(0), new ArrayList<Train>(), new Gold(500), new Fuel(10, 0));
@@ -51,7 +56,7 @@ public class GameCore implements Screen {
         players = new ArrayList<>();
         Collections.addAll(players, p1, p2);
         for (Player p: players) {
-            stage.addActor(p);
+            scene.addActor(p);
         }
         activePlayer = 0;
 
@@ -67,6 +72,8 @@ public class GameCore implements Screen {
             }
         });
         new ActivatePlayerCommand().executeCommand(this, getActivePlayer());
+
+        scene.scale();
     }
 
 
@@ -117,6 +124,7 @@ public class GameCore implements Screen {
     @Override
     public void resize(int w, int h) {
         stage.getViewport().update(w, h, true);
+        scene.scale();
         gui.getHUD().resize();
         gui.getInfoDisplay().resize();
         gui.getCityMenu().resize();
