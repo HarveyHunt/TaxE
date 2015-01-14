@@ -26,7 +26,7 @@ public abstract class Train extends Actor implements Clickable {
     private int fuelCost;
     private Cargo cargo;
     private ArrayDeque<Node> pathNodes;
-    private ArrayDeque<Sleeper> pathCoordinates;
+    private ArrayDeque<Sleeper> pathSleepers;
     private Node node;
 
     private int state;
@@ -38,7 +38,7 @@ public abstract class Train extends Actor implements Clickable {
         this.id = id;
         this.cargo = null;
         this.pathNodes = new ArrayDeque<>();
-        this.pathCoordinates = new ArrayDeque<>();
+        this.pathSleepers = new ArrayDeque<>();
         this.node = node;
         this.setPosition(node.getX(), node.getY());
         this.setState(TrainStates.ACTIVE);
@@ -72,13 +72,13 @@ public abstract class Train extends Actor implements Clickable {
         return pathNodes;
     }
 
-    public Deque<Sleeper> getPathCoordinates() {
-        return pathCoordinates;
+    public Deque<Sleeper> getPathSleepers() {
+        return pathSleepers;
     }
 
     public void setPath(Deque<Node> nodes, Deque<Sleeper> sleepers) {
         this.pathNodes = new ArrayDeque<>(nodes);
-        this.pathCoordinates = new ArrayDeque<>(sleepers);
+        this.pathSleepers = new ArrayDeque<>(sleepers);
     }
 
     public Node getNode() {

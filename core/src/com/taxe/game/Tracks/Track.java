@@ -34,8 +34,12 @@ public class Track extends Actor {
                     Coordinate.angleBetween(cA, cB) :
                     Coordinate.angleBetween(sleepers.get(sleepers.size() - 2).getCoordinate(), cA);
             sleepers.addAll(getArc(cA, cB, startAngle));
-            //Add the final sleeper to the end
-            //sleepers.add(new Sleeper(new Texture("sleeper.png"), true));
+        }
+        if (!nodes.isEmpty()) {
+            Node n = nodes.get(nodes.size() - 1);
+            Sleeper s = new BasicSleeper(true);
+            s.setPosition(n.getX(), n.getY());
+            sleepers.add(s);
         }
     }
 
