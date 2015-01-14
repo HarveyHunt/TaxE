@@ -18,25 +18,24 @@ public class ExecutionPhaseCommand implements Commandable {
     public void executeCommand(GameCore game, Object target) {
         for (Train train: game.getActivePlayer().getTrains()) {
             Deque <Node> nodes = train.getPathNodes();
-            Deque <Sleeper> coordinates = train.getPathCoordinates();
+            Deque <Sleeper> sleepers = train.getPathCoordinates();
             if (nodes != null) {
                 Node n = nodes.pollFirst();
-                Sleeper c = null;
+                Sleeper s = null;
                 SequenceAction seq = new SequenceAction();
                 for (int i = 0; i < train.getSpeed(); i++) {
                     n = (i == train.getSpeed() - 1) ? nodes.peekFirst(): nodes.pollFirst();
                     if (n != null) {
                         do {
-                            c = coordinates.removeFirst();
-                            seq.addAction(Actions.moveTo((float) c.getX(), (float) c.getY(), 0.25f));
-                            System.out.println(c.getX() + ", " + c.getY());
-                        } while (! c.isEnding());
+                            s = sleepers.removeFirst();
+                            seq.addAction(Actions.moveTo(s.getX(), s.getY(), 0.25f));
+                            System.out.println(s.getX() + ", " + s.getY());
+                        } while (! s.isEnding());
                     }
                 }
                 train.addAction(seq);
                 if (n != null) {
                     train.setNode(n);
-                    //train.setCoordinate(n.getCoordinate());
                 }
             }
         }

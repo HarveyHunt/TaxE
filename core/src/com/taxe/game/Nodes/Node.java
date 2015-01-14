@@ -28,7 +28,7 @@ public abstract class Node extends Actor implements Clickable {
     private final String id;
     private boolean passable;
     private ArrayList<Texture> textures;
-    private int state;
+    protected int state;
 
     public Node() {
         passable = true;
@@ -83,7 +83,7 @@ public abstract class Node extends Actor implements Clickable {
     }
 
     public Coordinate getCoordinate() {
-        return new Coordinate(getX() + getOriginX(), getY() + getOriginY());
+        return new Coordinate(getX(), getY());
     }
 
     public boolean isPassable() {
@@ -98,16 +98,16 @@ public abstract class Node extends Actor implements Clickable {
         return state;
     }
 
-    public void setState(int state) {
-        this.state = state;
-        Texture t = getTexture();
-        setBounds(getX(), getY(), t.getWidth(), t.getHeight());
-        setOrigin(getWidth() / 2, getHeight() / 5);
-        setTouchable(Touchable.enabled);
-    }
+    public abstract void setState(int state);
 
     public Texture getTexture() {
         return textures.get(state);
+    }
+
+    @Override
+    public Actor hit(float x, float y, boolean touchable) {
+        if (touchable && this.getTouchable() != Touchable.enabled) return null;
+        return x >= -getOriginX() && x < getWidth() - getOriginX() && y >= -getOriginY() && y < getHeight() -getOriginY() ? this : null;
     }
 
     public List<Texture> getTextures() {
@@ -117,7 +117,7 @@ public abstract class Node extends Actor implements Clickable {
     @Override
     public void draw(Batch batch, float parentAlpha) {
         batch.draw(getTexture(),
-                getX(), getY(),
+                getX() - getOriginX(), getY() - getOriginY(),
                 getOriginX(), getOriginY(),
                 getWidth(), getHeight(),
                 getScaleX(), getScaleY(),

@@ -30,7 +30,7 @@ public class Sleeper extends Actor {
 
     public void draw(Batch batch, float parentAlpha) {
         batch.draw(texture,
-                getX(), getY(),
+                getX() - getOriginX(), getY() - getOriginY(),
                 getOriginX(), getOriginY(),
                 getWidth(), getHeight(),
                 getScaleX(), getScaleY(),

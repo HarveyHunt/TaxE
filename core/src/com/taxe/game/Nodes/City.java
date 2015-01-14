@@ -1,5 +1,8 @@
 package com.taxe.game.Nodes;
 
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.taxe.game.Cargo.Cargo;
 import com.taxe.game.Util.Coordinate;
 import com.taxe.game.Player;
@@ -32,6 +35,14 @@ public class City extends Node {
         influence = null;
         taskList = new ArrayList<>();
         cargoList = new ArrayList<>();
+    }
+
+    public void setState(int state) {
+        this.state = state;
+        Texture t = getTexture();
+        setSize(t.getWidth(), t.getHeight());
+        setOrigin(getWidth() / 2, getHeight() / 5);
+        setTouchable(Touchable.enabled);
     }
 
     public List<Task> getTaskList() {

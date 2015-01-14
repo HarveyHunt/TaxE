@@ -1,5 +1,7 @@
 package com.taxe.game.Nodes;
 
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.taxe.game.Util.Coordinate;
 import com.taxe.game.Util.Textures;
 import com.taxe.game.Trains.Train;
@@ -31,6 +33,16 @@ public class Homebase extends Node {
         currentBuild = null;
         turnsTillBuilt = 0;
         validateHealth();
+    }
+
+    public void setState(int state) {
+        this.state = state;
+        Texture t = getTexture();
+        setSize(t.getWidth(), t.getHeight());
+        setOrigin(getWidth() / 2, getHeight() / 5);
+        setBounds(getX() - getOriginX(), getY() - getOriginY(), t.getWidth(), t.getHeight());
+        setPosition(getX() + getOriginX(), getY() + getOriginY());
+        setTouchable(Touchable.enabled);
     }
 
     public int getMaxHealth() {

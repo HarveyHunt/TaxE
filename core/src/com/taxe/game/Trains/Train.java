@@ -108,7 +108,7 @@ public abstract class Train extends Actor implements Clickable {
     public void setState(int state) {
         this.state = state;
         Texture t = getTexture();
-        setBounds(getX(), getY(), t.getWidth(), t.getHeight());
+        setSize(t.getWidth(), t.getHeight());
         setOrigin(getWidth() / 2, getHeight() / 2);
         setTouchable(Touchable.enabled);
 
@@ -117,12 +117,18 @@ public abstract class Train extends Actor implements Clickable {
     @Override
     public void draw(Batch batch, float parentAlpha) {
         batch.draw(getTexture(),
-                getX(), getY(),
+                getX() - getOriginX(), getY() - getOriginY(),
                 getOriginX(), getOriginY(),
                 getWidth(), getHeight(),
                 getScaleX(), getScaleY(),
                 getRotation(),
                 0, 0, getTexture().getWidth(), getTexture().getHeight(), false, false);
+    }
+
+    @Override
+    public Actor hit(float x, float y, boolean touchable) {
+        if (touchable && this.getTouchable() != Touchable.enabled) return null;
+        return x >= -getOriginX() && x < getWidth() - getOriginX() && y >= -getOriginY() && y < getHeight() -getOriginY() ? this : null;
     }
 
     public void clicked(GameCore game) {
