@@ -1,8 +1,7 @@
 package com.taxe.game.Trains;
 
 import com.taxe.game.Nodes.Node;
-import com.taxe.game.Player;
-import com.taxe.game.Textures;
+import com.taxe.game.Util.Textures;
 
 /**
  * Created by vlad on 10/01/15.

@@ -18,8 +18,7 @@ import com.taxe.game.Trains.Train;
 import com.taxe.game.UI.GUI;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.*;
 
 /**
  * Created by Owen on 08/11/2014.
@@ -31,7 +30,7 @@ public class GameCore implements Screen {
     private ArrayList<Player> players;
     private int activePlayer;
     private Map map;
-    private ArrayList<Node> selectedPath = new ArrayList<>();
+    private ArrayDeque<Node> selectedPath = new ArrayDeque<>();
 
     public GameCore() {
         // Set up the game
@@ -129,30 +128,16 @@ public class GameCore implements Screen {
         stage.dispose();
     }
 
-    public void clearSelectedPath() {
-        selectedPath.clear();
-    }
-
-    public void addToSelectedPath(Node n) {
-        selectedPath.add(n);
-    }
-
-    public Node lastInSelectedPath() {
-        int s = selectedPath.size();
-        return (s == 0) ? null : selectedPath.get(s - 1);
-    }
-
-    public void removeLastInSelectedPath() {
-        int s = selectedPath.size();
-        if (s > 0) selectedPath.remove(s - 1);
-    }
-
     public Map getMap() {
         return map;
     }
 
-    public ArrayList <Player> getPlayers() {
+    public List<Player> getPlayers() {
         return players;
+    }
+
+    public Deque<Node> getSelectedPath() {
+        return selectedPath;
     }
 
     public void switchActivePlayer() {

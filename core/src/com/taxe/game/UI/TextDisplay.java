@@ -3,7 +3,7 @@ package com.taxe.game.UI;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.taxe.game.Coordinate;
+import com.taxe.game.Util.Coordinate;
 
 /**
  * Created by Owen on 09/01/2015.

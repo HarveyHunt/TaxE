@@ -3,8 +3,8 @@ package com.taxe.game.Commands;
 import com.taxe.game.GameCore;
 import com.taxe.game.Nodes.IntermediatePoint;
 import com.taxe.game.Nodes.Node;
-import com.taxe.game.Textures;
-import com.taxe.game.Track;
+import com.taxe.game.Util.Textures;
+import com.taxe.game.Tracks.Track;
 
 /**
  * Created by vlad on 11/01/15.
@@ -18,17 +18,15 @@ public class UndoPathCommand implements Commandable {
         if (target instanceof IntermediatePoint)
             return;
 
-        Node selected = (Node) target;
-
         // Marking every node up to selected as unavailable for path selection
-        while (game.lastInSelectedPath() != selected) {
-            Node current = game.lastInSelectedPath();
+        Node selected = (Node) target;
+        while (game.getSelectedPath().getLast() != selected) {
+            Node current = game.getSelectedPath().removeLast();
             for (Track t : game.getMap().getTracksWith(current)) {
-                for (Node n : t.getPath()) {
+                for (Node n : t.getNodes()) {
                     n.setState(Textures.ORIGINAL);
                 }
             }
-            game.removeLastInSelectedPath();
         }
 
         // Including selected node in current selected path

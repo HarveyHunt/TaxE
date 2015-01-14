@@ -6,7 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.taxe.game.Coordinate;
+import com.taxe.game.Util.Coordinate;
 import com.taxe.game.GameCore;
 import com.taxe.game.InputHandling.Clickable;
 

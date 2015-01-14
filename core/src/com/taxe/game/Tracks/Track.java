@@ -1,16 +1,16 @@
-package com.taxe.game;
+package com.taxe.game.Tracks;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.utils.Json;
+import com.taxe.game.Util.Coordinate;
 import com.taxe.game.Nodes.Node;
+import com.taxe.game.Util.Textures;
 
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.*;
 
 /**
  * Created by Owen on 18/11/2014.
@@ -18,26 +18,20 @@ import java.util.Collections;
 public class Track extends Actor {
 
     // Constants for drawing
-    private static final double DISTANCE_BETWEEN_SLEEPERS = 12.0;
-    private static final double PRECISION = 0.02;
+    private static final float DISTANCE_BETWEEN_SLEEPERS = 12.0f;
+    private static final float PRECISION = 0.02f;
     private static final int CURVE_SIZE = 100;
-    private final int texWidth;
-    private final int texHeight;
-    private final Texture sleeperTexture = new Texture("sleeper.png");
 
-    private final ArrayList<Node> track;
+    private final ArrayList<Node> nodes;
     private final ArrayList<Sleeper> sleepers;
 
-    public Track(ArrayList<Node> track) {
-        this.track = track;
-        this.texWidth = sleeperTexture.getWidth();
-        this.texHeight = sleeperTexture.getHeight();
+    public Track(List<Node> nodes) {
+        this.nodes = new ArrayList<>(nodes);
         this.sleepers = new ArrayList<>();
-
-        for (int i = 0; i < track.size() - 1; i++) {
-            Coordinate cA = track.get(i).getCoordinate();
-            Coordinate cB = track.get(i + 1).getCoordinate();
-            double startAngle = (i == 0) ?
+        for (int i = 0; i < nodes.size() - 1; i++) {
+            Coordinate cA = nodes.get(i).getCoordinate();
+            Coordinate cB = nodes.get(i + 1).getCoordinate();
+            float startAngle = (i == 0) ?
                     Coordinate.angleBetween(cA, cB) :
                     Coordinate.angleBetween(sleepers.get(sleepers.size() - 2).getCoordinate(), cA);
             sleepers.addAll(getArc(cA, cB, startAngle));
@@ -66,7 +60,7 @@ public class Track extends Actor {
     ---------------------------------
      */
 
-    public static ArrayList<Track> readTracks(String fileName, ArrayList<Node> nodes) throws IOException {
+    public static List<Track> readTracks(String fileName, ArrayList<Node> nodes) throws IOException {
         Json json = new Json();
         FileReader f = new FileReader(fileName);
         String[][] trackIds = json.fromJson(String[][].class, f);
@@ -91,19 +85,19 @@ public class Track extends Actor {
     }
 
     // Returns a list of sleepers that form a curve between 2 nodes based on a starting direction
-    private ArrayList<Sleeper> getArc(Coordinate cA, Coordinate cB, double startAngle) {
+    private List<Sleeper> getArc(Coordinate cA, Coordinate cB, float startAngle) {
 
         // Create a list of coordinates that plot out the arc but are not evenly spaced
         // The line is divided into 1 / precision number of segments
-        double theta = Coordinate.angleBetween(cA, cB) - startAngle;
+        float theta = Coordinate.angleBetween(cA, cB) - startAngle;
         Coordinate cC = new Coordinate(
-                cA.getX() + CURVE_SIZE * Math.abs(theta) * Math.cos(startAngle),
-                cA.getY() + CURVE_SIZE * Math.abs(theta) * Math.sin(startAngle));
+                cA.getX() + CURVE_SIZE * Math.abs(theta) * (float)Math.cos(startAngle),
+                cA.getY() + CURVE_SIZE * Math.abs(theta) * (float)Math.sin(startAngle));
 
         ArrayList<Coordinate> arc = new ArrayList<>();
-        double length = 0.0;
+        float length = 0;
         Coordinate cPrevious = cA;
-        for (double i = 0; i <= 1.0; i += PRECISION) {
+        for (float i = 0; i <= 1.0; i += PRECISION) {
             Coordinate c1 = Coordinate.coordinateAlongLine(cA, cC, i);
             Coordinate c2 = Coordinate.coordinateAlongLine(cC, cB, i);
             Coordinate c3 = Coordinate.coordinateAlongLine(c1, c2, i);
@@ -114,46 +108,44 @@ public class Track extends Actor {
         length += Coordinate.distanceBetween(cPrevious, cB);
 
         // Work out the closest value to DISTANCE_BETWEEN_SLEEPERS that spaces evenly
-        double spacing = length / (double) Math.round(length / DISTANCE_BETWEEN_SLEEPERS);
+        float spacing = length / (float) Math.round(length / DISTANCE_BETWEEN_SLEEPERS);
         // Use the coordinates in arc to create angled sleepers that are spaced out evenly
         ArrayList<Sleeper> sleeperArc = new ArrayList<>();
-        sleeperArc.add(new Sleeper(cA, startAngle));
-        double d = 0.0;
+        Sleeper s = new Sleeper(Textures.SLEEPER, true);
+        s.setPosition((float) cA.getX(), (float) cA.getY());
+        s.setRotation((float)Math.toDegrees(startAngle));
+        sleeperArc.add(s);
+        float d = 0;
         for (int i = 0; i + 1 < arc.size(); i++) {
             Coordinate c1 = arc.get(i);
             Coordinate c2 = arc.get(i + 1);
             d += Coordinate.distanceBetween(c1, c2);
             while (d >= spacing) {
                 d -= spacing;
-                double percentage = 1.0 - d / Coordinate.distanceBetween(c1, c2);
-                double angle = Coordinate.angleBetween(c1, c2);
-                sleeperArc.add(new Sleeper(Coordinate.coordinateAlongLine(c1, c2, percentage), angle));
+                float percentage = 1 - d / Coordinate.distanceBetween(c1, c2);
+                float angle = Coordinate.angleBetween(c1, c2);
+                Coordinate c = Coordinate.coordinateAlongLine(c1, c2, percentage);
+                s = new Sleeper(Textures.SLEEPER, false);
+                s.setPosition(c.getX(), c.getY());
+                s.setRotation((float)Math.toDegrees(angle));
+                sleeperArc.add(s);
             }
         }
         return sleeperArc;
     }
 
     // returns an ArrayDeque listing nodes from the start node to the end node
-    public ArrayDeque<Node> getPath() {
-        return new ArrayDeque<>(track);
-    }
+    public List<Node> getNodes() {return nodes;}
 
-    // returns an ArrayDeque listing nodes from the end node to the start node
-    public ArrayDeque<Node> getReversedPath() {
-        ArrayList<Node> track = this.track;
-        Collections.reverse(track);
-        return new ArrayDeque<>(track);
+    public List<Sleeper> getSleepers() {
+        return sleepers;
     }
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
         // Sleeper angle +90 to rotate the image to the correct orientation
         for (Sleeper s : sleepers) {
-            batch.draw(
-                    sleeperTexture, (float) s.getCoordinate().getX() - sleeperTexture.getWidth() / 2, (float) s.getCoordinate().getY() - sleeperTexture.getHeight() / 2,
-                    texWidth / 2.0f, texHeight / 2.0f, texWidth, texHeight, 1.0f, 1.0f,
-                    (float) Math.toDegrees(s.getAngle()) + 90,
-                    0, 0, texWidth, texHeight, false, false);
+            s.draw(batch, parentAlpha);
         }
     }
 

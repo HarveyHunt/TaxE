@@ -1,4 +1,4 @@
-package com.taxe.game;
+package com.taxe.game.Tasks;
 
 /**
  * Created by Owen on 19/11/2014.

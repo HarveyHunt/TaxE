@@ -1,7 +1,7 @@
 package com.taxe.game.Commands;
 
 import com.taxe.game.GameCore;
-import com.taxe.game.Textures;
+import com.taxe.game.Util.Textures;
 import com.taxe.game.Trains.Train;
 
 /**

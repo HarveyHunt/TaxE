@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.scenes.scene2d.Group;
+import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 
 /**
@@ -11,30 +12,17 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
  */
 public class GUI extends Group {
 
-    private Table table;
     private HUD hud;
     private InfoDisplay infoDisplay;
     private CityMenu cityMenu;
 
-    //For debug drawing
-    private ShapeRenderer shapeRenderer;
-
-    public GUI() {
-
-        // the table takes up the whole screen too, but allows us to position widgets on the screen nicely
-        table = new Table();
-        table.setFillParent(true);
-        addActor(table);
-
-        // debug drawing allows us to see what the layout looks like
-        shapeRenderer = new ShapeRenderer();
-
-        // Add Other Stuffs
+    public GUI() {// Add Other Stuffs
         hud = new HUD(50, 50);
         addActor(hud);
 
         infoDisplay = new InfoDisplay();
         addActor(infoDisplay);
+        infoDisplay.setTouchable(Touchable.enabled);
 
         cityMenu = new CityMenu();
         addActor(cityMenu);
@@ -73,10 +61,9 @@ public class GUI extends Group {
         return cityMenu;
     }
 
-    @Override
+    /*@Override
     public void draw(Batch batch, float parentAlpha) {
-        table.drawDebug(shapeRenderer); // Draws the debug view of the table layout
         drawChildren(batch, parentAlpha);
-    }
+    }*/
 
 }

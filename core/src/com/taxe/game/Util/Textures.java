@@ -1,4 +1,4 @@
-package com.taxe.game;
+package com.taxe.game.Util;
 
 import com.badlogic.gdx.graphics.Texture;
 
@@ -10,6 +10,8 @@ public class Textures {
     public static final int ORIGINAL = 0;
     public static final int HIGHLIGHTED = 1;
     public static final int SELECTED = 2;
+
+    public static final Texture SLEEPER = new Texture("sleeper.png");
 
     public static final Texture[] CITY = {
             new Texture("city.png"),

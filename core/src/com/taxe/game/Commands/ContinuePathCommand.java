@@ -3,8 +3,8 @@ package com.taxe.game.Commands;
 import com.taxe.game.GameCore;
 import com.taxe.game.Nodes.IntermediatePoint;
 import com.taxe.game.Nodes.Node;
-import com.taxe.game.Textures;
-import com.taxe.game.Track;
+import com.taxe.game.Util.Textures;
+import com.taxe.game.Tracks.Track;
 
 /**
  * Created by vlad on 11/01/15.
@@ -18,12 +18,12 @@ public class ContinuePathCommand implements Commandable {
         if (target instanceof IntermediatePoint)
             return;
         Node current = (Node) target;
-        Node previous = game.lastInSelectedPath();
+        Node previous = game.getSelectedPath().peekLast();
 
         // HIGHLIGHTED neighbours of the last selected node become unavailable for path selection
         if (previous != null) {
             for (Track t : game.getMap().getTracksWith(previous)) {
-                for (Node n : t.getPath())
+                for (Node n : t.getNodes())
                     if (n.getState() == Textures.HIGHLIGHTED)
                         n.setState(Textures.ORIGINAL);
             }
@@ -31,22 +31,21 @@ public class ContinuePathCommand implements Commandable {
 
         // Neighbours of the current selected node become available for path selection
         for (Track t : game.getMap().getTracksWith(current)) {
-            for (Node n : t.getPath())
+            for (Node n : t.getNodes())
                 n.setState(Textures.HIGHLIGHTED);
         }
 
         // Track between previous and current selected nodes gets marked as SELECTED
         Track track = game.getMap().getTrackWith(previous, current);
         if (track != null) {
-            for (Node n : track.getPath()) {
+            for (Node n : track.getNodes()) {
                 n.setState(Textures.SELECTED);
             }
         }
 
         // Adding current selected node to path
         current.setState(Textures.SELECTED);
-        game.addToSelectedPath(current);
-
+        game.getSelectedPath().addLast(current);
     }
 
 }
