@@ -18,6 +18,16 @@ public abstract class Sleeper extends Actor {
         setSize(getTexture().getWidth(), getTexture().getHeight());
     }
 
+    @Override
+    public boolean equals(Object other) {
+        if (other == this)
+            return true;
+        if (!(other instanceof Sleeper))
+            return false;
+        Sleeper s = (Sleeper) other;
+        return (getX() == s.getX() && getY() == s.getY() && ending == s.isEnding());
+    }
+
     public Coordinate getCoordinate() {
         return new Coordinate(getX(), getY());
     }

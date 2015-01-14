@@ -8,8 +8,8 @@ import com.badlogic.gdx.graphics.Texture;
 public class TrainTextures {
 
     public static final Texture[] BASIC_TRAIN = {
-            new Texture("basic-train.png"),
-            new Texture("basic-train-highlighted.png"),
-            new Texture("basic-train-selected.png")};
+            new Texture("Trains/basic-train.png"),
+            new Texture("Trains/basic-train-highlighted.png"),
+            new Texture("Trains/basic-train-selected.png")};
 
 }

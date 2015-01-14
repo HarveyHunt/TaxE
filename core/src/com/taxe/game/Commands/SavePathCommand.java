@@ -48,6 +48,8 @@ public class SavePathCommand implements Commandable {
         }
         for (Train t : game.getActivePlayer().getTrains()) {
             if (t.getState() == TrainStates.SELECTED) {
+                nodes.pollFirst();
+                sleepers.pollFirst();
                 t.setPath(nodes, sleepers);
             }
         }
