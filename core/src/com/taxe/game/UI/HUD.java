@@ -7,8 +7,8 @@ import com.badlogic.gdx.scenes.scene2d.Group;
 import com.taxe.game.Commands.ExecutionPhaseCommand;
 import com.taxe.game.Commands.SavePathCommand;
 import com.taxe.game.Commands.SwitchPlayerCommand;
-import com.taxe.game.Util.Coordinate;
 import com.taxe.game.GameCore;
+import com.taxe.game.Util.Coordinate;
 
 /**
  * Created by Owen on 09/01/2015.
@@ -46,13 +46,13 @@ public class HUD extends Group {
                 new ExecutionPhaseCommand().executeCommand(gameCore, this);
                 new SwitchPlayerCommand().executeCommand(gameCore, this);
             }
-    };
-    addActor(endTurn);
-    setPath = new Button(new Texture("UI/Clock Square.png"), new Coordinate()) {
-        @Override
-        public void clicked(GameCore gameCore) {
-            new SavePathCommand().executeCommand(gameCore, this); // CHANGE THIS COMMAND HERE
-        }
+        };
+        addActor(endTurn);
+        setPath = new Button(new Texture("UI/Clock Square.png"), new Coordinate()) {
+            @Override
+            public void clicked(GameCore gameCore) {
+                new SavePathCommand().executeCommand(gameCore, this); // CHANGE THIS COMMAND HERE
+            }
         };
         addActor(setPath);
 

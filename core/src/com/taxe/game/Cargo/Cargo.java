@@ -8,13 +8,11 @@ import com.badlogic.gdx.graphics.Texture;
  */
 public abstract class Cargo {
     private final String id;
-    private final Texture texture;
     private int quantity;
 
-    public Cargo(int quantity, String id, Texture texture) {
+    public Cargo(int quantity, String id) {
         this.quantity = quantity;
         this.id = id;
-        this.texture = texture;
         validateQuantity();
     }
 
@@ -31,9 +29,7 @@ public abstract class Cargo {
         return id;
     }
 
-    public Texture getTexture() {
-        return texture;
-    }
+    public abstract Texture getTexture();
 
     private void validateQuantity() throws RuntimeException {
         if (quantity < 0)

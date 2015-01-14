@@ -1,7 +1,8 @@
 package com.taxe.game.Trains;
 
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.taxe.game.Nodes.Node;
-import com.taxe.game.Util.Textures;
 
 /**
  * Created by vlad on 10/01/15.
@@ -9,7 +10,19 @@ import com.taxe.game.Util.Textures;
 public class BasicTrain extends Train {
 
     public BasicTrain(Node currentNode) {
-        super(1, 1, 1, "Basic Trains", currentNode, Textures.BASIC_TRAIN);
+        super(2, 1, 1, "Basic Trains", currentNode);
+    }
+
+    public Texture getTexture() {
+        return TrainTextures.BASIC_TRAIN[getState()];
+    }
+
+    public void adjustActor() {
+        Texture t = getTexture();
+        setSize(t.getWidth(), t.getHeight());
+        setOrigin(getWidth() / 2f, getHeight() / 2f);
+        setTouchable(Touchable.enabled);
+
     }
 
 }

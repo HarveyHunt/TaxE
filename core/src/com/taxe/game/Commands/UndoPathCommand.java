@@ -3,7 +3,7 @@ package com.taxe.game.Commands;
 import com.taxe.game.GameCore;
 import com.taxe.game.Nodes.IntermediatePoint;
 import com.taxe.game.Nodes.Node;
-import com.taxe.game.Util.Textures;
+import com.taxe.game.Nodes.NodeStates;
 import com.taxe.game.Tracks.Track;
 
 /**
@@ -24,7 +24,7 @@ public class UndoPathCommand implements Commandable {
             Node current = game.getSelectedPath().removeLast();
             for (Track t : game.getMap().getTracksWith(current)) {
                 for (Node n : t.getNodes()) {
-                    n.setState(Textures.ORIGINAL);
+                    n.setState(NodeStates.ORIGINAL);
                 }
             }
         }
