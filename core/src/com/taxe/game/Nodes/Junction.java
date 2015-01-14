@@ -1,7 +1,7 @@
 package com.taxe.game.Nodes;
 
-import com.taxe.game.Util.Coordinate;
-import com.taxe.game.Util.Textures;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.scenes.scene2d.Touchable;
 
 /**
  * Junction represents intersection of tracks.
@@ -9,11 +9,18 @@ import com.taxe.game.Util.Textures;
 public class Junction extends Node {
 
     public Junction() {
-        super(Textures.JUNCTION);
+        super();
     }
 
-    public Junction(Coordinate coordinate, String id) {
-        super(coordinate, id, Textures.JUNCTION);
+    public Texture getTexture() {
+        return NodeTextures.JUNCTION[getState()];
+    }
+
+    public void adjustActor() {
+        Texture t = getTexture();
+        setSize(t.getWidth(), t.getHeight());
+        setOrigin(getWidth() / 2f, getHeight() / 2f);
+        setTouchable(Touchable.enabled);
     }
 
 }

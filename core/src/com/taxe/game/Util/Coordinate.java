@@ -20,7 +20,7 @@ public final class Coordinate {
     public static float distanceBetween(Coordinate cA, Coordinate cB) {
         float dX = cB.x - cA.x;
         float dY = cB.y - cA.y;
-        return (float)Math.sqrt(dX * dX + dY * dY);
+        return (float) Math.sqrt(dX * dX + dY * dY);
     }
 
     public static Coordinate coordinateAlongLine(Coordinate cA, Coordinate cB, float percentage) {
@@ -32,7 +32,7 @@ public final class Coordinate {
     }
 
     public static float angleBetween(Coordinate cA, Coordinate cB) {
-        return (float)Math.atan2(cB.y - cA.y, cB.x - cA.x);
+        return (float) Math.atan2(cB.y - cA.y, cB.x - cA.x);
     }
 
     @Override

@@ -1,11 +1,11 @@
 package com.taxe.game.Nodes;
 
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.taxe.game.Cargo.Cargo;
-import com.taxe.game.Util.Coordinate;
 import com.taxe.game.Player;
 import com.taxe.game.Resources.Influence;
 import com.taxe.game.Tasks.Task;
-import com.taxe.game.Util.Textures;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,17 +21,21 @@ public class City extends Node {
     private ArrayList<Cargo> cargoList;
 
     public City() {
-        super(Textures.CITY);
+        super();
         influence = null;
         taskList = new ArrayList<>();
         cargoList = new ArrayList<>();
     }
 
-    public City(Coordinate coordinate, String id) {
-        super(coordinate, id, Textures.CITY);
-        influence = null;
-        taskList = new ArrayList<>();
-        cargoList = new ArrayList<>();
+    public void adjustActor() {
+        Texture t = getTexture();
+        setSize(t.getWidth(), t.getHeight());
+        setOrigin(getWidth() / 2f, getHeight() / 5f);
+        setTouchable(Touchable.enabled);
+    }
+
+    public Texture getTexture() {
+        return NodeTextures.CITY[getState()];
     }
 
     public List<Task> getTaskList() {
@@ -40,10 +44,6 @@ public class City extends Node {
 
     public List<Cargo> getCargoList() {
         return cargoList;
-    }
-
-    public Influence getInfluence() {
-        return influence;
     }
 
     public double getInfluence(Player p) {

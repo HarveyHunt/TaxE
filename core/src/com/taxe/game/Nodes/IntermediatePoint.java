@@ -1,7 +1,7 @@
 package com.taxe.game.Nodes;
 
-import com.taxe.game.Util.Coordinate;
-import com.taxe.game.Util.Textures;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.scenes.scene2d.Touchable;
 
 /**
  * Intermediate points are nodes located between the end-points of tracks.
@@ -9,11 +9,18 @@ import com.taxe.game.Util.Textures;
 public class IntermediatePoint extends Node {
 
     public IntermediatePoint() {
-        super(Textures.INTERMEDIATE);
+        super();
     }
 
-    public IntermediatePoint(Coordinate coordinate, String id) {
-        super(coordinate, id, Textures.INTERMEDIATE);
+    public Texture getTexture() {
+        return NodeTextures.INTERMEDIATE[getState()];
+    }
+
+    public void adjustActor() {
+        Texture t = getTexture();
+        setSize(t.getWidth(), t.getHeight());
+        setOrigin(getWidth() / 2f, getHeight() / 2f);
+        setTouchable(Touchable.enabled);
     }
 
 }

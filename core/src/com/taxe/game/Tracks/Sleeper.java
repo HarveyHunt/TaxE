@@ -8,16 +8,14 @@ import com.taxe.game.Util.Coordinate;
 /**
  * Created by Owen on 28/11/2014.
  */
-public class Sleeper extends Actor {
+public abstract class Sleeper extends Actor {
 
-    private Texture texture;
     private boolean ending;
 
-    public Sleeper(Texture texture, boolean ending) {
-        this.texture = texture;
+    public Sleeper(boolean ending) {
         this.ending = ending;
-        setOrigin(texture.getWidth() / 2, texture.getHeight() / 2);
-        setSize(texture.getWidth(), texture.getHeight());
+        setOrigin(getTexture().getWidth() / 2, getTexture().getHeight() / 2);
+        setSize(getTexture().getWidth(), getTexture().getHeight());
     }
 
     public Coordinate getCoordinate() {
@@ -28,14 +26,16 @@ public class Sleeper extends Actor {
         return ending;
     }
 
+    public abstract Texture getTexture();
+
     public void draw(Batch batch, float parentAlpha) {
-        batch.draw(texture,
-                getX(), getY(),
+        batch.draw(getTexture(),
+                getX() - getOriginX(), getY() - getOriginY(),
                 getOriginX(), getOriginY(),
                 getWidth(), getHeight(),
                 getScaleX(), getScaleY(),
                 getRotation(),
-                0, 0, texture.getWidth(), texture.getHeight(), false, false);
+                0, 0, getTexture().getWidth(), getTexture().getHeight(), false, false);
     }
 
 }

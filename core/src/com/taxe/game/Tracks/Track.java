@@ -1,16 +1,15 @@
 package com.taxe.game.Tracks;
 
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.utils.Json;
-import com.taxe.game.Util.Coordinate;
 import com.taxe.game.Nodes.Node;
-import com.taxe.game.Util.Textures;
+import com.taxe.game.Util.Coordinate;
 
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Owen on 18/11/2014.
@@ -35,6 +34,8 @@ public class Track extends Actor {
                     Coordinate.angleBetween(cA, cB) :
                     Coordinate.angleBetween(sleepers.get(sleepers.size() - 2).getCoordinate(), cA);
             sleepers.addAll(getArc(cA, cB, startAngle));
+            //Add the final sleeper to the end
+            //sleepers.add(new Sleeper(new Texture("sleeper.png"), true));
         }
     }
 
@@ -70,9 +71,9 @@ public class Track extends Actor {
         for (String[] ids : trackIds) {
             ArrayList<Node> t = new ArrayList<>();
             for (String id : ids) {
-                Node n = Node.getNodeWithId(id, nodes);
+                Node n = Node.getNodeById(id, nodes);
                 if (n != null) {
-                    t.add(Node.getNodeWithId(id, nodes));
+                    t.add(n);
                 } else {
                     throw new RuntimeException("Can't construct track with Nodes.id = " + id);
                 }
@@ -91,8 +92,8 @@ public class Track extends Actor {
         // The line is divided into 1 / precision number of segments
         float theta = Coordinate.angleBetween(cA, cB) - startAngle;
         Coordinate cC = new Coordinate(
-                cA.getX() + CURVE_SIZE * Math.abs(theta) * (float)Math.cos(startAngle),
-                cA.getY() + CURVE_SIZE * Math.abs(theta) * (float)Math.sin(startAngle));
+                cA.getX() + CURVE_SIZE * Math.abs(theta) * (float) Math.cos(startAngle),
+                cA.getY() + CURVE_SIZE * Math.abs(theta) * (float) Math.sin(startAngle));
 
         ArrayList<Coordinate> arc = new ArrayList<>();
         float length = 0;
@@ -111,9 +112,9 @@ public class Track extends Actor {
         float spacing = length / (float) Math.round(length / DISTANCE_BETWEEN_SLEEPERS);
         // Use the coordinates in arc to create angled sleepers that are spaced out evenly
         ArrayList<Sleeper> sleeperArc = new ArrayList<>();
-        Sleeper s = new Sleeper(Textures.SLEEPER, true);
+        Sleeper s = new BasicSleeper(true);
         s.setPosition((float) cA.getX(), (float) cA.getY());
-        s.setRotation((float)Math.toDegrees(startAngle));
+        s.setRotation((float) Math.toDegrees(startAngle));
         sleeperArc.add(s);
         float d = 0;
         for (int i = 0; i + 1 < arc.size(); i++) {
@@ -125,9 +126,9 @@ public class Track extends Actor {
                 float percentage = 1 - d / Coordinate.distanceBetween(c1, c2);
                 float angle = Coordinate.angleBetween(c1, c2);
                 Coordinate c = Coordinate.coordinateAlongLine(c1, c2, percentage);
-                s = new Sleeper(Textures.SLEEPER, false);
+                s = new BasicSleeper(false);
                 s.setPosition(c.getX(), c.getY());
-                s.setRotation((float)Math.toDegrees(angle));
+                s.setRotation((float) Math.toDegrees(angle));
                 sleeperArc.add(s);
             }
         }
@@ -135,7 +136,9 @@ public class Track extends Actor {
     }
 
     // returns an ArrayDeque listing nodes from the start node to the end node
-    public List<Node> getNodes() {return nodes;}
+    public List<Node> getNodes() {
+        return nodes;
+    }
 
     public List<Sleeper> getSleepers() {
         return sleepers;

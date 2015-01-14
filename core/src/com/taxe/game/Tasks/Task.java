@@ -3,7 +3,7 @@ package com.taxe.game.Tasks;
 /**
  * Created by Owen on 19/11/2014.
  */
-public class Task {
+public abstract class Task {
     private String name, objective;
     private int taskTime;
 
