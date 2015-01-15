@@ -10,7 +10,7 @@ import com.taxe.game.Nodes.Node;
 public class BasicTrain extends Train {
 
     public BasicTrain(Node currentNode) {
-        super(2, 1, 1, "Basic Trains", currentNode);
+        super(4, 1, 1, "Basic Trains", currentNode);
     }
 
     public Texture getTexture() {

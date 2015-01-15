@@ -4,10 +4,12 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Group;
-import com.taxe.game.Commands.ExecutionPhaseCommand;
+import com.taxe.game.Commands.MoveTrainsCommand;
 import com.taxe.game.Commands.SavePathCommand;
 import com.taxe.game.Commands.SwitchPlayerCommand;
 import com.taxe.game.GameCore;
+import com.taxe.game.Player;
+import com.taxe.game.Trains.Train;
 import com.taxe.game.Util.Coordinate;
 
 /**
@@ -41,10 +43,9 @@ public class HUD extends Group {
 
         endTurn = new Button(new Texture("UI/Clock Square.png"), new Coordinate()) {
             @Override
-            public void clicked(GameCore gameCore) {
-                // endturn clicked
-                new ExecutionPhaseCommand().executeCommand(gameCore, this);
-                new SwitchPlayerCommand().executeCommand(gameCore, this);
+            public void clicked(GameCore game) {
+                new MoveTrainsCommand().executeCommand(game, this);
+                new SwitchPlayerCommand().executeCommand(game, this);
             }
         };
         addActor(endTurn);
