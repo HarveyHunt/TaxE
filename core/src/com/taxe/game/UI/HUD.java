@@ -1,6 +1,7 @@
 package com.taxe.game.UI;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Group;
@@ -56,7 +57,7 @@ public class HUD extends Group {
         };
         addActor(setPath);
 
-        turnText = new TextDisplay("Player 1 : Turn 1", new Coordinate());
+        turnText = new TextDisplay("Player 1 : Turn 1", new Coordinate(), Color.YELLOW, 1f);
         addActor(turnText);
 
         resize();
