@@ -1,5 +1,6 @@
 package com.taxe.game.UI;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -14,10 +15,16 @@ public class TextDisplay extends Actor {
     private Coordinate coordinate;
     private BitmapFont font;
 
-    public TextDisplay(CharSequence text, Coordinate coordinate) {
+    public TextDisplay(CharSequence text, Coordinate coordinate, Color colour, float scale) {
         this.text = text;
         this.coordinate = coordinate;
         font = new BitmapFont();
+        font.setColor(colour);
+        font.setScale(scale);
+    }
+
+    public TextDisplay(CharSequence text, Coordinate coordinate) {
+        this(text, coordinate, Color.WHITE, 1f);
     }
 
     public void setCoordinate(Coordinate coordinate) {
