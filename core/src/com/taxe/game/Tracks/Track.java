@@ -3,8 +3,8 @@ package com.taxe.game.Tracks;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.utils.Json;
-import com.taxe.game.Util.Coordinate;
 import com.taxe.game.nodes.Node;
+import com.taxe.game.util.Coordinate;
 
 import java.io.FileReader;
 import java.io.IOException;

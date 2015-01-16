@@ -11,7 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.taxe.Main;
 import com.taxe.game.UI.Button;
-import com.taxe.game.Util.Coordinate;
+import com.taxe.game.util.Coordinate;
 
 /**
  * Created by Owen on 08/11/2014.

@@ -10,9 +10,7 @@ import com.taxe.game.Commands.MoveTrainsCommand;
 import com.taxe.game.Commands.SavePathCommand;
 import com.taxe.game.Commands.SwitchPlayerCommand;
 import com.taxe.game.GameCore;
-import com.taxe.game.Player;
-import com.taxe.game.Trains.Train;
-import com.taxe.game.Util.Coordinate;
+import com.taxe.game.util.Coordinate;
 
 /**
  * Created by Owen on 09/01/2015.

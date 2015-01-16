@@ -8,8 +8,8 @@ import com.badlogic.gdx.utils.Json;
 import com.taxe.game.Commands.ContinuePathCommand;
 import com.taxe.game.Commands.UndoPathCommand;
 import com.taxe.game.GameCore;
-import com.taxe.game.Util.Coordinate;
 import com.taxe.game.inputhandling.Clickable;
+import com.taxe.game.util.Coordinate;
 
 import java.io.FileReader;
 import java.io.IOException;
