@@ -1,4 +1,4 @@
-package com.taxe.game.Nodes;
+package com.taxe.game.nodes;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
@@ -8,6 +8,9 @@ import com.badlogic.gdx.scenes.scene2d.Touchable;
  */
 public class IntermediatePoint extends Node {
 
+    /**
+     * Default constructor. Necessary for {@link #readNodes(String)}
+     */
     public IntermediatePoint() {
         super();
     }

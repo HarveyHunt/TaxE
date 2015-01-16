@@ -10,13 +10,13 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.taxe.Main;
 import com.taxe.game.Commands.ActivatePlayerCommand;
-import com.taxe.game.InputHandling.Clickable;
-import com.taxe.game.Nodes.Node;
-import com.taxe.game.Resources.Fuel;
-import com.taxe.game.Resources.Gold;
 import com.taxe.game.Trains.BasicTrain;
 import com.taxe.game.Trains.Train;
 import com.taxe.game.UI.GUI;
+import com.taxe.game.inputhandling.Clickable;
+import com.taxe.game.nodes.Node;
+import com.taxe.game.resources.Fuel;
+import com.taxe.game.resources.Gold;
 
 import java.io.IOException;
 import java.util.*;

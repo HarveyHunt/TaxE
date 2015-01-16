@@ -1,13 +1,16 @@
-package com.taxe.game.Nodes;
+package com.taxe.game.nodes;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 
 /**
- * Junction represents intersection of tracks.
+ * Junction is a node representing intersection of tracks.
  */
 public class Junction extends Node {
 
+    /**
+     * Default constructor. Necessary for {@link #readNodes(String)}
+     */
     public Junction() {
         super();
     }

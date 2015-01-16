@@ -1,9 +1,9 @@
-package com.taxe.game.Nodes;
+package com.taxe.game.nodes;
 
 /**
- * Created by vlad on 14/01/15.
+ * Specifies states of all different node types.
  */
-public class NodeStates {
+public abstract class NodeStates {
 
     public static final int ORIGINAL = 0;
     public static final int HIGHLIGHTED = 1;

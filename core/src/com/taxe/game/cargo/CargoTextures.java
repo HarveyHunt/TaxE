@@ -1,11 +1,11 @@
-package com.taxe.game.Cargo;
+package com.taxe.game.cargo;
 
 import com.badlogic.gdx.graphics.Texture;
 
 /**
- * Created by vlad on 14/01/15.
+ * Contains textures of all different cargo types.
  */
-public class CargoTextures {
+public abstract class CargoTextures {
 
     public static final Texture PENGUINS = new Texture("Cargo/penguins.png");
 

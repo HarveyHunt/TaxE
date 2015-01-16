@@ -3,8 +3,8 @@ package com.taxe.game.Tracks;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.utils.Json;
-import com.taxe.game.Nodes.Node;
 import com.taxe.game.Util.Coordinate;
+import com.taxe.game.nodes.Node;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -79,7 +79,7 @@ public class Track extends Actor {
                 if (n != null) {
                     t.add(n);
                 } else {
-                    throw new RuntimeException("Can't construct track with Nodes.id = " + id);
+                    throw new RuntimeException("Can't construct track with id = " + id);
                 }
             }
             tracks.add(new Track(t));
