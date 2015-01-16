@@ -3,9 +3,9 @@ package com.taxe.game.nodes;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.taxe.game.Player;
-import com.taxe.game.Tasks.Task;
 import com.taxe.game.cargo.Cargo;
 import com.taxe.game.resources.Influence;
+import com.taxe.game.tasks.Task;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +14,7 @@ import java.util.List;
  * City is a node that issues tasks and trades cargo.
  * Completing tasks set by cities increases player's influence and gives rewards.
  * @see com.taxe.game.resources.Influence
- * @see com.taxe.game.Tasks.Task
+ * @see com.taxe.game.tasks.Task
  * @see com.taxe.game.cargo.Cargo
  */
 public class City extends Node {
