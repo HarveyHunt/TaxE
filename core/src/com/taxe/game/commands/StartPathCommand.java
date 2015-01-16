@@ -13,10 +13,10 @@ public class StartPathCommand implements Commandable {
         if (!(target instanceof Train)) {
             throw new IllegalArgumentException("target must be an instance of Train");
         }
-        new ResetPathCommand().executeCommand(game, target);
+        ResetPathCommand.executeCommand(game, target);
         Train t = (Train) target;
         t.setState(TrainStates.SELECTED);
-        new ContinuePathCommand().executeCommand(game, t.getNode());
+        ContinuePathCommand.executeCommand(game, t.getNode());
     }
 
 }

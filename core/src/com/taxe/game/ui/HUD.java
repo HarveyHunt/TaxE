@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.taxe.game.GameCore;
 import com.taxe.game.commands.MoveTrainsCommand;
+import com.taxe.game.commands.ResetPathCommand;
 import com.taxe.game.commands.SavePathCommand;
 import com.taxe.game.commands.SwitchPlayerCommand;
 import com.taxe.game.util.Coordinate;
@@ -28,6 +29,7 @@ public class HUD extends Group {
 
     private Button endTurn;
     private Button setPath;
+    private Button cancelPath;
 
     private TextDisplay turnText;
 
@@ -49,13 +51,21 @@ public class HUD extends Group {
             }
         };
         addActor(endTurn);
-        setPath = new Button(new Texture("UI/Clock Square.png"), new Coordinate()) {
+        setPath = new Button(new Texture("UI/confirm route.png"), new Coordinate()) {
             @Override
             public void clicked(GameCore gameCore) {
                 SavePathCommand.executeCommand(gameCore, this);
             }
         };
         addActor(setPath);
+        cancelPath = new Button(new Texture("UI/cancel route.png"), new Coordinate()) {
+            @Override
+            public void clicked(GameCore gameCore) {
+                ResetPathCommand.executeCommand(gameCore, null);
+            }
+        };
+        addActor(cancelPath);
+
 
         turnText = new TextDisplay("Player 1 : Turn 1", new Coordinate(), Color.YELLOW, 1f);
         addActor(turnText);
@@ -66,11 +76,13 @@ public class HUD extends Group {
     public void lockButtons() {
         endTurn.setTouchable(Touchable.disabled);
         setPath.setTouchable(Touchable.disabled);
+        cancelPath.setTouchable(Touchable.disabled);
     }
 
     public void unlockButtons() {
         endTurn.setTouchable(Touchable.enabled);
         setPath.setTouchable(Touchable.enabled);
+        cancelPath.setTouchable(Touchable.enabled);
     }
 
     public void setHealth(int player1Health, int player2Health) {
@@ -84,7 +96,8 @@ public class HUD extends Group {
 
     public void resize() {
         endTurn.setCoordinate(new Coordinate(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() - 36.75f));
-        setPath.setCoordinate(new Coordinate(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() - 109));
+        setPath.setCoordinate(new Coordinate(Gdx.graphics.getWidth() / 2 - 76, Gdx.graphics.getHeight() - 109));
+        cancelPath.setCoordinate(new Coordinate(Gdx.graphics.getWidth() / 2 + 76, Gdx.graphics.getHeight() - 109));
         turnText.setCoordinate(new Coordinate(200, Gdx.graphics.getHeight() - 9));
     }
 

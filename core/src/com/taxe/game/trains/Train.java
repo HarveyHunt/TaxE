@@ -123,7 +123,7 @@ public abstract class Train extends Actor implements Clickable {
         if (getState() == TrainStates.ACTIVE) {
             StartPathCommand.executeCommand(game, this);
         } else if (getState() == TrainStates.SELECTED) {
-            ResetPathCommand.executeCommand(game, this);
+            ResetPathCommand.executeCommand(game, null);
         }
     }
 

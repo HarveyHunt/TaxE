@@ -19,7 +19,7 @@ public class Track extends Actor {
     // Constants for drawing
     private static final float DISTANCE_BETWEEN_SLEEPERS = 8.0f;
     private static final float PRECISION = 0.02f;
-    private static final int CURVE_SIZE = 50;
+    private static final int CURVE_SIZE = 60;
 
     private final ArrayList<Node> nodes;
     private final ArrayList<Sleeper> sleepers;
@@ -95,6 +95,13 @@ public class Track extends Actor {
         // Create a list of coordinates that plot out the arc but are not evenly spaced
         // The line is divided into 1 / precision number of segments
         float theta = Coordinate.angleBetween(cA, cB) - startAngle;
+        // Ensure that theta is an angle between -Pi and Pi
+        if (theta > Math.PI) {
+            theta -= 2 * Math.PI;
+        }
+        if (theta < -Math.PI) {
+            theta += 2 * Math.PI;
+        }
         Coordinate cC = new Coordinate(
                 cA.getX() + CURVE_SIZE * Math.abs(theta) * (float) Math.cos(startAngle),
                 cA.getY() + CURVE_SIZE * Math.abs(theta) * (float) Math.sin(startAngle));

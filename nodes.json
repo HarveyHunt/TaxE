@@ -277,7 +277,7 @@
       {"class": "com.taxe.game.nodes.IntermediatePoint", "x": 848, "y": 580, "id": "RomeJ3-1"},
       {"class": "com.taxe.game.nodes.IntermediatePoint", "x": 788, "y": 514, "id": "BarcelonaJ3-1"},
       {"class": "com.taxe.game.nodes.IntermediatePoint", "x": 1236, "y": 550, "id": "BlueRome-1"},
-      {"class": "com.taxe.game.nodes.IntermediatePoint", "x": 1146, "y": 544, "id": "BlueRome-2"},
+      {"class": "com.taxe.game.nodes.IntermediatePoint", "x": 1146, "y": 530, "id": "BlueRome-2"},
       {"class": "com.taxe.game.nodes.IntermediatePoint", "x": 1058, "y": 536, "id": "BlueRome-3"},
       {"class": "com.taxe.game.nodes.IntermediatePoint", "x": 1080, "y": 640, "id": "BucharestRome-1"},
       {"class": "com.taxe.game.nodes.IntermediatePoint", "x": 1030, "y": 580, "id": "BucharestRome-2"},
