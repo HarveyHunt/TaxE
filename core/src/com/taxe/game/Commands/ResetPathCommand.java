@@ -12,7 +12,7 @@ import com.taxe.game.Trains.TrainStates;
  */
 public class ResetPathCommand implements Commandable {
 
-    public void executeCommand(GameCore game, Object target) {
+    public static void executeCommand(GameCore game, Object target) {
         Player p = game.getActivePlayer();
         for (Train t : p.getTrains()) {
             t.setState(TrainStates.ACTIVE);

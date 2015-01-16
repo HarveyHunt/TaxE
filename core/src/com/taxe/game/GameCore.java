@@ -131,6 +131,10 @@ public class GameCore implements Screen {
         return map;
     }
 
+    public GUI getGui() {
+        return gui;
+    }
+
     public List<Player> getPlayers() {
         return players;
     }

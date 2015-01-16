@@ -16,7 +16,7 @@ import java.util.Deque;
  */
 public class MoveTrainsCommand implements Commandable {
 
-    public void executeCommand(GameCore game, Object target) {
+    public static void executeCommand(GameCore game, Object target) {
         for (Train train : game.getActivePlayer().getTrains()) {
             Deque<Node> nodes = train.getPathNodes();
             Deque<Sleeper> sleepers = train.getPathSleepers();

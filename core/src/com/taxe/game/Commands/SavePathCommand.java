@@ -16,7 +16,7 @@ import java.util.List;
  */
 public class SavePathCommand implements Commandable {
 
-    public void executeCommand(GameCore game, Object target) {
+    public static void executeCommand(GameCore game, Object target) {
         ArrayDeque<Node> nodes = new ArrayDeque<>();
         ArrayDeque<Sleeper> sleepers = new ArrayDeque<>();
         Node current = null, previous = null;

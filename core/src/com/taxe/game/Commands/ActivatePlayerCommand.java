@@ -10,7 +10,7 @@ import com.taxe.game.Trains.TrainStates;
  */
 public class ActivatePlayerCommand implements Commandable {
 
-    public void executeCommand(GameCore game, Object target) {
+    public static void executeCommand(GameCore game, Object target) {
         if (!(target instanceof Player)) {
             throw new IllegalArgumentException("target must be an instance of Player");
         }

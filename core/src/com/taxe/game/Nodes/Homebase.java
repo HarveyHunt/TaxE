@@ -46,6 +46,7 @@ public class Homebase extends Node {
     public void changeHealthBy(int delta) {
         health = Integer.max(0, Integer.min(maxHealth, health + delta));
         validateHealth();
+
     }
 
     public Train getCurrentBuild() {

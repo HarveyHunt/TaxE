@@ -7,7 +7,7 @@ import com.taxe.game.GameCore;
  */
 public class EndTurnCommand implements Commandable {
 
-    public void executeCommand(GameCore game, Object target) {
+    public static void executeCommand(GameCore game, Object target) {
         System.out.println("Time to end turn!\n");
     }
 }

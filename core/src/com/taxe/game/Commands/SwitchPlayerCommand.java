@@ -7,7 +7,7 @@ import com.taxe.game.GameCore;
  */
 public class SwitchPlayerCommand implements Commandable {
 
-    public void executeCommand(GameCore game, Object target) {
+    public static void executeCommand(GameCore game, Object target) {
 
         new ActivatePlayerCommand().executeCommand(game, game.nextActivePlayer());
         game.switchActivePlayer();

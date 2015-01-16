@@ -11,7 +11,7 @@ import com.taxe.game.Tracks.Track;
  */
 public class ContinuePathCommand implements Commandable {
 
-    public void executeCommand(GameCore game, Object target) {
+    public static void executeCommand(GameCore game, Object target) {
         if (!(target instanceof Node)) {
             throw new IllegalArgumentException("target must be an instance of Node");
         }

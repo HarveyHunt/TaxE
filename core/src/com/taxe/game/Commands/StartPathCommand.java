@@ -9,7 +9,7 @@ import com.taxe.game.Trains.TrainStates;
  */
 public class StartPathCommand implements Commandable {
 
-    public void executeCommand(GameCore game, Object target) {
+    public static void executeCommand(GameCore game, Object target) {
         if (!(target instanceof Train)) {
             throw new IllegalArgumentException("target must be an instance of Train");
         }
