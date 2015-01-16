@@ -89,24 +89,4 @@ public class Map extends Group {
         return null;
     }
 
-/*  ------ Bad code. Commented for reference when implementing scaling properly later
-    @Override
-    public void draw(Batch batch, float parentAlpha) {
-        batch.flush();
-
-        float ratio = 1410.0f / 890.0f; // Ratio of width/height --- THESE NEED REPLACING WITH TEXTURE.GETWIDTH/HEIGHT()
-
-        float width = Gdx.graphics.getWidth();
-        float height = Gdx.graphics.getHeight() - 70;
-        float scale;
-        if (width / height < ratio) { // if the screen is proportionally too tall
-            scale = width / 1410.0f;
-        } else {
-            scale = height / 890.0f;
-        }
-        applyTransform(batch, new Matrix4(new Vector3((width - 1410.0f * scale) / 2, (height - 890.0f * scale) / 2, 0), new Quaternion(), new Vector3(scale, scale, 0)));
-
-        this.drawChildren(batch, parentAlpha);
-    }
-*/
 }

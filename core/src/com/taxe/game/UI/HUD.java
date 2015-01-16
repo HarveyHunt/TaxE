@@ -45,15 +45,15 @@ public class HUD extends Group {
         endTurn = new Button(new Texture("UI/Clock Square.png"), new Coordinate()) {
             @Override
             public void clicked(GameCore game) {
-                new MoveTrainsCommand().executeCommand(game, this);
-                new SwitchPlayerCommand().executeCommand(game, this);
+                MoveTrainsCommand.executeCommand(game, this);
+                SwitchPlayerCommand.executeCommand(game, this);
             }
         };
         addActor(endTurn);
         setPath = new Button(new Texture("UI/Clock Square.png"), new Coordinate()) {
             @Override
             public void clicked(GameCore gameCore) {
-                new SavePathCommand().executeCommand(gameCore, this);
+                SavePathCommand.executeCommand(gameCore, this);
             }
         };
         addActor(setPath);

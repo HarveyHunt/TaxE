@@ -103,9 +103,9 @@ public abstract class Node extends Actor implements Clickable {
 
     public void clicked(GameCore game) {
         if (getState() == NodeStates.HIGHLIGHTED) {
-            new ContinuePathCommand().executeCommand(game, this);
+            ContinuePathCommand.executeCommand(game, this);
         } else if (getState() == NodeStates.SELECTED) {
-            new UndoPathCommand().executeCommand(game, this);
+            UndoPathCommand.executeCommand(game, this);
         }
     }
 

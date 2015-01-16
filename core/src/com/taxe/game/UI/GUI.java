@@ -23,7 +23,7 @@ public class GUI extends Group {
         infoDisplay.setTouchable(Touchable.enabled);
 
         cityMenu = new CityMenu();
-        addActor(cityMenu);
+        //addActor(cityMenu);
     }
 
     public static void drawElement(Batch batch, Texture tex, float x, float y) {
