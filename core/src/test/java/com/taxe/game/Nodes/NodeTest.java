@@ -23,14 +23,14 @@ public class NodeTest {
 
     @Before
     public void setUp() {
-        ca = new City(new Coordinate(176, 210), "ca");
-        cb = new City(new Coordinate(1140, 639), "cb");
-        cc = new City(new Coordinate(242, 706), "cc");
-        ha = new Homebase(new Coordinate(29, 536), "ha");
-        hb = new Homebase(new Coordinate(1140, 639), "cb");
-        hc = new Homebase(new Coordinate(29, 536), "ha");
-        ia = new IntermediatePoint(new Coordinate(47, 470), "ia");
-        ja = new Junction(new Coordinate(176, 210), "ja");
+//        ca = new City(new Coordinate(176, 210), "ca");
+//        cb = new City(new Coordinate(1140, 639), "cb");
+//        cc = new City(new Coordinate(242, 706), "cc");
+//        ha = new Homebase(new Coordinate(29, 536), "ha");
+//        hb = new Homebase(new Coordinate(1140, 639), "cb");
+//        hc = new Homebase(new Coordinate(29, 536), "ha");
+//        ia = new IntermediatePoint(new Coordinate(47, 470), "ia");
+//        ja = new Junction(new Coordinate(176, 210), "ja");
         nlist = new ArrayList<>();
         Collections.addAll(nlist, ca, cb, cc, ha, ia, ja);
     }
@@ -38,13 +38,13 @@ public class NodeTest {
     @Test
     public void testGetNodeWithId() throws Exception {
         // Non-existing nodes in empty and not empty lists
-        assertNull(Node.getNodeWithId("ca", new ArrayList<>()));
-        assertNull(Node.getNodeWithId("xx", nlist));
+        assertNull(Node.getNodeById("ca", new ArrayList<>()));
+        assertNull(Node.getNodeById("xx", nlist));
 
         // Existing nodes in the beginning, middle and end of the list
-        assertEquals(ca, Node.getNodeWithId("ca", nlist));
-        assertEquals(ha, Node.getNodeWithId("ha", nlist));
-        assertEquals(ja, Node.getNodeWithId("ja", nlist));
+        assertEquals(ca, Node.getNodeById("ca", nlist));
+        assertEquals(ha, Node.getNodeById("ha", nlist));
+        assertEquals(ja, Node.getNodeById("ja", nlist));
 
     }
 
