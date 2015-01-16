@@ -1,11 +1,11 @@
-package com.taxe.game.Commands;
+package com.taxe.game.commands;
 
 import com.taxe.game.GameCore;
-import com.taxe.game.Tracks.Sleeper;
-import com.taxe.game.Tracks.Track;
-import com.taxe.game.Trains.Train;
-import com.taxe.game.Trains.TrainStates;
 import com.taxe.game.nodes.Node;
+import com.taxe.game.tracks.Sleeper;
+import com.taxe.game.tracks.Track;
+import com.taxe.game.trains.Train;
+import com.taxe.game.trains.TrainStates;
 
 import java.util.ArrayDeque;
 import java.util.Collections;

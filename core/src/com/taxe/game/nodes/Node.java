@@ -5,9 +5,9 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.Json;
-import com.taxe.game.Commands.ContinuePathCommand;
-import com.taxe.game.Commands.UndoPathCommand;
 import com.taxe.game.GameCore;
+import com.taxe.game.commands.ContinuePathCommand;
+import com.taxe.game.commands.UndoPathCommand;
 import com.taxe.game.inputhandling.Clickable;
 import com.taxe.game.util.Coordinate;
 

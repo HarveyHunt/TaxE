@@ -2,10 +2,10 @@ package com.taxe.game;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Group;
-import com.taxe.game.Trains.Train;
 import com.taxe.game.nodes.Homebase;
 import com.taxe.game.resources.Fuel;
 import com.taxe.game.resources.Gold;
+import com.taxe.game.trains.Train;
 
 import java.util.ArrayList;
 

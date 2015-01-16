@@ -11,7 +11,7 @@ import java.util.Map;
  * Having more influence gives rewards and is a sure path to victory.
  */
 public class Influence {
-    private HashMap<Player, Double> influences;
+    private HashMap<Player, Float> influences;
 
     /**
      * Creates a new instance of influence resource, such that each player receives an equal initial amount of influence.
@@ -20,7 +20,7 @@ public class Influence {
     public Influence(List<Player> players) {
         this.influences = new HashMap<>();
         for (Player p : players) {
-            influences.put(p, 1.0 / players.size());
+            influences.put(p, 1f / players.size());
         }
         validateInfluence();
     }
@@ -30,16 +30,16 @@ public class Influence {
      * @param player player whose influence will be changing.
      * @param delta  by how much influence is changed
      */
-    public void changeInfluenceBy(Player player, double delta) {
+    public void changeInfluenceBy(Player player, float delta) {
         // Updating influence of the player and making sure it is in range 0..1
-        double initial = getInfluence(player);
-        double updated = (influences.size() > 1) ? Double.min(Double.max(0, initial + delta), 1) : 1;
+        float initial = getInfluence(player);
+        float updated = (influences.size() > 1) ? Float.min(Float.max(0, initial + delta), 1) : 1;
         influences.put(player, updated);
 
         // Adjust influences of all other players accordingly, such that all percentages sum up to 1
-        double oldRemaining = 1.0 - initial;
-        double newRemaining = 1.0 - updated;
-        for (Map.Entry<Player, Double> entry : influences.entrySet()) {
+        float oldRemaining = 1f - initial;
+        float newRemaining = 1f - updated;
+        for (Map.Entry<Player, Float> entry : influences.entrySet()) {
             if (entry.getKey() != player) {
                 entry.setValue(entry.getValue() / oldRemaining * newRemaining);
             }
@@ -52,7 +52,7 @@ public class Influence {
      * @param player player whose influence want to know
      * @return relative influence of a player, in range 0..1
      */
-    public double getInfluence(Player player) {
+    public float getInfluence(Player player) {
         return influences.get(player);
     }
 
@@ -61,8 +61,8 @@ public class Influence {
      * @throws AssertionError if influence of players isn't in range 0..1 or if sum of influences of all players != 1
      */
     public void validateInfluence() throws AssertionError {
-        double sum = 0;
-        for (double i: influences.values()) {
+        float sum = 0;
+        for (float i: influences.values()) {
             assert (i >= 0 && i <= 1);
             sum += i;
         }

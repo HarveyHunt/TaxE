@@ -1,4 +1,4 @@
-package com.taxe.game.UI;
+package com.taxe.game.ui;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;

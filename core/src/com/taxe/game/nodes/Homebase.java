@@ -2,12 +2,12 @@ package com.taxe.game.nodes;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
-import com.taxe.game.Trains.Train;
+import com.taxe.game.trains.Train;
 
 /**
  * Homebase is a node where player starts the game and builds trains.
  * Homebase is created with some maximum amount of health. When health reaches 0, homebase is considered to be destroyed.
- * @see com.taxe.game.Trains.Train
+ * @see com.taxe.game.trains.Train
  */
 public class Homebase extends Node {
 

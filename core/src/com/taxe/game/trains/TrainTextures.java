@@ -1,4 +1,4 @@
-package com.taxe.game.Trains;
+package com.taxe.game.trains;
 
 import com.badlogic.gdx.graphics.Texture;
 

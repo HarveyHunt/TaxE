@@ -1,4 +1,4 @@
-package com.taxe.game.Trains;
+package com.taxe.game.trains;
 
 /**
  * Created by vlad on 14/01/15.

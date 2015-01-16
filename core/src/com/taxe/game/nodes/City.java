@@ -74,7 +74,7 @@ public class City extends Node {
      * @param player player
      * @param delta change of influence
      */
-    public void changeInfluenceBy(Player player, double delta) {
+    public void changeInfluenceBy(Player player, float delta) {
         influence.changeInfluenceBy(player, delta);
     }
 

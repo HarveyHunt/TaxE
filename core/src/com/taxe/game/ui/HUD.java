@@ -1,4 +1,4 @@
-package com.taxe.game.UI;
+package com.taxe.game.ui;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -6,10 +6,10 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
-import com.taxe.game.Commands.MoveTrainsCommand;
-import com.taxe.game.Commands.SavePathCommand;
-import com.taxe.game.Commands.SwitchPlayerCommand;
 import com.taxe.game.GameCore;
+import com.taxe.game.commands.MoveTrainsCommand;
+import com.taxe.game.commands.SavePathCommand;
+import com.taxe.game.commands.SwitchPlayerCommand;
 import com.taxe.game.util.Coordinate;
 
 /**

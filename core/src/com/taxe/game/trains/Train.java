@@ -1,16 +1,16 @@
-package com.taxe.game.Trains;
+package com.taxe.game.trains;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
-import com.taxe.game.Commands.ResetPathCommand;
-import com.taxe.game.Commands.StartPathCommand;
 import com.taxe.game.GameCore;
-import com.taxe.game.Tracks.Sleeper;
 import com.taxe.game.cargo.Cargo;
+import com.taxe.game.commands.ResetPathCommand;
+import com.taxe.game.commands.StartPathCommand;
 import com.taxe.game.inputhandling.Clickable;
 import com.taxe.game.nodes.Node;
+import com.taxe.game.tracks.Sleeper;
 
 import java.util.ArrayDeque;
 import java.util.Deque;

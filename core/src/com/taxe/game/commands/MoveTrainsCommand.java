@@ -1,12 +1,12 @@
-package com.taxe.game.Commands;
+package com.taxe.game.commands;
 
 import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.actions.SequenceAction;
 import com.taxe.game.GameCore;
-import com.taxe.game.Tracks.Sleeper;
-import com.taxe.game.Trains.Train;
 import com.taxe.game.nodes.Node;
+import com.taxe.game.tracks.Sleeper;
+import com.taxe.game.trains.Train;
 
 import java.util.Deque;
 
