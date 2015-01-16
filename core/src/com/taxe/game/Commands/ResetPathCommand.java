@@ -1,11 +1,11 @@
 package com.taxe.game.Commands;
 
 import com.taxe.game.GameCore;
-import com.taxe.game.Nodes.Node;
-import com.taxe.game.Nodes.NodeStates;
 import com.taxe.game.Player;
 import com.taxe.game.Trains.Train;
 import com.taxe.game.Trains.TrainStates;
+import com.taxe.game.nodes.Node;
+import com.taxe.game.nodes.NodeStates;
 
 /**
  * Created by vlad on 11/01/15.

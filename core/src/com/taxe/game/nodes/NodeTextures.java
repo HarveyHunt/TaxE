@@ -1,9 +1,9 @@
-package com.taxe.game.Nodes;
+package com.taxe.game.nodes;
 
 import com.badlogic.gdx.graphics.Texture;
 
 /**
- * Created by vlad on 14/01/15.
+ * Specifies textures of all different node types.
  */
 public class NodeTextures {
 

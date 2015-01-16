@@ -1,10 +1,10 @@
 package com.taxe.game.Commands;
 
 import com.taxe.game.GameCore;
-import com.taxe.game.Nodes.IntermediatePoint;
-import com.taxe.game.Nodes.Node;
-import com.taxe.game.Nodes.NodeStates;
 import com.taxe.game.Tracks.Track;
+import com.taxe.game.nodes.IntermediatePoint;
+import com.taxe.game.nodes.Node;
+import com.taxe.game.nodes.NodeStates;
 
 /**
  * Created by vlad on 11/01/15.

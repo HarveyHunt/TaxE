@@ -1,4 +1,4 @@
-package com.taxe.game.Resources;
+package com.taxe.game.resources;
 
 import com.taxe.game.Player;
 import org.junit.Before;

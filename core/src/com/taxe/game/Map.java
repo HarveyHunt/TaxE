@@ -1,8 +1,8 @@
 package com.taxe.game;
 
 import com.badlogic.gdx.scenes.scene2d.Group;
-import com.taxe.game.Nodes.*;
 import com.taxe.game.Tracks.Track;
+import com.taxe.game.nodes.*;
 
 import java.io.IOException;
 import java.util.ArrayList;

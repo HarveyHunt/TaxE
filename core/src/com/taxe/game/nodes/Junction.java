@@ -1,19 +1,22 @@
-package com.taxe.game.Nodes;
+package com.taxe.game.nodes;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 
 /**
- * Intermediate points are nodes located between the end-points of tracks.
+ * Junction is a node representing intersection of tracks.
  */
-public class IntermediatePoint extends Node {
+public class Junction extends Node {
 
-    public IntermediatePoint() {
+    /**
+     * Default constructor. Necessary for {@link #readNodes(String)}
+     */
+    public Junction() {
         super();
     }
 
     public Texture getTexture() {
-        return NodeTextures.INTERMEDIATE[getState()];
+        return NodeTextures.JUNCTION[getState()];
     }
 
     public void adjustActor() {
