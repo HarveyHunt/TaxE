@@ -76,7 +76,7 @@ public class GameCore implements Screen {
                 }
             }
         });
-        new ActivatePlayerCommand().executeCommand(this, getActivePlayer());
+        ActivatePlayerCommand.executeCommand(this, getActivePlayer());
 
         scene.scale();
     }
@@ -85,7 +85,7 @@ public class GameCore implements Screen {
     @Override
     public void render(float delta) {
         //Clear screen
-        Gdx.gl.glClearColor(1, 1, 1, 1);
+        Gdx.gl.glClearColor(0.243f, 0.863f, 0.224f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         //Draw all the things!!!
         stage.act(Gdx.graphics.getDeltaTime());

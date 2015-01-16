@@ -17,9 +17,9 @@ import java.util.List;
 public class Track extends Actor {
 
     // Constants for drawing
-    private static final float DISTANCE_BETWEEN_SLEEPERS = 6.0f;
+    private static final float DISTANCE_BETWEEN_SLEEPERS = 8.0f;
     private static final float PRECISION = 0.02f;
-    private static final int CURVE_SIZE = 25;
+    private static final int CURVE_SIZE = 50;
 
     private final ArrayList<Node> nodes;
     private final ArrayList<Sleeper> sleepers;

@@ -5,7 +5,6 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.actions.SequenceAction;
 import com.taxe.game.GameCore;
 import com.taxe.game.Nodes.Node;
-import com.taxe.game.Player;
 import com.taxe.game.Tracks.Sleeper;
 import com.taxe.game.Trains.Train;
 
@@ -17,15 +16,17 @@ import java.util.Deque;
 public class MoveTrainsCommand implements Commandable {
 
     public static void executeCommand(GameCore game, Object target) {
+        ResetPathCommand.executeCommand(game, null);
+
         for (Train train : game.getActivePlayer().getTrains()) {
             Deque<Node> nodes = train.getPathNodes();
             Deque<Sleeper> sleepers = train.getPathSleepers();
             System.out.println(nodes);
+            SequenceAction seq = new SequenceAction();
+            Node n = train.getNode();
             if (nodes != null && !nodes.isEmpty()) {
-                Node n = null;
-                Sleeper s = null;
+                Sleeper s;
                 System.out.println(n);
-                SequenceAction seq = new SequenceAction();
                 for (int i = 0; i < train.getSpeed() && !nodes.isEmpty(); i++) {
                     n = nodes.pollFirst();
                     System.out.println(n);
@@ -35,10 +36,19 @@ public class MoveTrainsCommand implements Commandable {
                         System.out.println(s.getX() + ", " + s.getY());
                     } while (!s.isEnding());
                 }
-                train.addAction(seq);
-                train.setNode(n);
             }
+            Action end = new Action() {
+                @Override
+                public boolean act(float delta) {
+                    EndMovementCommand.executeCommand(game, game.getActivePlayer());
+                    return true;
+                }
+            };
+            seq.addAction(end);
+            train.addAction(seq);
+            train.setNode(n);
         }
+        game.getGui().getHUD().lockButtons();
     }
 
 }

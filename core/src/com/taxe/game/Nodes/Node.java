@@ -98,7 +98,8 @@ public abstract class Node extends Actor implements Clickable {
                 getWidth(), getHeight(),
                 getScaleX(), getScaleY(),
                 getRotation(),
-                0, 0, getTexture().getWidth(), getTexture().getHeight(), false, false);
+                0, 0, getTexture().getWidth(), getTexture().getHeight(),
+                false, false);
     }
 
     public void clicked(GameCore game) {

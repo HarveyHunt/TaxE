@@ -1,5 +1,7 @@
 package com.taxe.game;
 
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.taxe.game.Nodes.*;
 import com.taxe.game.Tracks.Track;
@@ -19,9 +21,12 @@ public class Map extends Group {
     private ArrayList<Junction> junctions;
     private ArrayList<IntermediatePoint> intermediatePoints;
     private ArrayList<Track> tracks;
-    //private Texture texture = new Texture("map-background.png");
+    private Texture texture = new Texture("Map/background 1.png");
 
     public Map(String nodesFileName, String tracksFileName) throws IOException {
+        setBounds(0f, 0f, 1410f, 890f);
+        setOrigin(0, 0);
+
         cities = new ArrayList<>();
         homebases = new ArrayList<>();
         junctions = new ArrayList<>();
@@ -87,6 +92,22 @@ public class Map extends Group {
             }
         }
         return null;
+    }
+
+    @Override
+    public void draw(Batch batch, float parentAlpha) {
+        if (isTransform()) applyTransform(batch, computeTransform());
+
+        batch.draw(
+                texture, getX() - getOriginX(), getY() - getOriginY(),
+                getOriginX(), getOriginY(),
+                getWidth(), getHeight(),
+                1, 1, 0,
+                0, 0, texture.getWidth(), texture.getHeight(),
+                false, false);
+
+        drawChildren(batch, parentAlpha);
+        if (isTransform()) resetTransform(batch);
     }
 
 }
