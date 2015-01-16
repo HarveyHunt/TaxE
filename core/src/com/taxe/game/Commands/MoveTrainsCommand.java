@@ -4,9 +4,9 @@ import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.actions.SequenceAction;
 import com.taxe.game.GameCore;
-import com.taxe.game.Nodes.Node;
 import com.taxe.game.Tracks.Sleeper;
 import com.taxe.game.Trains.Train;
+import com.taxe.game.nodes.Node;
 
 import java.util.Deque;
 
