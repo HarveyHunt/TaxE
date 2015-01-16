@@ -1,61 +1,182 @@
 [
   [
-    "H1",
-    "H1A-1",
-    "H1A-2",
-    "H1A-3",
-    "H1A-4",
-    "A"
+    "Red",
+    "RedLondon-1",
+    "RedLondon-2",
+    "London"
   ],
   [
-    "A",
-    "AE-1",
-    "AE-2",
-    "AE-3",
-    "E"
+    "London",
+    "LondonParis-1",
+    "LondonParis-2",
+    "LondonParis-3",
+    "Paris"
   ],
   [
-    "E",
-    "EG-1",
-    "EG-2",
-    "G"
+    "Paris",
+    "ParisBerlin-1",
+    "ParisBerlin-2",
+    "Berlin"
   ],
   [
-    "G",
-    "GD-1",
-    "GD-2",
-    "GD-3",
-    "D"
+    "Berlin",
+    "BerlinMadrid-1",
+    "BerlinMadrid-2",
+    "BerlinMadrid-3",
+    "Madrid"
   ],
   [
-    "D",
-    "DH2-1",
-    "DH2-2",
-    "H2"
+    "Madrid",
+    "MadridBlue-1",
+    "MadridBlue-2",
+    "MadridBlue-3",
+    "MadridBlue-4",
+    "Blue"
   ],
   [
-    "D",
-    "DL-1",
-    "DL-2",
-    "L"
+    "Blue",
+    "BlueBucharest-1",
+    "BlueBucharest-2",
+    "Bucharest"
   ],
   [
-    "G",
-    "GJ4-1",
+    "Bucharest",
+    "BucharestMilan-1",
+    "BucharestMilan-2",
+    "BucharestMilan-3",
+    "Milan"
+  ],
+  [
+    "Milan",
+    "MilanCopanhaggen-1",
+    "MilanCopanhaggen-2",
+    "Copanhaggen"
+  ],
+  [
+    "Copanhaggen",
+    "CopanhaggenPrague-1",
+    "CopanhaggenPrague-2",
+    "CopanhaggenPrague-3",
+    "Prague"
+  ],
+  [
+    "Prague",
+    "PragueRed-1",
+    "PragueRed-2",
+    "PragueRed-3",
+    "PragueRed-4",
+    "Red"
+  ],
+  [
+    "Prague",
+    "PragueJ1-1",
+    "PragueJ1-2",
+    "J1"
+  ],
+
+  [
+    "Red",
+    "RedVenice-1",
+    "RedVenice-2",
+    "RedVenice-3",
+    "Venice"
+  ],
+  [
+    "London",
+    "LondonVenice-1",
+    "LondonVenice-2",
+    "Venice"
+  ],
+  [
+    "J1",
+    "VeniceJ1-1",
+    "Venice"
+  ],
+  [
+    "J2",
+    "VeniceJ2-1",
+    "Venice"
+  ],
+  [
+    "Paris",
+    "ParisJ2-1",
+    "J2"
+  ],
+  [
+    "Barcelona",
+    "J2Barcelona-1",
+    "J2"
+  ],
+  [
+    "Berlin",
+    "BerlinBarcelona-1",
+    "BerlinBarcelona-2",
+    "BerlinBarcelona-3",
+    "BerlinBarcelona-4",
+    "Barcelona"
+  ],
+  [
+    "J4",
+    "J4Barcelona-1",
+    "J4Barcelona-2",
+    "Barcelona"
+  ],
+  [
+    "J1",
+    "J1Barcelona-1",
+    "J1Barcelona-2",
+    "Barcelona"
+  ],
+  [
+    "J3",
+    "BarcelonaJ3-1",
+    "Barcelona"
+  ],
+  [
+    "Copanhaggen",
+    "CoppenhaggenBarcelona-1",
+    "CoppenhaggenBarcelona-2",
+    "CoppenhaggenBarcelona-3",
+    "CoppenhaggenBarcelona-4",
+    "Barcelona"
+  ],
+  [
+    "Barcelona",
+    "BarcelonaJ3-1",
+    "J3"
+  ],
+  [
+    "Rome",
+    "RomeJ3-1",
+    "J3"
+  ],
+  [
+    "Milan",
+    "MilanJ3-1",
+    "J3"
+  ],
+  [
+    "Bucharest",
+    "BucharestRome-1",
+    "BucharestRome-2",
+    "Rome"
+  ],
+  [
+    "Rome",
+    "J4Rome-1",
     "J4"
   ],
   [
-    "E",
-    "EH-1",
-    "EH-2",
-    "EH-3",
-    "EH-4",
-    "H"
+    "Madrid",
+    "MadridJ4-1",
+    "MadridJ4-2",
+    "J4"
   ],
   [
-    "A",
-    "AJ1-1",
-    "AJ1-2",
-    "J1"
-  ],
+    "Blue",
+    "BlueRome-1",
+    "BlueRome-2",
+    "BlueRome-3",
+    "Rome"
+  ]
 ]

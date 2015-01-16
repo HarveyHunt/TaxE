@@ -29,9 +29,15 @@ public class UndoPathCommand implements Commandable {
             }
         }
 
-        // Including selected node in current selected path
-        new ContinuePathCommand().executeCommand(game, selected);
+        // Neighbours of the current selected node become available for path selection
+        for (Track t : game.getMap().getTracksWith(selected)) {
+            for (Node n : t.getNodes())
+                if (n.getState() == NodeStates.ORIGINAL)
+                    n.setState(NodeStates.HIGHLIGHTED);
+        }
 
+        // Adding current selected node to path
+        selected.setState(NodeStates.SELECTED);
 
     }
 }
