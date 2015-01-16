@@ -23,7 +23,7 @@ public class NodeTextures {
             new Texture("Nodes/junction-selected.png")};
 
     public static final Texture[] INTERMEDIATE = {
-            new Texture("Nodes/intermediate.png"),
+            new Texture("Nodes/intermediate node.png"),
             new Texture("Nodes/intermediate-highlighted.png"),
             new Texture("Nodes/intermediate-selected.png")};
 }

@@ -33,15 +33,15 @@ public class HUD extends Group {
 
     private TextDisplay turnText;
 
-    public HUD(int player1Health, int player2Health) {
+    public HUD(GameCore game) {
         texHUD = new Texture("UI/HUD.png");
         texHealthbarGreen = new Texture("UI/Healthbar green.png");
         texHealthbarRed = new Texture("UI/Healthbar Red.png");
         texPlayer1Icon = new Texture("UI/Player1 Icon.png");
         texPlayer2Icon = new Texture("UI/Player2 Icon.png");
 
-        this.player1Health = player1Health;
-        this.player2Health = player2Health;
+        this.player1Health = game.getPlayers().get(0).getHomebase().getHealth();
+        this.player2Health = game.getPlayers().get(1).getHomebase().getHealth();
 
         endTurn = new Button(new Texture("UI/Clock Square.png"), new Coordinate()) {
             @Override
@@ -71,6 +71,7 @@ public class HUD extends Group {
         addActor(turnText);
 
         resize();
+        hidePathButtons();
     }
 
     public void lockButtons() {
@@ -83,6 +84,16 @@ public class HUD extends Group {
         endTurn.setTouchable(Touchable.enabled);
         setPath.setTouchable(Touchable.enabled);
         cancelPath.setTouchable(Touchable.enabled);
+    }
+
+    public void showPathButtons() {
+        setPath.setVisible(true);
+        cancelPath.setVisible(true);
+    }
+
+    public void hidePathButtons() {
+        setPath.setVisible(false);
+        cancelPath.setVisible(false);
     }
 
     public void setHealth(int player1Health, int player2Health) {
@@ -124,13 +135,13 @@ public class HUD extends Group {
         GUI.drawElement( // Player 1 HP
                 batch, texHealthbarGreen,
                 60, Gdx.graphics.getHeight() - 30 - texHealthbarGreen.getHeight(),
-                (Gdx.graphics.getWidth() / 2 - 100) * 0.01f * player1Health, texHealthbarGreen.getHeight()
+                (Gdx.graphics.getWidth() / 2 - 100) * 0.01f * player1Health / 5, texHealthbarGreen.getHeight()
         );
 
-        GUI.drawElement( // Player 2 HP Red
+        GUI.drawElement( // Player 2 HP
                 batch, texHealthbarGreen,
-                Gdx.graphics.getWidth() - 60 - ((Gdx.graphics.getWidth() / 2 - 100) * 0.01f * player2Health), Gdx.graphics.getHeight() - 30 - texHealthbarGreen.getHeight(),
-                (Gdx.graphics.getWidth() / 2 - 100) * 0.01f * player2Health, texHealthbarGreen.getHeight(),
+                Gdx.graphics.getWidth() - 60 - ((Gdx.graphics.getWidth() / 2 - 100) * 0.01f * player2Health / 5), Gdx.graphics.getHeight() - 30 - texHealthbarGreen.getHeight(),
+                (Gdx.graphics.getWidth() / 2 - 100) * 0.01f * player2Health / 5, texHealthbarGreen.getHeight(),
                 true, false
         );
 

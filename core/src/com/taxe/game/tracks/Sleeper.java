@@ -16,7 +16,6 @@ public abstract class Sleeper extends Actor {
         this.ending = ending;
         setOrigin(getTexture().getWidth() / 2f, getTexture().getHeight() / 2f);
         setSize(getTexture().getWidth(), getTexture().getHeight());
-        setScale(0.5f);
     }
 
     @Override

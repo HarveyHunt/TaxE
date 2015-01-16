@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
+import com.taxe.game.GameCore;
 
 /**
  * Created by Owen on 08/01/2015.
@@ -14,8 +15,8 @@ public class GUI extends Group {
     private InfoDisplay infoDisplay;
     private CityMenu cityMenu;
 
-    public GUI() {// Add Other Stuffs
-        hud = new HUD(50, 50);
+    public GUI(GameCore game) {// Add Other Stuffs
+        hud = new HUD(game);
         addActor(hud);
 
         infoDisplay = new InfoDisplay();

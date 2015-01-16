@@ -2,11 +2,17 @@ package com.taxe.game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Group;
+import javafx.scene.SubScene;
 
 /**
  * Created by Owen on 14/01/2015.
  */
 public class Scene extends Group {
+
+    public Scene() {
+        // The offset for the drawing of the scene
+        setOrigin(0f, -30f);
+    }
 
     public void scale() {
         float ratio = 1410.0f / 890.0f; // Ratio of width/height --- THESE NEED REPLACING WITH TEXTURE.GETWIDTH/HEIGHT()
@@ -20,7 +26,7 @@ public class Scene extends Group {
             scale = height / 890f;
         }
         setScale(scale);
-        setPosition(Gdx.graphics.getWidth() / 2 - (1410f * scale) / 2, Gdx.graphics.getHeight() / 2 - (890f * scale) / 2 - 70);
+        setPosition(Gdx.graphics.getWidth() / 2 - (1410f * scale) / 2 + getOriginX(), Gdx.graphics.getHeight() / 2 - (890f * scale) / 2 - 70 + getOriginY());
     }
 
 }

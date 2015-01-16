@@ -21,7 +21,7 @@ public class Map extends Group {
     private ArrayList<Junction> junctions;
     private ArrayList<IntermediatePoint> intermediatePoints;
     private ArrayList<Track> tracks;
-    private Texture texture = new Texture("Map/Background 2.png");
+    private Texture texture = new Texture("Map/background 3.png");
 
     public Map(String nodesFileName, String tracksFileName) throws IOException {
         setBounds(0f, 0f, 1410f, 890f);

@@ -139,7 +139,7 @@ public class Track extends Actor {
                 Coordinate c = Coordinate.coordinateAlongLine(c1, c2, percentage);
                 s = new BasicSleeper(false);
                 s.setPosition(c.getX(), c.getY());
-                s.setRotation((float) Math.toDegrees(angle));
+                s.setRotation((float) Math.toDegrees(angle) + 90);
                 sleeperArc.add(s);
             }
         }

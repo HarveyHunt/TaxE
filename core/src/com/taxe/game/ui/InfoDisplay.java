@@ -33,7 +33,6 @@ public class InfoDisplay extends Group {
                 maximised = false;
                 this.setVisible(false);
                 maximise.setVisible(true);
-                maximise.setBounds(30, Gdx.graphics.getHeight() - topMin.getHeight() - 110, 228, 116 / 3);
             }
         };
         addActor(minimise);
@@ -45,7 +44,6 @@ public class InfoDisplay extends Group {
                 maximised = true;
                 this.setVisible(false);
                 minimise.setVisible(true);
-                minimise.setBounds(30 + background.getWidth() - 126, Gdx.graphics.getHeight() - background.getHeight() - 135, 126, 116 / 3);
             }
         };
         addActor(maximise);

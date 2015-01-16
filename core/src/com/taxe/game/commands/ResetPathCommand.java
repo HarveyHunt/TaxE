@@ -21,6 +21,8 @@ public class ResetPathCommand implements Commandable {
             n.setState(NodeStates.ORIGINAL);
         }
         game.getSelectedPath().clear();
+
+        game.getGui().getHUD().hidePathButtons();
     }
 
 }

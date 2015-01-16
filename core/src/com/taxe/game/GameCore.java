@@ -55,7 +55,6 @@ public class GameCore implements Screen {
         // Setting up players and their trains
         Player p1 = new Player(map.getHomebases().get(0), new ArrayList<Train>(), new Gold(500), new Fuel(10, 0));
         Player p2 = new Player(map.getHomebases().get(1), new ArrayList<Train>(), new Gold(500), new Fuel(10, 0));
-        //p1.addTrain(new BasicTrain(p1.getHomebase()));
         p1.addTrain(new BasicTrain(map.getJunctions().get(0)));
         p2.addTrain(new BasicTrain(p2.getHomebase()));
         players = new ArrayList<>();
@@ -65,7 +64,7 @@ public class GameCore implements Screen {
         }
         activePlayer = 0;
 
-        gui = new GUI();
+        gui = new GUI(this);
         stage.addActor(gui);
         stage.addListener(new ClickListener() {
             @Override
@@ -85,7 +84,7 @@ public class GameCore implements Screen {
     @Override
     public void render(float delta) {
         //Clear screen
-        Gdx.gl.glClearColor(0.243f, 0.863f, 0.224f, 1);
+        Gdx.gl.glClearColor(1f, 0.976f, 0.690f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         //Draw all the things!!!
         stage.act(Gdx.graphics.getDeltaTime());

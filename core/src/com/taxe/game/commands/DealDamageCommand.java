@@ -12,10 +12,7 @@ public class DealDamageCommand implements Commandable {
         if (!(target instanceof Player)) {
             throw new IllegalArgumentException("target must be an instance of Node");
         }
-        if (target instanceof Player) {
-            ((Player) target).getHomebase().changeHealthBy(-10);
-        }
-
+        ((Player) target).getHomebase().changeHealthBy(-100);
         // Update the health values displayed in the HUD
         game.getGui().getHUD().setHealth(
                 game.getMap().getHomebases().get(0).getHealth(),  // player 1
