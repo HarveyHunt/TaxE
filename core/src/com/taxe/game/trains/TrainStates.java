@@ -1,7 +1,7 @@
 package com.taxe.game.trains;
 
 /**
- * Created by vlad on 14/01/15.
+ * Specifies states of all different train types.
  */
 public abstract class TrainStates {
 

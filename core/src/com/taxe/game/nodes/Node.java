@@ -1,5 +1,7 @@
 package com.taxe.game.nodes;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -11,7 +13,6 @@ import com.taxe.game.commands.UndoPathCommand;
 import com.taxe.game.inputhandling.Clickable;
 import com.taxe.game.util.Coordinate;
 
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
@@ -48,9 +49,8 @@ public abstract class Node extends Actor implements Clickable {
      */
     public static List<Node> readNodes(String fileName) throws IOException, RuntimeException {
         Json json = new Json();
-        FileReader f = new FileReader(fileName);
+        FileHandle f = Gdx.files.classpath(fileName);
         Node[] nodes = json.fromJson(Node[].class, f);
-        f.close();
         for (Node n : nodes) {
             for (Node t: nodes)
                 if (t != n && t.equals(n))
@@ -125,13 +125,13 @@ public abstract class Node extends Actor implements Clickable {
     }
 
     /**
-     * Returns texture representing cargo type.
-     * @return texture of cargo
+     * Returns texture representing node type at the current state.
+     * @return texture of node.
      */
     public abstract Texture getTexture();
 
     /**
-     * Adjust actor-properties of a node following changes in state.
+     * Adjust actor-properties of a node. This function is called internally following the change of state.
      */
     protected abstract void adjustActor();
 

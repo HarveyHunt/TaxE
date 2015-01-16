@@ -1,6 +1,7 @@
 package com.taxe.game.commands;
 
 import com.taxe.game.GameCore;
+import com.taxe.game.nodes.IntermediatePoint;
 import com.taxe.game.trains.Train;
 import com.taxe.game.trains.TrainStates;
 
@@ -16,9 +17,10 @@ public class StartPathCommand implements Commandable {
         ResetPathCommand.executeCommand(game, target);
         Train t = (Train) target;
         t.setState(TrainStates.SELECTED);
-        ContinuePathCommand.executeCommand(game, t.getNode());
-
-        game.getGui().getHUD().showPathButtons();
+        if (! (t.getNode() instanceof IntermediatePoint)) {
+            ContinuePathCommand.executeCommand(game, t.getNode());
+            game.getGui().getHUD().showPathButtons();
+        }
     }
 
 }

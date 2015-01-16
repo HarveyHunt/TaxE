@@ -3,7 +3,7 @@ package com.taxe.game.trains;
 import com.badlogic.gdx.graphics.Texture;
 
 /**
- * Created by vlad on 14/01/15.
+ * Specifies textures of all different train types.
  */
 public class TrainTextures {
 

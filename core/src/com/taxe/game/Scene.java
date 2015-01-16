@@ -2,7 +2,6 @@ package com.taxe.game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Group;
-import javafx.scene.SubScene;
 
 /**
  * Created by Owen on 14/01/2015.

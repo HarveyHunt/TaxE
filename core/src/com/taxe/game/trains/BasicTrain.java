@@ -5,12 +5,16 @@ import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.taxe.game.nodes.Node;
 
 /**
- * Created by vlad on 10/01/15.
+ * Class representing a basic train. A very simple train.
  */
 public class BasicTrain extends Train {
 
     public BasicTrain(Node currentNode) {
-        super(4, 1, 1, "Basic trains", currentNode);
+        super(4, 1, 1, currentNode);
+    }
+
+    public String getId() {
+        return "Basic train";
     }
 
     public Texture getTexture() {

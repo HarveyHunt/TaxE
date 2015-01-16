@@ -16,11 +16,13 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 
 /**
- * Created by vlad on 10/01/15.
+ * Base-class for representing trains in the game. Different types of trains should be implemented by extending this class.
+ * Each train has a certain speed, fuel cost, and cargo capacity and each train type has a unique id. Depending on the state of a train,
+ * train has different texture and player has different interactions available for it. States of all train are stored in
+ * {@link com.taxe.game.trains.TrainStates} and textures are stored in {@link com.taxe.game.trains.TrainTextures}.
  */
 public abstract class Train extends Actor implements Clickable {
 
-    private final String id;
     private int speed;
     private int cargoCap;
     private int fuelCost;
@@ -31,11 +33,17 @@ public abstract class Train extends Actor implements Clickable {
 
     private int state;
 
-    public Train(int speed, int cargoCap, int fuelCost, String id, Node node) {
+    /**
+     * Creates a new train at the specified node, with given speed, cargo capacity and fuel cost.
+     * @param speed train speed
+     * @param cargoCap cargo capacity
+     * @param fuelCost fuel cost
+     * @param node starting node
+     */
+    public Train(int speed, int cargoCap, int fuelCost, Node node) {
         this.speed = speed;
         this.cargoCap = cargoCap;
         this.fuelCost = fuelCost;
-        this.id = id;
         this.cargo = null;
         this.pathNodes = new ArrayDeque<>();
         this.pathSleepers = new ArrayDeque<>();
@@ -44,59 +52,117 @@ public abstract class Train extends Actor implements Clickable {
         this.setState(TrainStates.ACTIVE);
     }
 
+    /**
+     * Returns speed of a train.
+     * @return speed of a train.
+     */
     public int getSpeed() {
         return speed;
     }
 
+    /**
+     * Returns fuel cost of a train.
+     * @return fuel cost of a train.
+     */
     public int getFuelCost() {
         return fuelCost;
     }
 
-    public String getId() {
-        return id;
-    }
+    /**
+     * Returns id representing train type.
+     * @return id of a train.
+     */
+    public abstract String getId();
 
+    /**
+     * Returns cargo capacity of a train.
+     * @return cargo capacity of a train.
+     */
     public int getCargoCap() {
         return cargoCap;
     }
 
+    /**
+     * Returns cargo the train is currently holding.
+     * @return cargo the train is holding.
+     */
     public Cargo getCargo() {
         return cargo;
     }
 
+    /**
+     * Loads the cargo onto the train
+     * @param cargo cargo to be loaded onto the train
+     */
     public void setCargo(Cargo cargo) {
         this.cargo = cargo;
     }
 
+    /**
+     * Returns a deque-view of nodes on the current train path. Modifying the returned deque will result in modifying trains path.
+     * @return deque of nodes of the current train path.
+     */
     public Deque<Node> getPathNodes() {
         return pathNodes;
     }
 
+    /**
+     * Returns a deque-view of sleepers on the current train path. Modifying the returned deque will result in modifying trains path.
+     * @return deque of sleepers of the current train path.
+     */
     public Deque<Sleeper> getPathSleepers() {
         return pathSleepers;
     }
 
+    /**
+     * Sets the train movement path. List of sleepers must correspond to the path going through specified nodes.
+     * @param nodes nodes on the path
+     * @param sleepers sleepers on the path
+     */
     public void setPath(Deque<Node> nodes, Deque<Sleeper> sleepers) {
         this.pathNodes = new ArrayDeque<>(nodes);
         this.pathSleepers = new ArrayDeque<>(sleepers);
     }
 
+    /**
+     * Returns node where the train is located now
+     * @return node where train is now
+     */
     public Node getNode() {
         return node;
     }
 
+    /**
+     * Sets the current node of the train to the given
+     * @param node new location of the train
+     */
     public void setNode(Node node) {
         this.node = node;
     }
 
+    /**
+     * Returns texture representing train type at the current state.
+     * @return texture of train.
+     */
     public abstract Texture getTexture();
 
+    /**
+     * Adjust actor-properties of a train. This function is called internally following the change of state.
+     */
     public abstract void adjustActor();
 
+    /**
+     * Returns current state of a train.
+     * @return state of a train.
+     */
     public int getState() {
         return state;
     }
 
+    /**
+     * Updates the state of a train.
+     * @param state new state
+     */
     public void setState(int state) {
         this.state = state;
         adjustActor();

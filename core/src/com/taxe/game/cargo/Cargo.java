@@ -57,7 +57,6 @@ public abstract class Cargo extends Actor {
 
     /**
      * Checks if quantity of cargo satisfies constraints.
-     *
      * @throws AssertionError if quantity < 0
      */
     private void validateQuantity() throws AssertionError {

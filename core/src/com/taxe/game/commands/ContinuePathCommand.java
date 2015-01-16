@@ -31,8 +31,13 @@ public class ContinuePathCommand implements Commandable {
 
         // Neighbours of the current selected node become available for path selection
         for (Track t : game.getMap().getTracksWith(current)) {
-            for (Node n : t.getNodes())
-                n.setState(NodeStates.HIGHLIGHTED);
+            boolean alreadySelected = false;
+            for (Node n: t.getNodes())
+                alreadySelected |= (n.getState() == NodeStates.SELECTED);
+            if (!alreadySelected) {
+                for (Node n : t.getNodes())
+                    n.setState(NodeStates.HIGHLIGHTED);
+            }
         }
 
         // Track between previous and current selected nodes gets marked as SELECTED

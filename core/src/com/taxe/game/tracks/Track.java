@@ -1,12 +1,13 @@
 package com.taxe.game.tracks;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.utils.Json;
 import com.taxe.game.nodes.Node;
 import com.taxe.game.util.Coordinate;
 
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -67,9 +68,8 @@ public class Track extends Actor {
 
     public static List<Track> readTracks(String fileName, ArrayList<Node> nodes) throws IOException {
         Json json = new Json();
-        FileReader f = new FileReader(fileName);
+        FileHandle f = Gdx.files.classpath(fileName);
         String[][] trackIds = json.fromJson(String[][].class, f);
-        f.close();
 
         ArrayList<Track> tracks = new ArrayList<>();
         for (String[] ids : trackIds) {
