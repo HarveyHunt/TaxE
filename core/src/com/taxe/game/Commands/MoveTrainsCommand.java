@@ -31,7 +31,7 @@ public class MoveTrainsCommand implements Commandable {
                     System.out.println(n);
                     do {
                         s = sleepers.removeFirst();
-                        seq.addAction(Actions.moveTo(s.getX(), s.getY(), 0.1f));
+                        seq.addAction(Actions.moveTo(s.getX(), s.getY(), 0.05f));
                         System.out.println(s.getX() + ", " + s.getY());
                     } while (!s.isEnding());
                 }
