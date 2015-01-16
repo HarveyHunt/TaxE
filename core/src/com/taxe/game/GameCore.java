@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
+import com.taxe.Main;
 import com.taxe.game.Commands.ActivatePlayerCommand;
 import com.taxe.game.InputHandling.Clickable;
 import com.taxe.game.Nodes.Node;
@@ -25,6 +26,7 @@ import java.util.*;
  */
 public class GameCore implements Screen {
 
+    private Main main;
     private Stage stage;
     private GUI gui;
     private ArrayList<Player> players;
@@ -33,7 +35,9 @@ public class GameCore implements Screen {
     private Scene scene;
     private ArrayDeque<Node> selectedPath = new ArrayDeque<>();
 
-    public GameCore() {
+    public GameCore(Main main) {
+        this.main = main;
+
         // Set up the game
         stage = new Stage(new ScreenViewport());
         Gdx.input.setInputProcessor(stage);
@@ -79,20 +83,6 @@ public class GameCore implements Screen {
 
     @Override
     public void render(float delta) {
-        // delta is the elapsed time in milliseconds
-        handleInput();
-        update(delta);
-        draw();
-    }
-
-    private void handleInput() {
-
-    }
-
-    private void update(float delta) {
-    }
-
-    private void draw() {
         //Clear screen
         Gdx.gl.glClearColor(1, 1, 1, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -103,7 +93,7 @@ public class GameCore implements Screen {
 
     @Override
     public void show() {
-
+        Gdx.input.setInputProcessor(stage);
     }
 
     @Override

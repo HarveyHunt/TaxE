@@ -9,6 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.taxe.game.GameCore;
 import com.taxe.game.InputHandling.Clickable;
 import com.taxe.game.Util.Coordinate;
+import com.taxe.menu.MenuScreen;
 
 /**
  * Created by Owen on 09/01/2015.
@@ -16,14 +17,13 @@ import com.taxe.game.Util.Coordinate;
 public class Button extends Actor implements Clickable {
 
     private Texture texture;
-    private Coordinate coordinate;
     private int state; // 0 idle; 1 hover; 2 pressed
 
     public Button(Texture texture, Coordinate coordinate) {
         this.texture = texture;
         state = 0;
-
         setTouchable(Touchable.enabled);
+        setOrigin(texture.getWidth() / 2, texture.getHeight() / 6);
         setCoordinate(coordinate);
 
         addListener(new ClickListener() {
@@ -59,23 +59,32 @@ public class Button extends Actor implements Clickable {
     }
 
     public void clicked(GameCore gameCore) {
-        //bugger all happens
+
+    }
+
+    public void clicked() { // This is used in the menu class when we don't want to pass an instance of GameCore
+
     }
 
     public void setCoordinate(Coordinate coordinate) {
-        this.coordinate = coordinate;
-        setBounds(
-                (float) coordinate.getX() - texture.getWidth() / 2, (float) coordinate.getY() - texture.getHeight() / 6,
-                texture.getWidth(), texture.getHeight() / 3);
+        setPosition(coordinate.getX(), coordinate.getY());
+        setSize(texture.getWidth(), texture.getHeight() / 3);
     }
 
+    @Override
+    public Actor hit(float x, float y, boolean touchable) {
+        if (touchable && this.getTouchable() != Touchable.enabled) return null;
+        return x >= -getOriginX() && x < getWidth() - getOriginX() && y >= -getOriginY() && y < getHeight() - getOriginY() ? this : null;
+    }
+
+    @Override
     public void draw(Batch batch, float parentAlpha) {
         if (isVisible()) {
             batch.draw(
-                    texture, (float) coordinate.getX() - texture.getWidth() / 2, (float) coordinate.getY() - texture.getHeight() / 6,
-                    0, 0, texture.getWidth(), texture.getHeight() / 3,
+                    texture, (int) (getX() - getOriginX()), (int) (getY() - getOriginY()),
+                    getOriginX(), getOriginY(), getWidth(), getHeight(),
                     1, 1, 0,
-                    0, (texture.getHeight() / 3) * state, texture.getWidth(), texture.getHeight() / 3,
+                    0, (int) (getHeight() * state), (int) getWidth(), (int) getHeight(),
                     false, false);
         }
     }

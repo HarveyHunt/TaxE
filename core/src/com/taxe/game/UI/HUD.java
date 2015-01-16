@@ -52,7 +52,7 @@ public class HUD extends Group {
         setPath = new Button(new Texture("UI/Clock Square.png"), new Coordinate()) {
             @Override
             public void clicked(GameCore gameCore) {
-                new SavePathCommand().executeCommand(gameCore, this); // CHANGE THIS COMMAND HERE
+                new SavePathCommand().executeCommand(gameCore, this);
             }
         };
         addActor(setPath);
