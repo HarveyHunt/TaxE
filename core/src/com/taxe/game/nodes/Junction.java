@@ -26,7 +26,4 @@ public class Junction extends Node {
         setTouchable(Touchable.enabled);
     }
 
-    public void validate() throws RuntimeException {
-    }
-
 }
