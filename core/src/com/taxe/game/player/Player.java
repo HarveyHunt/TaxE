@@ -1,4 +1,4 @@
-package com.taxe.game;
+package com.taxe.game.player;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Group;
@@ -13,6 +13,10 @@ import java.util.List;
 /**
  * Represents players in the game. Players have their homebase, trains, gold and fuel. Players build trains at their
  * homebase. Building train costs fuel and gold.
+ * @see com.taxe.game.trains
+ * @see com.taxe.game.resources.Gold
+ * @see com.taxe.game.resources.Fuel
+ * @see com.taxe.game.nodes.Homebase
  */
 public class Player extends Group {
 

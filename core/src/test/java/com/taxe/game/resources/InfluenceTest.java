@@ -1,6 +1,6 @@
 package com.taxe.game.resources;
 
-import com.taxe.game.Player;
+import com.taxe.game.player.Player;
 import org.junit.Before;
 import org.junit.Test;
 

@@ -1,7 +1,7 @@
 package com.taxe.game.commands;
 
 import com.taxe.game.GameCore;
-import com.taxe.game.Player;
+import com.taxe.game.player.Player;
 import com.taxe.game.nodes.Node;
 import com.taxe.game.nodes.NodeStates;
 import com.taxe.game.trains.Train;

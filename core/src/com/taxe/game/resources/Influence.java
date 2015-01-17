@@ -1,6 +1,6 @@
 package com.taxe.game.resources;
 
-import com.taxe.game.Player;
+import com.taxe.game.player.Player;
 
 import java.util.HashMap;
 import java.util.List;

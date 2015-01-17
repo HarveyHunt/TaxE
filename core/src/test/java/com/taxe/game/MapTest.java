@@ -1,6 +1,7 @@
 package com.taxe.game;
 
 import com.taxe.GdxTestRunner;
+import com.taxe.game.map.Map;
 import com.taxe.game.nodes.City;
 import com.taxe.game.nodes.Homebase;
 import com.taxe.game.nodes.Node;
@@ -9,7 +10,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.*;

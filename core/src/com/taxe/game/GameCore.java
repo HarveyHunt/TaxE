@@ -12,6 +12,7 @@ import com.taxe.Main;
 import com.taxe.game.commands.Commands;
 import com.taxe.game.inputhandling.Clickable;
 import com.taxe.game.nodes.Node;
+import com.taxe.game.player.Player;
 import com.taxe.game.resources.Fuel;
 import com.taxe.game.resources.Gold;
 import com.taxe.game.trains.BasicTrain;
@@ -33,7 +34,7 @@ public class GameCore implements Screen {
     private GUI gui;
     private ArrayList<Player> players;
     private int activePlayer;
-    private Map map;
+    private com.taxe.game.map.Map map;
     private Scene scene;
     private ArrayDeque<Node> selectedPath = new ArrayDeque<>();
 
@@ -49,7 +50,7 @@ public class GameCore implements Screen {
         stage.addActor(scene);
 
         try {
-            map = new Map("nodes.json", "tracks.json");
+            map = new com.taxe.game.map.Map("nodes.json", "tracks.json");
         } catch (IOException e) {
             System.out.println("Something went wrong :(");
         }
@@ -133,7 +134,7 @@ public class GameCore implements Screen {
         stage.dispose();
     }
 
-    public Map getMap() {
+    public com.taxe.game.map.Map getMap() {
         return map;
     }
 
