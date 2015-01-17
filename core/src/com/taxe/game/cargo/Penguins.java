@@ -8,15 +8,11 @@ import com.badlogic.gdx.graphics.Texture;
 public class Penguins extends Cargo {
 
     public Penguins(int quantity) {
-        super(quantity);
+        super(quantity, "Penguins");
     }
 
     public Texture getTexture() {
         return CargoTextures.PENGUINS;
-    }
-
-    public String getId() {
-        return "Penguins";
     }
 
 }

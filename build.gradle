@@ -49,7 +49,6 @@ project(":core") {
         compile 'junit:junit:4.+'
         compile "org.mockito:mockito-all:1.9.5"
         compile "com.badlogicgames.gdx:gdx-backend-headless:$gdxVersion"
-
     }
 }
 

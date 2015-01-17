@@ -45,9 +45,6 @@ public class City extends Node {
         return NodeTextures.CITY[getState()];
     }
 
-    public void validate() throws RuntimeException {
-    }
-
     /**
      * Returns list of tasks city is holding.
      *
