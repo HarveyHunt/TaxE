@@ -7,10 +7,7 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.taxe.game.GameCore;
-import com.taxe.game.commands.MoveTrainsCommand;
-import com.taxe.game.commands.ResetPathCommand;
-import com.taxe.game.commands.SavePathCommand;
-import com.taxe.game.commands.SwitchPlayerCommand;
+import com.taxe.game.commands.*;
 import com.taxe.game.util.Coordinate;
 
 /**
@@ -46,22 +43,22 @@ public class HUD extends Group {
         endTurn = new Button(new Texture("UI/Clock Square.png"), new Coordinate()) {
             @Override
             public void clicked(GameCore game) {
-                MoveTrainsCommand.executeCommand(game, this);
-                SwitchPlayerCommand.executeCommand(game, this);
+                Commands.moveTrainsCommand.executeCommand(game, this);
+                Commands.switchPlayerCommand.executeCommand(game, this);
             }
         };
         addActor(endTurn);
         setPath = new Button(new Texture("UI/confirm route.png"), new Coordinate()) {
             @Override
             public void clicked(GameCore gameCore) {
-                SavePathCommand.executeCommand(gameCore, this);
+                Commands.savePathCommand.executeCommand(gameCore, this);
             }
         };
         addActor(setPath);
         cancelPath = new Button(new Texture("UI/cancel route.png"), new Coordinate()) {
             @Override
             public void clicked(GameCore gameCore) {
-                ResetPathCommand.executeCommand(gameCore, null);
+                Commands.resetPathCommand.executeCommand(gameCore, null);
             }
         };
         addActor(cancelPath);

@@ -15,8 +15,8 @@ import java.util.Deque;
  */
 public class MoveTrainsCommand implements Commandable {
 
-    public static void executeCommand(GameCore game, Object target) {
-        ResetPathCommand.executeCommand(game, null);
+    public void executeCommand(GameCore game, Object target) {
+        Commands.resetPathCommand.executeCommand(game, null);
 
         for (Train train : game.getActivePlayer().getTrains()) {
             Deque<Node> nodes = train.getPathNodes();
@@ -40,7 +40,7 @@ public class MoveTrainsCommand implements Commandable {
             Action end = new Action() {
                 @Override
                 public boolean act(float delta) {
-                    EndMovementCommand.executeCommand(game, game.getActivePlayer());
+                    Commands.endMovementCommand.executeCommand(game, game.getActivePlayer());
                     return true;
                 }
             };

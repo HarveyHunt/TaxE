@@ -6,6 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.taxe.game.GameCore;
 import com.taxe.game.cargo.Cargo;
+import com.taxe.game.commands.Commands;
 import com.taxe.game.commands.ResetPathCommand;
 import com.taxe.game.commands.StartPathCommand;
 import com.taxe.game.inputhandling.Clickable;
@@ -187,9 +188,9 @@ public abstract class Train extends Actor implements Clickable {
 
     public void clicked(GameCore game) {
         if (getState() == TrainStates.ACTIVE) {
-            StartPathCommand.executeCommand(game, this);
+            Commands.startPathCommand.executeCommand(game, this);
         } else if (getState() == TrainStates.SELECTED) {
-            ResetPathCommand.executeCommand(game, null);
+            Commands.resetPathCommand.executeCommand(game, null);
         }
     }
 

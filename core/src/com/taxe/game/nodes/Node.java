@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.Json;
 import com.taxe.game.GameCore;
+import com.taxe.game.commands.Commands;
 import com.taxe.game.commands.ContinuePathCommand;
 import com.taxe.game.commands.UndoPathCommand;
 import com.taxe.game.inputhandling.Clickable;
@@ -155,9 +156,9 @@ public abstract class Node extends Actor implements Clickable {
 
     public void clicked(GameCore game) {
         if (getState() == NodeStates.HIGHLIGHTED) {
-            ContinuePathCommand.executeCommand(game, this);
+            Commands.continuePathCommand.executeCommand(game, this);
         } else if (getState() == NodeStates.SELECTED) {
-            UndoPathCommand.executeCommand(game, this);
+            Commands.undoPathCommand.executeCommand(game, this);
         }
     }
 

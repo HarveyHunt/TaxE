@@ -10,15 +10,15 @@ import com.taxe.game.trains.TrainStates;
  */
 public class StartPathCommand implements Commandable {
 
-    public static void executeCommand(GameCore game, Object target) {
+    public void executeCommand(GameCore game, Object target) {
         if (!(target instanceof Train)) {
             throw new IllegalArgumentException("target must be an instance of Train");
         }
-        ResetPathCommand.executeCommand(game, target);
+        Commands.resetPathCommand.executeCommand(game, target);
         Train t = (Train) target;
         t.setState(TrainStates.SELECTED);
         if (! (t.getNode() instanceof IntermediatePoint)) {
-            ContinuePathCommand.executeCommand(game, t.getNode());
+            Commands.continuePathCommand.executeCommand(game, t.getNode());
             game.getGui().getHUD().showPathButtons();
         }
     }

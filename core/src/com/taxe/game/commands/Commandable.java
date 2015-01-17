@@ -7,8 +7,6 @@ import com.taxe.game.GameCore;
  */
 public interface Commandable {
 
-    public static void executeCommand(GameCore game, Object o) {
-
-    };
+    public void executeCommand(GameCore game, Object o);
 
 }

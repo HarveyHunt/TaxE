@@ -8,7 +8,7 @@ import com.taxe.game.Player;
  */
 public class DealDamageCommand implements Commandable {
 
-    public static void executeCommand(GameCore game, Object target) {
+    public void executeCommand(GameCore game, Object target) {
         if (!(target instanceof Player)) {
             throw new IllegalArgumentException("target must be an instance of Node");
         }

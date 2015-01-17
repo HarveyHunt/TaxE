@@ -5,17 +5,21 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.taxe.game.GameCore;
+import com.taxe.game.util.Coordinate;
 
 /**
  * Created by Owen on 08/01/2015.
  */
 public class GUI extends Group {
 
+    private GameCore game;
     private HUD hud;
     private InfoDisplay infoDisplay;
     private CityMenu cityMenu;
 
     public GUI(GameCore game) {// Add Other Stuffs
+        this.game = game;
+
         hud = new HUD(game);
         addActor(hud);
 
@@ -25,6 +29,15 @@ public class GUI extends Group {
 
         cityMenu = new CityMenu();
         //addActor(cityMenu);
+    }
+
+    public void newNotification(Texture texture, Coordinate coordinate, float duration) {
+        Notification notification = new Notification(this, texture, coordinate, duration);
+        addActor(notification);
+    }
+
+    public GameCore getGame() {
+        return game;
     }
 
     public static void drawElement(Batch batch, Texture tex, float x, float y) {

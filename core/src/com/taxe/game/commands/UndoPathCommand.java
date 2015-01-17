@@ -11,7 +11,7 @@ import com.taxe.game.tracks.Track;
  */
 public class UndoPathCommand implements Commandable {
 
-    public static void executeCommand(GameCore game, Object target) {
+    public void executeCommand(GameCore game, Object target) {
         if (!(target instanceof Node)) {
             throw new IllegalArgumentException("target must be an instance of Node");
         }
