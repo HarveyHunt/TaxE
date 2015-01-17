@@ -32,8 +32,6 @@ public class Map extends Group {
      * @throws IOException
      */
     public Map(String nodesFileName, String tracksFileName) throws IOException {
-        setBounds(0f, 0f, 1410f, 890f);
-        setOrigin(0, 0);
         cities = new ArrayList<>();
         homebases = new ArrayList<>();
         junctions = new ArrayList<>();
@@ -56,6 +54,8 @@ public class Map extends Group {
         for (Node n : nodes) {
             this.addActor(n);
         }
+        setBounds(0f, 0f, 1410f, 890f);
+        setOrigin(0, 0);
     }
 
     /**

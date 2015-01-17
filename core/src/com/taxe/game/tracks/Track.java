@@ -79,7 +79,7 @@ public class Track extends Actor {
                 if (n != null) {
                     t.add(n);
                 } else {
-                    throw new RuntimeException("Can't construct track with id = " + id);
+                    throw new RuntimeException("can't construct track with non-existent id = " + id);
                 }
             }
             tracks.add(new Track(t));
