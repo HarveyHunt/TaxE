@@ -18,12 +18,11 @@ public class Button extends Actor implements Clickable {
     private Texture texture;
     private int state; // 0 idle; 1 hover; 2 pressed
 
-    public Button(Texture texture, Coordinate coordinate) {
+    public Button(Texture texture) {
         this.texture = texture;
         state = 0;
         setTouchable(Touchable.enabled);
         setOrigin(texture.getWidth() / 2, texture.getHeight() / 6);
-        setCoordinate(coordinate);
 
         addListener(new ClickListener() {
             @Override

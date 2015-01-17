@@ -40,7 +40,7 @@ public class HUD extends Group {
         this.player1Health = game.getPlayers().get(0).getHomebase().getHealth();
         this.player2Health = game.getPlayers().get(1).getHomebase().getHealth();
 
-        endTurn = new Button(new Texture("UI/Clock Square.png"), new Coordinate()) {
+        endTurn = new Button(new Texture("UI/Clock Square.png")) {
             @Override
             public void clicked(GameCore game) {
                 Commands.moveTrainsCommand.executeCommand(game, this);
@@ -48,14 +48,14 @@ public class HUD extends Group {
             }
         };
         addActor(endTurn);
-        setPath = new Button(new Texture("UI/confirm route.png"), new Coordinate()) {
+        setPath = new Button(new Texture("UI/confirm route.png")) {
             @Override
             public void clicked(GameCore gameCore) {
                 Commands.savePathCommand.executeCommand(gameCore, this);
             }
         };
         addActor(setPath);
-        cancelPath = new Button(new Texture("UI/cancel route.png"), new Coordinate()) {
+        cancelPath = new Button(new Texture("UI/cancel route.png")) {
             @Override
             public void clicked(GameCore gameCore) {
                 Commands.resetPathCommand.executeCommand(gameCore, null);
