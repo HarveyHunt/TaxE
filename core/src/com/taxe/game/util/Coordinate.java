@@ -15,6 +15,7 @@ public final class Coordinate {
 
     /**
      * Creates instance of Coordinate with set x and y.
+     *
      * @param x x value.
      * @param y y value.
      */
@@ -25,6 +26,7 @@ public final class Coordinate {
 
     /**
      * Calculates distance between two points.
+     *
      * @param c0 first point.
      * @param c1 second point.
      * @return distance between first and second point.
@@ -37,8 +39,9 @@ public final class Coordinate {
 
     /**
      * Returns the point a certain percentage along a line between two given points.
-     * @param c0 first point.
-     * @param c1 second point.
+     *
+     * @param c0         first point.
+     * @param c1         second point.
      * @param percentage how far away from c0 the resulting point should be, must be 0 <= percentage <= 1.
      * @return a point with coordinates (cA.x + (cB.x - cA.x) * percentage, cA.y + (cB.y - cA.y) * percentage).
      * @throws IllegalArgumentException if percentage is < 0 or percentage > 1.
@@ -53,6 +56,7 @@ public final class Coordinate {
 
     /**
      * Return angle between x-axis and line going through two points.
+     *
      * @param c0 first point.
      * @param c1 second point.
      * @return value equivalent to Math.atan2(c1.getY() - c0.getY(), c1.getX() - c0.getX())
@@ -63,6 +67,7 @@ public final class Coordinate {
 
     /**
      * Tests coordinate and another object for equality.
+     *
      * @param other object that requires comparing.
      * @return Coordinates c0 and c1 are equal if (c0.getX() == c1.getX() && c0.getY() == c1.getY()).
      */
@@ -78,6 +83,7 @@ public final class Coordinate {
 
     /**
      * Returns value of x.
+     *
      * @return x.
      */
     public float getX() {
@@ -86,6 +92,7 @@ public final class Coordinate {
 
     /**
      * Returns value of y
+     *
      * @return y
      */
     public float getY() {
