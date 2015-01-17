@@ -8,7 +8,11 @@ import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.taxe.game.GameCore;
 import com.taxe.game.commands.*;
+import com.taxe.game.resources.Fuel;
+import com.taxe.game.resources.Gold;
 import com.taxe.game.util.Coordinate;
+
+import java.util.ArrayList;
 
 /**
  * Created by Owen on 09/01/2015.
@@ -28,8 +32,7 @@ public class HUD extends Group {
     private Button setPath;
     private Button cancelPath;
 
-    private TextDisplay turnText;
-    private TextDisplay resourcesText;
+    private ArrayList<TextDisplay> resourceTexts;
 
     public HUD(GameCore game) {
         texHUD = new Texture("UI/HUD.png");
@@ -63,21 +66,21 @@ public class HUD extends Group {
         };
         addActor(cancelPath);
 
-        turnText = new TextDisplay("Player 1's Turn", Color.YELLOW, 1f);
-        addActor(turnText);
-        resourcesText = new TextDisplay("Gold: 0   Fuel: 0", Color.YELLOW, 1f);
-        addActor(resourcesText);
+        resourceTexts = new ArrayList<>();
+        TextDisplay player1Text = new TextDisplay("Gold: 0   Fuel: 0", Color.YELLOW, 1f);
+        addActor(player1Text);
+        resourceTexts.add(player1Text);
+        TextDisplay player2Text = new TextDisplay("Gold: 0   Fuel: 0", Color.YELLOW, 1f);
+        addActor(player2Text);
+        resourceTexts.add(player2Text);
 
         resize();
         hidePathButtons();
     }
 
-    public void setTurnText(CharSequence text) {
-        turnText.setText(text);
-    }
-
-    public void setResourcesText(CharSequence text) {
-        resourcesText.setText(text);
+    public void setPlayerText(int player, Gold gold, Fuel fuel) {
+        CharSequence text = "Gold: " + gold.getQuantity()  + "     Fuel: " + fuel.getUsedFuel() + "/" + fuel.getFuelCap();
+        resourceTexts.get(player).setText(text);
     }
 
     public void lockButtons() {
@@ -107,16 +110,12 @@ public class HUD extends Group {
         this.player2Health = player2Health;
     }
 
-    public TextDisplay getTurnText() {
-        return turnText;
-    }
-
     public void resize() {
         endTurn.setCoordinate(new Coordinate(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() - 36.75f));
         setPath.setCoordinate(new Coordinate(Gdx.graphics.getWidth() / 2 - 76, Gdx.graphics.getHeight() - 109));
         cancelPath.setCoordinate(new Coordinate(Gdx.graphics.getWidth() / 2 + 76, Gdx.graphics.getHeight() - 109));
-        turnText.setCoordinate(new Coordinate(120, Gdx.graphics.getHeight() - 9));
-        resourcesText.setCoordinate(new Coordinate(300, Gdx.graphics.getHeight() - 9));
+        resourceTexts.get(0).setCoordinate(new Coordinate(120, Gdx.graphics.getHeight() - 9));
+        resourceTexts.get(1).setCoordinate(new Coordinate(Gdx.graphics.getWidth() / 2 + 120, Gdx.graphics.getHeight() - 9));
     }
 
     @Override

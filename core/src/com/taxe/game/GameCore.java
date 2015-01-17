@@ -82,13 +82,8 @@ public class GameCore implements Screen {
         Commands.activatePlayerCommand.executeCommand(this, getActivePlayer());
 
         gui.newNotification(NotificationTextures.PLAYER1_TURN, new Coordinate(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2), 2);
-        gui.getHUD().setResourcesText("Gold: " +
-                        + getPlayers().get(0).getGold().getQuantity()
-                        + "     Fuel: "
-                        + getPlayers().get(0).getFuel().getUsedFuel()
-                        + "/"
-                        + getPlayers().get(0).getFuel().getFuelCap()
-        );
+        gui.getHUD().setPlayerText(0, players.get(0).getGold(), players.get(0).getFuel());
+        gui.getHUD().setPlayerText(1, players.get(1).getGold(), players.get(1).getFuel());
 
         scene.scale();
     }
