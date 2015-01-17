@@ -1,12 +1,9 @@
 package com.taxe.game.nodes;
 
 import com.taxe.GdxTestRunner;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -14,59 +11,44 @@ import static org.junit.Assert.*;
 @RunWith(GdxTestRunner.class)
 public class NodeTest {
 
-    private City ca, cb, cc;
-    private Homebase ha, hb, hc;
-    private IntermediatePoint ia;
-    private Junction ja;
-    private List<Node> nlist;
-
-    @Before
-    public void setUp() {
-//        ca = new City(new Coordinate(176, 210), "ca");
-//        cb = new City(new Coordinate(1140, 639), "cb");
-//        cc = new City(new Coordinate(242, 706), "cc");
-//        ha = new Homebase(new Coordinate(29, 536), "ha");
-//        hb = new Homebase(new Coordinate(1140, 639), "cb");
-//        hc = new Homebase(new Coordinate(29, 536), "ha");
-//        ia = new IntermediatePoint(new Coordinate(47, 470), "ia");
-//        ja = new Junction(new Coordinate(176, 210), "ja");
-        nlist = new ArrayList<>();
-        Collections.addAll(nlist, ca, cb, cc, ha, ia, ja);
-    }
-
-    @Test
-    public void testGetNodeWithId() throws Exception {
-        // Non-existing nodes in empty and not empty lists
-        assertNull(Node.getNodeById("ca", new ArrayList<>()));
-        assertNull(Node.getNodeById("xx", nlist));
-
-        // Existing nodes in the beginning, middle and end of the list
-        assertEquals(ca, Node.getNodeById("ca", nlist));
-        assertEquals(ha, Node.getNodeById("ha", nlist));
-        assertEquals(ja, Node.getNodeById("ja", nlist));
-
-    }
-
+    /**
+     * Testing if reading json-file with duplicating ids throws an exception.
+     * @throws Exception
+     */
     @Test
     public void testReadNodes() throws Exception {
-        List<Node> readList = new ArrayList<>(Node.readNodes("sample-nodes.json"));
-        assertEquals(nlist, readList);
+        // Some of the nodes in file have same ids
+        try {
+            List <Node> nodes = Node.readNodes("nodes-same-id.json");
+            fail();
+        }
+        catch (RuntimeException e) {
+            assertEquals("two or more nodes have same ids", e.getMessage());
+        }
+
+        // All nodes in file have different ids
+        try {
+            List <Node> nodes = Node.readNodes("nodes.json");
+        }
+        catch (RuntimeException e) {fail();}
     }
 
+    /**
+     * Testing if searching for a node with specific id returns null when such node doesn't exist.
+     * @throws Exception
+     */
     @Test
-    public void testEquals() throws Exception {
-        // Compare to null and to itself
-        assertFalse(ca.equals(null));
-        assertTrue(ca.equals(ca));
+    public void testGetNodeById() throws Exception {
+        List <Node> nodes = Node.readNodes("nodes.json");
 
-        // Compare objects of the same class
-        assertFalse(ca.equals(cb));
-        assertTrue(ha.equals(hc));
+        // No nodes with given id
+        assertNull(Node.getNodeById("Jerusalem", nodes));
 
-        // Compare objects of different classes
-        assertFalse(cb.equals(ha));
-        assertFalse(hb.equals(cb));
-        assertFalse(ia.equals(ja));
-        assertFalse(ja.equals(ca));
+        // There is node with given id
+        assertEquals("London", Node.getNodeById("London", nodes).getId());
+        assertEquals("MadridBlue-1", Node.getNodeById("MadridBlue-1", nodes).getId());
+        assertEquals("J1", Node.getNodeById("J1", nodes).getId());
+        assertEquals("Red", Node.getNodeById("Red", nodes).getId());
     }
+
 }

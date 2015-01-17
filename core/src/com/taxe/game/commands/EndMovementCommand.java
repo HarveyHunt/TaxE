@@ -31,6 +31,7 @@ public class EndMovementCommand implements Commandable {
             texture = NotificationTextures.PLAYER2_TURN;
         }
         game.getGui().newNotification(texture, new Coordinate(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2), 2);
+        Commands.switchPlayerCommand.executeCommand(game, this);
     }
 
 }

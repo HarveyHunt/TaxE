@@ -11,7 +11,6 @@ public class SwitchPlayerCommand implements Commandable {
 
         Commands.activatePlayerCommand.executeCommand(game, game.nextActivePlayer());
         game.switchActivePlayer();
-
     }
 
 }

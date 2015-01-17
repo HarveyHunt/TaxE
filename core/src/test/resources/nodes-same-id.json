@@ -52,7 +52,7 @@
     "class": "com.taxe.game.nodes.City",
     "x": 500,
     "y": 780,
-    "id": "Copanhaggen"
+    "id": "London"
   },
   {
     "class": "com.taxe.game.nodes.City",

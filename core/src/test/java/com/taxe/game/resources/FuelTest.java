@@ -14,9 +14,17 @@ public class FuelTest {
     public void testConstructor() throws Exception {
         // Constructing fuel with negative parameters
         try {
-            Fuel f1 = new Fuel(-1, -1);
-            Fuel f2 = new Fuel(-2, 0);
-            Fuel f3 = new Fuel(0, -5);
+            Fuel f = new Fuel(-1, -1);
+            fail();
+        }
+        catch (RuntimeException e) {}
+        try {
+            Fuel f = new Fuel(-2, 0);
+            fail();
+        }
+        catch (RuntimeException e) {}
+        try {
+            Fuel f = new Fuel(0, -5);
             fail();
         }
         catch (RuntimeException e) {}

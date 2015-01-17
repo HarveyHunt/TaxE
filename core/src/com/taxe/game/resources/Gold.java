@@ -40,9 +40,9 @@ public class Gold {
     /**
      * Checks if quantity of gold satisfies constraints.
      *
-     * @throws RuntimeException if quantity < 0.
+     * @throws AssertionError if quantity < 0.
      */
-    private void validateQuantity() throws RuntimeException {
-        if (quantity < 0) throw new RuntimeException("quantity < 0");
+    private void validateQuantity() throws AssertionError {
+        assert quantity >= 0;
     }
 }

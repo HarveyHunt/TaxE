@@ -44,7 +44,6 @@ public class HUD extends Group {
             @Override
             public void clicked(GameCore game) {
                 Commands.moveTrainsCommand.executeCommand(game, this);
-                Commands.switchPlayerCommand.executeCommand(game, this);
             }
         };
         addActor(endTurn);

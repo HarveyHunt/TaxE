@@ -9,8 +9,6 @@ import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.Json;
 import com.taxe.game.GameCore;
 import com.taxe.game.commands.Commands;
-import com.taxe.game.commands.ContinuePathCommand;
-import com.taxe.game.commands.UndoPathCommand;
 import com.taxe.game.inputhandling.Clickable;
 import com.taxe.game.util.Coordinate;
 
@@ -19,12 +17,12 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Base-class for representing nodes in the game.
- * Nodes are places player can interact with, e.g. build trains, trade, gain influence, complete tasks, select path, etc.
- * Nodes can be passable or not passable, meaning that trains are or aren't allowed to travel through them.
- * Nodes can have different states (e.g Selected, Highlighted, etc.) that, depending on type of the node, can lead to different interactions with them.
- * States are specified in {@link com.taxe.game.nodes.NodeStates}.
- * Texture of each type of node is specified in {@link com.taxe.game.nodes.NodeTextures}.
+ * Base-class for representing nodes in the game. Nodes are places player can interact with, e.g. build trains, trade,
+ * gain influence, complete tasks, select path, etc. Nodes can be passable or not passable, meaning that trains are or
+ * aren't allowed to travel through them. Nodes can have different states (e.g Selected, Highlighted, etc.) that,
+ * depending on type of the node, can affect the texture of the node or can lead to different interactions with them.
+ * States are specified in {@link com.taxe.game.nodes.NodeStates}. Texture of each type of node is specified in {@link
+ * com.taxe.game.nodes.NodeTextures}.
  */
 public abstract class Node extends Actor implements Clickable {
 
@@ -43,9 +41,10 @@ public abstract class Node extends Actor implements Clickable {
 
     /**
      * Reads nodes from json-file.
+     *
      * @param fileName name of the json-file holding descriptions of nodes.
      * @return list of nodes.
-     * @throws IOException if something went wrong with reading.
+     * @throws IOException      if something went wrong with reading.
      * @throws RuntimeException if json-file has several nodes with same id.
      */
     public static List<Node> readNodes(String fileName) throws IOException, RuntimeException {
@@ -53,17 +52,20 @@ public abstract class Node extends Actor implements Clickable {
         FileHandle f = Gdx.files.classpath(fileName);
         Node[] nodes = json.fromJson(Node[].class, f);
         for (Node n : nodes) {
-            for (Node t: nodes)
-                if (t != n && t.equals(n))
-                    throw new RuntimeException("Nodes must have unique ids");
+            // Checking if there are nodes with the same id
+            for (Node t : nodes)
+                if (t != n && t.getId().equals(n.getId()))
+                    throw new RuntimeException("two or more nodes have same ids");
             n.setState(NodeStates.ORIGINAL);
+            n.validate();
         }
         return Arrays.asList(nodes);
     }
 
     /**
      * Searches for node with given id in a list.
-     * @param id id of a node we're looking for
+     *
+     * @param id    id of a node we're looking for
      * @param nodes list of nodes
      * @return node with given id if such node exists; null otherwise.
      */
@@ -75,17 +77,8 @@ public abstract class Node extends Actor implements Clickable {
     }
 
     /**
-     * Compares two nodes for equality. Nodes are considered equal if they have the same id.
-     * @param other object to be compared
-     * @return true if other is instance of Node and ids are equal
-     */
-    @Override
-    public boolean equals(Object other) {
-        return other == this || (other instanceof Node && id.equals(((Node) other).getId()));
-    }
-
-    /**
      * Returns x and y coordinate of a node.
+     *
      * @return Coordinate(x, y)
      */
     public Coordinate getCoordinate() {
@@ -94,6 +87,7 @@ public abstract class Node extends Actor implements Clickable {
 
     /**
      * Checks if node is passable
+     *
      * @return true if node is passable, false otherwise
      */
     public boolean isPassable() {
@@ -102,6 +96,7 @@ public abstract class Node extends Actor implements Clickable {
 
     /**
      * Returns unique id of a node.
+     *
      * @return id of a node.
      */
     public String getId() {
@@ -110,6 +105,7 @@ public abstract class Node extends Actor implements Clickable {
 
     /**
      * Returns state of a node
+     *
      * @return state of a node
      */
     public int getState() {
@@ -118,6 +114,7 @@ public abstract class Node extends Actor implements Clickable {
 
     /**
      * Sets a new state of a node.
+     *
      * @param state new state of a node
      */
     public void setState(int state) {
@@ -127,6 +124,7 @@ public abstract class Node extends Actor implements Clickable {
 
     /**
      * Returns texture representing node type at the current state.
+     *
      * @return texture of node.
      */
     public abstract Texture getTexture();
@@ -161,5 +159,12 @@ public abstract class Node extends Actor implements Clickable {
             Commands.undoPathCommand.executeCommand(game, this);
         }
     }
+
+    /**
+     * Validates node's variables' state. This method may require overriding.
+     *
+     * @throws RuntimeException if one or more node's variables is invalid.
+     */
+    protected abstract void validate() throws RuntimeException;
 
 }
