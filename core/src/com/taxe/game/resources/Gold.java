@@ -1,9 +1,8 @@
 package com.taxe.game.resources;
 
 /**
- * Class representing players gold resource in the game.
- * Gold can be used to buy trains.
- * Gold quantity must always be non-negative.
+ * Class representing players gold resource in the game. Gold can be used to buy trains. Gold quantity must always be
+ * non-negative.
  */
 public class Gold {
 
@@ -11,7 +10,8 @@ public class Gold {
 
     /**
      * Creates an instance of Gold with set quantity.
-     * @param quantity amount of gold.
+     *
+     * @param quantity amount of gold, must be >= 0.
      */
     public Gold(int quantity) {
         this.quantity = quantity;
@@ -20,6 +20,7 @@ public class Gold {
 
     /**
      * Returns quantity of gold.
+     *
      * @return amount of gold.
      */
     public int getQuantity() {
@@ -27,7 +28,8 @@ public class Gold {
     }
 
     /**
-     * Changes quantity of gold by a set amount.
+     * Changes quantity of gold by a set amount. If result is negative, it is clipped to 0.
+     *
      * @param delta by how much amount of gold is changed.
      */
     public void changeQuantityBy(int delta) {
@@ -37,9 +39,10 @@ public class Gold {
 
     /**
      * Checks if quantity of gold satisfies constraints.
-     * @throws AssertionError if quantity < 0.
+     *
+     * @throws RuntimeException if quantity < 0.
      */
-    private void validateQuantity() throws AssertionError {
-        assert quantity >= 0;
+    private void validateQuantity() throws RuntimeException {
+        if (quantity < 0) throw new RuntimeException("quantity < 0");
     }
 }

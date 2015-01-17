@@ -6,18 +6,19 @@ import static org.junit.Assert.*;
 public class PenguinsTest {
 
     /**
-     * Testing if constructor throws exception when creating objects with negative quantity
+     * Testing if constructor throws exception when creating objects with negative quantity.
+     * @throws Exception
      */
     @Test
-    public void testConstructor() {
-        // Creating objects with negative quantity - must throw an exception
+    public void testConstructor() throws Exception {
+        // Creating objects with negative quantity
         try {
             Penguins p = new Penguins(-1);
             fail();
         }
         catch (RuntimeException e) {}
 
-        // Creating objects with non-negative quantity - mustn't throw exceptions
+        // Creating objects with non-negative quantity
         try {
             Penguins p1 = new Penguins(0);
             Penguins p2 = new Penguins(20);
@@ -33,14 +34,14 @@ public class PenguinsTest {
     public void testSetQuantity() throws Exception {
         Penguins p = new Penguins(10);
 
-        // Setting quantity to negative - must throw an exception
+        // Setting quantity to negative
         try {
             p.setQuantity(-5);
             fail();
         }
         catch (RuntimeException e) {}
 
-        // Setting quantity to non-negative - mustn't throw exceptions
+        // Setting quantity to non-negative
         try {
             p.setQuantity(100);
             p.setQuantity(0);
