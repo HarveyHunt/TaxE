@@ -1,16 +1,14 @@
 package com.taxe.game.util;
 
 /**
- * Class storing coordinates - a pair of two numbers.
+ * Stores 2D-coordinates and defines methods for operating them.
  */
 public final class Coordinate {
 
     private final float x;
     private final float y;
 
-    /**
-     * Default constructor.
-     */
+    @Deprecated
     public Coordinate() {
         this(0, 0);
     }
@@ -27,46 +25,46 @@ public final class Coordinate {
 
     /**
      * Calculates distance between two points.
-     * @param cA first point.
-     * @param cB second point.
+     * @param c0 first point.
+     * @param c1 second point.
      * @return distance between first and second point.
      */
-    public static float distanceBetween(Coordinate cA, Coordinate cB) {
-        float dX = cB.x - cA.x;
-        float dY = cB.y - cA.y;
-        return (float) Math.sqrt(dX * dX + dY * dY);
+    public static float distanceBetween(Coordinate c0, Coordinate c1) {
+        float dx = c1.x - c0.x;
+        float dy = c1.y - c0.y;
+        return (float) Math.sqrt(dx * dx + dy * dy);
     }
 
     /**
      * Returns the point a certain percentage along a line between two given points.
-     * @param cA first point.
-     * @param cB second point.
-     * @param percentage how far away from a the resulting point should be; must be in range 0..1.
-     * @return a point with coordinates (cA.x + (cB.x - cA.x) * percentage, cA.y + (cB.y - cA.y) * percentage).1
+     * @param c0 first point.
+     * @param c1 second point.
+     * @param percentage how far away from c0 the resulting point should be, must be 0 <= percentage <= 1.
+     * @return a point with coordinates (cA.x + (cB.x - cA.x) * percentage, cA.y + (cB.y - cA.y) * percentage).
      * @throws IllegalArgumentException if percentage is < 0 or percentage > 1.
      */
-    public static Coordinate coordinateAlongLine(Coordinate cA, Coordinate cB, float percentage) throws IllegalArgumentException {
+    public static Coordinate coordinateAlongLine(Coordinate c0, Coordinate c1, float percentage) throws IllegalArgumentException {
         if (percentage < 0 || percentage > 1)
             throw new IllegalArgumentException("percentage must be in range 0..1");
-        float dX = cB.x - cA.x;
-        float dY = cB.y - cA.y;
-        return new Coordinate(cA.x + dX * percentage, cA.y + dY * percentage);
+        float dx = c1.x - c0.x;
+        float dy = c1.y - c0.y;
+        return new Coordinate(c0.x + dx * percentage, c0.y + dy * percentage);
     }
 
     /**
      * Return angle between x-axis and line going through two points.
-     * @param cA first point.
-     * @param cB second point.
-     * @return angle between x-axis and line (cA -> cB).
+     * @param c0 first point.
+     * @param c1 second point.
+     * @return value equivalent to Math.atan2(c1.getY() - c0.getY(), c1.getX() - c0.getX())
      */
-    public static float angleBetween(Coordinate cA, Coordinate cB) {
-        return (float) Math.atan2(cB.y - cA.y, cB.x - cA.x);
+    public static float angleBetween(Coordinate c0, Coordinate c1) {
+        return (float) Math.atan2(c1.y - c0.y, c1.x - c0.x);
     }
 
     /**
-     * Verifies if coordinate and another object for equality.
-     * @param other object that needs comparing.
-     * @return true if other object is instance of Coordinate and x and y values are equal.
+     * Tests coordinate and another object for equality.
+     * @param other object that requires comparing.
+     * @return Coordinates c0 and c1 are equal if (c0.getX() == c1.getX() && c0.getY() == c1.getY()).
      */
     @Override
     public boolean equals(Object other) {
@@ -79,16 +77,16 @@ public final class Coordinate {
     }
 
     /**
-     * Returns value of x-coordinate
-     * @return x-value
+     * Returns value of x.
+     * @return x.
      */
     public float getX() {
         return x;
     }
 
     /**
-     * Returns value of y-coordinate
-     * @return y-value
+     * Returns value of y
+     * @return y
      */
     public float getY() {
         return y;
