@@ -18,6 +18,8 @@ import com.taxe.game.resources.Gold;
 import com.taxe.game.trains.BasicTrain;
 import com.taxe.game.trains.Train;
 import com.taxe.game.ui.GUI;
+import com.taxe.game.ui.NotificationTextures;
+import com.taxe.game.util.Coordinate;
 
 import java.io.IOException;
 import java.util.*;
@@ -78,6 +80,15 @@ public class GameCore implements Screen {
             }
         });
         Commands.activatePlayerCommand.executeCommand(this, getActivePlayer());
+
+        gui.newNotification(NotificationTextures.PLAYER1_TURN, new Coordinate(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2), 2);
+        gui.getHUD().setResourcesText("Gold: " +
+                        + getPlayers().get(0).getGold().getQuantity()
+                        + "     Fuel: "
+                        + getPlayers().get(0).getFuel().getUsedFuel()
+                        + "/"
+                        + getPlayers().get(0).getFuel().getFuelCap()
+        );
 
         scene.scale();
     }

@@ -24,13 +24,7 @@ public class EndMovementCommand implements Commandable {
         }
         game.getGui().getHUD().unlockButtons();
         Commands.dealDamageCommand.executeCommand(game, game.getActivePlayer());
-        Texture texture;
-        if (game.getActivePlayer() == game.getPlayers().get(0)) {
-            texture = NotificationTextures.PLAYER1_TURN;
-        } else {
-            texture = NotificationTextures.PLAYER2_TURN;
-        }
-        game.getGui().newNotification(texture, new Coordinate(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2), 2);
+        Commands.switchPlayerCommand.executeCommand(game, null);
     }
 
 }

@@ -15,16 +15,15 @@ public class TextDisplay extends Actor {
     private Coordinate coordinate;
     private BitmapFont font;
 
-    public TextDisplay(CharSequence text, Coordinate coordinate, Color colour, float scale) {
+    public TextDisplay(CharSequence text, Color colour, float scale) {
         this.text = text;
-        this.coordinate = coordinate;
         font = new BitmapFont();
         font.setColor(colour);
         font.setScale(scale);
     }
 
-    public TextDisplay(CharSequence text, Coordinate coordinate) {
-        this(text, coordinate, Color.WHITE, 1f);
+    public TextDisplay(CharSequence text) {
+        this(text, Color.WHITE, 1f);
     }
 
     public void setCoordinate(Coordinate coordinate) {

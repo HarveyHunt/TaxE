@@ -29,6 +29,7 @@ public class HUD extends Group {
     private Button cancelPath;
 
     private TextDisplay turnText;
+    private TextDisplay resourcesText;
 
     public HUD(GameCore game) {
         texHUD = new Texture("UI/HUD.png");
@@ -44,7 +45,6 @@ public class HUD extends Group {
             @Override
             public void clicked(GameCore game) {
                 Commands.moveTrainsCommand.executeCommand(game, this);
-                Commands.switchPlayerCommand.executeCommand(game, this);
             }
         };
         addActor(endTurn);
@@ -63,12 +63,21 @@ public class HUD extends Group {
         };
         addActor(cancelPath);
 
-
-        turnText = new TextDisplay("Player 1 : Turn 1", new Coordinate(), Color.YELLOW, 1f);
+        turnText = new TextDisplay("Player 1's Turn", Color.YELLOW, 1f);
         addActor(turnText);
+        resourcesText = new TextDisplay("Gold: 0   Fuel: 0", Color.YELLOW, 1f);
+        addActor(resourcesText);
 
         resize();
         hidePathButtons();
+    }
+
+    public void setTurnText(CharSequence text) {
+        turnText.setText(text);
+    }
+
+    public void setResourcesText(CharSequence text) {
+        resourcesText.setText(text);
     }
 
     public void lockButtons() {
@@ -106,7 +115,8 @@ public class HUD extends Group {
         endTurn.setCoordinate(new Coordinate(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() - 36.75f));
         setPath.setCoordinate(new Coordinate(Gdx.graphics.getWidth() / 2 - 76, Gdx.graphics.getHeight() - 109));
         cancelPath.setCoordinate(new Coordinate(Gdx.graphics.getWidth() / 2 + 76, Gdx.graphics.getHeight() - 109));
-        turnText.setCoordinate(new Coordinate(200, Gdx.graphics.getHeight() - 9));
+        turnText.setCoordinate(new Coordinate(120, Gdx.graphics.getHeight() - 9));
+        resourcesText.setCoordinate(new Coordinate(300, Gdx.graphics.getHeight() - 9));
     }
 
     @Override
