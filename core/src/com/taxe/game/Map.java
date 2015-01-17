@@ -12,6 +12,7 @@ import java.util.List;
 
 /**
  * Represents map in the game. Map consists of a background, nodes and tracks connecting the nodes.
+ *
  * @see com.taxe.game.nodes
  * @see com.taxe.game.tracks
  */
@@ -27,11 +28,13 @@ public class Map extends Group {
 
     /**
      * Creates map by reading nodes and tracks from json-files
-     * @param nodesFileName name of file describing nodes
+     *
+     * @param nodesFileName  name of file describing nodes
      * @param tracksFileName name of file describing tracks
      * @throws IOException
      */
     public Map(String nodesFileName, String tracksFileName) throws IOException {
+        // Read and distribute nodes among categories
         cities = new ArrayList<>();
         homebases = new ArrayList<>();
         junctions = new ArrayList<>();
@@ -47,19 +50,22 @@ public class Map extends Group {
             else if (n instanceof IntermediatePoint)
                 intermediatePoints.add((IntermediatePoint) n);
         }
+
+        // Read tracks
         tracks = new ArrayList<>(Track.readTracks(tracksFileName, nodes));
-        for (Track t : tracks) {
+
+        // Set up map map as a group of nodes and tracks
+        for (Track t : tracks)
             this.addActor(t);
-        }
-        for (Node n : nodes) {
+        for (Node n : nodes)
             this.addActor(n);
-        }
         setBounds(0f, 0f, 1410f, 890f);
         setOrigin(0, 0);
     }
 
     /**
      * Returns a list of nodes on the map.
+     *
      * @return list of nodes.
      */
     public List<Node> getNodes() {
@@ -68,6 +74,7 @@ public class Map extends Group {
 
     /**
      * Returns list of cities on the map.
+     *
      * @return list of cities.
      */
     public List<City> getCities() {
@@ -76,6 +83,7 @@ public class Map extends Group {
 
     /**
      * Returns list of homebases on the map.
+     *
      * @return list of homebases.
      */
     public List<Homebase> getHomebases() {
@@ -84,6 +92,7 @@ public class Map extends Group {
 
     /**
      * Returns list of junctions on the map.
+     *
      * @return list of junctions.
      */
     public List<Junction> getJunctions() {
@@ -92,6 +101,7 @@ public class Map extends Group {
 
     /**
      * Returns list of intermediate points on the map.
+     *
      * @return list of intermediate points.
      */
     public List<IntermediatePoint> getIntermediatePoints() {
@@ -100,6 +110,7 @@ public class Map extends Group {
 
     /**
      * Returns list of tracks on the map.
+     *
      * @return list of tracks.
      */
     public List<Track> getTracks() {
@@ -108,6 +119,7 @@ public class Map extends Group {
 
     /**
      * Returns list of tracks containing specified node.
+     *
      * @param n node
      * @return list of tracks containing n. If there are no tracks containing n, an empty list is returned.
      */
@@ -122,10 +134,12 @@ public class Map extends Group {
     }
 
     /**
-     * Returns a track containing both specified nodes; nodes must not be equal.
+     * Returns a track containing both specified nodes
+     *
      * @param n1 first node
      * @param n2 second node
-     * @return a track containing n1 and n2. If there's no such track, returns null.
+     * @return a track containing n1 and n2, null if there is no such track. If n1 == n2, returns one of the tracks
+     * containing the node or null if there's no such track.
      */
     public Track getTrackWith(Node n1, Node n2) {
         for (Track t : tracks) {
@@ -139,7 +153,6 @@ public class Map extends Group {
     @Override
     public void draw(Batch batch, float parentAlpha) {
         if (isTransform()) applyTransform(batch, computeTransform());
-
         batch.draw(
                 texture, getX() - getOriginX(), getY() - getOriginY(),
                 getOriginX(), getOriginY(),
@@ -147,7 +160,6 @@ public class Map extends Group {
                 1, 1, 0,
                 0, 0, texture.getWidth(), texture.getHeight(),
                 false, false);
-
         drawChildren(batch, parentAlpha);
         if (isTransform()) resetTransform(batch);
     }

@@ -31,15 +31,6 @@ public class GUI extends Group {
         //addActor(cityMenu);
     }
 
-    public void newNotification(Texture texture, Coordinate coordinate, float duration) {
-        Notification notification = new Notification(this, texture, coordinate, duration);
-        addActor(notification);
-    }
-
-    public GameCore getGame() {
-        return game;
-    }
-
     public static void drawElement(Batch batch, Texture tex, float x, float y) {
         drawElement(batch, tex, x, y, tex.getWidth(), tex.getHeight(), 0, false, false);
     }
@@ -59,6 +50,15 @@ public class GUI extends Group {
                 1, 1, rotation,
                 0, 0, tex.getWidth(), tex.getHeight(),
                 flipX, flipY);
+    }
+
+    public void newNotification(Texture texture, Coordinate coordinate, float duration) {
+        Notification notification = new Notification(this, texture, coordinate, duration);
+        addActor(notification);
+    }
+
+    public GameCore getGame() {
+        return game;
     }
 
     public HUD getHUD() {

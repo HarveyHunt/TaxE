@@ -17,7 +17,7 @@ public class StartPathCommand implements Commandable {
         Commands.resetPathCommand.executeCommand(game, target);
         Train t = (Train) target;
         t.setState(TrainStates.SELECTED);
-        if (! (t.getNode() instanceof IntermediatePoint)) {
+        if (!(t.getNode() instanceof IntermediatePoint)) {
             Commands.continuePathCommand.executeCommand(game, t.getNode());
             game.getGui().getHUD().showPathButtons();
         }

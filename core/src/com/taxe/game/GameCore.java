@@ -9,7 +9,6 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.taxe.Main;
-import com.taxe.game.commands.ActivatePlayerCommand;
 import com.taxe.game.commands.Commands;
 import com.taxe.game.inputhandling.Clickable;
 import com.taxe.game.nodes.Node;
@@ -63,7 +62,7 @@ public class GameCore implements Screen {
         p2.addTrain(new BasicTrain(p2.getHomebase()));
         players = new ArrayList<>();
         Collections.addAll(players, p1, p2);
-        for (Player p: players) {
+        for (Player p : players) {
             scene.addActor(p);
         }
         activePlayer = 0;
@@ -164,7 +163,7 @@ public class GameCore implements Screen {
     }
 
     public boolean isExecutionPhase() {
-        for (Train t: getActivePlayer().getTrains())
+        for (Train t : getActivePlayer().getTrains())
             if (t.getActions().size > 0)
                 return true;
         return false;
