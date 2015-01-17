@@ -8,22 +8,22 @@ import com.badlogic.gdx.graphics.Texture;
 public class NodeTextures {
 
     public static final Texture[] CITY = {
-            new Texture("Nodes/city.png"),
-            new Texture("Nodes/city-highlighted.png"),
-            new Texture("Nodes/city-selected.png")};
+            new Texture("nodes/city.png"),
+            new Texture("nodes/city-highlighted.png"),
+            new Texture("nodes/city-selected.png")};
 
     public static final Texture[] HOMEBASE = {
-            new Texture("Nodes/homebase.png"),
-            new Texture("Nodes/homebase-highlighted.png"),
-            new Texture("Nodes/homebase-selected.png")};
+            new Texture("nodes/homebase.png"),
+            new Texture("nodes/homebase-highlighted.png"),
+            new Texture("nodes/homebase-selected.png")};
 
     public static final Texture[] JUNCTION = {
-            new Texture("Nodes/junction.png"),
-            new Texture("Nodes/junction-highlighted.png"),
-            new Texture("Nodes/junction-selected.png")};
+            new Texture("nodes/junction.png"),
+            new Texture("nodes/junction-highlighted.png"),
+            new Texture("nodes/junction-selected.png")};
 
     public static final Texture[] INTERMEDIATE = {
-            new Texture("Nodes/intermediate node.png"),
-            new Texture("Nodes/intermediate-highlighted.png"),
-            new Texture("Nodes/intermediate-selected.png")};
+            new Texture("nodes/intermediate.png"),
+            new Texture("nodes/intermediate-highlighted.png"),
+            new Texture("nodes/intermediate-selected.png")};
 }

@@ -7,6 +7,6 @@ import com.badlogic.gdx.graphics.Texture;
  */
 public abstract class CargoTextures {
 
-    public static final Texture PENGUINS = new Texture("Cargo/penguins.png");
+    public static final Texture PENGUINS = new Texture("cargo/penguins.png");
 
 }

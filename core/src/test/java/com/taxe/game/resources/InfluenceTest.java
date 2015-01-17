@@ -51,20 +51,20 @@ public class InfluenceTest {
     @Test
     public void testChangeInfluenceBy() throws Exception {
         // Influence with single player
-        i1.changeInfluenceBy(l1.get(0), 0.5);
+        i1.changeInfluenceBy(l1.get(0), 0.5f);
         assertEquals(1, i1.getInfluence(l1.get(0)), delta);
         i1.changeInfluenceBy(l1.get(0), 1);
         assertEquals(1, i1.getInfluence(l1.get(0)), delta);
-        i1.changeInfluenceBy(l1.get(0), -0.5);
+        i1.changeInfluenceBy(l1.get(0), -0.5f);
         assertEquals(1, i1.getInfluence(l1.get(0)), delta);
 
         // Influence with multiple players
-        i3.changeInfluenceBy(l3.get(1), -0.2);
+        i3.changeInfluenceBy(l3.get(1), -0.2f);
         assertEquals(0.433333, i3.getInfluence(l3.get(0)), delta);
         assertEquals(0.133333, i3.getInfluence(l3.get(1)), delta);
         assertEquals(0.433333, i3.getInfluence(l3.get(2)), delta);
 
-        i3.changeInfluenceBy(l3.get(2), 0.1);
+        i3.changeInfluenceBy(l3.get(2), 0.1f);
         assertEquals(0.356863, i3.getInfluence(l3.get(0)), delta);
         assertEquals(0.109804, i3.getInfluence(l3.get(1)), delta);
         assertEquals(0.533333, i3.getInfluence(l3.get(2)), delta);

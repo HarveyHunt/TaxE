@@ -23,7 +23,7 @@ public class Map extends Group {
     private ArrayList<Junction> junctions;
     private ArrayList<IntermediatePoint> intermediatePoints;
     private ArrayList<Track> tracks;
-    private Texture texture = new Texture("Map/background 3.png");
+    private Texture texture = new Texture("map/background.png");
 
     /**
      * Creates map by reading nodes and tracks from json-files
