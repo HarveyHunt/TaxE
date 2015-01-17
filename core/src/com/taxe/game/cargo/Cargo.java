@@ -13,14 +13,16 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
  */
 public abstract class Cargo extends Actor {
     private int quantity;
+    private final String id;
 
     /**
      * Creates an instance of cargo with specified quantity.
      *
      * @param quantity initial quantity of cargo, must be >= 0.
      */
-    public Cargo(int quantity) {
+    public Cargo(int quantity, String id) {
         this.quantity = quantity;
+        this.id = id;
         validateQuantity();
     }
 
@@ -48,7 +50,9 @@ public abstract class Cargo extends Actor {
      *
      * @return id of cargo.
      */
-    public abstract String getId();
+    public String getId() {
+        return id;
+    }
 
     /**
      * Returns texture representing cargo type.

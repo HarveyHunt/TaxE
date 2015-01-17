@@ -31,7 +31,6 @@ public abstract class Train extends Actor implements Clickable {
     private ArrayDeque<Node> pathNodes;
     private ArrayDeque<Sleeper> pathSleepers;
     private Node node;
-
     private int state;
 
     /**

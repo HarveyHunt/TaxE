@@ -49,6 +49,7 @@ public class Player extends Group {
 
     public void addTrain(Train t) {
         trains.add(t);
+        fuel.changeFuelCapBy(-t.getFuelCost());
         this.addActor(t);
     }
 
