@@ -1,0 +1,52 @@
+[
+  {
+    "class": "com.taxe.game.Nodes.City",
+    "coordinate": {
+      "x": 176,
+      "y": 210
+    },
+    "id": "ca"
+  },
+  {
+    "class": "com.taxe.game.Nodes.City",
+    "coordinate": {
+      "x": 1140,
+      "y": 639
+    },
+    "id": "cb"
+  },
+  {
+    "class": "com.taxe.game.Nodes.City",
+    "coordinate": {
+      "x": 242,
+      "y": 706
+    },
+    "id": "cc"
+  },
+  {
+    "class": "com.taxe.game.Nodes.Homebase",
+    "coordinate": {
+      "x": 29,
+      "y": 536
+    },
+    "id": "ha",
+    "maxHealth": 500,
+    "health": 500
+  },
+  {
+    "class": "com.taxe.game.Nodes.IntermediatePoint",
+    "coordinate": {
+      "x": 47,
+      "y": 470
+    },
+    "id": "ia"
+  },
+  {
+    "class": "com.taxe.game.Nodes.Junction",
+    "coordinate": {
+      "x": 176,
+      "y": 210
+    },
+    "id": "ja"
+  }
+]
