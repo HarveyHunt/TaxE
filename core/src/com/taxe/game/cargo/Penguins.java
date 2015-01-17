@@ -19,5 +19,4 @@ public class Penguins extends Cargo {
         return "Penguins";
     }
 
-
 }

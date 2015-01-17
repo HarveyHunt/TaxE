@@ -5,16 +5,19 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 
 /**
  * Base-class for representing cargo. Different types of cargo (e.g. penguins, bricks, etc.) are implemented by
- * extending this class. Cargo is characterised by its quantity (must be non-negative) and has a unique id and texture
- * common to all instances of that cargo type. Texture of each type of cargo is specified in {@link com.taxe.game.cargo.CargoTextures}.
+ * extending this class.
+ * <p>
+ * Cargo is characterised by its quantity, id and texture. Quantity must always be non-negative. Id and texture are
+ * specified in the extending class. Textures of each cargo type can be found in {@link
+ * com.taxe.game.cargo.CargoTextures}.
  */
 public abstract class Cargo extends Actor {
     private int quantity;
 
     /**
-     * Creates instance of cargo with specified quantity
+     * Creates an instance of cargo with specified quantity.
      *
-     * @param quantity initial quantity of cargo
+     * @param quantity initial quantity of cargo, must be >= 0.
      */
     public Cargo(int quantity) {
         this.quantity = quantity;
@@ -22,18 +25,18 @@ public abstract class Cargo extends Actor {
     }
 
     /**
-     * Returns quantity of cargo
+     * Returns quantity of cargo.
      *
-     * @return quantity of cargo
+     * @return quantity of cargo.
      */
     public int getQuantity() {
         return quantity;
     }
 
     /**
-     * Updates quantity of cargo
+     * Updates quantity of cargo.
      *
-     * @param quantity new quantity
+     * @param quantity new quantity, must be >= 0.
      */
     public void setQuantity(int quantity) {
         this.quantity = quantity;
@@ -41,26 +44,27 @@ public abstract class Cargo extends Actor {
     }
 
     /**
-     * Returns id representing cargo type
+     * Returns id representing cargo type.
      *
-     * @return id of cargo
+     * @return id of cargo.
      */
     public abstract String getId();
 
     /**
-     * Returns texture representing cargo type
+     * Returns texture representing cargo type.
      *
-     * @return texture of cargo
+     * @return texture of cargo.
      */
     public abstract Texture getTexture();
 
-
     /**
      * Checks if quantity of cargo satisfies constraints.
-     * @throws AssertionError if quantity < 0
+     *
+     * @throws RuntimeException if quantity < 0.
      */
-    private void validateQuantity() throws AssertionError {
-        assert quantity >= 0;
+    private void validateQuantity() throws RuntimeException {
+        if (quantity < 0)
+            throw new RuntimeException("quantity < 0");
     }
 }
 
