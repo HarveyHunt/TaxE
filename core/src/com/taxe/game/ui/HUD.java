@@ -79,7 +79,7 @@ public class HUD extends Group {
     }
 
     public void setPlayerText(int player, Gold gold, Fuel fuel) {
-        CharSequence text = "Gold: " + gold.getQuantity()  + "     Fuel: " + fuel.getUsedFuel() + "/" + fuel.getFuelCap();
+        CharSequence text = "Gold: " + gold.getQuantity()  + "     Fuel: " + (fuel.getUsedFuel() + 1) + "/" + (fuel.getFuelCap() + 1);
         resourceTexts.get(player).setText(text);
     }
 
