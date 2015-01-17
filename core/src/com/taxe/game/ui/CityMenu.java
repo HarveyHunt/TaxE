@@ -46,7 +46,7 @@ public class CityMenu extends Group {
         influenceBar2 = new Texture("UI/blue bar.png");
         cargoSlot = new Texture("UI/cargo slot.png");
 
-        close = new Button(new Texture("UI/x button.png"), new Coordinate()) {
+        close = new Button(new Texture("UI/x button.png")) {
             @Override
             public void clicked(GameCore game) {
                 // Close the city menu
@@ -54,7 +54,7 @@ public class CityMenu extends Group {
         };
         addActor(close);
 
-        plus = new Button(new Texture("UI/+ button.png"), new Coordinate()) {
+        plus = new Button(new Texture("UI/+ button.png")) {
             @Override
             public void clicked(GameCore game) {
                 // cargo ++
@@ -62,7 +62,7 @@ public class CityMenu extends Group {
         };
         addActor(plus);
 
-        minus = new Button(new Texture("UI/- button.png"), new Coordinate()) {
+        minus = new Button(new Texture("UI/- button.png")) {
             @Override
             public void clicked(GameCore game) {
                 // cargo --

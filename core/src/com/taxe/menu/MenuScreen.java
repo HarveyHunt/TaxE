@@ -29,7 +29,7 @@ public class MenuScreen implements Screen {
         Gdx.input.setInputProcessor(stage);
 
 
-        startGame = new Button(new Texture("UI/Clock Square.png"), new Coordinate()) {
+        startGame = new Button(new Texture("UI/Clock Square.png")) {
             @Override
             public void clicked() {
                 main.startGame();

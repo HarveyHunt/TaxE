@@ -27,7 +27,7 @@ public class InfoDisplay extends Group {
         topMax = new Texture("UI/Top maximised.png");
         topMin = new Texture("UI/Top minimised.png");
 
-        minimise = new Button(new Texture("UI/minimise.png"), new Coordinate()) {
+        minimise = new Button(new Texture("UI/minimise.png")) {
             @Override
             public void clicked(GameCore game) {
                 maximised = false;
@@ -38,7 +38,7 @@ public class InfoDisplay extends Group {
         addActor(minimise);
         minimise.setVisible(false);
 
-        maximise = new Button(new Texture("UI/maximise.png"), new Coordinate()) {
+        maximise = new Button(new Texture("UI/maximise.png")) {
             @Override
             public void clicked(GameCore game) {
                 maximised = true;
