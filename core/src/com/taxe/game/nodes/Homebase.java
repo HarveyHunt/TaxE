@@ -5,8 +5,10 @@ import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.taxe.game.trains.Train;
 
 /**
- * Homebase is a node where player starts the game and builds trains.
- * Homebase is created with some maximum amount of health. When health reaches 0, homebase is considered to be destroyed.
+ * Homebase is a node where player starts the game and builds trains. Homebase is created with some maximum amount of
+ * health. When health reaches 0, homebase is considered to be destroyed. At any time, health must not be greater than
+ * maximum health and health must be less than 0.
+ *
  * @see com.taxe.game.trains.Train
  */
 public class Homebase extends Node {
@@ -25,7 +27,6 @@ public class Homebase extends Node {
         health = 0;
         currentBuild = null;
         turnsTillBuilt = 0;
-        validateHealth();
     }
 
     public Texture getTexture() {
@@ -41,6 +42,7 @@ public class Homebase extends Node {
 
     /**
      * Returns maximum amount of health.
+     *
      * @return maximum amount of health
      */
     public int getMaxHealth() {
@@ -49,6 +51,7 @@ public class Homebase extends Node {
 
     /**
      * Returns current amount of health.
+     *
      * @return current amount of health.
      */
     public int getHealth() {
@@ -57,15 +60,18 @@ public class Homebase extends Node {
 
     /**
      * Changes health of homebase by delta.
-     * @param delta by how much health of homebase is changed.
+     *
+     * @param delta by how much health of homebase is changed; the result is clipped to 0 or maximum health if it
+     *              exceeds the corresponding constraint
      */
     public void changeHealthBy(int delta) {
         health = Integer.max(0, Integer.min(maxHealth, health + delta));
-        validateHealth();
+        validate();
     }
 
     /**
      * Returns the train homebase is currently building.
+     *
      * @return train homebase is building.
      */
     public Train getCurrentBuild() {
@@ -74,6 +80,7 @@ public class Homebase extends Node {
 
     /**
      * Starts building a train.
+     *
      * @param build train to be built.
      * @param turns number of turns building a train will take.
      */
@@ -91,6 +98,7 @@ public class Homebase extends Node {
 
     /**
      * Returns true if all trains have finished building.
+     *
      * @return true if no trains are currently being built, false otherwise.
      */
     public boolean buildFinished() {
@@ -99,12 +107,12 @@ public class Homebase extends Node {
 
     /**
      * Checks if health and maxHealth follow the constraints.
-     * @throws AssertionError if health < 0, or maxHealth < 0, or health > maxHealth.
+     *
+     * @throws AssertionError if health < 0 or health > maxHealth.
      */
-    private void validateHealth() throws AssertionError {
-        assert health >= 0;
-        assert health <= maxHealth;
-        assert maxHealth >= 0;
+    public void validate() throws RuntimeException {
+        if (health < 0) throw new RuntimeException("health < 0");
+        if (health > maxHealth) throw new RuntimeException("health > maxHealth");
     }
 
 }

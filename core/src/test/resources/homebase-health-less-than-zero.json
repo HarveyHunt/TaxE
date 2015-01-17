@@ -1,0 +1,10 @@
+[
+  {
+    "class": "com.taxe.game.nodes.Homebase",
+    "x": 1346,
+    "y": 560,
+    "id": "Blue",
+    "maxHealth": 500,
+    "health": -500
+  }
+]

@@ -11,8 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * City is a node that issues tasks and trades cargo.
- * Completing tasks set by cities increases player's influence and gives rewards.
+ * City is a node that issues tasks and trades cargo. Completing tasks set by cities increases player's influence and
+ * gives rewards.
+ *
  * @see com.taxe.game.resources.Influence
  * @see com.taxe.game.tasks.Task
  * @see com.taxe.game.cargo.Cargo
@@ -44,8 +45,12 @@ public class City extends Node {
         return NodeTextures.CITY[getState()];
     }
 
+    public void validate() throws RuntimeException {
+    }
+
     /**
      * Returns list of tasks city is holding.
+     *
      * @return list of city's tasks.
      */
     public List<Task> getTaskList() {
@@ -54,6 +59,7 @@ public class City extends Node {
 
     /**
      * Returns list of cargo city is selling.
+     *
      * @return list of city's cargo.
      */
     public List<Cargo> getCargoList() {
@@ -62,6 +68,7 @@ public class City extends Node {
 
     /**
      * Returns influence a player has in the city
+     *
      * @param p player
      * @return influence of player p in the city
      */
@@ -71,8 +78,9 @@ public class City extends Node {
 
     /**
      * Changes influence of a player in the city. Influences of other players are adjusted accordingly.
+     *
      * @param player player
-     * @param delta change of influence
+     * @param delta  change of influence
      */
     public void changeInfluenceBy(Player player, float delta) {
         influence.changeInfluenceBy(player, delta);

@@ -21,14 +21,9 @@ public class CoordinateTest {
         assertEquals(c1, Coordinate.coordinateAlongLine(c0, c1, 1));
         assertEquals(new Coordinate(1.5f, 4f), Coordinate.coordinateAlongLine(c0, c1, 0.5f));
 
-        // Percentage not in range 0..1, must throw exception
+        // Percentage not in range 0..1
         try {
             Coordinate.coordinateAlongLine(c0, c0, -0.1f);
-            fail();
-        }
-        catch (IllegalArgumentException e) {}
-
-        try {
             Coordinate.coordinateAlongLine(c0, c0, 1.1f);
             fail();
         }

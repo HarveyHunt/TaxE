@@ -12,6 +12,7 @@ import com.taxe.game.util.Coordinate;
 public class SwitchPlayerCommand implements Commandable {
 
     public void executeCommand(GameCore game, Object target) {
+
         Commands.activatePlayerCommand.executeCommand(game, game.nextActivePlayer());
         game.switchActivePlayer();
 

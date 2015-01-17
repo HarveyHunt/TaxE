@@ -1,9 +1,12 @@
 package com.taxe.game.resources;
 
 /**
- * Represents players fuel resource.
- * Having a train requires a number of fuel points. If the fuel cap is exceeded, a crippling punishment is applied.
- * Fuel cap and used fuel must always be non-negative.
+ * Represents fuel resource.
+ * <p>
+ * Having a train requires a number of fuel points. For example, if BasicTrain needs 4 fuel points, having two
+ * BasicTrains will take 8 fuel points. If building a train would exceed player's fuel cap, or if due to having fuel cap
+ * reduced, player has more fuel points than fuel cap allows, a crippling punishment should be applied (e.g. all trains
+ * become very slow).
  */
 public class Fuel {
 
@@ -12,8 +15,9 @@ public class Fuel {
 
     /**
      * Constructs instance of Fuel with specified fuelCap and usedFuel.
-     * @param fuelCap fuel cap.
-     * @param usedFuel used fuel.
+     *
+     * @param fuelCap  fuel cap, must be >= 0.
+     * @param usedFuel used fuel, must be >= 0.
      */
     public Fuel(int fuelCap, int usedFuel) {
         this.fuelCap = fuelCap;
@@ -23,6 +27,7 @@ public class Fuel {
 
     /**
      * Returns fuel cap.
+     *
      * @return fuel cap.
      */
     public int getFuelCap() {
@@ -31,6 +36,7 @@ public class Fuel {
 
     /**
      * Returns the amount of currently used fuel.
+     *
      * @return amount of used fuel.
      */
     public int getUsedFuel() {
@@ -38,7 +44,8 @@ public class Fuel {
     }
 
     /**
-     * Changes fuel cap by a set amount.
+     * Changes fuel cap by a set amount. If result is negative, it is clipped to 0.
+     *
      * @param delta by how much fuel cap is changed.
      */
     public void changeFuelCapBy(int delta) {
@@ -47,29 +54,32 @@ public class Fuel {
     }
 
     /**
-     * Changes currently used fuel
-     * @param delta by how much currently used fuel is changed
+     * Changes currently used fuel. If result is negative, it is clipped to 0.
+     *
+     * @param delta by how much currently used fuel is changed.
      */
     public void changeUsedFuelBy(int delta) {
-        usedFuel = Integer.max(0, delta);
+        usedFuel = Integer.max(0, usedFuel + delta);
         validateFuel();
     }
 
     /**
-     * Returns true if fuel cap is exceeded
-     * @return true if {@link #getUsedFuel()} > {@link #getFuelCap()}
+     * Returns true if fuel cap is exceeded.
+     *
+     * @return true if {@link #getUsedFuel()} > {@link #getFuelCap()}.
      */
     public boolean fuelCapExceeded() {
         return usedFuel > fuelCap;
     }
 
     /**
-     * Checks if fuelCap and usedFuel satisfy constraints
-     * @throws AssertionError if fuelCap < 0 or usedFuel < 0
+     * Checks if fuelCap and usedFuel satisfy constraints.
+     *
+     * @throws RuntimeException if fuelCap < 0 or usedFuel < 0.
      */
-    private void validateFuel() throws AssertionError {
-        assert fuelCap >= 0;
-        assert usedFuel >= 0;
+    private void validateFuel() throws RuntimeException {
+        if (fuelCap < 0) throw new RuntimeException("fuelCap < 0");
+        if (usedFuel < 0) throw new RuntimeException("usedFuel < 0");
     }
 
 }
