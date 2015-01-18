@@ -13,14 +13,14 @@ import com.taxe.game.util.Coordinate;
 public class Gui extends Group {
 
     private GameCore game;
-    private HUD hud;
+    private Hud hud;
     private InfoDisplay infoDisplay;
     private GameEndMenu gameEndMenu;
 
     public Gui(GameCore game) {// Add Other Stuffs
         this.game = game;
 
-        hud = new HUD(game);
+        hud = new Hud(game);
         addActor(hud);
 
         infoDisplay = new InfoDisplay(game);
@@ -72,7 +72,7 @@ public class Gui extends Group {
         return game;
     }
 
-    public HUD getHUD() {
+    public Hud getHUD() {
         return hud;
     }
 

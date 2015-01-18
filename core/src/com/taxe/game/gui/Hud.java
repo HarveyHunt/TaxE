@@ -20,7 +20,7 @@ import java.util.HashMap;
 /**
  * Created by Owen on 09/01/2015.
  */
-public class HUD extends Group {
+public class Hud extends Group {
 
     private GameCore game;
 
@@ -31,7 +31,7 @@ public class HUD extends Group {
     private HashMap<Player, Healthbar> healthbars;
     private ArrayList<TextDisplay> resourceTexts;
 
-    public HUD(GameCore game) {
+    public Hud(GameCore game) {
         this.game = game;
 
         healthbars = new HashMap<>();
