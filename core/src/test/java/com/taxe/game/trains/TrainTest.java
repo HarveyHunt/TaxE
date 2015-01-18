@@ -39,7 +39,10 @@ public class TrainTest {
 
         // Trying to create a train satisfying constraints
         try {
-            SimpleTrain s = new SimpleTrain(1, 1, 1, new City());
+            SimpleTrain s = new SimpleTrain(1, 2, 3, new City());
+            assertEquals(1, s.getSpeed());
+            assertEquals(2, s.getCargoCap());
+            assertEquals(3, s.getFuelCost());
         }
         catch (RuntimeException e) {fail();}
     }
