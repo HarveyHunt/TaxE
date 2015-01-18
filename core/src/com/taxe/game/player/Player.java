@@ -2,6 +2,7 @@ package com.taxe.game.player;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Group;
+import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.taxe.game.nodes.Homebase;
 import com.taxe.game.resources.Fuel;
 import com.taxe.game.resources.Gold;
@@ -41,6 +42,17 @@ public class Player extends Group {
         for (Train t : trains) {
             this.addTrain(t);
             this.addActor(t);
+        }
+    }
+
+    /**
+     * Sets all of the trains to be touchable or not
+     *
+     * @param touchable if the trains are touchable or not. Touchable.enabled or Touchable.disabled
+     */
+    public void setTrainsTouchable(Touchable touchable) {
+        for (Train t : trains) {
+            t.setTouchable(touchable);
         }
     }
 
