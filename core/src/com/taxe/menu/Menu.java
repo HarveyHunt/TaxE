@@ -35,15 +35,15 @@ public class Menu extends Group {
     }
 
     public void resize() {
-        startGame.setCoordinate(new Coordinate(Gdx.graphics.getWidth() / 2f, Gdx.graphics.getHeight() / 2f - 100));
-        exitGame.setCoordinate(new Coordinate(Gdx.graphics.getWidth() / 2f, Gdx.graphics.getHeight() / 2f - 300));
+        startGame.setCoordinate(new Coordinate(Gdx.graphics.getWidth() / 2f, Gdx.graphics.getHeight() / 2f - 150));
+        exitGame.setCoordinate(new Coordinate(Gdx.graphics.getWidth() / 2f, Gdx.graphics.getHeight() / 2f - 350));
     }
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
         batch.draw(
                 MenuTextures.START_SCREEN,
-                Gdx.graphics.getWidth() / 2 - MenuTextures.START_SCREEN.getWidth() / 2, Gdx.graphics.getHeight() / 2 - MenuTextures.START_SCREEN.getHeight() / 2
+                Gdx.graphics.getWidth() / 2 - MenuTextures.START_SCREEN.getWidth() / 2, Gdx.graphics.getHeight() / 2 - 50
         );
         drawChildren(batch, parentAlpha);
     }
