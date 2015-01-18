@@ -2,7 +2,7 @@ package com.taxe.game.commands;
 
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.taxe.game.GameCore;
-import com.taxe.game.gui.GUI;
+import com.taxe.game.gui.Gui;
 import com.taxe.game.player.Player;
 
 /**
@@ -14,7 +14,7 @@ public class EndGameCommand implements Commandable {
         int winner;
         winner = (game.getActivePlayer() == game.getPlayers().get(0)) ? 1 : 0;
 
-        GUI gui = game.getGui();
+        Gui gui = game.getGui();
         gui.createGameEndMenu(winner);
         gui.getHUD().lockButtons();
         gui.getHUD().hidePathButtons();

@@ -10,14 +10,14 @@ import com.taxe.game.util.Coordinate;
 /**
  * Created by Owen on 08/01/2015.
  */
-public class GUI extends Group {
+public class Gui extends Group {
 
     private GameCore game;
     private HUD hud;
     private InfoDisplay infoDisplay;
     private GameEndMenu gameEndMenu;
 
-    public GUI(GameCore game) {// Add Other Stuffs
+    public Gui(GameCore game) {// Add Other Stuffs
         this.game = game;
 
         hud = new HUD(game);

@@ -18,7 +18,7 @@ import com.taxe.game.resources.Fuel;
 import com.taxe.game.resources.Gold;
 import com.taxe.game.trains.BasicTrain;
 import com.taxe.game.trains.Train;
-import com.taxe.game.gui.GUI;
+import com.taxe.game.gui.Gui;
 
 import java.io.IOException;
 import java.util.*;
@@ -30,7 +30,7 @@ public class GameCore implements Screen {
 
     private Main main;
     private Stage stage;
-    private GUI gui;
+    private Gui gui;
     private ArrayList<Player> players;
     private int activePlayer;
     private Map map;
@@ -62,7 +62,7 @@ public class GameCore implements Screen {
         Collections.addAll(players, p1, p2);
         activePlayer = 0;
 
-        gui = new GUI(this);
+        gui = new Gui(this);
 
         stage.addActor(scene);
         scene.addActor(map);
@@ -137,7 +137,7 @@ public class GameCore implements Screen {
         return map;
     }
 
-    public GUI getGui() {
+    public Gui getGui() {
         return gui;
     }
 
