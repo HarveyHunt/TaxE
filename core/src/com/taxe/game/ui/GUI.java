@@ -16,6 +16,7 @@ public class GUI extends Group {
     private HUD hud;
     private InfoDisplay infoDisplay;
     private CityMenu cityMenu;
+    private GameEndMenu gameEndMenu;
 
     public GUI(GameCore game) {// Add Other Stuffs
         this.game = game;
@@ -26,9 +27,19 @@ public class GUI extends Group {
         infoDisplay = new InfoDisplay();
         addActor(infoDisplay);
         infoDisplay.setTouchable(Touchable.enabled);
+    }
 
-        cityMenu = new CityMenu();
-        //addActor(cityMenu);
+    public void resize() {
+        hud.resize();
+        infoDisplay.resize();
+        if (gameEndMenu != null) {
+            gameEndMenu.resize();
+        }
+    }
+
+    public void createGameEndMenu(int winner) {
+        gameEndMenu = new GameEndMenu(game, winner);
+        addActor(gameEndMenu);
     }
 
     public void newNotification(Texture texture, Coordinate coordinate, float duration) {

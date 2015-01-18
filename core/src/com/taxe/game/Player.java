@@ -18,9 +18,11 @@ public class Player extends Group {
     private final Gold gold;
     private final Fuel fuel;
     private final Homebase homebase;
+    private int id; // 0 or 1
 
-    public Player(Homebase homebase, ArrayList<Train> trains, Gold gold, Fuel fuel) {
+    public Player(Homebase homebase, int id, ArrayList<Train> trains, Gold gold, Fuel fuel) {
         this.homebase = homebase;
+        this.id = id;
         this.trains = trains;
         this.gold = gold;
         this.fuel = fuel;
@@ -29,6 +31,10 @@ public class Player extends Group {
                 this.addActor(t);
             }
         }
+    }
+
+    public int getId() {
+        return id;
     }
 
     public ArrayList<Train> getTrains() {

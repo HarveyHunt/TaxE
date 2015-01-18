@@ -23,6 +23,7 @@ public class Button extends Actor implements Clickable {
         state = 0;
         setTouchable(Touchable.enabled);
         setOrigin(texture.getWidth() / 2, texture.getHeight() / 6);
+        setSize(texture.getWidth(), texture.getHeight() / 3);
 
         addListener(new ClickListener() {
             @Override
@@ -66,7 +67,6 @@ public class Button extends Actor implements Clickable {
 
     public void setCoordinate(Coordinate coordinate) {
         setPosition(coordinate.getX(), coordinate.getY());
-        setSize(texture.getWidth(), texture.getHeight() / 3);
     }
 
     @Override
