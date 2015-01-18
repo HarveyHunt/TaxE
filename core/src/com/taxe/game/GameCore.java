@@ -9,7 +9,6 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.taxe.Main;
-import com.taxe.game.commands.ActivatePlayerCommand;
 import com.taxe.game.commands.Commands;
 import com.taxe.game.inputhandling.Clickable;
 import com.taxe.game.nodes.Node;
@@ -58,8 +57,8 @@ public class GameCore implements Screen {
         scene.addActor(map);
 
         // Setting up players and their trains
-        Player p1 = new Player(map.getHomebases().get(0), 0, new ArrayList<Train>(), new Gold(500), new Fuel(10, 0));
-        Player p2 = new Player(map.getHomebases().get(1), 1, new ArrayList<Train>(), new Gold(500), new Fuel(10, 0));
+        Player p1 = new Player(map.getHomebases().get(0), new ArrayList<Train>(), new Gold(500), new Fuel(10, 0));
+        Player p2 = new Player(map.getHomebases().get(1), new ArrayList<Train>(), new Gold(500), new Fuel(10, 0));
         p1.addTrain(new BasicTrain(map.getJunctions().get(0)));
         p2.addTrain(new BasicTrain(p2.getHomebase()));
         players = new ArrayList<>();
