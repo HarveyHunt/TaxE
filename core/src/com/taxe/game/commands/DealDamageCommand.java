@@ -1,6 +1,8 @@
 package com.taxe.game.commands;
 
 import com.taxe.game.GameCore;
+import com.taxe.game.gui.Healthbar;
+import com.taxe.game.nodes.Homebase;
 import com.taxe.game.player.Player;
 
 /**
@@ -12,14 +14,14 @@ public class DealDamageCommand implements Commandable {
         if (!(target instanceof Player)) {
             throw new IllegalArgumentException("target must be an instance of Node");
         }
-        ((Player) target).getHomebase().changeHealthBy(-100);
-        if (((Player) target).getHomebase().getHealth() == 0) {
+        Player p = (Player) target;
+        Homebase h = p.getHomebase();
+        h.changeHealthBy(-100);
+        game.getGui().getHUD().getHealthbar(p).setPercentage((float) h.getHealth() / h.getMaxHealth());
+
+        if (h.getHealth() == 0) {
             Commands.endGameCommand.executeCommand(game, target);
         }
-        // Update the health values displayed in the HUD
-        game.getGui().getHUD().setHealth(
-                game.getMap().getHomebases().get(0).getHealth(),  // player 1
-                game.getMap().getHomebases().get(1).getHealth()); // player 2
     }
 
 }

@@ -1,4 +1,4 @@
-package com.taxe.game.ui;
+package com.taxe.game.gui;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
@@ -7,7 +7,6 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
-import com.taxe.game.util.Coordinate;
 
 /**
  * Created by Owen on 09/01/2015.

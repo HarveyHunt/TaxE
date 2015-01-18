@@ -1,4 +1,4 @@
-package com.taxe.game.ui;
+package com.taxe.game.gui;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
@@ -14,10 +14,10 @@ import com.taxe.game.util.Coordinate;
  */
 public class Notification extends Actor {
 
-    private GUI parent;
+    private Gui parent;
     private Texture texture;
 
-    public Notification(GUI gui, Texture texture, Coordinate coordinate, float duration) {
+    public Notification(Gui gui, Texture texture, Coordinate coordinate, float duration) {
         this.parent = gui;
         this.texture = texture;
         setOrigin(texture.getWidth() / 2, texture.getHeight() / 2);
@@ -43,14 +43,15 @@ public class Notification extends Actor {
     public void draw(Batch batch, float parentAlpha) {
         Color colour = batch.getColor();
         batch.setColor(getColor()); // Sets the colour to include the alpha value of the notification
-        batch.draw(texture,
+        batch.draw(
+                texture,
                 getX() - getOriginX(), getY() - getOriginY(),
                 getOriginX(), getOriginY(),
                 getWidth(), getHeight(),
                 1, 1, 0,
                 0, 0, texture.getWidth(), texture.getHeight(),
                 false, false);
-        batch.setColor(colour);
+        batch.setColor(colour); // undo the changes to batch so as to not draw everything transparent
     }
 
 }

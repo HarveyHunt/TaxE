@@ -12,14 +12,13 @@ import com.taxe.Main;
 import com.taxe.game.commands.Commands;
 import com.taxe.game.inputhandling.Clickable;
 import com.taxe.game.nodes.Node;
+import com.taxe.game.map.Map;
 import com.taxe.game.player.Player;
 import com.taxe.game.resources.Fuel;
 import com.taxe.game.resources.Gold;
 import com.taxe.game.trains.BasicTrain;
 import com.taxe.game.trains.Train;
-import com.taxe.game.ui.GUI;
-import com.taxe.game.ui.NotificationTextures;
-import com.taxe.game.util.Coordinate;
+import com.taxe.game.gui.Gui;
 
 import java.io.IOException;
 import java.util.*;
@@ -31,10 +30,10 @@ public class GameCore implements Screen {
 
     private Main main;
     private Stage stage;
-    private GUI gui;
+    private Gui gui;
     private ArrayList<Player> players;
     private int activePlayer;
-    private com.taxe.game.map.Map map;
+    private Map map;
     private Scene scene;
     private ArrayDeque<Node> selectedPath = new ArrayDeque<>();
 
@@ -47,29 +46,31 @@ public class GameCore implements Screen {
         stage.getBatch().enableBlending();
 
         scene = new Scene();
-        stage.addActor(scene);
 
         try {
-            map = new com.taxe.game.map.Map("nodes.json", "tracks.json");
+            map = new Map("nodes.json", "tracks.json");
         } catch (IOException e) {
             System.out.println("Something went wrong :(");
         }
-        scene.addActor(map);
 
         // Setting up players and their trains
-        Player p1 = new Player(map.getHomebases().get(0), new ArrayList<Train>(), new Gold(500), new Fuel(10, 0));
-        Player p2 = new Player(map.getHomebases().get(1), new ArrayList<Train>(), new Gold(500), new Fuel(10, 0));
+        Player p1 = new Player(map.getHomebases().get(0), new ArrayList<>(), new Gold(500), new Fuel(10, 0));
+        Player p2 = new Player(map.getHomebases().get(1), new ArrayList<>(), new Gold(500), new Fuel(10, 0));
         p1.addTrain(new BasicTrain(map.getJunctions().get(0)));
         p2.addTrain(new BasicTrain(p2.getHomebase()));
         players = new ArrayList<>();
         Collections.addAll(players, p1, p2);
+        activePlayer = 0;
+
+        gui = new Gui(this);
+
+        stage.addActor(scene);
+        scene.addActor(map);
         for (Player p : players) {
             scene.addActor(p);
         }
-        activePlayer = 0;
-
-        gui = new GUI(this);
         stage.addActor(gui);
+
         stage.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
@@ -80,10 +81,6 @@ public class GameCore implements Screen {
             }
         });
         Commands.activatePlayerCommand.executeCommand(this, getActivePlayer());
-
-        gui.newNotification(NotificationTextures.PLAYER1_TURN, new Coordinate(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2), 2);
-        gui.getHUD().setPlayerText(0, players.get(0).getGold(), players.get(0).getFuel());
-        gui.getHUD().setPlayerText(1, players.get(1).getGold(), players.get(1).getFuel());
 
         scene.scale();
     }
@@ -140,7 +137,7 @@ public class GameCore implements Screen {
         return map;
     }
 
-    public GUI getGui() {
+    public Gui getGui() {
         return gui;
     }
 

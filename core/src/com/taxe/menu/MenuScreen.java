@@ -10,7 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.taxe.Main;
-import com.taxe.game.ui.Button;
+import com.taxe.game.gui.Button;
 import com.taxe.game.util.Coordinate;
 
 /**
@@ -29,7 +29,7 @@ public class MenuScreen implements Screen {
         Gdx.input.setInputProcessor(stage);
 
 
-        startGame = new Button(new Texture("UI/Clock Square.png")) {
+        startGame = new Button(new Texture("Gui/end-turn-buttton.png")) {
             @Override
             public void clicked() {
                 main.startGame();

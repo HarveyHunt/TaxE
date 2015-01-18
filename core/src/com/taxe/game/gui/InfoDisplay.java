@@ -1,4 +1,4 @@
-package com.taxe.game.ui;
+package com.taxe.game.gui;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
@@ -12,22 +12,18 @@ import com.taxe.game.util.Coordinate;
  */
 public class InfoDisplay extends Group {
 
+    private GameCore game;
+
     private boolean maximised;
-    private Texture background;
-    private Texture topMax;
-    private Texture topMin;
 
     private Button maximise;
     private Button minimise;
 
-    public InfoDisplay() {
+    public InfoDisplay(GameCore game) {
+        this.game = game;
         maximised = false;
 
-        background = new Texture("UI/info background.png");
-        topMax = new Texture("UI/Top maximised.png");
-        topMin = new Texture("UI/Top minimised.png");
-
-        minimise = new Button(new Texture("UI/minimise.png")) {
+        minimise = new Button(GuiTextures.MINIMISE_BUTTON) {
             @Override
             public void clicked(GameCore game) {
                 maximised = false;
@@ -38,7 +34,7 @@ public class InfoDisplay extends Group {
         addActor(minimise);
         minimise.setVisible(false);
 
-        maximise = new Button(new Texture("UI/maximise.png")) {
+        maximise = new Button(GuiTextures.MAXIMISE_BUTTON) {
             @Override
             public void clicked(GameCore game) {
                 maximised = true;
@@ -52,29 +48,27 @@ public class InfoDisplay extends Group {
     }
 
     public void resize() {
-        minimise.setCoordinate(new Coordinate(268, Gdx.graphics.getHeight() - background.getHeight() - 135 + 18));
-        maximise.setCoordinate(new Coordinate(218, Gdx.graphics.getHeight() - topMax.getHeight() - 91));
+        minimise.setCoordinate(new Coordinate(268, Gdx.graphics.getHeight() - GuiTextures.INFODISPLAY_TOP_MINIMISED.getHeight() - GuiTextures.INFODISPLAY_BACKGROUND.getHeight() - 45));
+        maximise.setCoordinate(new Coordinate(218, Gdx.graphics.getHeight() - GuiTextures.INFODISPLAY_TOP_MAXIMISED.getHeight() - 91));
     }
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
         if (maximised) {
             // Draw maximised stuff!
-            GUI.drawElement( // Background
-                    batch, background,
-                    30, Gdx.graphics.getHeight() - background.getHeight() - 135
+            batch.draw(
+                    GuiTextures.INFODISPLAY_BACKGROUND,
+                    30, Gdx.graphics.getHeight() - GuiTextures.INFODISPLAY_BACKGROUND.getHeight() - 135
             );
-
-            GUI.drawElement(
-                    batch, topMax,
-                    30, Gdx.graphics.getHeight() - topMax.getHeight() - 110
+            batch.draw(
+                    GuiTextures.INFODISPLAY_TOP_MAXIMISED,
+                    30, Gdx.graphics.getHeight() - GuiTextures.INFODISPLAY_TOP_MAXIMISED.getHeight() - 110
             );
-
         } else {
             // Draw minimised stuff!
-            GUI.drawElement(
-                    batch, topMin,
-                    30, Gdx.graphics.getHeight() - topMin.getHeight() - 110
+            batch.draw(
+                    GuiTextures.INFODISPLAY_TOP_MINIMISED,
+                    30, Gdx.graphics.getHeight() - GuiTextures.INFODISPLAY_TOP_MINIMISED.getHeight() - 110
             );
         }
 

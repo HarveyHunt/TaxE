@@ -1,4 +1,4 @@
-package com.taxe.game.ui;
+package com.taxe.game.gui;
 
 
 import com.badlogic.gdx.Gdx;
@@ -19,34 +19,28 @@ public class GameEndMenu extends Group {
     private Button toMenu;
     private Button exit;
 
-    public GameEndMenu(GameCore game, int winner) {
-        texture = new Texture("UI/info background.png");
+    public GameEndMenu(int winner) {
+        texture = GuiTextures.INFODISPLAY_BACKGROUND;
         setOrigin(texture.getWidth() / 2, texture.getHeight() / 2);
         setSize(texture.getWidth(), texture.getHeight());
 
-        toMenu = new Button(new Texture("UI/Clock Square.png")) {
+        toMenu = new Button(GuiTextures.END_TURN_BUTTON) {
             @Override
             public void clicked(GameCore gameCore) {
-                System.out.println("TO MENU");
                 Commands.exitToMenuCommand.executeCommand(gameCore, null);
             }
         };
         addActor(toMenu);
 
-        exit = new Button(new Texture("UI/Clock Square.png")) {
+        exit = new Button(GuiTextures.END_TURN_BUTTON) {
             @Override
             public void clicked(GameCore gameCore) {
-                System.out.println("EXIT");
                 Gdx.app.exit();
             }
         };
         addActor(exit);
 
-        if (winner == 0) {
-            playerTexture = NotificationTextures.PLAYER1_TURN;
-        } else {
-            playerTexture = NotificationTextures.PLAYER2_TURN;
-        }
+        playerTexture = (winner == 0) ? GuiTextures.PLAYER_1_TURN_START : GuiTextures.PLAYER_2_TURN_START;
 
         resize();
     }
@@ -57,14 +51,18 @@ public class GameEndMenu extends Group {
     }
 
     public void draw(Batch batch, float parentAlpha) {
-        batch.draw(texture, Gdx.graphics.getWidth() / 2 - getOriginX(), Gdx.graphics.getHeight() / 2 - getOriginY(),
+        batch.draw(
+                texture,
+                Gdx.graphics.getWidth() / 2 - getOriginX(), Gdx.graphics.getHeight() / 2 - getOriginY(),
                 getOriginX(), getOriginY(),
                 getWidth(), getHeight(),
                 1, 1, 0,
                 0, 0, texture.getWidth(), texture.getHeight(),
                 false, false);
 
-        batch.draw(playerTexture, Gdx.graphics.getWidth() / 2 - 100, Gdx.graphics.getHeight() / 2 + 200,
+        batch.draw(
+                playerTexture,
+                Gdx.graphics.getWidth() / 2 - 100, Gdx.graphics.getHeight() / 2 + 200,
                 0, 0,
                 playerTexture.getWidth(), playerTexture.getHeight(),
                 0.2f, 0.2f, 0,

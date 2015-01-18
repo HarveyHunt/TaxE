@@ -1,4 +1,4 @@
-package com.taxe.game.ui;
+package com.taxe.game.gui;
 
 /**
  * Created by Owen on 11/01/2015.
