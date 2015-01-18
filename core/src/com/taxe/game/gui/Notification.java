@@ -14,10 +14,10 @@ import com.taxe.game.util.Coordinate;
  */
 public class Notification extends Actor {
 
-    private Gui parent;
+    private GUI parent;
     private Texture texture;
 
-    public Notification(Gui gui, Texture texture, Coordinate coordinate, float duration) {
+    public Notification(GUI gui, Texture texture, Coordinate coordinate, float duration) {
         this.parent = gui;
         this.texture = texture;
         setOrigin(texture.getWidth() / 2, texture.getHeight() / 2);

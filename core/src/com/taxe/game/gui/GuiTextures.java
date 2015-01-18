@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.Texture;
  */
 public abstract class GuiTextures {
 
-    public static final Texture END_TURN_BUTTON = new Texture("Gui/end-turn-buttton.png");
+    public static final Texture END_TURN_BUTTON = new Texture("Gui/end-turn-button.png");
     public static final Texture CONFIRM_ROUTE_BUTTON = new Texture("Gui/confirm-route-button.png");
     public static final Texture CANCEL_ROUTE_BUTTON = new Texture("Gui/cancel-route-button.png");
     public static final Texture MAXIMISE_BUTTON = new Texture("Gui/maximise-button.png");
