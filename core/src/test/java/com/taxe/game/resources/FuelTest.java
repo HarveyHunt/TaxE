@@ -32,7 +32,11 @@ public class FuelTest {
         // Constructing fuel with non-negative parameters
         try {
             Fuel f1 = new Fuel(10, 20);
+            assertEquals(10, f1.getFuelCap());
+            assertEquals(20, f1.getUsedFuel());
             Fuel f2 = new Fuel(20, 10);
+            assertEquals(20, f2.getFuelCap());
+            assertEquals(10, f2.getUsedFuel());
         }
         catch (RuntimeException e) {fail();}
     }

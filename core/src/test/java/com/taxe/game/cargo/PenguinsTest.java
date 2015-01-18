@@ -21,7 +21,9 @@ public class PenguinsTest {
         // Creating objects with non-negative quantity
         try {
             Penguins p1 = new Penguins(0);
+            assertEquals(0, p1.getQuantity());
             Penguins p2 = new Penguins(20);
+            assertEquals(20, p2.getQuantity());
         }
         catch (RuntimeException e) {fail();}
     }
@@ -44,7 +46,9 @@ public class PenguinsTest {
         // Setting quantity to non-negative
         try {
             p.setQuantity(100);
+            assertEquals(100, p.getQuantity());
             p.setQuantity(0);
+            assertEquals(0, p.getQuantity());
         }
         catch (RuntimeException e) {fail();}
     }

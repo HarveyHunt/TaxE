@@ -169,6 +169,4 @@ public abstract class Node extends Actor implements Clickable {
     protected void validate() throws RuntimeException {
     }
 
-    ;
-
 }

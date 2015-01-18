@@ -22,7 +22,9 @@ public class GoldTest {
         // Trying to construct gold with non-negative quantity
         try {
             Gold g1 = new Gold(0);
+            assertEquals(0, g1.getQuantity());
             Gold g2 = new Gold(10);
+            assertEquals(10, g2.getQuantity());
         }
         catch (RuntimeException e) {fail();}
     }
