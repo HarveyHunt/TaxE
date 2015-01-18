@@ -1,4 +1,4 @@
-package com.taxe.game;
+package com.taxe.game.map;
 
 import com.taxe.GdxTestRunner;
 import com.taxe.game.map.Map;
