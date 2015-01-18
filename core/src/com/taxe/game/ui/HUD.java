@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.taxe.game.GameCore;
@@ -114,8 +115,8 @@ public class HUD extends Group {
         endTurn.setCoordinate(new Coordinate(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() - 36.75f));
         setPath.setCoordinate(new Coordinate(Gdx.graphics.getWidth() / 2 - 76, Gdx.graphics.getHeight() - 109));
         cancelPath.setCoordinate(new Coordinate(Gdx.graphics.getWidth() / 2 + 76, Gdx.graphics.getHeight() - 109));
-        resourceTexts.get(0).setCoordinate(new Coordinate(120, Gdx.graphics.getHeight() - 9));
-        resourceTexts.get(1).setCoordinate(new Coordinate(Gdx.graphics.getWidth() / 2 + 120, Gdx.graphics.getHeight() - 9));
+        resourceTexts.get(0).setCoordinate(new Rectangle(0, Gdx.graphics.getHeight() - 30, Gdx.graphics.getWidth() / 2, 30));
+        resourceTexts.get(1).setCoordinate(new Rectangle(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() - 30, Gdx.graphics.getWidth() / 2, 30));
     }
 
     @Override
