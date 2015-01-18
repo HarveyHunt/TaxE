@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.taxe.game.GameCore;
-import com.taxe.game.commands.*;
+import com.taxe.game.commands.Commands;
 import com.taxe.game.resources.Fuel;
 import com.taxe.game.resources.Gold;
 import com.taxe.game.util.Coordinate;
@@ -79,7 +79,7 @@ public class HUD extends Group {
     }
 
     public void setPlayerText(int player, Gold gold, Fuel fuel) {
-        CharSequence text = "Gold: " + gold.getQuantity()  + "     Fuel: " + (fuel.getUsedFuel() + 1) + "/" + (fuel.getFuelCap() + 1);
+        CharSequence text = "Gold: " + gold.getQuantity() + "     Fuel: " + (fuel.getUsedFuel() + 1) + "/" + (fuel.getFuelCap() + 1);
         resourceTexts.get(player).setText(text);
     }
 

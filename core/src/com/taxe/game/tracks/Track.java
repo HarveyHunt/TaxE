@@ -66,7 +66,7 @@ public class Track extends Actor {
     ---------------------------------
      */
 
-    public static List<Track> readTracks(String fileName, ArrayList<Node> nodes) throws IOException {
+    public static List<Track> readTracks(String fileName, ArrayList<Node> nodes) throws IOException, RuntimeException {
         Json json = new Json();
         FileHandle f = Gdx.files.classpath(fileName);
         String[][] trackIds = json.fromJson(String[][].class, f);

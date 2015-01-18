@@ -161,10 +161,14 @@ public abstract class Node extends Actor implements Clickable {
     }
 
     /**
-     * Validates state of node's variable. By default, Node is always valid. However, some subclasses of Node do require overriding this method.
+     * Validates state of node's variable. By default, Node is always valid. However, some subclasses of Node do require
+     * overriding this method.
      *
      * @throws RuntimeException if one or more node's variables is invalid.
      */
-    protected void validate() throws RuntimeException {};
+    protected void validate() throws RuntimeException {
+    }
+
+    ;
 
 }

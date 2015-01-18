@@ -1,6 +1,7 @@
 package com.taxe.game.resources;
 
-import com.taxe.game.Player;
+import com.taxe.game.nodes.Homebase;
+import com.taxe.game.player.Player;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -19,9 +20,9 @@ public class InfluenceTest {
 
     @Before
     public void setUp() {
-        p1 = new Player(null, null, null, null);
-        p2 = new Player(null, null, null, null);
-        p3 = new Player(null, null, null, null);
+        p1 = new Player(new Homebase(), new ArrayList<>(), new Gold(100), new Fuel(20, 0));
+        p2 = new Player(new Homebase(), new ArrayList<>(), new Gold(100), new Fuel(20, 0));
+        p3 = new Player(new Homebase(), new ArrayList<>(), new Gold(100), new Fuel(20, 0));
         l1 = new ArrayList<>(); Collections.addAll(l1, p1);
         l2 = new ArrayList<>(); Collections.addAll(l2, p1, p2);
         l3 = new ArrayList<>(); Collections.addAll(l3, p1, p2, p3);

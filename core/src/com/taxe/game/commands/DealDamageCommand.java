@@ -1,7 +1,7 @@
 package com.taxe.game.commands;
 
 import com.taxe.game.GameCore;
-import com.taxe.game.Player;
+import com.taxe.game.player.Player;
 
 /**
  * Created by Owen on 16/01/2015.

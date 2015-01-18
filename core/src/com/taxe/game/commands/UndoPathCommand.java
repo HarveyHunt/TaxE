@@ -24,7 +24,7 @@ public class UndoPathCommand implements Commandable {
             Node current = game.getSelectedPath().removeLast();
             for (Track t : game.getMap().getTracksWith(current)) {
                 boolean allSelected = true;
-                for (Node n: t.getNodes()) {
+                for (Node n : t.getNodes()) {
                     if (n != current)
                         allSelected &= (n.getState() == NodeStates.SELECTED || n.getState() == NodeStates.HIGHLIGHTED);
                 }
@@ -39,7 +39,7 @@ public class UndoPathCommand implements Commandable {
         // Neighbours of the current selected node become available for path selection
         for (Track t : game.getMap().getTracksWith(selected)) {
             boolean alreadySelected = false;
-            for (Node n: t.getNodes())
+            for (Node n : t.getNodes())
                 alreadySelected |= (n.getState() == NodeStates.SELECTED);
             if (!alreadySelected) {
                 for (Node n : t.getNodes())

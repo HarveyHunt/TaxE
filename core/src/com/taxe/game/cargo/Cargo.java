@@ -12,8 +12,8 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
  * com.taxe.game.cargo.CargoTextures}.
  */
 public abstract class Cargo extends Actor {
-    private int quantity;
     private final String id;
+    private int quantity;
 
     /**
      * Creates an instance of cargo with specified quantity.

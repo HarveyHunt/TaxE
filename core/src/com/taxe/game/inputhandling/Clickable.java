@@ -9,6 +9,7 @@ public interface Clickable {
 
     /**
      * Specifies actions, changes and commands which must be made after object was clicked.
+     *
      * @param game instance of current game.
      */
     public void clicked(GameCore game);
