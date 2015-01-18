@@ -7,8 +7,8 @@ import com.badlogic.gdx.graphics.Texture;
  */
 public class BasicSleeper extends Sleeper {
 
-    public BasicSleeper(boolean ending) {
-        super(ending);
+    public BasicSleeper(float x, float y, float rotation, boolean ending) {
+        super(x, y, rotation, ending);
     }
 
     public Texture getTexture() {

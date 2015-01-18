@@ -12,10 +12,11 @@ public abstract class Sleeper extends Actor {
 
     private boolean ending;
 
-    public Sleeper(boolean ending) {
+    public Sleeper(float x, float y, float rotation, boolean ending) {
         this.ending = ending;
+        setBounds(x, y, getTexture().getWidth(), getTexture().getHeight());
+        setRotation(rotation);
         setOrigin(getTexture().getWidth() / 2f, getTexture().getHeight() / 2f);
-        setSize(getTexture().getWidth(), getTexture().getHeight());
     }
 
     @Override
