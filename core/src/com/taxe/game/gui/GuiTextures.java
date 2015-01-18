@@ -12,6 +12,8 @@ public abstract class GuiTextures {
     public static final Texture CANCEL_ROUTE_BUTTON = new Texture("Gui/cancel-route-button.png");
     public static final Texture MAXIMISE_BUTTON = new Texture("Gui/maximise-button.png");
     public static final Texture MINIMISE_BUTTON = new Texture("Gui/minimise-button.png");
+    public static final Texture EXIT_GAME_BUTTON = new Texture("Gui/exit-game-button.png");
+    public static final Texture MAIN_MENU_BUTTON = new Texture("Gui/main-menu-button.png");
     public static final Texture ARROW_BUTTON = new Texture("Gui/arrow-button.png");
     public static final Texture PLUS_BUTTON = new Texture("Gui/plus-button.png");
     public static final Texture MINUS_BUTTON = new Texture("Gui/minus-button.png");
@@ -28,5 +30,8 @@ public abstract class GuiTextures {
 
     public static final Texture PLAYER_1_TURN_START = new Texture("Gui/player-1-turn-start.png");
     public static final Texture PLAYER_2_TURN_START = new Texture("Gui/player-2-turn-start.png");
+
+    public static final Texture PLAYER_1_WINS = new Texture("Gui/player-1-wins.png");
+    public static final Texture PLAYER_2_WINS = new Texture("Gui/player-2-wins.png");
 
 }

@@ -24,7 +24,7 @@ public class GameEndMenu extends Group {
         setOrigin(texture.getWidth() / 2, texture.getHeight() / 2);
         setSize(texture.getWidth(), texture.getHeight());
 
-        toMenu = new Button(GuiTextures.END_TURN_BUTTON) {
+        toMenu = new Button(GuiTextures.MAIN_MENU_BUTTON) {
             @Override
             public void clicked(GameCore gameCore) {
                 Commands.exitToMenuCommand.executeCommand(gameCore, null);
@@ -32,7 +32,7 @@ public class GameEndMenu extends Group {
         };
         addActor(toMenu);
 
-        exit = new Button(GuiTextures.END_TURN_BUTTON) {
+        exit = new Button(GuiTextures.EXIT_GAME_BUTTON) {
             @Override
             public void clicked(GameCore gameCore) {
                 Gdx.app.exit();
@@ -40,33 +40,33 @@ public class GameEndMenu extends Group {
         };
         addActor(exit);
 
-        playerTexture = (winner == 0) ? GuiTextures.PLAYER_1_TURN_START : GuiTextures.PLAYER_2_TURN_START;
+        playerTexture = (winner == 0) ? GuiTextures.PLAYER_1_WINS : GuiTextures.PLAYER_2_WINS;
 
         resize();
     }
 
     public void resize() {
         toMenu.setCoordinate(new Coordinate(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2));
-        exit.setCoordinate(new Coordinate(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2 - 100));
+        exit.setCoordinate(new Coordinate(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2 - 150));
     }
 
     public void draw(Batch batch, float parentAlpha) {
         batch.draw(
                 texture,
-                Gdx.graphics.getWidth() / 2 - getOriginX(), Gdx.graphics.getHeight() / 2 - getOriginY(),
+                Gdx.graphics.getWidth() / 2 - getOriginX() * 1.5f, Gdx.graphics.getHeight() / 2 - getOriginY(),
                 getOriginX(), getOriginY(),
-                getWidth(), getHeight(),
+                getWidth() * 1.5f, getHeight(),
                 1, 1, 0,
                 0, 0, texture.getWidth(), texture.getHeight(),
                 false, false);
 
         batch.draw(
                 playerTexture,
-                Gdx.graphics.getWidth() / 2 - 100, Gdx.graphics.getHeight() / 2 + 200,
+                Gdx.graphics.getWidth() / 2 - playerTexture.getWidth() / 2, Gdx.graphics.getHeight() / 2 + 80,
                 0, 0,
                 playerTexture.getWidth(), playerTexture.getHeight(),
-                0.2f, 0.2f, 0,
-                0, 0, (int) (playerTexture.getWidth() * 0.6f), playerTexture.getHeight(),
+                1, 1, 0,
+                0, 0, playerTexture.getWidth(), playerTexture.getHeight(),
                 false, false);
 
         drawChildren(batch, parentAlpha);

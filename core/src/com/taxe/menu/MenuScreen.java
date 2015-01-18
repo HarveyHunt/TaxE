@@ -3,7 +3,6 @@ package com.taxe.menu;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -11,7 +10,6 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.taxe.Main;
 import com.taxe.game.gui.Button;
-import com.taxe.game.util.Coordinate;
 
 /**
  * Created by Owen on 08/11/2014.
@@ -20,7 +18,7 @@ public class MenuScreen implements Screen {
 
     private Main main;
     private Stage stage;
-    private Button startGame;
+    private Menu menu;
 
     public MenuScreen(Main main) {
         this.main = main;
@@ -28,14 +26,8 @@ public class MenuScreen implements Screen {
         stage = new Stage(new ScreenViewport());
         Gdx.input.setInputProcessor(stage);
 
-
-        startGame = new Button(new Texture("Gui/end-turn-button.png")) {
-            @Override
-            public void clicked() {
-                main.startGame();
-            }
-        };
-        stage.addActor(startGame);
+        menu = new Menu(main);
+        stage.addActor(menu);
 
         stage.addListener(new ClickListener() {
             @Override
@@ -46,12 +38,6 @@ public class MenuScreen implements Screen {
                 }
             }
         });
-
-        resize();
-    }
-
-    public void resize() {
-        startGame.setCoordinate(new Coordinate(Gdx.graphics.getWidth() / 2f, Gdx.graphics.getHeight() / 2f));
     }
 
     @Override
@@ -87,7 +73,7 @@ public class MenuScreen implements Screen {
     @Override
     public void resize(int w, int h) {
         stage.getViewport().update(w, h, true);
-        resize();
+        menu.resize();
     }
 
     @Override
