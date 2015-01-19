@@ -101,7 +101,7 @@ public class Player extends Group {
     public void addTrain(Train t) {
         trains.add(t);
         this.addActor(t);
-        fuel.changeFuelCapBy(-t.getFuelCost());
+        fuel.changeUsedFuelBy(t.getFuelCost());
     }
 
     @Override

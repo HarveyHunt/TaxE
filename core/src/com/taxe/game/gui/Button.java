@@ -20,7 +20,7 @@ public class Button extends Actor implements Clickable {
 
     public Button(Texture texture) {
         this.texture = texture;
-        state = 0;
+        state = GuiStates.BUTTTON_IDLE;
         setTouchable(Touchable.enabled);
         setOrigin(texture.getWidth() / 2, texture.getHeight() / 6);
         setSize(texture.getWidth(), texture.getHeight() / 3);
@@ -28,26 +28,27 @@ public class Button extends Actor implements Clickable {
         addListener(new ClickListener() {
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                state = ButtonState.PRESSED;
+                state = GuiStates.BUTTON_PRESSED;
                 return true;
             }
 
             @Override
             public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-                state = ButtonState.HOVERED;
+                state = GuiStates.BUTTON_HOVERED;
             }
 
             @Override
             public void enter(InputEvent event, float x, float y, int pointer, Actor fromActor) {
-                if (pointer == -1) { // only sets the state if the mouse is not down (pointer is -1) otherwise it would interfere with touchDown
-                    state = ButtonState.HOVERED;
+                // only sets the state if the mouse is not down (pointer is -1) otherwise it would interfere with touchDown
+                if (pointer == -1) {
+                    state = GuiStates.BUTTON_HOVERED;
                 }
             }
 
             @Override
             public void exit(InputEvent event, float x, float y, int pointer, Actor fromActor) {
                 if (pointer == -1) {
-                    state = ButtonState.IDLE;
+                    state = GuiStates.BUTTTON_IDLE;
                 }
             }
         });
@@ -61,6 +62,7 @@ public class Button extends Actor implements Clickable {
 
     }
 
+    //TODO: remove this method or add it to interface Clickable
     public void clicked() { // This is used in the menu class when we don't want to pass an instance of GameCore
 
     }
@@ -79,10 +81,10 @@ public class Button extends Actor implements Clickable {
     public void draw(Batch batch, float parentAlpha) {
         if (isVisible()) {
             batch.draw(
-                    texture, (int) (getX() - getOriginX()), (int) (getY() - getOriginY()),
+                    texture, getX() - getOriginX(), getY() - getOriginY(),
                     getOriginX(), getOriginY(), getWidth(), getHeight(),
                     1, 1, 0,
-                    0, (int) (getHeight() * state), (int) getWidth(), (int) getHeight(),
+                    0, (int)(getHeight() * state), (int)getWidth(), (int)getHeight(),
                     false, false);
         }
     }

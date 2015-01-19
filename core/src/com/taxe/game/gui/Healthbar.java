@@ -14,15 +14,11 @@ public class Healthbar extends Actor {
 
     public Healthbar(boolean flipped) {
         this.flipped = flipped;
-        percentage = 1f;
+        this.percentage = 1f;
     }
 
     public void setPercentage(float percentage) {
         this.percentage = percentage;
-    }
-
-    public void resize(Rectangle rectangle) {
-        setBounds(rectangle.getX(), rectangle.getY(), rectangle.getWidth(), rectangle.getHeight());
     }
 
     @Override

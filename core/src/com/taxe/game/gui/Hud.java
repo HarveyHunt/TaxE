@@ -2,11 +2,13 @@ package com.taxe.game.gui;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.taxe.game.GameCore;
 import com.taxe.game.commands.Commands;
 import com.taxe.game.player.Player;
@@ -14,7 +16,6 @@ import com.taxe.game.resources.Fuel;
 import com.taxe.game.resources.Gold;
 import com.taxe.game.util.Coordinate;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -24,65 +25,75 @@ public class Hud extends Group {
 
     private GameCore game;
 
-    private Button endTurn;
-    private Button setPath;
-    private Button cancelPath;
-
+    private Button endTurnButton;
+    private Button setPathButton;
+    private Button cancelPathButton;
     private HashMap<Player, Healthbar> healthbars;
-    private ArrayList<TextDisplay> resourceTexts;
+    private HashMap<Player, Label> resourceTexts;
+    private HashMap<Player, Icon> playerIcons;
 
     public Hud(GameCore game) {
         this.game = game;
 
+        Player player1 = game.getPlayers().get(0);
+        Player player2 = game.getPlayers().get(1);
+
         healthbars = new HashMap<>();
+        Healthbar p1Healthbar = new Healthbar(false);
+        Healthbar p2Healthbar = new Healthbar(true);
+        healthbars.put(player1, p1Healthbar);
+        healthbars.put(player2, p2Healthbar);
+        addActor(p1Healthbar); addActor(p2Healthbar);
 
-        Healthbar healthbar1 = new Healthbar(false);
-        healthbars.put(game.getPlayers().get(0), healthbar1);
-        addActor(healthbar1);
-        Healthbar healthbar2 = new Healthbar(true);
-        healthbars.put(game.getPlayers().get(1), healthbar2);
-        addActor(healthbar2);
+        resourceTexts = new HashMap<>();
+        Label p1Label = new Label("", new Label.LabelStyle(new BitmapFont(), Color.YELLOW));
+        p1Label.setAlignment(Align.center);
+        Label p2Label = new Label("", new Label.LabelStyle(new BitmapFont(), Color.YELLOW));
+        p2Label.setAlignment(Align.center);
+        resourceTexts.put(player1, p1Label);
+        resourceTexts.put(player2, p2Label);
+        setPlayerText(player1);
+        setPlayerText(player2);
+        addActor(p1Label); addActor(p2Label);
 
-        endTurn = new Button(GuiTextures.END_TURN_BUTTON) {
+        playerIcons = new HashMap<>();
+        Icon p1Icon = new Icon(GuiTextures.PLAYER_1_ICON);
+        Icon p2Icon = new Icon(GuiTextures.PLAYER_2_ICON);
+        playerIcons.put(player1, p1Icon);
+        playerIcons.put(player2, p2Icon);
+        addActor(p1Icon); addActor(p2Icon);
+
+        endTurnButton = new Button(GuiTextures.END_TURN_BUTTON) {
             @Override
             public void clicked(GameCore game) {
                 Commands.moveTrainsCommand.executeCommand(game, this);
             }
         };
-        addActor(endTurn);
-        setPath = new Button(GuiTextures.CONFIRM_ROUTE_BUTTON) {
+        addActor(endTurnButton);
+        setPathButton = new Button(GuiTextures.CONFIRM_ROUTE_BUTTON) {
             @Override
             public void clicked(GameCore gameCore) {
                 Commands.savePathCommand.executeCommand(gameCore, this);
             }
         };
-        addActor(setPath);
-        cancelPath = new Button(GuiTextures.CANCEL_ROUTE_BUTTON) {
+        addActor(setPathButton);
+        cancelPathButton = new Button(GuiTextures.CANCEL_ROUTE_BUTTON) {
             @Override
             public void clicked(GameCore gameCore) {
-                Commands.resetPathCommand.executeCommand(gameCore, null);
+                Commands.resetPathCommand.executeCommand(gameCore, this);
             }
         };
-        addActor(cancelPath);
-
-        resourceTexts = new ArrayList<>();
-        TextDisplay player1Text = new TextDisplay("Gold: 0   Fuel: 0", Color.YELLOW, 1f);
-        addActor(player1Text);
-        resourceTexts.add(player1Text);
-        TextDisplay player2Text = new TextDisplay("Gold: 0   Fuel: 0", Color.YELLOW, 1f);
-        addActor(player2Text);
-        resourceTexts.add(player2Text);
-
-        setPlayerText(0, game.getPlayers().get(0).getGold(), game.getPlayers().get(0).getFuel());
-        setPlayerText(1, game.getPlayers().get(1).getGold(), game.getPlayers().get(1).getFuel());
+        addActor(cancelPathButton);
 
         resize();
         hidePathButtons();
     }
 
-    public void setPlayerText(int player, Gold gold, Fuel fuel) {
-        CharSequence text = "Gold: " + gold.getQuantity() + "     Fuel: " + (fuel.getUsedFuel() + 1) + "/" + (fuel.getFuelCap() + 1);
-        resourceTexts.get(player).setText(text);
+    public void setPlayerText(Player p) {
+        Gold g = p.getGold();
+        Fuel f = p.getFuel();
+        CharSequence text = "Gold: " + g.getQuantity() + "     Fuel: " + f.getUsedFuel() + "/" + f.getFuelCap();
+        resourceTexts.get(p).setText(text);
     }
 
     public Healthbar getHealthbar(Player p) {
@@ -90,63 +101,55 @@ public class Hud extends Group {
     }
 
     public void lockButtons() {
-        endTurn.setTouchable(Touchable.disabled);
-        setPath.setTouchable(Touchable.disabled);
-        cancelPath.setTouchable(Touchable.disabled);
+        endTurnButton.setTouchable(Touchable.disabled);
+        setPathButton.setTouchable(Touchable.disabled);
+        cancelPathButton.setTouchable(Touchable.disabled);
     }
 
     public void unlockButtons() {
-        endTurn.setTouchable(Touchable.enabled);
-        setPath.setTouchable(Touchable.enabled);
-        cancelPath.setTouchable(Touchable.enabled);
+        endTurnButton.setTouchable(Touchable.enabled);
+        setPathButton.setTouchable(Touchable.enabled);
+        cancelPathButton.setTouchable(Touchable.enabled);
     }
 
     public void showPathButtons() {
-        setPath.setVisible(true);
-        cancelPath.setVisible(true);
+        setPathButton.setVisible(true);
+        cancelPathButton.setVisible(true);
     }
 
     public void hidePathButtons() {
-        setPath.setVisible(false);
-        cancelPath.setVisible(false);
+        setPathButton.setVisible(false);
+        cancelPathButton.setVisible(false);
     }
 
     public void resize() {
-        healthbars.get(game.getPlayers().get(0)).resize(new Rectangle(
-                        60, Gdx.graphics.getHeight() - 70,
-                        Gdx.graphics.getWidth() / 2 - 100, 40)
-        );
-        healthbars.get(game.getPlayers().get(1)).resize(new Rectangle(
-                        Gdx.graphics.getWidth() / 2 + 40, Gdx.graphics.getHeight() - 70,
-                        Gdx.graphics.getWidth() / 2 - 100, 40));
-
-        endTurn.setCoordinate(new Coordinate(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() - 36.75f));
-        setPath.setCoordinate(new Coordinate(Gdx.graphics.getWidth() / 2 - 76, Gdx.graphics.getHeight() - 109));
-        cancelPath.setCoordinate(new Coordinate(Gdx.graphics.getWidth() / 2 + 76, Gdx.graphics.getHeight() - 109));
-        resourceTexts.get(0).setCoordinate(new Rectangle(0, Gdx.graphics.getHeight() - 30, Gdx.graphics.getWidth() / 2, 30));
-        resourceTexts.get(1).setCoordinate(new Rectangle(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() - 30, Gdx.graphics.getWidth() / 2, 30));
+        Player player1 = game.getPlayers().get(0);
+        Player player2 = game.getPlayers().get(1);
+        int width = Gdx.graphics.getWidth();
+        int height = Gdx.graphics.getHeight();
+        healthbars.get(player1).setBounds(60, height - 70, width / 2 - 100, 40);
+        healthbars.get(player2).setBounds(width / 2 + 40, height - 70, width / 2 - 100, 40);
+        resourceTexts.get(player1).setBounds(0, height - 30, width / 2, 30);
+        resourceTexts.get(player2).setBounds(width / 2, height - 30, width / 2, 30);
+        Icon icon1 = playerIcons.get(player1);
+        Icon icon2 = playerIcons.get(player2);
+        icon1.setPosition(-20, height - icon1.getHeight() + 20);
+        icon2.setPosition(width - icon2.getWidth() + 20, height - icon2.getHeight() + 20);
+        endTurnButton.setPosition(width / 2, height - 36.75f);
+        setPathButton.setPosition(width / 2 - 76, height - 109);
+        cancelPathButton.setPosition(width / 2 + 76, height - 109);
     }
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
+        int height = Gdx.graphics.getHeight();
+        int width = Gdx.graphics.getWidth();
         batch.draw(
                 GuiTextures.HUD_BACKGROUND,
-                0, Gdx.graphics.getHeight() - GuiTextures.HUD_BACKGROUND.getHeight(),
-                Gdx.graphics.getWidth(), GuiTextures.HUD_BACKGROUND.getHeight()
+                0, height - GuiTextures.HUD_BACKGROUND.getHeight(),
+                width, GuiTextures.HUD_BACKGROUND.getHeight()
         );
-
         drawChildren(batch, parentAlpha);
-
-        batch.draw(
-                GuiTextures.PLAYER_1_ICON,
-                -20, Gdx.graphics.getHeight() - GuiTextures.PLAYER_1_ICON.getHeight() + 20,
-                GuiTextures.PLAYER_1_ICON.getWidth(), GuiTextures.PLAYER_1_ICON.getHeight()
-        );
-        batch.draw(
-                GuiTextures.PLAYER_2_ICON,
-                Gdx.graphics.getWidth() - GuiTextures.PLAYER_2_ICON.getWidth() + 20, Gdx.graphics.getHeight() - GuiTextures.PLAYER_2_ICON.getHeight() + 20,
-                GuiTextures.PLAYER_2_ICON.getWidth(), GuiTextures.PLAYER_2_ICON.getHeight()
-        );
     }
 
 }
