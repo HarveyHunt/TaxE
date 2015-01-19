@@ -134,8 +134,8 @@ public class GameCore implements Screen {
     }
 
     /**
-     * return the parent instance of main
-     * @return
+     * returns the parent instance of main
+     * @return instance of main
      */
     public Main getMain() {
         return main;
@@ -143,7 +143,7 @@ public class GameCore implements Screen {
 
     /**
      * returns the instance of Map
-     * @return
+     * @return map
      */
     public Map getMap() {
         return map;
@@ -151,7 +151,7 @@ public class GameCore implements Screen {
 
     /**
      * returns the instance of Gui
-     * @return
+     * @return gui
      */
     public Gui getGui() {
         return gui;
@@ -159,7 +159,7 @@ public class GameCore implements Screen {
 
     /**
      * return the list of Players
-     * @return
+     * @return list of players
      */
     public List<Player> getPlayers() {
         return players;
@@ -167,7 +167,7 @@ public class GameCore implements Screen {
 
     /**
      * returns the path of nodes currently selected
-     * @return
+     * @return list of currently selected nodes
      */
     public Deque<Node> getSelectedPath() {
         return selectedPath;
@@ -182,7 +182,7 @@ public class GameCore implements Screen {
 
     /**
      * returns the currently active Player
-     * @return
+     * @return active player
      */
     public Player getActivePlayer() {
         return players.get(activePlayer);
@@ -190,7 +190,7 @@ public class GameCore implements Screen {
 
     /**
      * returns the next player to be active
-     * @return
+     * @return next active player
      */
     public Player nextActivePlayer() {
         int p = (activePlayer + 1 == players.size()) ? 0 : activePlayer + 1;
@@ -198,19 +198,8 @@ public class GameCore implements Screen {
     }
 
     /**
-     * returns true if actions are currently being executed
-     * @return
-     */
-    public boolean isExecutionPhase() {
-        for (Train t : getActivePlayer().getTrains())
-            if (t.getActions().size > 0)
-                return true;
-        return false;
-    }
-
-    /**
      * returns the Scene
-     * @return
+     * @return scene
      */
     public Scene getScene() {
         return scene;
@@ -218,7 +207,7 @@ public class GameCore implements Screen {
 
     /**
      * returns the Stage
-     * @return
+     * @return stage
      */
     public Stage getStage() {
         return stage;

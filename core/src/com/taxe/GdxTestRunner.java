@@ -15,7 +15,10 @@ import java.util.Map;
 
 import static org.mockito.Mockito.mock;
 
-
+/**
+ * Required for running tests using gdx-libraries.
+ * Include @RunWith(GdxTestRunner.class) just before the declaration of test class to use.
+ */
 public class GdxTestRunner extends BlockJUnit4ClassRunner implements ApplicationListener {
 
     private Map<FrameworkMethod, RunNotifier> invokeInRender = new HashMap<FrameworkMethod, RunNotifier>();

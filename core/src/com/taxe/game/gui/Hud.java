@@ -20,7 +20,7 @@ import com.taxe.game.util.Coordinate;
 import java.util.HashMap;
 
 /**
- * Created by Owen on 09/01/2015.
+ * Displays players' resources, healthbars and icons and a few buttons.
  */
 public class Hud extends Group {
 
@@ -106,9 +106,9 @@ public class Hud extends Group {
     }
 
     /**
-     * returns one of the healthbars
+     * returns player's healthbar
      * @param p the player whose healthbar is returned
-     * @return
+     * @return player's p healthbar
      */
     public Healthbar getHealthbar(Player p) {
         return healthbars.get(p);
