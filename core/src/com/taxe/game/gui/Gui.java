@@ -46,7 +46,7 @@ public class Gui extends Group {
 
     /**
      * Creates an instance of the end game menu
-     * @param winner 0 = player 1, 1 = player 2
+     * @param winner the player that won as an index value. (index value = player number - 1)
      */
     public void createGameEndMenu(int winner) {
         gameEndMenu = new GameEndMenu(winner);
@@ -64,21 +64,28 @@ public class Gui extends Group {
         addActor(notification);
     }
 
+    /**
+     * returns the GameCore game instance
+     * @return
+     */
     public GameCore getGame() {
         return game;
     }
 
+    /**
+     * returns the Hud hud instance
+     * @return
+     */
     public Hud getHud() {
         return hud;
     }
 
+    /**
+     * returns the InfoDisplay infoDisplay instance
+     * @return
+     */
     public InfoDisplay getInfoDisplay() {
         return infoDisplay;
     }
-
-    /*@Override
-    public void draw(Batch batch, float parentAlpha) {
-        drawChildren(batch, parentAlpha);
-    }*/
 
 }

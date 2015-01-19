@@ -1,7 +1,7 @@
 package com.taxe.game.gui;
 
 /**
- * Created by vlad on 19/01/15.
+ * The states that buttons can have
  */
 public abstract class GuiStates {
 

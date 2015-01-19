@@ -3,7 +3,7 @@ package com.taxe.game.gui;
 import com.badlogic.gdx.graphics.Texture;
 
 /**
- * Created by Owen on 18/01/2015.
+ * Stores static instances of all of the Textures used in the GUI
  */
 public abstract class GuiTextures {
 

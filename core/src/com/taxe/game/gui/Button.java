@@ -18,6 +18,10 @@ public class Button extends Actor implements Clickable {
     private Texture texture;
     private int state;
 
+    /**
+     * Creates an instance of a Button
+     * @param texture the button's texture
+     */
     public Button(Texture texture) {
         this.texture = texture;
         state = GuiStates.BUTTTON_IDLE;
@@ -54,6 +58,10 @@ public class Button extends Actor implements Clickable {
         });
     }
 
+    /**
+     * return the button's state
+     * @return
+     */
     public int getState() {
         return state;
     }
@@ -62,8 +70,10 @@ public class Button extends Actor implements Clickable {
 
     }
 
-    //TODO: remove this method or add it to interface Clickable
-    public void clicked() { // This is used in the menu class when we don't want to pass an instance of GameCore
+    /**
+     * Same as clicked(GameCore) except it can be used in the menu because it doesn't require a GameCore instance
+     */
+    public void clicked() {
 
     }
 

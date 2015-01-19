@@ -24,7 +24,7 @@ import java.io.IOException;
 import java.util.*;
 
 /**
- * Created by Owen on 08/11/2014.
+ * The game. This is the main class for everything related to the playing of the game itself.
  */
 public class GameCore implements Screen {
 
@@ -37,6 +37,10 @@ public class GameCore implements Screen {
     private Scene scene;
     private ArrayDeque<Node> selectedPath = new ArrayDeque<>();
 
+    /**
+     * creates an instance of GameCore
+     * @param main the parent instance of Main
+     */
     public GameCore(Main main) {
         this.main = main;
 
@@ -130,39 +134,74 @@ public class GameCore implements Screen {
         stage.dispose();
     }
 
+    /**
+     * return the parent instance of main
+     * @return
+     */
     public Main getMain() {
         return main;
     }
 
-    public com.taxe.game.map.Map getMap() {
+    /**
+     * returns the instance of Map
+     * @return
+     */
+    public Map getMap() {
         return map;
     }
 
+    /**
+     * returns the instance of Gui
+     * @return
+     */
     public Gui getGui() {
         return gui;
     }
 
+    /**
+     * return the list of Players
+     * @return
+     */
     public List<Player> getPlayers() {
         return players;
     }
 
+    /**
+     * returns the path of nodes currently selected
+     * @return
+     */
     public Deque<Node> getSelectedPath() {
         return selectedPath;
     }
 
+    /**
+     * Switches to the next player. This method works for any number of Players > 0
+     */
     public void switchActivePlayer() {
         activePlayer = (activePlayer + 1 == players.size()) ? 0 : activePlayer + 1;
     }
 
+    /**
+     * returns the currently active Player
+     * @return
+     */
     public Player getActivePlayer() {
         return players.get(activePlayer);
     }
 
+    /**
+     * returns the next player to be active
+     * @return
+     */
     public Player nextActivePlayer() {
         int p = (activePlayer + 1 == players.size()) ? 0 : activePlayer + 1;
         return players.get(p);
     }
 
+    /**
+     * returns true if actions are currently being executed
+     * @return
+     */
     public boolean isExecutionPhase() {
         for (Train t : getActivePlayer().getTrains())
             if (t.getActions().size > 0)
@@ -170,10 +209,18 @@ public class GameCore implements Screen {
         return false;
     }
 
+    /**
+     * returns the Scene
+     * @return
+     */
     public Scene getScene() {
         return scene;
     }
 
+    /**
+     * returns the Stage
+     * @return
+     */
     public Stage getStage() {
         return stage;
     }

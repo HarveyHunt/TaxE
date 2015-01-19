@@ -33,6 +33,10 @@ public class Hud extends Group {
     private HashMap<Player, Label> resourceTexts;
     private HashMap<Player, Image> playerIcons;
 
+    /**
+     * creates an instance of the Hud class
+     * @param game the GameCore instance for the game
+     */
     public Hud(GameCore game) {
         this.game = game;
 
@@ -90,6 +94,10 @@ public class Hud extends Group {
         hidePathButtons();
     }
 
+    /**
+     * set the text that displays the players resources
+     * @param p the player whose resources are being displayed
+     */
     public void setPlayerText(Player p) {
         Gold g = p.getGold();
         Fuel f = p.getFuel();
@@ -97,32 +105,52 @@ public class Hud extends Group {
         resourceTexts.get(p).setText(text);
     }
 
+    /**
+     * returns one of the healthbars
+     * @param p the player whose healthbar is returned
+     * @return
+     */
     public Healthbar getHealthbar(Player p) {
         return healthbars.get(p);
     }
 
+    /**
+     * disable/freeze the buttons on the HUD
+     */
     public void lockButtons() {
         endTurnButton.setTouchable(Touchable.disabled);
         setPathButton.setTouchable(Touchable.disabled);
         cancelPathButton.setTouchable(Touchable.disabled);
     }
 
+    /**
+     * enable/unfreeze the buttons on the HUD
+     */
     public void unlockButtons() {
         endTurnButton.setTouchable(Touchable.enabled);
         setPathButton.setTouchable(Touchable.enabled);
         cancelPathButton.setTouchable(Touchable.enabled);
     }
 
+    /**
+     * make the set/cancel path buttons visible
+     */
     public void showPathButtons() {
         setPathButton.setVisible(true);
         cancelPathButton.setVisible(true);
     }
 
+    /**
+     * make the set/cancel path buttons invisible
+     */
     public void hidePathButtons() {
         setPathButton.setVisible(false);
         cancelPathButton.setVisible(false);
     }
 
+    /**
+     * reposition the elements of the HUD based on the size of the screen
+     */
     public void resize() {
         Player player1 = game.getPlayers().get(0);
         Player player2 = game.getPlayers().get(1);

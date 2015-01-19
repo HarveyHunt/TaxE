@@ -9,7 +9,7 @@ import com.taxe.game.GameCore;
 import com.taxe.game.commands.Commands;
 
 /**
- * Created by Owen on 17/01/2015.
+ * Displayed when one player runs out of health and the game is over. Has options to exit to menu or exit the game
  */
 public class GameEndMenu extends Group {
 
@@ -18,6 +18,10 @@ public class GameEndMenu extends Group {
     private Button toMenuButton;
     private Button exitGameButton;
 
+    /**
+     * creates a new instance of GameEndMenu
+     * @param winner the player that won as an index value. (index value = player number - 1)
+     */
     public GameEndMenu(int winner) {
         background = GuiTextures.INFODISPLAY_BACKGROUND;
         setOrigin(background.getWidth() / 2, background.getHeight() / 2);
@@ -44,11 +48,15 @@ public class GameEndMenu extends Group {
         resize();
     }
 
+    /**
+     * reposition elements on the menu based on screen size
+     */
     public void resize() {
         toMenuButton.setPosition(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2);
         exitGameButton.setPosition(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2 - 150);
     }
 
+    @Override
     public void draw(Batch batch, float parentAlpha) {
         batch.draw(
                 background,

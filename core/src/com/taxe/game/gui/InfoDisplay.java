@@ -6,7 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.Group;
 import com.taxe.game.GameCore;
 
 /**
- * Created by Owen on 09/01/2015.
+ * The menu on the left hand side of the screen that does not display any information yet
  */
 public class InfoDisplay extends Group {
 
@@ -15,6 +15,10 @@ public class InfoDisplay extends Group {
     private Button minimiseButton;
     private boolean maximised;
 
+    /**
+     * creates an instance of InfoDisplay
+     * @param game the GameCore instance
+     */
     public InfoDisplay(GameCore game) {
         this.game = game;
         maximised = false;
@@ -43,6 +47,9 @@ public class InfoDisplay extends Group {
         resize();
     }
 
+    /**
+     * repositions the elements of the menu based on the size of the screen.
+     */
     public void resize() {
         minimiseButton.setPosition(268, Gdx.graphics.getHeight() - GuiTextures.INFODISPLAY_TOP_MINIMISED.getHeight() - GuiTextures.INFODISPLAY_BACKGROUND.getHeight() - 45);
         maximiseButton.setPosition(218, Gdx.graphics.getHeight() - GuiTextures.INFODISPLAY_TOP_MAXIMISED.getHeight() - 91);

@@ -5,18 +5,27 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
 /**
- * Created by Owen on 18/01/2015.
+ * The Healthbar is used to represent the players healths on the HUD
+ * Vlad makes me work hard. Send help.
  */
 public class Healthbar extends Actor {
 
     private boolean flipped;
     private float percentage;
 
+    /**
+     * creates an instance of Healthbar
+     * @param flipped whether the drawing of this healthbar should be flipped or not
+     */
     public Healthbar(boolean flipped) {
         this.flipped = flipped;
         this.percentage = 1f;
     }
 
+    /**
+     * set the percentage value used to draw the healthbar
+     * @param percentage 1.0f is max health. 0.0f is min health
+     */
     public void setPercentage(float percentage) {
         this.percentage = percentage;
     }

@@ -11,12 +11,19 @@ import com.badlogic.gdx.scenes.scene2d.actions.SequenceAction;
 import com.taxe.game.util.Coordinate;
 
 /**
- * Created by Owen on 16/01/2015.
+ * A notification is an image that is displayed for a specified duration, then fades out and is deleted
  */
 public class Notification extends Actor {
 
     private Texture texture;
 
+    /**
+     * creates an instance of Notification
+     * @param parent the parent group that created this.
+     * @param texture the texture of the notification
+     * @param coordinate the center position of the notification
+     * @param duration the duration it is displayed for until it fades out
+     */
     public Notification(Group parent, Texture texture, Coordinate coordinate, float duration) {
         setParent(parent);
         this.texture = texture;
@@ -35,6 +42,7 @@ public class Notification extends Actor {
         addAction(seq);
     }
 
+    @Override
     public void draw(Batch batch, float parentAlpha) {
         // Sets the colour to include the alpha value of the notification
         Color colour = batch.getColor();

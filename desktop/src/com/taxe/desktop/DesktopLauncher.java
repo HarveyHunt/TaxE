@@ -6,13 +6,11 @@ import com.taxe.Main;
 
 public class DesktopLauncher {
 
-    /*
-    ---------------------------------
-    This class just configures a few settings and then sends us over to the Main class.
-    The framework supports mobile games also so it specifies that this is a desktop game.
-    ---------------------------------
+    /**
+     * This class just configures a few settings and then sends us over to the Main class.
+     * The framework supports mobile games also so it specifies that this is a desktop game.
+     * @param arg
      */
-
     public static void main(String[] arg) {
         // Config
         LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
