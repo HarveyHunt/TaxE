@@ -3,7 +3,7 @@ package com.taxe.game.commands;
 import com.taxe.game.GameCore;
 
 /**
- * Created by Owen on 18/01/2015.
+ * Exits to main menu.
  */
 public class ExitToMenuCommand implements Commandable {
 

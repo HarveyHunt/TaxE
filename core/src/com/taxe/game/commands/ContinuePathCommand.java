@@ -7,13 +7,18 @@ import com.taxe.game.nodes.NodeStates;
 import com.taxe.game.tracks.Track;
 
 /**
- * Created by vlad on 11/01/15.
+ * Continues train path which was already started.
  */
 public class ContinuePathCommand implements Commandable {
 
+    /**
+     * @param game instance of game
+     * @param target new node added to the path
+     * @throws IllegalArgumentException if target not instance of Node
+     */
     public void executeCommand(GameCore game, Object target) {
         if (!(target instanceof Node)) {
-            throw new IllegalArgumentException("target must be an instance of Node");
+            throw new IllegalArgumentException("target not instance of Node");
         }
         if (target instanceof IntermediatePoint)
             return;

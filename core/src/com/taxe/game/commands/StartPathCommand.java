@@ -6,11 +6,17 @@ import com.taxe.game.trains.Train;
 import com.taxe.game.trains.TrainStates;
 
 /**
- * Created by vlad on 11/01/15.
+ * Starts the path on the node of the selected train.
  */
 public class StartPathCommand implements Commandable {
 
-    public void executeCommand(GameCore game, Object target) {
+    /**
+     *
+     * @param game instance of game
+     * @param target train that was clicked.
+     * @throws IllegalArgumentException if target not instance of train
+     */
+    public void executeCommand(GameCore game, Object target) throws IllegalArgumentException {
         if (!(target instanceof Train)) {
             throw new IllegalArgumentException("target must be an instance of Train");
         }

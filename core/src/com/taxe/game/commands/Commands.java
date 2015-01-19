@@ -1,7 +1,7 @@
 package com.taxe.game.commands;
 
 /**
- * Created by Owen on 16/01/2015.
+ * Describes all commands used in the game.
  */
 public abstract class Commands {
 

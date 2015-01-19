@@ -7,11 +7,17 @@ import com.taxe.game.nodes.NodeStates;
 import com.taxe.game.tracks.Track;
 
 /**
- * Created by vlad on 11/01/15.
+ * Undoes the path up to the current node.
  */
 public class UndoPathCommand implements Commandable {
 
-    public void executeCommand(GameCore game, Object target) {
+    /**
+     *
+     * @param game instance of game
+     * @param target node up to which path must be undone
+     * @throws IllegalArgumentException if target not instance of node
+     */
+    public void executeCommand(GameCore game, Object target) throws IllegalArgumentException {
         if (!(target instanceof Node)) {
             throw new IllegalArgumentException("target must be an instance of Node");
         }

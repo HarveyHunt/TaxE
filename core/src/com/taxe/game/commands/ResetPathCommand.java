@@ -8,11 +8,12 @@ import com.taxe.game.trains.Train;
 import com.taxe.game.trains.TrainStates;
 
 /**
- * Created by vlad on 11/01/15.
+ * Reset current selected paths.
  */
 public class ResetPathCommand implements Commandable {
 
     public void executeCommand(GameCore game, Object target) {
+        // Reset the state of trains and nodes
         Player p = game.getActivePlayer();
         for (Train t : p.getTrains()) {
             t.setState(TrainStates.ACTIVE);
@@ -20,8 +21,9 @@ public class ResetPathCommand implements Commandable {
         for (Node n : game.getMap().getNodes()) {
             n.setState(NodeStates.ORIGINAL);
         }
-        game.getSelectedPath().clear();
 
+        // Clear path and hide buttons
+        game.getSelectedPath().clear();
         game.getGui().getHud().hidePathButtons();
     }
 

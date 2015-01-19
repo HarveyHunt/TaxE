@@ -12,7 +12,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Created by vlad on 12/01/15.
+ * Saves the current selected path and assigns it to train.
  */
 public class SavePathCommand implements Commandable {
 
@@ -22,7 +22,6 @@ public class SavePathCommand implements Commandable {
         Node current = null, previous = null;
         while (!game.getSelectedPath().isEmpty()) {
             current = game.getSelectedPath().removeFirst();
-
             // Adding nodes and coordinates on track going from previous to current
             // Note: track can contain nodes in reverse order; correct order: previous -> current
             if (previous != null) {
@@ -46,6 +45,8 @@ public class SavePathCommand implements Commandable {
             }
             previous = current;
         }
+
+        // Removing the current node from the path, such that the train would start moving immediately towards the next node
         for (Train t : game.getActivePlayer().getTrains()) {
             if (t.getState() == TrainStates.SELECTED) {
                 nodes.pollFirst();

@@ -3,7 +3,7 @@ package com.taxe.game.commands;
 import com.taxe.game.GameCore;
 
 /**
- * Created by vlad on 11/01/15.
+ * Specifies methods that all commands must implement.
  */
 public interface Commandable {
 

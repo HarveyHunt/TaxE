@@ -56,6 +56,7 @@ public class GameCore implements Screen {
         // Setting up players and their trains
         Player p1 = new Player(map.getHomebases().get(0), new ArrayList<>(), new Gold(500), new Fuel(10, 0));
         Player p2 = new Player(map.getHomebases().get(1), new ArrayList<>(), new Gold(500), new Fuel(10, 0));
+        p1.addTrain(new BasicTrain(p1.getHomebase()));
         p1.addTrain(new BasicTrain(map.getJunctions().get(0)));
         p2.addTrain(new BasicTrain(p2.getHomebase()));
         players = new ArrayList<>();

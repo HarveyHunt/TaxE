@@ -6,22 +6,25 @@ import com.taxe.game.gui.Gui;
 import com.taxe.game.player.Player;
 
 /**
- * Created by Owen on 18/01/2015.
+ * Shows the winner and allows to exit the game or to return to main menu.
  */
 public class EndGameCommand implements Commandable {
 
     public void executeCommand(GameCore game, Object target) {
-        int winner;
-        winner = (game.getActivePlayer() == game.getPlayers().get(0)) ? 1 : 0;
 
+        // Determine winner
+        int winner = (game.getActivePlayer() == game.getPlayers().get(0)) ? 1 : 0;
+
+        // Hide and lock appropriate button, disable trains
         Gui gui = game.getGui();
-        gui.createGameEndMenu(winner);
         gui.getHud().lockButtons();
         gui.getHud().hidePathButtons();
         for (Player player : game.getPlayers()) {
             player.setTrainsTouchable(Touchable.disabled);
         }
-        System.out.println("HI");
+
+        // Create GameEndMenu
+        gui.createGameEndMenu(winner);
     }
 
 }

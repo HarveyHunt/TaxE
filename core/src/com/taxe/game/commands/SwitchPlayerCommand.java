@@ -7,7 +7,7 @@ import com.taxe.game.gui.GuiTextures;
 import com.taxe.game.util.Coordinate;
 
 /**
- * Created by vlad on 12/01/15.
+ * Switches players turns.
  */
 public class SwitchPlayerCommand implements Commandable {
 
