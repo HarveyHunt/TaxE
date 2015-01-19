@@ -20,6 +20,11 @@ public class MenuScreen implements Screen {
     private Stage stage;
     private Menu menu;
 
+    /**
+     * The screen for the menu. Allows the user to start the game or exit.
+     * The elements of the menu are stored in an instance of the Menu class.
+     * @param main
+     */
     public MenuScreen(Main main) {
         this.main = main;
 

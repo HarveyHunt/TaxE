@@ -8,13 +8,17 @@ import com.taxe.game.gui.Button;
 import com.taxe.game.util.Coordinate;
 
 /**
- * Created by Owen on 18/01/2015.
+ * A Group that contains all of the elements of the menu screen
  */
 public class Menu extends Group {
 
     private Button startGame;
     private Button exitGame;
 
+    /**
+     * creates the Actors of the elements of the menu
+     * @param main
+     */
     public Menu(Main main) {
         startGame = new Button(MenuTextures.START_GAME_BUTTON) {
             @Override
@@ -34,6 +38,9 @@ public class Menu extends Group {
         resize();
     }
 
+    /**
+     * reposition elements based on the size of the screen
+     */
     public void resize() {
         startGame.setPosition(Gdx.graphics.getWidth() / 2f, Gdx.graphics.getHeight() / 2f - 150);
         exitGame.setPosition(Gdx.graphics.getWidth() / 2f, Gdx.graphics.getHeight() / 2f - 350);
