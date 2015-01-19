@@ -19,7 +19,7 @@ public class StartPathCommand implements Commandable {
         t.setState(TrainStates.SELECTED);
         if (!(t.getNode() instanceof IntermediatePoint)) {
             Commands.continuePathCommand.executeCommand(game, t.getNode());
-            game.getGui().getHUD().showPathButtons();
+            game.getGui().getHud().showPathButtons();
         }
     }
 

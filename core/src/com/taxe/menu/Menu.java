@@ -35,8 +35,8 @@ public class Menu extends Group {
     }
 
     public void resize() {
-        startGame.setCoordinate(new Coordinate(Gdx.graphics.getWidth() / 2f, Gdx.graphics.getHeight() / 2f - 150));
-        exitGame.setCoordinate(new Coordinate(Gdx.graphics.getWidth() / 2f, Gdx.graphics.getHeight() / 2f - 350));
+        startGame.setPosition(Gdx.graphics.getWidth() / 2f, Gdx.graphics.getHeight() / 2f - 150);
+        exitGame.setPosition(Gdx.graphics.getWidth() / 2f, Gdx.graphics.getHeight() / 2f - 350);
     }
 
     @Override

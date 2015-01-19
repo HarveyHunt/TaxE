@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.taxe.game.GameCore;
@@ -30,7 +31,7 @@ public class Hud extends Group {
     private Button cancelPathButton;
     private HashMap<Player, Healthbar> healthbars;
     private HashMap<Player, Label> resourceTexts;
-    private HashMap<Player, Icon> playerIcons;
+    private HashMap<Player, Image> playerIcons;
 
     public Hud(GameCore game) {
         this.game = game;
@@ -57,8 +58,8 @@ public class Hud extends Group {
         addActor(p1Label); addActor(p2Label);
 
         playerIcons = new HashMap<>();
-        Icon p1Icon = new Icon(GuiTextures.PLAYER_1_ICON);
-        Icon p2Icon = new Icon(GuiTextures.PLAYER_2_ICON);
+        Image p1Icon = new Image(GuiTextures.PLAYER_1_ICON);
+        Image p2Icon = new Image(GuiTextures.PLAYER_2_ICON);
         playerIcons.put(player1, p1Icon);
         playerIcons.put(player2, p2Icon);
         addActor(p1Icon); addActor(p2Icon);
@@ -131,10 +132,10 @@ public class Hud extends Group {
         healthbars.get(player2).setBounds(width / 2 + 40, height - 70, width / 2 - 100, 40);
         resourceTexts.get(player1).setBounds(0, height - 30, width / 2, 30);
         resourceTexts.get(player2).setBounds(width / 2, height - 30, width / 2, 30);
-        Icon icon1 = playerIcons.get(player1);
-        Icon icon2 = playerIcons.get(player2);
-        icon1.setPosition(-20, height - icon1.getHeight() + 20);
-        icon2.setPosition(width - icon2.getWidth() + 20, height - icon2.getHeight() + 20);
+        Image p1Icon = playerIcons.get(player1);
+        Image p2Icon = playerIcons.get(player2);
+        p1Icon.setPosition(-20, height - p1Icon.getHeight() + 20);
+        p2Icon.setPosition(width - p2Icon.getWidth() + 20, height - p2Icon.getHeight() + 20);
         endTurnButton.setPosition(width / 2, height - 36.75f);
         setPathButton.setPosition(width / 2 - 76, height - 109);
         cancelPathButton.setPosition(width / 2 + 76, height - 109);

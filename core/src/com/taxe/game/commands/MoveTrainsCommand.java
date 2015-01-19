@@ -48,7 +48,7 @@ public class MoveTrainsCommand implements Commandable {
             train.addAction(seq);
             train.setNode(n);
         }
-        game.getGui().getHUD().lockButtons();
+        game.getGui().getHud().lockButtons();
     }
 
 }

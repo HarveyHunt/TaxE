@@ -1,11 +1,9 @@
 package com.taxe.game.gui;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.taxe.game.GameCore;
-import com.taxe.game.util.Coordinate;
 
 /**
  * Created by Owen on 09/01/2015.
@@ -13,43 +11,41 @@ import com.taxe.game.util.Coordinate;
 public class InfoDisplay extends Group {
 
     private GameCore game;
-
+    private Button maximiseButton;
+    private Button minimiseButton;
     private boolean maximised;
-
-    private Button maximise;
-    private Button minimise;
 
     public InfoDisplay(GameCore game) {
         this.game = game;
         maximised = false;
 
-        minimise = new Button(GuiTextures.MINIMISE_BUTTON) {
+        minimiseButton = new Button(GuiTextures.MINIMISE_BUTTON) {
             @Override
             public void clicked(GameCore game) {
                 maximised = false;
                 this.setVisible(false);
-                maximise.setVisible(true);
+                maximiseButton.setVisible(true);
             }
         };
-        addActor(minimise);
-        minimise.setVisible(false);
+        addActor(minimiseButton);
+        minimiseButton.setVisible(false);
 
-        maximise = new Button(GuiTextures.MAXIMISE_BUTTON) {
+        maximiseButton = new Button(GuiTextures.MAXIMISE_BUTTON) {
             @Override
             public void clicked(GameCore game) {
                 maximised = true;
                 this.setVisible(false);
-                minimise.setVisible(true);
+                minimiseButton.setVisible(true);
             }
         };
-        addActor(maximise);
+        addActor(maximiseButton);
 
         resize();
     }
 
     public void resize() {
-        minimise.setCoordinate(new Coordinate(268, Gdx.graphics.getHeight() - GuiTextures.INFODISPLAY_TOP_MINIMISED.getHeight() - GuiTextures.INFODISPLAY_BACKGROUND.getHeight() - 45));
-        maximise.setCoordinate(new Coordinate(218, Gdx.graphics.getHeight() - GuiTextures.INFODISPLAY_TOP_MAXIMISED.getHeight() - 91));
+        minimiseButton.setPosition(268, Gdx.graphics.getHeight() - GuiTextures.INFODISPLAY_TOP_MINIMISED.getHeight() - GuiTextures.INFODISPLAY_BACKGROUND.getHeight() - 45);
+        maximiseButton.setPosition(218, Gdx.graphics.getHeight() - GuiTextures.INFODISPLAY_TOP_MAXIMISED.getHeight() - 91);
     }
 
     @Override

@@ -16,8 +16,8 @@ public class EndGameCommand implements Commandable {
 
         Gui gui = game.getGui();
         gui.createGameEndMenu(winner);
-        gui.getHUD().lockButtons();
-        gui.getHUD().hidePathButtons();
+        gui.getHud().lockButtons();
+        gui.getHud().hidePathButtons();
         for (Player player : game.getPlayers()) {
             player.setTrainsTouchable(Touchable.disabled);
         }

@@ -18,7 +18,7 @@ public class EndMovementCommand implements Commandable {
                 break;
             }
         }
-        game.getGui().getHUD().unlockButtons();
+        game.getGui().getHud().unlockButtons();
         Commands.switchPlayerCommand.executeCommand(game, null);
         Commands.dealDamageCommand.executeCommand(game, game.getActivePlayer());
     }

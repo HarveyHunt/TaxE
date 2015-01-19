@@ -22,7 +22,7 @@ public class ResetPathCommand implements Commandable {
         }
         game.getSelectedPath().clear();
 
-        game.getGui().getHUD().hidePathButtons();
+        game.getGui().getHud().hidePathButtons();
     }
 
 }

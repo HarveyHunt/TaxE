@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.actions.SequenceAction;
 import com.taxe.game.util.Coordinate;
@@ -14,35 +15,30 @@ import com.taxe.game.util.Coordinate;
  */
 public class Notification extends Actor {
 
-    private Gui parent;
     private Texture texture;
 
-    public Notification(Gui gui, Texture texture, Coordinate coordinate, float duration) {
-        this.parent = gui;
+    public Notification(Group parent, Texture texture, Coordinate coordinate, float duration) {
+        setParent(parent);
         this.texture = texture;
         setOrigin(texture.getWidth() / 2, texture.getHeight() / 2);
-        setPosition(coordinate.getX(), coordinate.getY());
-        setSize(texture.getWidth(), texture.getHeight());
-        SequenceAction sequenceAction = new SequenceAction();
-        sequenceAction.addAction(Actions.fadeOut(duration));
-        sequenceAction.addAction(new Action() {
+        setBounds(coordinate.getX(), coordinate.getY(), texture.getWidth(), texture.getHeight());
+        SequenceAction seq = new SequenceAction();
+        seq.addAction(Actions.fadeOut(duration));
+        seq.addAction(new Action() {
             @Override
             public boolean act(float delta) {
-                dispose();
+                getParent().removeActor(Notification.this);
                 return true;
             }
         });
-        addAction(sequenceAction);
-    }
-
-    public void dispose() {
-        // Remove this notification
-        parent.removeActor(this);
+        addAction(seq);
     }
 
     public void draw(Batch batch, float parentAlpha) {
+        // Sets the colour to include the alpha value of the notification
         Color colour = batch.getColor();
-        batch.setColor(getColor()); // Sets the colour to include the alpha value of the notification
+        batch.setColor(getColor());
+
         batch.draw(
                 texture,
                 getX() - getOriginX(), getY() - getOriginY(),
@@ -51,7 +47,9 @@ public class Notification extends Actor {
                 1, 1, 0,
                 0, 0, texture.getWidth(), texture.getHeight(),
                 false, false);
-        batch.setColor(colour); // undo the changes to batch so as to not draw everything transparent
+
+        // Undo the changes to batch so as to not draw everything transparent
+        batch.setColor(colour);
     }
 
 }

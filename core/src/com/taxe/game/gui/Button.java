@@ -16,7 +16,7 @@ import com.taxe.game.util.Coordinate;
 public class Button extends Actor implements Clickable {
 
     private Texture texture;
-    private int state; // 0 idle; 1 hover; 2 pressed
+    private int state;
 
     public Button(Texture texture) {
         this.texture = texture;
@@ -65,10 +65,6 @@ public class Button extends Actor implements Clickable {
     //TODO: remove this method or add it to interface Clickable
     public void clicked() { // This is used in the menu class when we don't want to pass an instance of GameCore
 
-    }
-
-    public void setCoordinate(Coordinate coordinate) {
-        setPosition(coordinate.getX(), coordinate.getY());
     }
 
     @Override
