@@ -12,7 +12,7 @@ import com.taxe.Main;
 import com.taxe.game.gui.Button;
 
 /**
- * Created by Owen on 08/11/2014.
+ * The Screen that represents the menu
  */
 public class MenuScreen implements Screen {
 

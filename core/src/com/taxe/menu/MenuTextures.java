@@ -3,7 +3,7 @@ package com.taxe.menu;
 import com.badlogic.gdx.graphics.Texture;
 
 /**
- * Created by Owen on 18/01/2015.
+ * Stores static instances of every Texture used in the menu
  */
 public abstract class MenuTextures {
 
