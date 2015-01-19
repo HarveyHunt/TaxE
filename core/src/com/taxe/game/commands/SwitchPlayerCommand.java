@@ -22,7 +22,7 @@ public class SwitchPlayerCommand implements Commandable {
         } else {
             texture = GuiTextures.PLAYER_2_TURN_START;
         }
-        game.getGui().createNotification(texture, new Coordinate(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2), 2);
+        game.getGui().createNotification(texture, new Coordinate(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2), 1);
     }
 
 }

@@ -23,7 +23,8 @@ public class Notification extends Actor {
         setOrigin(texture.getWidth() / 2, texture.getHeight() / 2);
         setBounds(coordinate.getX(), coordinate.getY(), texture.getWidth(), texture.getHeight());
         SequenceAction seq = new SequenceAction();
-        seq.addAction(Actions.fadeOut(duration));
+        seq.addAction(Actions.delay(duration));
+        seq.addAction(Actions.fadeOut(0.3f));
         seq.addAction(new Action() {
             @Override
             public boolean act(float delta) {
