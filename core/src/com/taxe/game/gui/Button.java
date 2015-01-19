@@ -11,7 +11,7 @@ import com.taxe.game.inputhandling.Clickable;
 import com.taxe.game.util.Coordinate;
 
 /**
- * Created by Owen on 09/01/2015.
+ * Buttons.
  */
 public class Button extends Actor implements Clickable {
 
@@ -59,8 +59,8 @@ public class Button extends Actor implements Clickable {
     }
 
     /**
-     * return the button's state
-     * @return
+     * returns the button's state
+     * @return button's state
      */
     public int getState() {
         return state;

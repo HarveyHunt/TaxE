@@ -5,6 +5,9 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.taxe.game.GameCore;
 import com.taxe.menu.MenuScreen;
 
+/**
+ * First class to be created upon launching the game.
+ */
 public class Main extends Game {
 
     public SpriteBatch batch;
@@ -33,6 +36,6 @@ public class Main extends Game {
 
     @Override
     public void render() {
-        super.render(); // This runs the render method for the current screen class. This calls the default render method in the abstract class Game
+        super.render();
     }
 }

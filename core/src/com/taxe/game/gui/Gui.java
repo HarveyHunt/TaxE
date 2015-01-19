@@ -66,7 +66,7 @@ public class Gui extends Group {
 
     /**
      * returns the GameCore game instance
-     * @return
+     * @return GameCore instance
      */
     public GameCore getGame() {
         return game;
@@ -74,15 +74,15 @@ public class Gui extends Group {
 
     /**
      * returns the Hud hud instance
-     * @return
+     * @return hud instance
      */
     public Hud getHud() {
         return hud;
     }
 
     /**
-     * returns the InfoDisplay infoDisplay instance
-     * @return
+     * returns the InfoDisplay instance
+     * @return InfoDisplay instance
      */
     public InfoDisplay getInfoDisplay() {
         return infoDisplay;
