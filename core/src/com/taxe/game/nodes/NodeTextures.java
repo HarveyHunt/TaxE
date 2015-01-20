@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.Texture;
 /**
  * Specifies textures of all different node types.
  */
-public class NodeTextures {
+public abstract class NodeTextures {
 
     public static final Texture[] CITY = {
             new Texture("nodes/city.png"),
