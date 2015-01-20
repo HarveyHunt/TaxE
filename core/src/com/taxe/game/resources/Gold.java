@@ -11,7 +11,7 @@ public class Gold {
     /**
      * Creates an instance of Gold with set quantity.
      *
-     * @param quantity amount of gold, must be >= 0.
+     * @param quantity amount of gold, must be non-negative.
      */
     public Gold(int quantity) {
         this.quantity = quantity;

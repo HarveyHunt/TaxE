@@ -34,12 +34,13 @@ public abstract class Train extends Actor implements Clickable {
     private int state;
 
     /**
-     * Creates a new train at the specified node, with given speed, cargo capacity and fuel cost.
+     * Creates a new train at the specified node, with given speed,
+     * cargo capacity and fuel cost.
      *
-     * @param speed    train speed, must be >= 0
-     * @param cargoCap cargo capacity, must be >= 0
-     * @param fuelCost fuel cost, must be >= 0
-     * @param node     starting node, must be != null
+     * @param speed    train speed, must be non-negative
+     * @param cargoCap cargo capacity, must be non-negative
+     * @param fuelCost fuel cost, must be non-negative
+     * @param node     starting node, must be not equal to null
      */
     public Train(int speed, int cargoCap, int fuelCost, String id, Node node) {
         this.speed = speed;
@@ -219,7 +220,7 @@ public abstract class Train extends Actor implements Clickable {
     /**
      * Validates state of node's variable. Some subclasses of Train do require overriding this method.
      *
-     * @throws RuntimeException if speed < 0, or cargoCap < 0, or fuelCost < 0, or node == null
+     * @throws RuntimeException if speed is negative, or cargoCap is negative, or fuelCost is negative, or node is null
      */
     protected void validate() throws RuntimeException {
         if (speed < 0) throw new RuntimeException("speed < 0");

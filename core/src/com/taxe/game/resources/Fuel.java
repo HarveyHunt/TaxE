@@ -16,8 +16,8 @@ public class Fuel {
     /**
      * Constructs instance of Fuel with specified fuelCap and usedFuel.
      *
-     * @param fuelCap  fuel cap, must be >= 0.
-     * @param usedFuel used fuel, must be >= 0.
+     * @param fuelCap  fuel cap, must be non-negative.
+     * @param usedFuel used fuel, must be non-negative.
      */
     public Fuel(int fuelCap, int usedFuel) {
         this.fuelCap = fuelCap;
@@ -66,7 +66,7 @@ public class Fuel {
     /**
      * Returns true if fuel cap is exceeded.
      *
-     * @return true if {@link #getUsedFuel()} > {@link #getFuelCap()}.
+     * @return true if {@link #getUsedFuel()} greater than {@link #getFuelCap()}.
      */
     public boolean fuelCapExceeded() {
         return usedFuel > fuelCap;
@@ -75,7 +75,7 @@ public class Fuel {
     /**
      * Checks if fuelCap and usedFuel satisfy constraints.
      *
-     * @throws RuntimeException if fuelCap < 0 or usedFuel < 0.
+     * @throws RuntimeException if fuelCap is negative or usedFuel is negative.
      */
     private void validateFuel() throws RuntimeException {
         if (fuelCap < 0) throw new RuntimeException("fuelCap < 0");

@@ -35,7 +35,7 @@ public class Influence {
     /**
      * Changes influence of a player by a set amount and recalculates influences of other players. This is done as
      * follows: <ol> <li>Player's current influence is initial = getInfluence(player).</li> <li>Player's new influence
-     * is updated = initial + delta, clipped to 0 or 1, if the results is < 0 or > 1.</li> <li>Individual influence of
+     * is updated = initial + delta, clipped to 0 or 1, if the results is not in range  0..1 .</li> <li>Individual influence of
      * all other players pi is getInfluence(pi) / (1 - initial) * (1 - updated).</li> </ol>
      *
      * @param player player whose influence will be changing.

@@ -108,7 +108,7 @@ public class Homebase extends Node {
     /**
      * Checks if health and maxHealth follow the constraints.
      *
-     * @throws AssertionError if health < 0 or health > maxHealth.
+     * @throws RuntimeException if health is negative or health exceeds maxHealth.
      */
     public void validate() throws RuntimeException {
         if (health < 0) throw new RuntimeException("health < 0");

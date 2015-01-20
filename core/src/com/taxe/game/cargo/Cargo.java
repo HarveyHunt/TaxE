@@ -18,7 +18,7 @@ public abstract class Cargo extends Actor {
     /**
      * Creates an instance of cargo with specified quantity.
      *
-     * @param quantity initial quantity of cargo, must be >= 0.
+     * @param quantity initial quantity of cargo, must be non-negative.
      */
     public Cargo(int quantity, String id) {
         this.quantity = quantity;
@@ -38,7 +38,7 @@ public abstract class Cargo extends Actor {
     /**
      * Updates quantity of cargo.
      *
-     * @param quantity new quantity, must be >= 0.
+     * @param quantity new quantity, must be non-negative.
      */
     public void setQuantity(int quantity) {
         this.quantity = quantity;

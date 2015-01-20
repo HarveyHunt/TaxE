@@ -42,9 +42,9 @@ public final class Coordinate {
      *
      * @param c0         first point.
      * @param c1         second point.
-     * @param percentage how far away from c0 the resulting point should be, must be 0 <= percentage <= 1.
+     * @param percentage how far away from c0 the resulting point should be, must be in range 0..1.
      * @return a point with coordinates (cA.x + (cB.x - cA.x) * percentage, cA.y + (cB.y - cA.y) * percentage).
-     * @throws IllegalArgumentException if percentage is < 0 or percentage > 1.
+     * @throws IllegalArgumentException if percentage is  not in range 0..1.
      */
     public static Coordinate coordinateAlongLine(Coordinate c0, Coordinate c1, float percentage) throws IllegalArgumentException {
         if (percentage < 0 || percentage > 1)
@@ -69,7 +69,7 @@ public final class Coordinate {
      * Tests coordinate and another object for equality.
      *
      * @param other object that requires comparing.
-     * @return Coordinates c0 and c1 are equal if (c0.getX() == c1.getX() && c0.getY() == c1.getY()).
+     * @return Coordinates c0 and c1 are equal if (c0.getX() == c1.getX() and c0.getY() == c1.getY()).
      */
     @Override
     public boolean equals(Object other) {
