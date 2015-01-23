@@ -16,11 +16,11 @@ import java.util.Deque;
  */
 public class MoveTrainsCommand implements Commandable {
 
-    public void executeCommand(GameCore game, Object target) {
+    public void executeCommand(final GameCore game, Object target) {
         Commands.resetPathCommand.executeCommand(game, null);
 
         // Assign movement to each train separately
-        for (Train train : game.getActivePlayer().getTrains()) {
+        for (final Train train : game.getActivePlayer().getTrains()) {
             Deque<Node> nodes = train.getPathNodes();
             Deque<Sleeper> sleepers = train.getPathSleepers();
             SequenceAction seq = new SequenceAction();

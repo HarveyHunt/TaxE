@@ -19,7 +19,7 @@ public class Menu extends Group {
      * creates the Actors of the elements of the menu
      * @param main
      */
-    public Menu(Main main) {
+    public Menu(final Main main) {
         startGame = new Button(MenuTextures.START_GAME_BUTTON) {
             @Override
             public void clicked() {
