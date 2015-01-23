@@ -33,7 +33,7 @@ public class Gold {
      * @param delta by how much amount of gold is changed.
      */
     public void changeQuantityBy(int delta) {
-        quantity = Integer.max(0, quantity + delta);
+        quantity = Math.max(0, quantity + delta);
         validateQuantity();
     }
 

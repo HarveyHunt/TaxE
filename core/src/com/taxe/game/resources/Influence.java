@@ -44,7 +44,7 @@ public class Influence {
     public void changeInfluenceBy(Player player, float delta) {
         // Updating influence of the player and making sure it is in range 0..1
         float initial = getInfluence(player);
-        float updated = (influences.size() > 1) ? Float.min(Float.max(0, initial + delta), 1) : 1;
+        float updated = (influences.size() > 1) ? Math.min(Math.max(0, initial + delta), 1) : 1;
         influences.put(player, updated);
 
         // Adjust influences of all other players, such that all percentages sum up to 1

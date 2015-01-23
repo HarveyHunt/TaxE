@@ -49,7 +49,7 @@ public class Fuel {
      * @param delta by how much fuel cap is changed.
      */
     public void changeFuelCapBy(int delta) {
-        fuelCap = Integer.max(0, fuelCap + delta);
+        fuelCap = Math.max(0, fuelCap + delta);
         validateFuel();
     }
 
@@ -59,7 +59,7 @@ public class Fuel {
      * @param delta by how much currently used fuel is changed.
      */
     public void changeUsedFuelBy(int delta) {
-        usedFuel = Integer.max(0, usedFuel + delta);
+        usedFuel = Math.max(0, usedFuel + delta);
         validateFuel();
     }
 

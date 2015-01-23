@@ -65,7 +65,7 @@ public class Homebase extends Node {
      *              exceeds the corresponding constraint
      */
     public void changeHealthBy(int delta) {
-        health = Integer.max(0, Integer.min(maxHealth, health + delta));
+        health = Math.max(0, Math.min(maxHealth, health + delta));
         validate();
     }
 
@@ -93,7 +93,7 @@ public class Homebase extends Node {
      * Advances building train by one turn.
      */
     public void updateBuild() {
-        turnsTillBuilt = Integer.max(0, turnsTillBuilt - 1);
+        turnsTillBuilt = Math.max(0, turnsTillBuilt - 1);
     }
 
     /**
