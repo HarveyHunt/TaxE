@@ -5,6 +5,8 @@ Instructions for Importing into IntelliJ
 
 ==
 
+Make sure you have JRE and Git installed.
+
 1. Start IntelliJ
 2. Hit Check Out from Version Control -> GitHub
 3. Enter the URL of your fork, the directory you want to work in, and a name for the project (probably Taxe). Hit Clone.
