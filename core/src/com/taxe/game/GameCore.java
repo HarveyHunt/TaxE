@@ -165,6 +165,7 @@ public class GameCore implements Screen {
         return players;
     }
 
+
     /**
      * returns the path of nodes currently selected
      * @return list of currently selected nodes

@@ -2,7 +2,6 @@ package com.taxe.game.tasks;
 
 import com.taxe.game.cargo.Cargo;
 import com.taxe.game.nodes.City;
-import com.taxe.game.GameCore;
 import com.taxe.game.player.Player;
 import com.taxe.game.trains.Train;
 import com.taxe.Main;
@@ -18,7 +17,7 @@ import static com.taxe.Main.*;
 public abstract class Task {
     private final String name, objective;
     private City endCity;
-    private Cargo cargoType;
+    private Cargo cargo;
     private int taskTime;
 
 
@@ -28,17 +27,18 @@ public abstract class Task {
      * @param name      Name of a task.
      * @param objective String describing task
      * @param endCity   The ending city of the task
-     * @param cargoType The type of cargo to be delivered
+     * @param cargo The type of cargo to be delivered
      * @param taskTime  time when tasks is available for completion
      */
 
-    public Task(String name, String objective, City endCity, Cargo cargoType, int taskTime) {
+    public Task(String name, String objective, City endCity, Cargo cargo, int taskTime) {
         this.name = name;
         this.objective = objective;
         this.endCity = endCity;
-        this.cargoType = cargoType;
+        this.cargo = cargo;
         this.taskTime = taskTime;
     }
+
 
     /**
      * Returns name of task.
@@ -70,7 +70,7 @@ public abstract class Task {
      *
      * @return type of cargo to be transported.
      */
-    public Cargo getCargoType() { return cargoType; }
+    public Cargo getCargo() { return cargo; }
 
     /**
      * Returns remaining time when task can be completed.
@@ -99,7 +99,7 @@ public abstract class Task {
         for (Player player: Main.getGameCore().getPlayers()) {
             for (Train train : player.getTrains()) {
                 if (train.getNode() == this.getEndCity()) {
-                    return train.getCargo() == this.getCargoType();
+                    return train.getCargo() == this.getCargo();
                 } else {
                     return false;
                 }
