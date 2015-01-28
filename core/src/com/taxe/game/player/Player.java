@@ -3,9 +3,12 @@ package com.taxe.game.player;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
+import com.taxe.Main;
+import com.taxe.game.nodes.City;
 import com.taxe.game.nodes.Homebase;
 import com.taxe.game.resources.Fuel;
 import com.taxe.game.resources.Gold;
+import com.taxe.game.tasks.Task;
 import com.taxe.game.trains.Train;
 
 import java.util.ArrayList;
@@ -102,6 +105,14 @@ public class Player extends Group {
         trains.add(t);
         this.addActor(t);
         fuel.changeUsedFuelBy(t.getFuelCost());
+    }
+
+    /**
+     * Function to be called when the player completes a goal.
+     */
+    public void completeTask(Task task, City city) {
+        city.changeInfluenceBy(this, 10);
+        Main.getGameCore().removeTask(task);
     }
 
     @Override

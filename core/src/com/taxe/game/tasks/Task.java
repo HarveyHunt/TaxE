@@ -6,8 +6,6 @@ import com.taxe.game.player.Player;
 import com.taxe.game.trains.Train;
 import com.taxe.Main;
 
-import static com.taxe.Main.*;
-
 /**
  * Top-level class for representing tasks. Different types of tasks are implemented by extending this class.
  * <p>
@@ -96,12 +94,15 @@ public abstract class Task {
      * @return Boolean value according to whether the task has been completed.
      */
     public boolean isComplete() {
-        for (Player player: Main.getGameCore().getPlayers()) {
+        for (Player player : Main.getGameCore().getPlayers()) {
             for (Train train : player.getTrains()) {
                 if (train.getNode() == this.getEndCity()) {
-                    return train.getCargo() == this.getCargo();
-                } else {
-                    return false;
+                    if (train.getCargo() == this.getCargo()) {
+                        player.completeTask(this, this.getEndCity());
+                        return true;
+                    } else {
+                        return false;
+                    }
                 }
             }
         }

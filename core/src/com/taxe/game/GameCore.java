@@ -16,6 +16,7 @@ import com.taxe.game.map.Map;
 import com.taxe.game.player.Player;
 import com.taxe.game.resources.Fuel;
 import com.taxe.game.resources.Gold;
+import com.taxe.game.tasks.Task;
 import com.taxe.game.trains.BasicTrain;
 import com.taxe.game.trains.Train;
 import com.taxe.game.gui.Gui;
@@ -33,6 +34,7 @@ public class GameCore implements Screen {
     private Gui gui;
     private ArrayList<Player> players;
     private int activePlayer;
+    private ArrayList<Task> tasks;
     private Map map;
     private Scene scene;
     private ArrayDeque<Node> selectedPath = new ArrayDeque<>();
@@ -65,6 +67,8 @@ public class GameCore implements Screen {
         players = new ArrayList<>();
         Collections.addAll(players, p1, p2);
         activePlayer = 0;
+
+        tasks = new ArrayList<>();
 
         gui = new Gui(this);
 
@@ -165,6 +169,15 @@ public class GameCore implements Screen {
         return players;
     }
 
+    /**
+     * returns the tasks currently active
+     * @return list of active tasks
+     */
+    public List<Task> getTasks() { return tasks; }
+
+    public void removeTask(Task task) {
+        this.tasks.remove(task);
+    }
 
     /**
      * returns the path of nodes currently selected
