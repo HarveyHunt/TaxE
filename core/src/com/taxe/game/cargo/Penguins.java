@@ -1,4 +1,4 @@
-package com.taxe.game.cargo.cargotypes;
+package com.taxe.game.cargo;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.taxe.game.cargo.Cargo;
