@@ -18,7 +18,7 @@ public class DesktopLauncher {
         config.height = 1080;
         config.resizable = false; // Makes it easier to handle resolution if it cannot be changing all the time
         config.fullscreen = true;
-        config.samples = 8;
+        config.samples = 16;
 
         // Create the Main class instance
         new LwjglApplication(new Main(), config);

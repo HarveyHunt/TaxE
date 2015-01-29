@@ -61,14 +61,18 @@ public abstract class Task {
      *
      * @return end city of task.
      */
-    public City getEndCity() { return endCity; }
+    public City getEndCity() {
+        return endCity;
+    }
 
     /**
      * Returns the type of cargo to be transported.
      *
      * @return type of cargo to be transported.
      */
-    public Cargo getCargo() { return cargo; }
+    public Cargo getCargo() {
+        return cargo;
+    }
 
     /**
      * Returns remaining time when task can be completed.
@@ -94,7 +98,7 @@ public abstract class Task {
      * @return Boolean value according to whether the task has been completed.
      */
     public boolean isComplete() {
-        for (Player player : Main.getGameCore().getPlayers()) {
+        for (Player player : Main.game.getPlayers()) {
             for (Train train : player.getTrains()) {
                 if (train.getNode() == this.getEndCity()) {
                     if (train.getCargo() == this.getCargo()) {

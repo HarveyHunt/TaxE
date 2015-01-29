@@ -34,7 +34,6 @@ public class GameCore implements Screen {
     private Gui gui;
     private ArrayList<Player> players;
     private int activePlayer;
-    private ArrayList<Task> tasks;
     private Map map;
     private Scene scene;
     private ArrayDeque<Node> selectedPath = new ArrayDeque<>();
@@ -60,15 +59,13 @@ public class GameCore implements Screen {
         }
 
         // Setting up players and their trains
-        Player p1 = new Player(map.getHomebases().get(0), new ArrayList<Train>(), new Gold(500), new Fuel(10, 0));
-        Player p2 = new Player(map.getHomebases().get(1), new ArrayList<Train>(), new Gold(500), new Fuel(10, 0));
+        Player p1 = new Player(map.getHomebases().get(0), new ArrayList<Train>(), new ArrayList<Task>(), new Gold(500), new Fuel(10, 0));
+        Player p2 = new Player(map.getHomebases().get(1), new ArrayList<Train>(), new ArrayList<Task>(), new Gold(500), new Fuel(10, 0));
         p1.addTrain(new BasicTrain(p1.getHomebase()));
         p2.addTrain(new BasicTrain(p2.getHomebase()));
         players = new ArrayList<>();
         Collections.addAll(players, p1, p2);
         activePlayer = 0;
-
-        tasks = new ArrayList<>();
 
         gui = new Gui(this);
 
@@ -167,16 +164,6 @@ public class GameCore implements Screen {
      */
     public List<Player> getPlayers() {
         return players;
-    }
-
-    /**
-     * returns the tasks currently active
-     * @return list of active tasks
-     */
-    public List<Task> getTasks() { return tasks; }
-
-    public void removeTask(Task task) {
-        this.tasks.remove(task);
     }
 
     /**

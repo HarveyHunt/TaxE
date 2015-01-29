@@ -25,6 +25,7 @@ import java.util.List;
 public class Player extends Group {
 
     private final ArrayList<Train> trains;
+    public ArrayList<Task> tasks;
     private final Gold gold;
     private final Fuel fuel;
     private final Homebase homebase;
@@ -32,14 +33,16 @@ public class Player extends Group {
     /**
      * Creates a player with a specified homebase, set of trains, gold and fuel resources
      *
-     * @param homebase homebase
-     * @param trains   list of trains
-     * @param gold     gold
-     * @param fuel     fuel
+     * @param tasks     list of tasks
+     * @param homebase  homebase
+     * @param trains    list of trains
+     * @param gold      gold
+     * @param fuel      fuel
      */
-    public Player(Homebase homebase, ArrayList<Train> trains, Gold gold, Fuel fuel) {
+    public Player(Homebase homebase, ArrayList<Train> trains, ArrayList<Task> tasks, Gold gold, Fuel fuel) {
         this.homebase = homebase;
         this.trains = new ArrayList<>(trains);
+        this.tasks = new ArrayList<>(tasks);
         this.gold = gold;
         this.fuel = fuel;
         for (Train t : trains) {
@@ -111,8 +114,8 @@ public class Player extends Group {
      * Function to be called when the player completes a goal.
      */
     public void completeTask(Task task, City city) {
-        city.changeInfluenceBy(this, 10);
-        Main.getGameCore().removeTask(task);
+        city.changeInfluenceBy(this, 0.1f);
+        this.tasks.remove(task);
     }
 
     @Override
