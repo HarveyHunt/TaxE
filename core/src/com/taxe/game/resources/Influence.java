@@ -80,6 +80,12 @@ public class Influence {
             if (i > 1) throw new RuntimeException("influence of a player > 1");
             sum += i;
         }
+        /**
+         * XXX: We aren't sure of the precision of a floating point number in Java, so this could cause
+         * issues.
+         *
+         * TODO: Fix this in a far neater way.
+         */
         if (Math.abs(1 - sum) > 0.000001) throw new RuntimeException("sum of influences != 1");
     }
 
