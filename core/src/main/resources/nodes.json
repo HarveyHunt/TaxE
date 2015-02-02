@@ -82,30 +82,6 @@
     "health": 500
   },
   {
-    "class": "com.taxe.game.nodes.Junction",
-    "x": 470,
-    "y": 530,
-    "id": "J1"
-  },
-  {
-    "class": "com.taxe.game.nodes.Junction",
-    "x": 596,
-    "y": 300,
-    "id": "J2"
-  },
-  {
-    "class": "com.taxe.game.nodes.Junction",
-    "x": 800,
-    "y": 616,
-    "id": "J3"
-  },
-  {
-    "class": "com.taxe.game.nodes.Junction",
-    "x": 956,
-    "y": 346,
-    "id": "J4"
-  },
-  {
     "class": "com.taxe.game.nodes.IntermediatePoint",
     "x": 116,
     "y": 258,
@@ -305,54 +281,6 @@
   },
   {
     "class": "com.taxe.game.nodes.IntermediatePoint",
-    "x": 484,
-    "y": 440,
-    "id": "VeniceJ1-1"
-  },
-  {
-    "class": "com.taxe.game.nodes.IntermediatePoint",
-    "x": 490,
-    "y": 330,
-    "id": "VeniceJ2-1"
-  },
-  {
-    "class": "com.taxe.game.nodes.IntermediatePoint",
-    "x": 558,
-    "y": 208,
-    "id": "ParisJ2-1"
-  },
-  {
-    "class": "com.taxe.game.nodes.IntermediatePoint",
-    "x": 324,
-    "y": 624,
-    "id": "PragueJ1-1"
-  },
-  {
-    "class": "com.taxe.game.nodes.IntermediatePoint",
-    "x": 394,
-    "y": 586,
-    "id": "PragueJ1-2"
-  },
-  {
-    "class": "com.taxe.game.nodes.IntermediatePoint",
-    "x": 534,
-    "y": 492,
-    "id": "J1Barcelona-1"
-  },
-  {
-    "class": "com.taxe.game.nodes.IntermediatePoint",
-    "x": 608,
-    "y": 470,
-    "id": "J1Barcelona-2"
-  },
-  {
-    "class": "com.taxe.game.nodes.IntermediatePoint",
-    "x": 648,
-    "y": 370,
-    "id": "J2Barcelona-1"
-  },
-  {
-    "class": "com.taxe.game.nodes.IntermediatePoint",
     "x": 834,
     "y": 184,
     "id": "BerlinBarcelona-1"
@@ -368,54 +296,6 @@
     "x": 734,
     "y": 308,
     "id": "BerlinBarcelona-3"
-  },
-  {
-    "class": "com.taxe.game.nodes.IntermediatePoint",
-    "x": 710,
-    "y": 384,
-    "id": "BerlinBarcelona-4"
-  },
-  {
-    "class": "com.taxe.game.nodes.IntermediatePoint",
-    "x": 1090,
-    "y": 274,
-    "id": "MadridJ4-1"
-  },
-  {
-    "class": "com.taxe.game.nodes.IntermediatePoint",
-    "x": 1022,
-    "y": 310,
-    "id": "MadridJ4-2"
-  },
-  {
-    "class": "com.taxe.game.nodes.IntermediatePoint",
-    "x": 874,
-    "y": 376,
-    "id": "J4Barcelona-1"
-  },
-  {
-    "class": "com.taxe.game.nodes.IntermediatePoint",
-    "x": 802,
-    "y": 410,
-    "id": "J4Barcelona-2"
-  },
-  {
-    "class": "com.taxe.game.nodes.IntermediatePoint",
-    "x": 950,
-    "y": 434,
-    "id": "J4Rome-1"
-  },
-  {
-    "class": "com.taxe.game.nodes.IntermediatePoint",
-    "x": 848,
-    "y": 580,
-    "id": "RomeJ3-1"
-  },
-  {
-    "class": "com.taxe.game.nodes.IntermediatePoint",
-    "x": 788,
-    "y": 514,
-    "id": "BarcelonaJ3-1"
   },
   {
     "class": "com.taxe.game.nodes.IntermediatePoint",
@@ -446,12 +326,6 @@
     "x": 1030,
     "y": 580,
     "id": "BucharestRome-2"
-  },
-  {
-    "class": "com.taxe.game.nodes.IntermediatePoint",
-    "x": 802,
-    "y": 692,
-    "id": "MilanJ3-1"
   },
   {
     "class": "com.taxe.game.nodes.IntermediatePoint",

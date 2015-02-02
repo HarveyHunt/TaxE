@@ -40,13 +40,5 @@
       "y": 470
     },
     "id": "ia"
-  },
-  {
-    "class": "com.taxe.game.Nodes.Junction",
-    "coordinate": {
-      "x": 176,
-      "y": 210
-    },
-    "id": "ja"
   }
 ]
