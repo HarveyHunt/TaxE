@@ -33,9 +33,9 @@ public class Player extends Group {
     /**
      * Creates a player with a specified homebase, set of trains, gold and fuel resources
      *
-     * @param tasks     list of tasks
      * @param homebase  homebase
      * @param trains    list of trains
+     * @param tasks     list of tasks
      * @param gold      gold
      * @param fuel      fuel
      */
