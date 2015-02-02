@@ -55,7 +55,8 @@ public class GameCore implements Screen {
         try {
             map = new Map("nodes.json", "tracks.json");
         } catch (IOException e) {
-            System.out.println("Something went wrong :(, probably Vlad's fault");
+            System.out.println("Can't find nodes.json and/or tracks.json");
+            System.exit(1);
         }
 
         // Setting up players and their trains
