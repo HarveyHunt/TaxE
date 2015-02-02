@@ -1,5 +1,4 @@
 [
-  // Describing cities
   {
     "class": "com.taxe.game.nodes.City",
     "x": 282,
@@ -66,7 +65,6 @@
     "y": 730,
     "id": "Bucharest"
   },
-  // Describing Homebases
   {
     "class": "com.taxe.game.nodes.Homebase",
     "x": 72,
@@ -83,7 +81,6 @@
     "maxHealth": 500,
     "health": 500
   },
-  // Describing Junctions
   {
     "class": "com.taxe.game.nodes.Junction",
     "x": 470,
@@ -108,7 +105,6 @@
     "y": 346,
     "id": "J4"
   },
-  //Describing Intermediate Points
   {
     "class": "com.taxe.game.nodes.IntermediatePoint",
     "x": 116,

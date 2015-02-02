@@ -12,8 +12,8 @@ public class Scene extends Group {
      * Scales the entire scene to fit the screen size.
      */
     public void scale() {
-        // 1410 is the width of the scene
-        // 890 is the height
+        // 1920 is the width of the scene
+        // 1080 is the height
         float ratio = 1410.0f / 890.0f;
 
         float width = Gdx.graphics.getWidth();

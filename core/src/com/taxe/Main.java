@@ -11,7 +11,7 @@ import com.taxe.menu.MenuScreen;
 public class Main extends Game {
 
     public SpriteBatch batch;
-    private GameCore game;
+    public static GameCore game;
     private MenuScreen menuScreen;
 
     @Override

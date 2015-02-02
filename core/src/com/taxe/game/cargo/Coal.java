@@ -5,16 +5,16 @@ import com.taxe.game.cargo.Cargo;
 import com.taxe.game.cargo.CargoTextures;
 
 /**
- * Represents penguins as a cargo.
+ * Represents coal as a cargo.
  */
-public class Penguins extends Cargo {
+public class Coal extends Cargo {
 
-    public Penguins(int quantity) {
-        super(quantity, "Penguins");
+    public Coal(int quantity) {
+        super(quantity, "Coal");
     }
 
     public Texture getTexture() {
-        return CargoTextures.PENGUINS;
+        return CargoTextures.COAL;
     }
 
 }

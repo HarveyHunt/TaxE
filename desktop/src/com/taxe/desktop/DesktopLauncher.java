@@ -8,18 +8,17 @@ public class DesktopLauncher {
 
     /**
      * This class just configures a few settings and then sends us over to the Main class.
-     * The framework supports mobile games also so it specifies that this is a desktop game.
-     * @param arg
+     * The framework supports mobile games also so it specifies that this is a desktop game
      */
     public static void main(String[] arg) {
         // Config
         LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-        config.title = "Game Titles are Boring";
-        config.width = 1480;
-        config.height = 890;
-        config.resizable = true; // Makes it easier to handle resolution if it cannot be changing all the time
-        config.fullscreen = false;
-        config.samples = 4;
+        config.title = "CPH - Trains Across Europe";
+        config.width = 1920;
+        config.height = 1080;
+        config.resizable = false; // Makes it easier to handle resolution if it cannot be changing all the time
+        config.fullscreen = true;
+        config.samples = 16;
 
         // Create the Main class instance
         new LwjglApplication(new Main(), config);
