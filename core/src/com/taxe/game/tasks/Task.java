@@ -12,8 +12,7 @@ import com.taxe.Main;
  * Each task has a name, objective and time when it can be completed. When the time runs out, task should not be
  * available for completion anymore.
  */
-public abstract class Task {
-    private final String name, objective;
+public class Task {
     private City endCity;
     private Cargo cargo;
     private int taskTime;
@@ -22,39 +21,17 @@ public abstract class Task {
     /**
      * Creates an instance of Task with given name, objective and time during which it can be completed.
      *
-     * @param name      Name of a task.
-     * @param objective String describing task
      * @param endCity   The ending city of the task
      * @param cargo The type of cargo to be delivered
      * @param taskTime  time when tasks is available for completion
      */
 
-    public Task(String name, String objective, City endCity, Cargo cargo, int taskTime) {
-        this.name = name;
-        this.objective = objective;
+    public Task(City endCity, Cargo cargo, int taskTime) {
         this.endCity = endCity;
         this.cargo = cargo;
         this.taskTime = taskTime;
     }
 
-
-    /**
-     * Returns name of task.
-     *
-     * @return name of task.
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * Returns objective of a task.
-     *
-     * @return objective of a task.
-     */
-    public String getObjective() {
-        return objective;
-    }
 
     /**
      * Returns end city of the task.

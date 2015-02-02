@@ -17,6 +17,7 @@ import com.taxe.game.player.Player;
 import com.taxe.game.resources.Fuel;
 import com.taxe.game.resources.Gold;
 import com.taxe.game.tasks.Task;
+import com.taxe.game.tasks.TaskFactory;
 import com.taxe.game.trains.BasicTrain;
 import com.taxe.game.trains.Train;
 import com.taxe.game.gui.Gui;
@@ -37,6 +38,7 @@ public class GameCore implements Screen {
     private Map map;
     private Scene scene;
     private ArrayDeque<Node> selectedPath = new ArrayDeque<>();
+    public TaskFactory taskFactory;
 
     /**
      * creates an instance of GameCore
@@ -88,6 +90,10 @@ public class GameCore implements Screen {
         Commands.activatePlayerCommand.executeCommand(this, getActivePlayer());
 
         scene.scale();
+
+        this.taskFactory = new TaskFactory(this);
+
+        p1.addTask(this.taskFactory.generateTask());
     }
 
 
@@ -178,6 +184,11 @@ public class GameCore implements Screen {
      * Switches to the next player. This method works for any number of Players is greater than 0
      */
     public void switchActivePlayer() {
+        for (Task task : getActivePlayer().tasks) {
+            if (task.isComplete()) {
+                getActivePlayer().completeTask(task, task.getEndCity());
+            }
+        }
         activePlayer = (activePlayer + 1 == players.size()) ? 0 : activePlayer + 1;
     }
 
