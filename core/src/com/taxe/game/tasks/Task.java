@@ -18,7 +18,6 @@ public abstract class Task {
     private Cargo cargo;
     private int taskTime;
 
-
     /**
      * Creates an instance of Task with given name, objective and time during which it can be completed.
      *
@@ -36,7 +35,6 @@ public abstract class Task {
         this.cargo = cargo;
         this.taskTime = taskTime;
     }
-
 
     /**
      * Returns name of task.
@@ -113,7 +111,3 @@ public abstract class Task {
         return false;
     }
 }
-
-
-
-

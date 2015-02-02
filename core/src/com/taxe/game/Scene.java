@@ -12,25 +12,25 @@ public class Scene extends Group {
      * Scales the entire scene to fit the screen size.
      */
     public void scale() {
-        // 1920 is the width of the scene
-        // 1080 is the height
-        float ratio = 1410.0f / 890.0f;
+        final float SCENE_WIDTH = 1410.0f;
+        final float SCENE_HEIGHT = 890.0f;
+        float ratio = SCENE_WIDTH / SCENE_HEIGHT;
 
         float width = Gdx.graphics.getWidth();
         float height = Gdx.graphics.getHeight() - 70;
         float scale;
         if (width / height < ratio) {
             // if the screen is proportionally too tall
-            scale = width / 1410f;
+            scale = width / SCENE_WIDTH;
         } else {
             // if the screen is proportionally too wide or is perfectly proportional
-            scale = height / 890f;
+            scale = height / SCENE_HEIGHT;
         }
         // update values
         setScale(scale);
         setPosition(
-                Gdx.graphics.getWidth() / 2 - (1410f * scale) / 2 + getOriginX(),
-                Gdx.graphics.getHeight() / 2 - (890f * scale) / 2 - 70 + getOriginY()
+                Gdx.graphics.getWidth() / 2 - (SCENE_WIDTH * scale) / 2 + getOriginX(),
+                Gdx.graphics.getHeight() / 2 - (SCENE_HEIGHT * scale) / 2 - 70 + getOriginY()
         );
     }
 
