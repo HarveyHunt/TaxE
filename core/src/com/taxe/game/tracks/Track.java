@@ -37,11 +37,15 @@ public class Track extends Group {
 
         // Add sleepers between each subsequent pair of nodes
         for (int i = 0; i < nodes.size() - 1; i++) {
+            float startAngle;
+
             Coordinate ca = nodes.get(i).getCoordinate();
             Coordinate cb = nodes.get(i + 1).getCoordinate();
-            float startAngle = (i == 0) ?
-                    Coordinate.angleBetween(ca, cb) :
-                    Coordinate.angleBetween(sleepers.get(sleepers.size() - 2).getCoordinate(), ca);
+            if (i == 0)
+                startAngle = Coordinate.angleBetween(ca, cb);
+            else
+                startAngle = Coordinate.angleBetween(sleepers.get(sleepers.size() - 2).getCoordinate(), ca);
+
             sleepers.addAll(getCurve(ca, cb, startAngle));
         }
 
