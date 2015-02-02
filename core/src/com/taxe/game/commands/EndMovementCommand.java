@@ -1,8 +1,6 @@
 package com.taxe.game.commands;
 
 import com.taxe.game.GameCore;
-import com.taxe.game.player.Player;
-import com.taxe.game.trains.Train;
 
 /**
  * Defines actions that need to happen when player's trains stop moving. Namely, unlocks buttons, switches player and

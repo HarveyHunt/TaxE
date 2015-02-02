@@ -4,7 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
@@ -15,7 +14,6 @@ import com.taxe.game.commands.Commands;
 import com.taxe.game.player.Player;
 import com.taxe.game.resources.Fuel;
 import com.taxe.game.resources.Gold;
-import com.taxe.game.util.Coordinate;
 
 import java.util.HashMap;
 

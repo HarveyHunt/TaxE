@@ -3,7 +3,6 @@ package com.taxe.game.player;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
-import com.taxe.Main;
 import com.taxe.game.nodes.City;
 import com.taxe.game.nodes.Homebase;
 import com.taxe.game.resources.Fuel;
