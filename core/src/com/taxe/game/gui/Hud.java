@@ -13,7 +13,6 @@ import com.taxe.game.GameCore;
 import com.taxe.game.commands.Commands;
 import com.taxe.game.player.Player;
 import com.taxe.game.resources.Fuel;
-import com.taxe.game.resources.Gold;
 
 import java.util.HashMap;
 
@@ -97,9 +96,8 @@ public class Hud extends Group {
      * @param p the player whose resources are being displayed
      */
     public void setPlayerText(Player p) {
-        Gold g = p.getGold();
         Fuel f = p.getFuel();
-        CharSequence text = "Gold: " + g.getQuantity() + "     Fuel: " + f.getUsedFuel() + "/" + f.getFuelCap();
+        CharSequence text = "Gold: " + p.getGold() + "     Fuel: " + f.getUsedFuel() + "/" + f.getFuelCap();
         resourceTexts.get(p).setText(text);
     }
 
