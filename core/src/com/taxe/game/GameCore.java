@@ -213,5 +213,4 @@ public class GameCore implements Screen {
     public Stage getStage() {
         return stage;
     }
-
 }

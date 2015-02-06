@@ -128,6 +128,4 @@ public class Player extends Group {
     public void draw(Batch batch, float parentAlpha) {
         this.drawChildren(batch, parentAlpha);
     }
-
-
 }
