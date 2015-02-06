@@ -31,6 +31,7 @@ public class City extends Node {
     public City() {
         super();
         influence = null;
+        locked = false;
         taskList = new ArrayList<>();
         cargoList = new ArrayList<>();
     }
