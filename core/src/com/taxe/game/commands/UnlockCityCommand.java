@@ -17,7 +17,8 @@ public class UnlockCityCommand implements Commandable {
         if(!(target instanceof City)){
             throw new IllegalArgumentException("target not instance of City");
         }
-        city.locked = true;
+        City c = (City)target;
+        c.locked = true;
     }
 }
 
