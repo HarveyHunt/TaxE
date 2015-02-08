@@ -117,6 +117,18 @@ public class Player extends Group {
     }
 
     /**
+     * Adds a Task to a player's task list
+     */
+    public void addTask(Task task) {
+        if (!this.tasks.contains(task)){
+            this.tasks.add(task);
+        } else {
+            this.tasks.add(Main.game.taskFactory.generateTask());
+        }
+
+    }
+
+    /**
      * Function to be called when the player completes a goal.
      */
     public void completeTask(Task task, City city) {
