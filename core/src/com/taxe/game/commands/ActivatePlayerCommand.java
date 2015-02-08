@@ -2,6 +2,7 @@ package com.taxe.game.commands;
 
 import com.taxe.game.GameCore;
 import com.taxe.game.player.Player;
+import com.taxe.game.tasks.Task;
 import com.taxe.game.trains.Train;
 import com.taxe.game.trains.TrainStates;
 
@@ -30,6 +31,13 @@ public class ActivatePlayerCommand implements Commandable {
         // Enable trains of given player
         for (Train t : ((Player) target).getTrains()) {
             t.setState(TrainStates.ACTIVE);
+        }
+
+        // Complete tasks before adding a new one.
+        for (Task task : ((Player) target).tasks) {
+            if (task.isComplete()) {
+                ((Player) target).completeTask(task, task.getEndCity());
+            }
         }
 
         ((Player) target).addTask(game.taskFactory.generateTask());

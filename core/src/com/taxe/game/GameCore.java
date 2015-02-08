@@ -182,11 +182,6 @@ public class GameCore implements Screen {
      * Switches to the next player. This method works for any number of Players is greater than 0
      */
     public void switchActivePlayer() {
-        for (Task task : getActivePlayer().tasks) {
-            if (task.isComplete()) {
-                getActivePlayer().completeTask(task, task.getEndCity());
-            }
-        }
         activePlayer = (activePlayer + 1 == players.size()) ? 0 : activePlayer + 1;
     }
 
