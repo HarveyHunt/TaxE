@@ -44,8 +44,7 @@ public class ContinuePathCommand implements Commandable {
                 alreadySelected |= (n.getState() == NodeStates.SELECTED);
                 /* If the city is locked, use a naughty hack to stop it from being selected. */
                 if (n instanceof City) {
-                    c = (City)n;
-                    alreadySelected |= c.locked;
+                    alreadySelected |= ((City) n).locked;
                 }
             }
             if (!alreadySelected) {
