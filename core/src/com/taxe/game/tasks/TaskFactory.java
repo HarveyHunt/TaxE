@@ -19,24 +19,13 @@ public class TaskFactory {
 
     public Task generateTask() {
         List<City> cities = this.game.getMap().getCities();
+        Random rgen = new Random();
+        City newEnd = cities.get(rgen.nextInt(cities.size() - 1));
 
-        Random random_generator = new Random();
-        int random_index = random_generator.nextInt(cities.size()-1);
-
-        City new_end = cities.get(random_index);
-        int cargo_quantity = random_generator.nextInt(100);
-
-        Cargo new_cargo;
-
-        if (random_generator.nextInt(2) == 0) {
-            new_cargo = new Penguins(cargo_quantity);
+        if (rgen.nextInt(2) == 0) {
+            return new Task(newEnd, new Penguins((rgen.nextInt(100))), rgen.nextInt(5) + 1);
         } else {
-            new_cargo = new Coal(cargo_quantity);
+            return new Task(newEnd, new Coal(rgen.nextInt(100)), rgen.nextInt(5) + 1);
         }
-
-        // Don't give out tasks with 0 turns.
-        int new_time = random_generator.nextInt(5) + 1;
-
-        return new Task(new_end, new_cargo, new_time);
     }
 }
