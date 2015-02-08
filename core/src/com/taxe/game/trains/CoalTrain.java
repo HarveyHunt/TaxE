@@ -5,16 +5,17 @@ import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.taxe.game.nodes.Node;
 
 /**
- * Class representing a basic train. A very simple train.
+ * Class representing a coal train. A very simple and boring train that
+ * is shit for the environment and kills animals.
  */
-public class BasicTrain extends Train {
+public class CoalTrain extends Train {
 
-    public BasicTrain(Node currentNode) {
-        super(3, 1, 1, "Basic train", currentNode);
+    public CoalTrain(Node currentNode) {
+        super(5, 2, 2, "Coal train", currentNode);
     }
 
     public Texture getTexture() {
-        return TrainTextures.BASIC_TRAIN[getState()];
+        return TrainTextures.COAL_TRAIN[getState()];
     }
 
     public void adjustActor() {
