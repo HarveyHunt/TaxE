@@ -17,11 +17,6 @@ public abstract class NodeTextures {
             new Texture("nodes/homebase-highlighted.png"),
             new Texture("nodes/homebase-selected.png")};
 
-    public static final Texture[] JUNCTION = {
-            new Texture("nodes/junction.png"),
-            new Texture("nodes/junction-highlighted.png"),
-            new Texture("nodes/junction-selected.png")};
-
     public static final Texture[] INTERMEDIATE = {
             new Texture("nodes/intermediate.png"),
             new Texture("nodes/intermediate-highlighted.png"),
