@@ -117,15 +117,11 @@ public class Player extends Group {
     }
 
     /**
-     * Adds a Task to a player's task list
+     * Adds a Task to a player's task list, so long as they have 5 or less tasks.
      */
     public void addTask(Task task) {
-        if (!this.tasks.contains(task)){
+        if (this.tasks.size() <= 5)
             this.tasks.add(task);
-        } else {
-            this.tasks.add(Main.game.taskFactory.generateTask());
-        }
-
     }
 
     /**

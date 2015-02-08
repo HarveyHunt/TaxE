@@ -69,6 +69,8 @@ public class GameCore implements Screen {
         Collections.addAll(players, p1, p2);
         activePlayer = 0;
 
+        this.taskFactory = new TaskFactory(this);
+
         gui = new Gui(this);
 
         stage.addActor(scene);
@@ -90,10 +92,6 @@ public class GameCore implements Screen {
         Commands.activatePlayerCommand.executeCommand(this, getActivePlayer());
 
         scene.scale();
-
-        this.taskFactory = new TaskFactory(this);
-
-        p1.addTask(this.taskFactory.generateTask());
     }
 
 

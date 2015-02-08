@@ -34,7 +34,8 @@ public class TaskFactory {
             new_cargo = new Coal(cargo_quantity);
         }
 
-        int new_time = random_generator.nextInt(5);
+        // Don't give out tasks with 0 turns.
+        int new_time = random_generator.nextInt(5) + 1;
 
         return new Task(new_end, new_cargo, new_time);
     }

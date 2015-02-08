@@ -14,8 +14,8 @@ public class DesktopLauncher {
         // Config
         LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
         config.title = "CPH - Trains Across Europe";
-        config.width = 800;
-        config.height = 600;
+        config.width = 1280;
+        config.height = 960;
         config.resizable = false; // Makes it easier to handle resolution if it cannot be changing all the time
         config.fullscreen = false;
         config.samples = 16;

@@ -11,7 +11,6 @@ import com.taxe.game.trains.TrainStates;
 public class ActivatePlayerCommand implements Commandable {
 
     /**
-     *
      * @param game instance of game
      * @param target player that must be activated
      * @throws IllegalArgumentException if target is not an instance of Player
@@ -32,6 +31,9 @@ public class ActivatePlayerCommand implements Commandable {
         for (Train t : ((Player) target).getTrains()) {
             t.setState(TrainStates.ACTIVE);
         }
+
+        ((Player) target).addTask(game.taskFactory.generateTask());
+        System.out.println(((Player) target).tasks);
     }
 
 }
