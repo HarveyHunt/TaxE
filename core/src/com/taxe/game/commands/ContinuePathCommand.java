@@ -39,7 +39,6 @@ public class ContinuePathCommand implements Commandable {
         // Neighbours of the current selected node become available for path selection
         for (Track t : game.getMap().getTracksWith(current)) {
             boolean alreadySelected = false;
-            City c;
             for (Node n : t.getNodes()) {
                 alreadySelected |= (n.getState() == NodeStates.SELECTED);
                 /* If the city is locked, use a naughty hack to stop it from being selected. */

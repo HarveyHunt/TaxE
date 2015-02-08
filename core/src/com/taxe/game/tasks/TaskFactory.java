@@ -1,7 +1,6 @@
 package com.taxe.game.tasks;
 
 import com.taxe.game.GameCore;
-import com.taxe.game.cargo.Cargo;
 import com.taxe.game.cargo.Coal;
 import com.taxe.game.cargo.Penguins;
 import com.taxe.game.nodes.City;
