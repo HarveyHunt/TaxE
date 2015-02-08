@@ -23,6 +23,7 @@ public class City extends Node {
     private Influence influence;
     private ArrayList<Task> taskList;
     private ArrayList<Cargo> cargoList;
+    public Boolean locked;
 
     /**
      * Default constructor. Necessary for {@link #readNodes(String)}
@@ -30,6 +31,7 @@ public class City extends Node {
     public City() {
         super();
         influence = null;
+        locked = false;
         taskList = new ArrayList<>();
         cargoList = new ArrayList<>();
     }
@@ -41,6 +43,7 @@ public class City extends Node {
         setTouchable(Touchable.enabled);
     }
 
+    /* TODO: Change texture if we are locked. */
     public Texture getTexture() {
         return NodeTextures.CITY[getState()];
     }
