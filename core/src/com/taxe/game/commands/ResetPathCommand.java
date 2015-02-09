@@ -1,6 +1,7 @@
 package com.taxe.game.commands;
 
 import com.taxe.game.GameCore;
+import com.taxe.game.nodes.City;
 import com.taxe.game.player.Player;
 import com.taxe.game.nodes.Node;
 import com.taxe.game.nodes.NodeStates;
@@ -19,7 +20,8 @@ public class ResetPathCommand implements Commandable {
             t.setState(TrainStates.ACTIVE);
         }
         for (Node n : game.getMap().getNodes()) {
-            n.setState(NodeStates.ORIGINAL);
+            if (n instanceof City && ((City) n).locked == false)
+                n.setState(NodeStates.ORIGINAL);
         }
 
         // Clear path and hide buttons
