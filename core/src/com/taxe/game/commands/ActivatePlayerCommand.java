@@ -1,11 +1,17 @@
 package com.taxe.game.commands;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.taxe.game.GameCore;
 import com.taxe.game.nodes.City;
 import com.taxe.game.player.Player;
 import com.taxe.game.tasks.Task;
 import com.taxe.game.trains.Train;
 import com.taxe.game.trains.TrainStates;
+import com.taxe.game.util.Coordinate;
 
 /**
  * Activates trains of a given player and disables trains of all other players.
@@ -38,6 +44,17 @@ public class ActivatePlayerCommand implements Commandable {
         for (Task task : game.getTasks()) {
             if (task.isComplete((Player) target)) {
                 task.getEndCity().changeInfluenceBy((Player) target, 0.1f);
+
+                // TODO: Check that ((Player) target) doesn't just return a
+                // memory address. If it does, implement a name for players.
+                Label label = new Label("Player " + ((Player) target) +
+                        " has completed a task",
+                        new Label.LabelStyle(new BitmapFont(), Color.GREEN));
+                label.setAlignment(Align.center);
+
+                game.getGui().createTextNotification(label, new Coordinate(
+                        Gdx.graphics.getWidth() / 2,
+                        Gdx.graphics.getHeight() / 2), 1);
             }
         }
 
