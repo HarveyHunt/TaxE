@@ -99,8 +99,7 @@ public class Hud extends Group {
      * @param p the player whose resources are being displayed
      */
     public void setPlayerText(Player p) {
-        Fuel f = p.getFuel();
-        CharSequence text = "Gold: " + p.getGold() + "     Fuel: " + f.getUsedFuel() + "/" + f.getFuelCap();
+        CharSequence text = "Gold: " + p.getGold() + "     Fuel Usage: " + p.getFuelUsage() + "/" + p.getFuelCap();
         resourceTexts.get(p).setText(text);
     }
 
