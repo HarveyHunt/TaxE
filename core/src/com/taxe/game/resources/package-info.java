@@ -1,4 +1,4 @@
 /**
- * Classes representing resources (fuel, etc).
+ * Classes representing resources.
  */
 package com.taxe.game.resources;
