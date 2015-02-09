@@ -45,7 +45,8 @@ public class Hud extends Group {
         Healthbar p2Healthbar = new Healthbar(true);
         healthbars.put(player1, p1Healthbar);
         healthbars.put(player2, p2Healthbar);
-        addActor(p1Healthbar); addActor(p2Healthbar);
+        addActor(p1Healthbar);
+        addActor(p2Healthbar);
 
         resourceTexts = new HashMap<>();
         Label p1Label = new Label("", new Label.LabelStyle(new BitmapFont(), Color.YELLOW));
@@ -56,14 +57,16 @@ public class Hud extends Group {
         resourceTexts.put(player2, p2Label);
         setPlayerText(player1);
         setPlayerText(player2);
-        addActor(p1Label); addActor(p2Label);
+        addActor(p1Label);
+        addActor(p2Label);
 
         playerIcons = new HashMap<>();
         Image p1Icon = new Image(GuiTextures.PLAYER_1_ICON);
         Image p2Icon = new Image(GuiTextures.PLAYER_2_ICON);
         playerIcons.put(player1, p1Icon);
         playerIcons.put(player2, p2Icon);
-        addActor(p1Icon); addActor(p2Icon);
+        addActor(p1Icon);
+        addActor(p2Icon);
 
         endTurnButton = new Button(GuiTextures.END_TURN_BUTTON) {
             @Override
