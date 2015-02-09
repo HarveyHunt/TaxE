@@ -44,9 +44,9 @@ public class MapTest {
     @Test
     public void testGetTrackWith() throws Exception {
         // Searching for a track with existing nodes
-        Node n1 = Node.getNodeById("Prague", map.getNodes());
-        Node n2 = Node.getNodeById("J1", map.getNodes());
-        String[] s1 = {"Prague", "PragueJ1-1", "PragueJ1-2", "J1"};
+        Node n1 = Node.getNodeById("Paris", map.getNodes());
+        Node n2 = Node.getNodeById("London", map.getNodes());
+        String[] s1 = {"Paris", "London", "LondonParis-1", "LondonParis-2", "LondonParis-3"};
         assertTrue(containsAll(map.getTrackWith(n1, n2).getNodes(), s1));
 
         // Searching for a track with non-existing node
