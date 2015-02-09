@@ -79,7 +79,7 @@ public class Player extends Group {
      *
      * @param delta How much to change the player's gold by
      */
-    public void setGold(int delta) {
+    public void changeGold(int delta) {
         this.gold = Math.max(0, this.gold + delta);
     }
 
