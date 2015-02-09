@@ -2,7 +2,7 @@ package com.taxe.game.tasks;
 
 import com.taxe.game.GameCore;
 import com.taxe.game.cargo.Coal;
-import com.taxe.game.cargo.Penguins;
+import com.taxe.game.cargo.Wheat;
 import com.taxe.game.nodes.City;
 
 import java.util.List;
@@ -22,7 +22,7 @@ public class TaskFactory {
         City newEnd = cities.get(rgen.nextInt(cities.size() - 1));
 
         if (rgen.nextInt(2) == 0)
-            return new Task(newEnd, new Penguins((rgen.nextInt(100))), rgen.nextInt(5) + 1);
+            return new Task(newEnd, new Wheat((rgen.nextInt(100))), rgen.nextInt(5) + 1);
         else
             return new Task(newEnd, new Coal(rgen.nextInt(100)), rgen.nextInt(5) + 1);
     }
