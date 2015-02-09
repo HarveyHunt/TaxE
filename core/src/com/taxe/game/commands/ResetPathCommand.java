@@ -20,7 +20,9 @@ public class ResetPathCommand implements Commandable {
             t.setState(TrainStates.ACTIVE);
         }
         for (Node n : game.getMap().getNodes()) {
-            if (n instanceof City && !((City) n).locked)
+            if (n instanceof City)
+                n.setState(((City) n).locked ? NodeStates.LOCKED : NodeStates.ORIGINAL);
+            else
                 n.setState(NodeStates.ORIGINAL);
         }
 
