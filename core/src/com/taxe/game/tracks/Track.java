@@ -109,28 +109,16 @@ public class Track extends Group {
      * @return list of sleepers representing curve between two points
      */
     private List<Sleeper> getCurve(Coordinate ca, Coordinate cb, float startAngle) {
-        // Finding third coordinate C, based on CURVE_SIZE
-        // Ensure that theta is an angle between -Pi and Pi
-        float theta = Coordinate.angleBetween(ca, cb) - startAngle;
-        if (theta > Math.PI) theta -= 2 * Math.PI;
-        if (theta < -Math.PI) theta += 2 * Math.PI;
-        Coordinate cc = new Coordinate(
-                ca.getX() + CURVE_SIZE * Math.abs(theta) * (float) Math.cos(startAngle),
-                ca.getY() + CURVE_SIZE * Math.abs(theta) * (float) Math.sin(startAngle));
-
-
         // Create a list of coordinates that plot out the curve but are not evenly spaced
         // The line is divided into 1 / PRECISION number of segments
         List<Coordinate> curve = new ArrayList<>();
         float length = 0;
         Coordinate previous = ca;
         for (float i = 0; i <= 1.0; i += PRECISION) {
-            Coordinate c1 = Coordinate.coordinateAlongLine(ca, cc, i);
-            Coordinate c2 = Coordinate.coordinateAlongLine(cc, cb, i);
-            Coordinate c3 = Coordinate.coordinateAlongLine(c1, c2, i);
-            length += Coordinate.distanceBetween(previous, c3);
-            curve.add(c3);
-            previous = c3;
+            Coordinate c1 = Coordinate.coordinateAlongLine(ca, cb, i);
+            length += Coordinate.distanceBetween(previous, c1);
+            curve.add(c1);
+            previous = c1;
         }
         length += Coordinate.distanceBetween(previous, cb);
 
