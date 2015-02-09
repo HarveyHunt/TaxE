@@ -10,10 +10,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Represents players in the game. Players have their homebase, trains, gold and fuel. Players build trains at their
- * homebase. Building train costs fuel and gold.
+ * Represents players in the game. Players have their homebase, trains, gold,
+ * fuelUsage and fuelCap. Players build trains at their
+ * homebase. Building a train increases fuelUsage and gold.
  * @see com.taxe.game.trains
- * @see com.taxe.game.resources.Fuel
  * @see com.taxe.game.nodes.Homebase
  */
 public class Player extends Group {
@@ -127,7 +127,7 @@ public class Player extends Group {
         fuelUsage = Math.max(0, fuelUsage + delta);
     }
 
-    public boolean fuelCapExceeded(void) {
+    public boolean fuelCapExceeded() {
         return fuelUsage > fuelCap;
     }
 
@@ -140,7 +140,7 @@ public class Player extends Group {
     public void addTrain(Train t) {
         trains.add(t);
         this.addActor(t);
-        fuel.changeUsedFuelBy(t.getFuelCost());
+        fuelUsage += t.getFuelCost();
     }
 
     @Override
