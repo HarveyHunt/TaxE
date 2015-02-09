@@ -3,10 +3,7 @@ package com.taxe.game.player;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
-import com.taxe.game.nodes.City;
 import com.taxe.game.nodes.Homebase;
-import com.taxe.game.resources.Fuel;
-import com.taxe.game.tasks.Task;
 import com.taxe.game.trains.Train;
 
 import java.util.ArrayList;
@@ -84,7 +81,7 @@ public class Player extends Group {
      * @param delta How much to change the player's gold by
      */
     public void changeGold(int delta) {
-        this.gold = Math.max(0, this.gold + delta);
+        gold = Math.max(0, gold + delta);
     }
 
     /**
@@ -97,12 +94,41 @@ public class Player extends Group {
     }
 
     /**
-     * Returns player's fuel
+     * Returns player's fuelUsage
      *
-     * @return player's fuel
+     * @return player's fuelUsage
      */
-    public Fuel getFuel() {
-        return fuel;
+    public int getFuelUsage() {
+        return fuelUsage;
+    }
+
+    /**
+     * Returns player's fuelCap
+     *
+     * @return player's fuelCap
+     */
+    public int getFuelCap() {
+        return fuelCap;
+    }
+
+    /**
+     * Change the Player's fuelCap by delta.
+     * @param delta The amount to change the fuelCap by.
+     */
+    public void changeFuelCap(int delta) {
+        fuelCap = Math.max(0, fuelCap + delta);
+    }
+
+    /**
+     * Change the Player's fuelUsage by delta.
+     * @param delta The amount to change the fuelUsage by.
+     */
+    public void changeFuelUsage(int delta) {
+        fuelUsage = Math.max(0, fuelUsage + delta);
+    }
+
+    public boolean fuelCapExceeded(void) {
+        return fuelUsage > fuelCap;
     }
 
     /**
