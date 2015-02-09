@@ -28,7 +28,7 @@ public class UnlockCityCommand implements Commandable {
         c.locked = false;
         c.setState(NodeStates.ORIGINAL);
 
-        Label label = new Label("City" + c.getName() + " has been unlocked",
+        Label label = new Label("City " + c.getName() + " has been unlocked",
                 new Label.LabelStyle(new BitmapFont(), Color.GREEN));
         label.setAlignment(Align.center);
 

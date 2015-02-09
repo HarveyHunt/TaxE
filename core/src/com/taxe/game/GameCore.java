@@ -32,8 +32,8 @@ public class GameCore implements Screen {
     private Main main;
     private Stage stage;
     private Gui gui;
-    private List<Player> players;
-    private List<Task> tasks;
+    private ArrayList<Player> players;
+    private ArrayList<Task> tasks;
     private int activePlayer;
     private Map map;
     private Scene scene;
@@ -168,11 +168,15 @@ public class GameCore implements Screen {
      * return the list of Players
      * @return list of players
      */
-    public List<Player> getPlayers() {
+    public ArrayList<Player> getPlayers() {
         return players;
     }
 
-    public List<Task> getTasks() {
+    /**
+     * Return the list of tasks
+     * @return List of tasks.
+     */
+    public ArrayList<Task> getTasks() {
         return tasks;
     }
 
