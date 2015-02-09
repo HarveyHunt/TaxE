@@ -42,8 +42,5 @@ public class ActivatePlayerCommand implements Commandable {
 
         if (game.getTasks().size() < 5)
             game.getTasks().add(game.taskFactory.generateTask());
-
-        System.out.println(game.getTasks());
     }
-
 }
