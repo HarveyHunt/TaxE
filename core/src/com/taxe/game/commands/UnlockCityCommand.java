@@ -1,6 +1,10 @@
 package com.taxe.game.commands;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.taxe.game.GameCore;
 import com.taxe.game.nodes.City;
 import com.taxe.game.util.Coordinate;
@@ -21,9 +25,14 @@ public class UnlockCityCommand implements Commandable {
         }
         City c = (City)target;
         c.locked = false;
-        game.getGui().createTextNotification("City " + c.getName() + " has been unlocked",
-                new Coordinate(Gdx.graphics.getWidth() / 2,
-                        Gdx.graphics.getHeight() / 2), 1);
+
+        Label label = new Label("City" + c.getName() + " has been unlocked",
+                new Label.LabelStyle(new BitmapFont(), Color.GREEN));
+        label.setAlignment(Align.center);
+
+        game.getGui().createTextNotification(label, new Coordinate(
+                Gdx.graphics.getWidth() / 2,
+                Gdx.graphics.getHeight() / 2), 1);
     }
 }
 

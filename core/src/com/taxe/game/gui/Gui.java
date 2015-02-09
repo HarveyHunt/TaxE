@@ -69,9 +69,13 @@ public class Gui extends Group {
         addActor(notification);
     }
 
-    public void createTextNotification(CharSequence text, Coordinate coordinate, float duration) {
-        Label label = new Label(text, new Label.LabelStyle(new BitmapFont(), Color.YELLOW));
-        label.setAlignment(Align.center);
+    /**
+     * Create an instance of TextNotification and add it to the scene.
+     * @param label A Label object that shall be rendered.
+     * @param coordinate A coordinate object representing the location the label should be rendered at
+     * @param duration The length of time to render the notification for.
+     */
+    public void createTextNotification(Label label, Coordinate coordinate, float duration) {
         TextNotification notification = new TextNotification(this, label, coordinate, duration);
         addActor(notification);
     }
