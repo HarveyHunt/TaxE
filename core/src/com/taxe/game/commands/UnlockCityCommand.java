@@ -7,6 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.taxe.game.GameCore;
 import com.taxe.game.nodes.City;
+import com.taxe.game.nodes.NodeStates;
 import com.taxe.game.util.Coordinate;
 
 /**
@@ -25,6 +26,7 @@ public class UnlockCityCommand implements Commandable {
         }
         City c = (City)target;
         c.locked = false;
+        c.setState(NodeStates.ORIGINAL);
 
         Label label = new Label("City" + c.getName() + " has been unlocked",
                 new Label.LabelStyle(new BitmapFont(), Color.GREEN));
