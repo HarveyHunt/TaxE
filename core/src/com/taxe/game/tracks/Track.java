@@ -52,7 +52,7 @@ public class Track extends Group {
         // Adding sleeper for the very last node
         if (!nodes.isEmpty()) {
             Node n = nodes.get(nodes.size() - 1);
-            sleepers.add(new BasicSleeper(n.getX(), n.getY(), 0, true));
+            sleepers.add(new Sleeper(n.getX(), n.getY(), 0, true));
         }
 
         // Adding sleepers as actors
@@ -138,7 +138,7 @@ public class Track extends Group {
         // Work out the closest value to DISTANCE_BETWEEN_SLEEPERS that spaces evenly
         float spacing = length / (float) Math.round(length / DISTANCE_BETWEEN_SLEEPERS);
         List<Sleeper> sleeperArc = new ArrayList<>();
-        sleeperArc.add(new BasicSleeper(ca.getX(), ca.getY(), (float) Math.toDegrees(startAngle), true));
+        sleeperArc.add(new Sleeper(ca.getX(), ca.getY(), (float) Math.toDegrees(startAngle), true));
         float distance = 0;
         for (int i = 0; i < curve.size() - 1; i++) {
             Coordinate c1 = curve.get(i);
@@ -149,7 +149,7 @@ public class Track extends Group {
                 float percentage = 1 - distance / Coordinate.distanceBetween(c1, c2);
                 float angle = Coordinate.angleBetween(c1, c2);
                 Coordinate c = Coordinate.coordinateAlongLine(c1, c2, percentage);
-                sleeperArc.add(new BasicSleeper(c.getX(), c.getY(), (float) Math.toDegrees(angle) + 90, false));
+                sleeperArc.add(new Sleeper(c.getX(), c.getY(), (float) Math.toDegrees(angle) + 90, false));
             }
         }
         return sleeperArc;

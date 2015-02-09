@@ -15,7 +15,6 @@ public class Sleeper extends Actor {
 
     private boolean ending;
 
-
     /**
      * Creates a sleeper at specified properties.
      * @param x x-coordinate of sleeper
@@ -62,7 +61,7 @@ public class Sleeper extends Actor {
     }
 
     public Texture getTexture() {
-        return SleeperTextures.BASIC_SLEEPER;
+        return SleeperTextures.SLEEPER;
     }
 
     public void draw(Batch batch, float parentAlpha) {
