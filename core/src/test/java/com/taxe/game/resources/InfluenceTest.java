@@ -2,7 +2,6 @@ package com.taxe.game.resources;
 
 import com.taxe.game.nodes.Homebase;
 import com.taxe.game.player.Player;
-import com.taxe.game.tasks.Task;
 import com.taxe.game.trains.Train;
 import org.junit.Before;
 import org.junit.Test;

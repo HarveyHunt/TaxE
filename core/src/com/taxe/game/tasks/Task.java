@@ -4,7 +4,6 @@ import com.taxe.game.cargo.Cargo;
 import com.taxe.game.nodes.City;
 import com.taxe.game.player.Player;
 import com.taxe.game.trains.Train;
-import com.taxe.Main;
 
 /**
  * Top-level class for representing tasks. Different types of tasks are implemented by extending this class.
