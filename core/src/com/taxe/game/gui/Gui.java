@@ -1,10 +1,16 @@
 package com.taxe.game.gui;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.Group;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.taxe.game.GameCore;
 import com.taxe.game.util.Coordinate;
+
+import javax.xml.soap.Text;
 
 /**
  * The main Group that holds and handles all of the elements of the GUI (Graphical User Interface)
@@ -60,6 +66,13 @@ public class Gui extends Group {
      */
     public void createNotification(Texture texture, Coordinate coordinate, float duration) {
         Notification notification = new Notification(this, texture, coordinate, duration);
+        addActor(notification);
+    }
+
+    public void createTextNotification(CharSequence text, Coordinate coordinate, float duration) {
+        Label label = new Label(text, new Label.LabelStyle(new BitmapFont(), Color.YELLOW));
+        label.setAlignment(Align.center);
+        TextNotification notification = new TextNotification(this, label, coordinate, duration);
         addActor(notification);
     }
 

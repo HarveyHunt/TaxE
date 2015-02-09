@@ -1,7 +1,9 @@
 package com.taxe.game.commands;
 
+import com.badlogic.gdx.Gdx;
 import com.taxe.game.GameCore;
 import com.taxe.game.nodes.City;
+import com.taxe.game.util.Coordinate;
 
 /**
  * Unlock a city so that trains can travel over it.
@@ -19,6 +21,9 @@ public class UnlockCityCommand implements Commandable {
         }
         City c = (City)target;
         c.locked = false;
+        game.getGui().createTextNotification("City " + c.getName() + " has been unlocked",
+                new Coordinate(Gdx.graphics.getWidth() / 2,
+                        Gdx.graphics.getHeight() / 2), 1);
     }
 }
 
