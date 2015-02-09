@@ -4,7 +4,10 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.taxe.game.GameCore;
 import com.taxe.game.gui.GuiTextures;
+import com.taxe.game.nodes.City;
 import com.taxe.game.util.Coordinate;
+
+import java.util.Random;
 
 /**
  * Switches players turns.
@@ -12,6 +15,9 @@ import com.taxe.game.util.Coordinate;
 public class SwitchPlayerCommand implements Commandable {
 
     public void executeCommand(GameCore game, Object target) {
+
+        City lockableCity;
+        Random rand = new Random();
 
         Commands.activatePlayerCommand.executeCommand(game, game.nextActivePlayer());
         game.switchActivePlayer();
@@ -23,6 +29,15 @@ public class SwitchPlayerCommand implements Commandable {
             texture = GuiTextures.PLAYER_2_TURN_START;
         }
         game.getGui().createNotification(texture, new Coordinate(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2), 1);
-    }
 
+        lockableCity = game.getMap().getCities().get(rand.nextInt(game.getMap().getCities().size()));
+
+        for (City c: game.getMap().getCities()) {
+            if (c.locked && rand.nextInt(1) == 0)
+                Commands.unlockCityCommand.executeCommand(game, c);
+        }
+
+        if (rand.nextInt(1) == 0)
+            Commands.lockCityCommand.executeCommand(game, lockableCity);
+    }
 }
