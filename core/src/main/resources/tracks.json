@@ -38,12 +38,12 @@
   [
     "Geneva",
     "Valence",
-    "Marseilles"
+    "Marseille"
   ],
   [
     "Toulouse",
     "Montpellier",
-    "Marseilles"
+    "Marseille"
   ],
   [
     "Barcelona",
@@ -64,7 +64,7 @@
   ],
   [
     "Madrid",
-    "Ciudad Real",
+    "Ciudad-Real",
     "Seville"
   ],
   [
@@ -87,16 +87,11 @@
   [
     "Milan",
     "Verona",
+    "Udine",
     "Venice"
   ],
   [
     "Milan",
-    "Bologna",
-    "Florence",
-    "Rome"
-  ],
-  [
-    "Venice",
     "Bologna",
     "Florence",
     "Rome"
@@ -108,7 +103,7 @@
     "Munich"
   ],
   [
-    "Venice",
+    "Milan",
     "Villach",
     "Munich"
   ],
@@ -128,16 +123,13 @@
     "Berlin"
   ],
   [
-    "Hamburg",
-    "Ludvigslust",
-    "Berlin"
-  ],
-  [
+    "Berlin",
     "Hamburg",
     "Fehmarn",
     "Copenhagen"
   ],
   [
+    "Berlin",
     "Hamburg",
     "Flensburg",
     "Aarhus",
@@ -182,29 +174,24 @@
     "Munich",
     "Salzburg",
     "Linz",
-    "Vienna"
+    "Vienna",
+    "Budapest"
   ],
   [
-    "Vienna",
+    "Budapest",
     "Brno",
     "Prague"
   ],
   [
-    "Vienna",
+    "Budapest",
     "Graz",
-    "Udine",
     "Venice"
-  ],
-  [
-    "Vienna",
-    "Bratislava",
-    "Budapest"
   ],
   [
     "Venice",
     "Ljubljana",
     "Zagreb",
-    "Banja Luka",
+    "Banja-Luka",
     "Sarajevo"
   ],
   [
@@ -266,7 +253,7 @@
   [
     "Cluj-Napoca",
     "Sebes",
-    "Ramnicu Valcea",
+    "Ramnicu-Valcea",
     "Bucharest"
   ],
   [
@@ -306,7 +293,7 @@
   ],
   [
     "Kiev",
-    "Bila Tserkva",
+    "Bila-Tserkva",
     "Uman",
     "Odessa"
   ],
@@ -360,22 +347,22 @@
     "Tallinn"
   ],
   [
-    "St. Petersburg",
+    "St.Petersburg",
     "Narva",
     "Tallinn"
   ],
   [
     "Moscow",
     "Tver",
-    "Vishny Volochyok",
+    "Vyshny-Volochyok",
     "Okulovka",
-    "St. Petersburg"
+    "St.Petersburg"
   ],
   [
     "Moscow",
     "Shakhovskaya",
     "Nelidovo",
-    "Velikiye Luki",
+    "Velikiye-Luki",
     "Ludza",
     "Koknese",
     "Riga"
