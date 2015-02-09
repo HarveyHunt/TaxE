@@ -11,6 +11,8 @@ import com.taxe.Main;
  * <p>
  * Each task has a name, objective and time when it can be completed. When the time runs out, task should not be
  * available for completion anymore.
+ *
+ * A task is available to all players.
  */
 public class Task {
     private City endCity;
@@ -69,19 +71,16 @@ public class Task {
 
     /**
      * Checks whether the goal has been completed
-     *
+     * @param player The player that may have completed the goal.
      * @return Boolean value according to whether the task has been completed.
      */
-    public boolean isComplete() {
-        for (Player player : Main.game.getPlayers()) {
-            for (Train train : player.getTrains()) {
-                if (train.getNode() == this.getEndCity()) {
-                    if (train.getCargo() == this.getCargo()) {
-                        player.completeTask(this, this.getEndCity());
-                        return true;
-                    } else {
-                        return false;
-                    }
+    public boolean isComplete(Player player) {
+        for (Train train : player.getTrains()) {
+            if (train.getNode() == this.getEndCity()) {
+                if (train.getCargo() == this.getCargo()) {
+                    return true;
+                } else {
+                    return false;
                 }
             }
         }

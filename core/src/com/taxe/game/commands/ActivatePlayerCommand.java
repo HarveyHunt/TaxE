@@ -34,13 +34,16 @@ public class ActivatePlayerCommand implements Commandable {
         }
 
         // Complete tasks before adding a new one.
-        for (Task task : ((Player) target).tasks) {
-            if (task.isComplete()) {
-                ((Player) target).completeTask(task, task.getEndCity());
+        for (Task task : game.getTasks()) {
+            if (task.isComplete((Player) target)) {
+                task.getEndCity().changeInfluenceBy((Player) target, 0.1f);
             }
         }
 
-        ((Player) target).addTask(game.taskFactory.generateTask());
+        if (game.getTasks().size() < 5)
+            game.getTasks().add(game.taskFactory.generateTask());
+
+        System.out.println(game.getTasks());
     }
 
 }

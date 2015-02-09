@@ -22,7 +22,6 @@ import java.util.List;
 public class Player extends Group {
 
     private final ArrayList<Train> trains;
-    public ArrayList<Task> tasks;
     private int gold;
     private final Fuel fuel;
     private final Homebase homebase;
@@ -32,14 +31,12 @@ public class Player extends Group {
      *
      * @param homebase  homebase
      * @param trains    list of trains
-     * @param tasks     list of tasks
      * @param gold      gold
      * @param fuel      fuel
      */
-    public Player(Homebase homebase, ArrayList<Train> trains, ArrayList<Task> tasks, int gold, Fuel fuel) {
+    public Player(Homebase homebase, ArrayList<Train> trains, int gold, Fuel fuel) {
         this.homebase = homebase;
         this.trains = new ArrayList<>(trains);
-        this.tasks = new ArrayList<>(tasks);
         this.gold = gold;
         this.fuel = fuel;
         for (Train t : trains) {
@@ -114,22 +111,6 @@ public class Player extends Group {
         trains.add(t);
         this.addActor(t);
         fuel.changeUsedFuelBy(t.getFuelCost());
-    }
-
-    /**
-     * Adds a Task to a player's task list, so long as they have 5 or less tasks.
-     */
-    public void addTask(Task task) {
-        if (this.tasks.size() <= 5)
-            this.tasks.add(task);
-    }
-
-    /**
-     * Function to be called when the player completes a goal.
-     */
-    public void completeTask(Task task, City city) {
-        city.changeInfluenceBy(this, 0.1f);
-        this.tasks.remove(task);
     }
 
     @Override

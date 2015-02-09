@@ -32,7 +32,8 @@ public class GameCore implements Screen {
     private Main main;
     private Stage stage;
     private Gui gui;
-    private ArrayList<Player> players;
+    private List<Player> players;
+    private List<Task> tasks;
     private int activePlayer;
     private Map map;
     private Scene scene;
@@ -45,6 +46,7 @@ public class GameCore implements Screen {
      */
     public GameCore(Main main) {
         this.main = main;
+        tasks = new ArrayList<Task>();
 
         // Set up the game
         stage = new Stage(new ScreenViewport());
@@ -61,8 +63,8 @@ public class GameCore implements Screen {
         }
 
         // Setting up players and their trains
-        Player p1 = new Player(map.getHomebases().get(0), new ArrayList<Train>(), new ArrayList<Task>(), 500, new Fuel(10, 0));
-        Player p2 = new Player(map.getHomebases().get(1), new ArrayList<Train>(), new ArrayList<Task>(), 500, new Fuel(10, 0));
+        Player p1 = new Player(map.getHomebases().get(0), new ArrayList<Train>(), 500, new Fuel(10, 0));
+        Player p2 = new Player(map.getHomebases().get(1), new ArrayList<Train>(), 500, new Fuel(10, 0));
         p1.addTrain(new BasicTrain(p1.getHomebase()));
         p2.addTrain(new BasicTrain(p2.getHomebase()));
         players = new ArrayList<>();
@@ -168,6 +170,10 @@ public class GameCore implements Screen {
      */
     public List<Player> getPlayers() {
         return players;
+    }
+
+    public List<Task> getTasks() {
+        return tasks;
     }
 
     /**
