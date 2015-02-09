@@ -15,7 +15,6 @@ import com.taxe.game.nodes.City;
 import com.taxe.game.nodes.Node;
 import com.taxe.game.map.Map;
 import com.taxe.game.player.Player;
-import com.taxe.game.resources.Fuel;
 import com.taxe.game.tasks.Task;
 import com.taxe.game.tasks.TaskFactory;
 import com.taxe.game.trains.BasicTrain;
