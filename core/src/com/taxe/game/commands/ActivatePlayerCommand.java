@@ -1,6 +1,7 @@
 package com.taxe.game.commands;
 
 import com.taxe.game.GameCore;
+import com.taxe.game.nodes.City;
 import com.taxe.game.player.Player;
 import com.taxe.game.tasks.Task;
 import com.taxe.game.trains.Train;
@@ -38,6 +39,12 @@ public class ActivatePlayerCommand implements Commandable {
             if (task.isComplete((Player) target)) {
                 task.getEndCity().changeInfluenceBy((Player) target, 0.1f);
             }
+        }
+
+        // Increase player's gold based on influence.
+        for (City c: game.getMap().getCities()) {
+            int goldToAdd = (int)Math.round(100 * c.getInfluence(((Player) target)));
+            ((Player) target).changeGold(goldToAdd);
         }
 
         if (game.getTasks().size() < 5)
