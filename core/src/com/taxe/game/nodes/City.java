@@ -49,6 +49,17 @@ public class City extends Node {
     }
 
     /**
+     * Initialise influence outside of the constructor.
+     *
+     * It isn't very neat to pass players into City's constructor - this
+     * is nicer.
+     * @param players An arraylist of all players in the game.
+     */
+    public void initInfluence(ArrayList<Player> players) {
+        influence = new Influence(players);
+    }
+
+    /**
      * Returns list of tasks city is holding.
      *
      * @return list of city's tasks.

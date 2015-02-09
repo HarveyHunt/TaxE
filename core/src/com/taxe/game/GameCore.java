@@ -11,6 +11,7 @@ import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.taxe.Main;
 import com.taxe.game.commands.Commands;
 import com.taxe.game.inputhandling.Clickable;
+import com.taxe.game.nodes.City;
 import com.taxe.game.nodes.Node;
 import com.taxe.game.map.Map;
 import com.taxe.game.player.Player;
@@ -70,6 +71,10 @@ public class GameCore implements Screen {
         players = new ArrayList<>();
         Collections.addAll(players, p1, p2);
         activePlayer = 0;
+
+        for (City c: map.getCities()) {
+            c.initInfluence(players);
+        }
 
         this.taskFactory = new TaskFactory(this);
 
