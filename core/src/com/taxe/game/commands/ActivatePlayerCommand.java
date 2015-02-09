@@ -41,7 +41,6 @@ public class ActivatePlayerCommand implements Commandable {
         }
 
         ((Player) target).addTask(game.taskFactory.generateTask());
-        System.out.println(((Player) target).tasks);
     }
 
 }

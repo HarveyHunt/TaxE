@@ -25,6 +25,7 @@ public class LockCityCommand implements Commandable {
         }
         City c = (City)target;
         c.locked = true;
+
         Label label = new Label("City" + c.getName() + " has been locked",
                 new Label.LabelStyle(new BitmapFont(), Color.RED));
         label.setAlignment(Align.center);
