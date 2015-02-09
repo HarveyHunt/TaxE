@@ -46,7 +46,7 @@ public class GameCore implements Screen {
      */
     public GameCore(Main main) {
         this.main = main;
-        tasks = new ArrayList<Task>();
+        tasks = new ArrayList<>();
 
         // Set up the game
         stage = new Stage(new ScreenViewport());

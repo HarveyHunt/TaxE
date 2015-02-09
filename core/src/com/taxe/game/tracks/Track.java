@@ -21,8 +21,7 @@ public class Track extends Group {
     // Constants for drawing
     private static final float DISTANCE_BETWEEN_SLEEPERS = 8f;
     private static final float PRECISION = 0.02f;
-    private static final int CURVE_SIZE = 60;
-
+    
     private final ArrayList<Node> nodes;
     private final ArrayList<Sleeper> sleepers;
 

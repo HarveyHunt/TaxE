@@ -78,8 +78,6 @@ public class Task {
             if (train.getNode() == this.getEndCity()) {
                 if (train.getCargo() == this.getCargo()) {
                     return true;
-                } else {
-                    return false;
                 }
             }
         }
