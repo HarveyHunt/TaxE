@@ -193,7 +193,7 @@ public class GameCore implements Screen {
     }
 
     /**
-     * Switches to the next player. This method works for any number of Players is greater than 0
+     * Switches to the next player.
      */
     public void switchActivePlayer() {
         activePlayer = (activePlayer + 1 == players.size()) ? 0 : activePlayer + 1;
