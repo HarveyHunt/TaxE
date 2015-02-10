@@ -25,7 +25,7 @@ public class DealDamageCommand implements Commandable {
         Player p = (Player) target;
         float influenceSum = 0;
         for(City c : game.getMap().getCities()) {
-            influenceSum += c.getInfluence(p);
+            influenceSum += c.getInfluence(game.getPlayers().indexOf(target));
         }
 
         for(Player p2 : game.getPlayers()) {

@@ -71,10 +71,6 @@ public class GameCore implements Screen {
         Collections.addAll(players, p1, p2);
         activePlayer = 0;
 
-        for (City c: map.getCities()) {
-            c.initInfluence(players);
-        }
-
         this.taskFactory = new TaskFactory(this);
 
         gui = new Gui(this);

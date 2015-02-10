@@ -2,9 +2,7 @@ package com.taxe.game.nodes;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
-import com.taxe.game.player.Player;
 import com.taxe.game.cargo.Cargo;
-import com.taxe.game.resources.Influence;
 import com.taxe.game.tasks.Task;
 
 import java.util.ArrayList;
