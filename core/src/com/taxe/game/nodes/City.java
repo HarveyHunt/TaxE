@@ -68,6 +68,9 @@ public class City extends Node {
     /**
      * Returns influence a player has in the city
      *
+     * The variable influence represents Player one's influence in a city,
+     * Player two's influence is simply 1 - influence.
+     *
      * @param playerID represents if the player is player one or two.
      * @return influence of player p in the city
      */
@@ -77,6 +80,9 @@ public class City extends Node {
 
     /**
      * Changes influence of a player in the city.
+     *
+     * The variable influence represents Player one's influence in a city,
+     * Player two's influence is simply 1 - influence.
      *
      * @param playerID represents if the player is player one or two.
      * @param delta  change of influence

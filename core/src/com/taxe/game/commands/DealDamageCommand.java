@@ -28,6 +28,7 @@ public class DealDamageCommand implements Commandable {
             influenceSum += c.getInfluence(game.getPlayers().indexOf(target));
         }
 
+        // TODO: Remove this for loop
         for(Player p2 : game.getPlayers()) {
             if(!(p.equals(p2))) {
                 //Deal damage to enemy's base
