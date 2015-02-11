@@ -81,6 +81,7 @@ public class InfoDisplay extends Group {
             );
             for (Label l : taskLabels)
                 l.setVisible(true);
+
         } else {
             // Draw minimised stuff!
             batch.draw(
@@ -95,7 +96,7 @@ public class InfoDisplay extends Group {
     }
 
     public void addTask(Task task) {
-        Label label = new Label("TASK", new Label.LabelStyle(new BitmapFont(), Color.YELLOW));
+        Label label = new Label(task.toString(), new Label.LabelStyle(new BitmapFont(), Color.YELLOW));
         label.setAlignment(Align.center);
         label.setPosition(50, labelY);
         labelY -= 50;
