@@ -96,6 +96,11 @@ public class InfoDisplay extends Group {
         drawChildren(batch, parentAlpha);
     }
 
+    /**
+     * Add a Task to the display of tasks.
+     *
+     * @param task The Task to be added.
+     */
     public void addTask(Task task) {
         Label label = new Label(task.toString(), new Label.LabelStyle(new BitmapFont(), Color.YELLOW));
         label.setAlignment(Align.center);
@@ -106,6 +111,10 @@ public class InfoDisplay extends Group {
         tasks.put(task, label);
     }
 
+    /**
+     * Remove a task from the task list display and realign remaining tasks.
+     * @param task The Task to be removed.
+     */
     public void removeTask(Task task) {
         tasks.remove(task);
         // Reset the labelY position and recalculate for Y for all labels.
