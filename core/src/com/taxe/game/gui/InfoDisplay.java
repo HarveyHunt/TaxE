@@ -10,7 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.taxe.game.GameCore;
 import com.taxe.game.tasks.Task;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * The menu on the left hand side of the screen that does not display any information yet
@@ -20,7 +20,7 @@ public class InfoDisplay extends Group {
     private GameCore game;
     private Button maximiseButton;
     private Button minimiseButton;
-    private ArrayList<Label> taskLabels;
+    private HashMap<Task, Label> tasks;
     private boolean maximised;
     private int labelY;
 
@@ -31,7 +31,7 @@ public class InfoDisplay extends Group {
     public InfoDisplay(GameCore game) {
         this.game = game;
         maximised = false;
-        taskLabels = new ArrayList<>(5);
+        tasks = new HashMap<>(5);
 
         minimiseButton = new Button(GuiTextures.MINIMISE_BUTTON) {
             @Override
@@ -79,8 +79,9 @@ public class InfoDisplay extends Group {
                     GuiTextures.INFODISPLAY_TOP_MAXIMISED,
                     30, Gdx.graphics.getHeight() - GuiTextures.INFODISPLAY_TOP_MAXIMISED.getHeight() - 110
             );
-            for (Label l : taskLabels)
-                l.setVisible(true);
+
+            for (Task t : tasks.keySet())
+                tasks.get(t).setVisible(true);
 
         } else {
             // Draw minimised stuff!
@@ -88,8 +89,8 @@ public class InfoDisplay extends Group {
                     GuiTextures.INFODISPLAY_TOP_MINIMISED,
                     30, Gdx.graphics.getHeight() - GuiTextures.INFODISPLAY_TOP_MINIMISED.getHeight() - 110
             );
-            for (Label l : taskLabels)
-                l.setVisible(false);
+            for (Task t : tasks.keySet())
+                tasks.get(t).setVisible(false);
         }
 
         drawChildren(batch, parentAlpha);
@@ -99,9 +100,19 @@ public class InfoDisplay extends Group {
         Label label = new Label(task.toString(), new Label.LabelStyle(new BitmapFont(), Color.YELLOW));
         label.setAlignment(Align.center);
         label.setPosition(50, labelY);
-        labelY -= 50;
+        labelY -= label.getTextBounds().height + 20;
 
         addActor(label);
-        taskLabels.add(label);
+        tasks.put(task, label);
+    }
+
+    public void removeTask(Task task) {
+        tasks.remove(task);
+        // Reset the labelY position and recalculate for Y for all labels.
+        labelY = Gdx.graphics.getHeight() - GuiTextures.   INFODISPLAY_TOP_MAXIMISED.getHeight() - 121;
+        for (Task t : tasks.keySet()) {
+            tasks.get(t).setPosition(50, labelY);
+            labelY += tasks.get(t).getTextBounds().height + 20;
+        }
     }
 }
