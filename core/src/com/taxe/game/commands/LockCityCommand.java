@@ -28,7 +28,7 @@ public class LockCityCommand implements Commandable {
         c.locked = true;
         c.setState(NodeStates.LOCKED);
 
-        Label label = new Label("City " + c.getId() + " has been locked",
+        Label label = new Label("City " + c + " has been locked",
                 new Label.LabelStyle(new BitmapFont(), Color.RED));
         label.setAlignment(Align.center);
 

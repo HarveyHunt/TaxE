@@ -6,14 +6,14 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.taxe.game.util.Coordinate;
 
 /**
- * Base-class for representing sleepers. Different types of sleepers should be implemented by extending this class.
- * Sleepers have a property called "ending". If sleeper.isEnding() is true, that means that the sleeper is at the
- * ending of one of the sub-segments of the track.
+ * Represents a single sleeper.
+ *
+ * If sleeper.isEnding() is true, that means that the sleeper is at the ending
+ * of one of the sub-segments of track.
  */
-public abstract class Sleeper extends Actor {
+public class Sleeper extends Actor {
 
     private boolean ending;
-
 
     /**
      * Creates a sleeper at specified properties.
@@ -60,7 +60,9 @@ public abstract class Sleeper extends Actor {
         return ending;
     }
 
-    public abstract Texture getTexture();
+    public Texture getTexture() {
+        return SleeperTextures.SLEEPER;
+    }
 
     public void draw(Batch batch, float parentAlpha) {
         batch.draw(getTexture(),

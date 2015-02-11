@@ -43,7 +43,7 @@ public class ActivatePlayerCommand implements Commandable {
         // Complete tasks before adding a new one.
         for (Task task : game.getTasks()) {
             if (task.isComplete((Player) target)) {
-                task.getEndCity().changeInfluenceBy((Player) target, 0.1f);
+                task.getEndCity().changeInfluenceBy(game.getPlayers().indexOf(target), 0.1f);
 
                 // TODO: Check that ((Player) target) doesn't just return a
                 // memory address. If it does, implement a name for players.
@@ -55,16 +55,23 @@ public class ActivatePlayerCommand implements Commandable {
                 game.getGui().createTextNotification(label, new Coordinate(
                         Gdx.graphics.getWidth() / 2,
                         Gdx.graphics.getHeight() / 2), 1);
+
+                game.getTasks().remove(task);
+                game.getGui().getInfoDisplay().removeTask(task);
             }
         }
 
         // Increase player's gold based on influence.
+        // TODO: This could be made more interesting.
         for (City c: game.getMap().getCities()) {
-            int goldToAdd = (int)Math.round(100 * c.getInfluence(((Player) target)));
+            int goldToAdd = Math.round(100 * c.getInfluence(game.getPlayers().indexOf(target)));
             ((Player) target).changeGold(goldToAdd);
         }
 
-        if (game.getTasks().size() < 5)
-            game.getTasks().add(game.taskFactory.generateTask());
+        if (game.getTasks().size() < 5) {
+            Task t = game.taskFactory.generateTask();
+            game.getTasks().add(t);
+            game.getGui().getInfoDisplay().addTask(t);
+        }
     }
 }

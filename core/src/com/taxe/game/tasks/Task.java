@@ -4,7 +4,6 @@ import com.taxe.game.cargo.Cargo;
 import com.taxe.game.nodes.City;
 import com.taxe.game.player.Player;
 import com.taxe.game.trains.Train;
-import com.taxe.Main;
 
 /**
  * Top-level class for representing tasks. Different types of tasks are implemented by extending this class.
@@ -31,6 +30,10 @@ public class Task {
         this.endCity = endCity;
         this.cargo = cargo;
         this.taskTime = taskTime;
+    }
+
+    public String toString() {
+        return "Task: Deliver " + getCargo() + " to " + getEndCity();
     }
 
     /**
@@ -79,8 +82,6 @@ public class Task {
             if (train.getNode() == this.getEndCity()) {
                 if (train.getCargo() == this.getCargo()) {
                     return true;
-                } else {
-                    return false;
                 }
             }
         }

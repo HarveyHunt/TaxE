@@ -15,7 +15,6 @@ import com.taxe.game.nodes.City;
 import com.taxe.game.nodes.Node;
 import com.taxe.game.map.Map;
 import com.taxe.game.player.Player;
-import com.taxe.game.resources.Fuel;
 import com.taxe.game.tasks.Task;
 import com.taxe.game.tasks.TaskFactory;
 import com.taxe.game.trains.BasicTrain;
@@ -47,7 +46,7 @@ public class GameCore implements Screen {
      */
     public GameCore(Main main) {
         this.main = main;
-        tasks = new ArrayList<Task>();
+        tasks = new ArrayList<>();
 
         // Set up the game
         stage = new Stage(new ScreenViewport());
@@ -64,17 +63,13 @@ public class GameCore implements Screen {
         }
 
         // Setting up players and their trains
-        Player p1 = new Player(map.getHomebases().get(0), new ArrayList<Train>(), 500, new Fuel(10, 0));
-        Player p2 = new Player(map.getHomebases().get(1), new ArrayList<Train>(), 500, new Fuel(10, 0));
+        Player p1 = new Player(map.getHomebases().get(0), new ArrayList<Train>(), 500, 0, 10);
+        Player p2 = new Player(map.getHomebases().get(1), new ArrayList<Train>(), 500, 0, 10);
         p1.addTrain(new BasicTrain(p1.getHomebase()));
         p2.addTrain(new BasicTrain(p2.getHomebase()));
         players = new ArrayList<>();
         Collections.addAll(players, p1, p2);
         activePlayer = 0;
-
-        for (City c: map.getCities()) {
-            c.initInfluence(players);
-        }
 
         this.taskFactory = new TaskFactory(this);
 
@@ -194,7 +189,7 @@ public class GameCore implements Screen {
     }
 
     /**
-     * Switches to the next player. This method works for any number of Players is greater than 0
+     * Switches to the next player.
      */
     public void switchActivePlayer() {
         activePlayer = (activePlayer + 1 == players.size()) ? 0 : activePlayer + 1;

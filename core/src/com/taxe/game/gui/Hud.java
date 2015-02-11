@@ -12,7 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.taxe.game.GameCore;
 import com.taxe.game.commands.Commands;
 import com.taxe.game.player.Player;
-import com.taxe.game.resources.Fuel;
+
 
 import java.util.HashMap;
 
@@ -99,8 +99,7 @@ public class Hud extends Group {
      * @param p the player whose resources are being displayed
      */
     public void setPlayerText(Player p) {
-        Fuel f = p.getFuel();
-        CharSequence text = "Gold: " + p.getGold() + "     Fuel: " + f.getUsedFuel() + "/" + f.getFuelCap();
+        CharSequence text = "Gold: " + p.getGold() + "     Fuel Usage: " + p.getFuelUsage() + "/" + p.getFuelCap();
         resourceTexts.get(p).setText(text);
     }
 
