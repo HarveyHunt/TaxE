@@ -1,6 +1,5 @@
 package com.taxe.game.commands;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
@@ -8,7 +7,6 @@ import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.taxe.game.GameCore;
 import com.taxe.game.nodes.City;
 import com.taxe.game.nodes.NodeStates;
-import com.taxe.game.util.Coordinate;
 
 /**
  * Lock a city so that trains can't travel over it.
