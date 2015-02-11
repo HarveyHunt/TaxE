@@ -32,6 +32,10 @@ public class Task {
         this.taskTime = taskTime;
     }
 
+    public String toString() {
+        return "Task: Deliver " + getCargo() + " to " + getEndCity();
+    }
+
     /**
      * Returns end city of the task.
      *

@@ -169,4 +169,12 @@ public abstract class Node extends Actor implements Clickable {
     protected void validate() throws RuntimeException {
     }
 
+    /**
+     * Represent this node as a string.
+     * @return A string representing this node.
+     */
+    public String toString() {
+        return getId();
+    }
+
 }

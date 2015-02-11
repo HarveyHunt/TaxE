@@ -55,6 +55,9 @@ public class ActivatePlayerCommand implements Commandable {
                 game.getGui().createTextNotification(label, new Coordinate(
                         Gdx.graphics.getWidth() / 2,
                         Gdx.graphics.getHeight() / 2), 1);
+
+                game.getTasks().remove(task);
+                game.getGui().getInfoDisplay().removeTask(task);
             }
         }
 
@@ -65,7 +68,10 @@ public class ActivatePlayerCommand implements Commandable {
             ((Player) target).changeGold(goldToAdd);
         }
 
-        if (game.getTasks().size() < 5)
-            game.getTasks().add(game.taskFactory.generateTask());
+        if (game.getTasks().size() < 5) {
+            Task t = game.taskFactory.generateTask();
+            game.getTasks().add(t);
+            game.getGui().getInfoDisplay().addTask(t);
+        }
     }
 }
