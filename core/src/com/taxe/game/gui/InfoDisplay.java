@@ -61,6 +61,8 @@ public class InfoDisplay extends Group {
 
     /**
      * repositions the elements of the menu based on the size of the screen.
+     *
+     * TODO: Add support for resizing task list.
      */
     public void resize() {
         minimiseButton.setPosition(268, Gdx.graphics.getHeight() - GuiTextures.INFODISPLAY_TOP_MINIMISED.getHeight() - GuiTextures.INFODISPLAY_BACKGROUND.getHeight() - 45);
