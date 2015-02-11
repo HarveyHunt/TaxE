@@ -55,6 +55,9 @@ public class ActivatePlayerCommand implements Commandable {
                 game.getGui().createTextNotification(label, new Coordinate(
                         Gdx.graphics.getWidth() / 2,
                         Gdx.graphics.getHeight() / 2), 1);
+
+                game.getTasks().remove(task);
+                game.getGui().getInfoDisplay().removeTask(task);
             }
         }
 
