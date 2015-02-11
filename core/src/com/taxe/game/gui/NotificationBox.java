@@ -15,6 +15,7 @@ public class NotificationBox extends Group {
 
     private ArrayList<Label> labels;
     private int labelY;
+    private static final int MAX_DISPLAYED_LABELS = 5;
 
     public NotificationBox() {
         labels = new ArrayList<>();
@@ -35,7 +36,7 @@ public class NotificationBox extends Group {
             return;
 
         for (Iterator<Label> iter = labels.iterator(); iter.hasNext();) {
-            if (!iter.next().isVisible()) {
+            if (iter.next().getColor().a == 0) {
                 iter.remove();
             }
         }
@@ -43,11 +44,16 @@ public class NotificationBox extends Group {
     }
 
     private void rearrangeLabels() {
+        int count = 0;
         labelY = Gdx.graphics.getHeight() - 800;
 
         for (Label l : labels) {
+            if (count == MAX_DISPLAYED_LABELS)
+                break;
             l.setPosition(50, labelY);
+            l.setVisible(true);
             labelY += l.getTextBounds().height + 10;
+            count++;
         }
     }
 
@@ -58,7 +64,6 @@ public class NotificationBox extends Group {
         SequenceAction seq = new SequenceAction();
         seq.addAction(Actions.delay(duration));
         seq.addAction(Actions.fadeOut(0.3f));
-        seq.addAction(Actions.visible(false));
         seq.addAction(new Action() {
             @Override
             public boolean act(float delta) {
@@ -70,6 +75,8 @@ public class NotificationBox extends Group {
         label.addAction(seq);
 
         addActor(label);
+        label.setVisible(false);
         labels.add(label);
+        rearrangeLabels();
     }
 }
