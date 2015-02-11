@@ -1,9 +1,16 @@
 package com.taxe.game.gui;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.Group;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.taxe.game.GameCore;
+import com.taxe.game.tasks.Task;
+
+import java.util.ArrayList;
 
 /**
  * The menu on the left hand side of the screen that does not display any information yet
@@ -13,7 +20,9 @@ public class InfoDisplay extends Group {
     private GameCore game;
     private Button maximiseButton;
     private Button minimiseButton;
+    private ArrayList<Label> taskLabels;
     private boolean maximised;
+    private int labelY;
 
     /**
      * creates an instance of InfoDisplay
@@ -22,6 +31,7 @@ public class InfoDisplay extends Group {
     public InfoDisplay(GameCore game) {
         this.game = game;
         maximised = false;
+        taskLabels = new ArrayList<>(5);
 
         minimiseButton = new Button(GuiTextures.MINIMISE_BUTTON) {
             @Override
@@ -43,6 +53,8 @@ public class InfoDisplay extends Group {
             }
         };
         addActor(maximiseButton);
+
+        labelY = Gdx.graphics.getHeight() - GuiTextures.   INFODISPLAY_TOP_MAXIMISED.getHeight() - 121;
 
         resize();
     }
@@ -67,15 +79,28 @@ public class InfoDisplay extends Group {
                     GuiTextures.INFODISPLAY_TOP_MAXIMISED,
                     30, Gdx.graphics.getHeight() - GuiTextures.INFODISPLAY_TOP_MAXIMISED.getHeight() - 110
             );
+            for (Label l : taskLabels)
+                l.setVisible(true);
         } else {
             // Draw minimised stuff!
             batch.draw(
                     GuiTextures.INFODISPLAY_TOP_MINIMISED,
                     30, Gdx.graphics.getHeight() - GuiTextures.INFODISPLAY_TOP_MINIMISED.getHeight() - 110
             );
+            for (Label l : taskLabels)
+                l.setVisible(false);
         }
 
         drawChildren(batch, parentAlpha);
     }
 
+    public void addTask(Task task) {
+        Label label = new Label("TASK", new Label.LabelStyle(new BitmapFont(), Color.YELLOW));
+        label.setAlignment(Align.center);
+        label.setPosition(50, labelY);
+        labelY -= 50;
+
+        addActor(label);
+        taskLabels.add(label);
+    }
 }

@@ -65,7 +65,10 @@ public class ActivatePlayerCommand implements Commandable {
             ((Player) target).changeGold(goldToAdd);
         }
 
-        if (game.getTasks().size() < 5)
-            game.getTasks().add(game.taskFactory.generateTask());
+        if (game.getTasks().size() < 5) {
+            Task t = game.taskFactory.generateTask();
+            game.getTasks().add(t);
+            game.getGui().getInfoDisplay().addTask(t);
+        }
     }
 }
