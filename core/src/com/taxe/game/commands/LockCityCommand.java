@@ -32,9 +32,10 @@ public class LockCityCommand implements Commandable {
                 new Label.LabelStyle(new BitmapFont(), Color.RED));
         label.setAlignment(Align.center);
 
-        game.getGui().createTextNotification(label, new Coordinate(
-                Gdx.graphics.getWidth() / 2,
-                Gdx.graphics.getHeight() / 2), 1);
+        //game.getGui().createTextNotification(label, new Coordinate(
+        //        Gdx.graphics.getWidth() / 2,
+        //        Gdx.graphics.getHeight() / 2), 1);
+        game.getGui().getNotificationBox().addLabel(label, 5.0f);
     }
 }
 
