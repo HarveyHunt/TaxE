@@ -83,8 +83,6 @@ public abstract class Train extends Actor implements Clickable {
         return id;
     }
 
-    ;
-
     /**
      * Returns cargo capacity of a train.
      *

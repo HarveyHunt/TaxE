@@ -8,5 +8,8 @@ import com.badlogic.gdx.graphics.Texture;
 public abstract class CargoTextures {
 
     public static final Texture PENGUINS = new Texture("cargo/penguins.png");
+    public static final Texture COAL = new Texture("cargo/coal.png");
+    public static final Texture BEARS = new Texture("cargo/bears.png");
+    public static final Texture WHEAT = new Texture("cargo/wheat.png");
 
 }

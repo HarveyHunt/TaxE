@@ -34,4 +34,6 @@ public abstract class GuiTextures {
     public static final Texture PLAYER_1_WINS = new Texture("Gui/player-1-wins.png");
     public static final Texture PLAYER_2_WINS = new Texture("Gui/player-2-wins.png");
 
+    public static final Texture NOTIFICATION_BOX = new Texture("Gui/notification-box.png");
+
 }

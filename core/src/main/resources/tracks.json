@@ -68,13 +68,6 @@
     "Red"
   ],
   [
-    "Prague",
-    "PragueJ1-1",
-    "PragueJ1-2",
-    "J1"
-  ],
-
-  [
     "Red",
     "RedVenice-1",
     "RedVenice-2",
@@ -88,49 +81,11 @@
     "Venice"
   ],
   [
-    "J1",
-    "VeniceJ1-1",
-    "Venice"
-  ],
-  [
-    "J2",
-    "VeniceJ2-1",
-    "Venice"
-  ],
-  [
-    "Paris",
-    "ParisJ2-1",
-    "J2"
-  ],
-  [
-    "Barcelona",
-    "J2Barcelona-1",
-    "J2"
-  ],
-  [
     "Berlin",
     "BerlinBarcelona-1",
     "BerlinBarcelona-2",
     "BerlinBarcelona-3",
-    "BerlinBarcelona-4",
     "Barcelona"
-  ],
-  [
-    "J4",
-    "J4Barcelona-1",
-    "J4Barcelona-2",
-    "Barcelona"
-  ],
-  [
-    "J1",
-    "J1Barcelona-1",
-    "J1Barcelona-2",
-    "Barcelona"
-  ],
-  [
-    "Barcelona",
-    "BarcelonaJ3-1",
-    "J3"
   ],
   [
     "Copanhaggen",
@@ -141,36 +96,10 @@
     "Barcelona"
   ],
   [
-    "Barcelona",
-    "BarcelonaJ3-1",
-    "J3"
-  ],
-  [
-    "Rome",
-    "RomeJ3-1",
-    "J3"
-  ],
-  [
-    "Milan",
-    "MilanJ3-1",
-    "J3"
-  ],
-  [
     "Bucharest",
     "BucharestRome-1",
     "BucharestRome-2",
     "Rome"
-  ],
-  [
-    "Rome",
-    "J4Rome-1",
-    "J4"
-  ],
-  [
-    "Madrid",
-    "MadridJ4-1",
-    "MadridJ4-2",
-    "J4"
   ],
   [
     "Blue",

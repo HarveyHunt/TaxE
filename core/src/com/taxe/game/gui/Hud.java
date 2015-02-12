@@ -4,7 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
@@ -13,9 +12,6 @@ import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.taxe.game.GameCore;
 import com.taxe.game.commands.Commands;
 import com.taxe.game.player.Player;
-import com.taxe.game.resources.Fuel;
-import com.taxe.game.resources.Gold;
-import com.taxe.game.util.Coordinate;
 
 import java.util.HashMap;
 
@@ -48,7 +44,8 @@ public class Hud extends Group {
         Healthbar p2Healthbar = new Healthbar(true);
         healthbars.put(player1, p1Healthbar);
         healthbars.put(player2, p2Healthbar);
-        addActor(p1Healthbar); addActor(p2Healthbar);
+        addActor(p1Healthbar);
+        addActor(p2Healthbar);
 
         resourceTexts = new HashMap<>();
         Label p1Label = new Label("", new Label.LabelStyle(new BitmapFont(), Color.YELLOW));
@@ -59,14 +56,16 @@ public class Hud extends Group {
         resourceTexts.put(player2, p2Label);
         setPlayerText(player1);
         setPlayerText(player2);
-        addActor(p1Label); addActor(p2Label);
+        addActor(p1Label);
+        addActor(p2Label);
 
         playerIcons = new HashMap<>();
         Image p1Icon = new Image(GuiTextures.PLAYER_1_ICON);
         Image p2Icon = new Image(GuiTextures.PLAYER_2_ICON);
         playerIcons.put(player1, p1Icon);
         playerIcons.put(player2, p2Icon);
-        addActor(p1Icon); addActor(p2Icon);
+        addActor(p1Icon);
+        addActor(p2Icon);
 
         endTurnButton = new Button(GuiTextures.END_TURN_BUTTON) {
             @Override
@@ -99,9 +98,7 @@ public class Hud extends Group {
      * @param p the player whose resources are being displayed
      */
     public void setPlayerText(Player p) {
-        Gold g = p.getGold();
-        Fuel f = p.getFuel();
-        CharSequence text = "Gold: " + g.getQuantity() + "     Fuel: " + f.getUsedFuel() + "/" + f.getFuelCap();
+        CharSequence text = "Gold: " + p.getGold() + "     Fuel Usage: " + p.getFuelUsage() + "/" + p.getFuelCap();
         resourceTexts.get(p).setText(text);
     }
 

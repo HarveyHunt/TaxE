@@ -5,7 +5,6 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.taxe.Main;
 import com.taxe.game.gui.Button;
-import com.taxe.game.util.Coordinate;
 
 /**
  * A Group that contains all of the elements of the menu screen
@@ -17,7 +16,7 @@ public class Menu extends Group {
 
     /**
      * creates the Actors of the elements of the menu
-     * @param main
+     * @param main The main application
      */
     public Menu(final Main main) {
         startGame = new Button(MenuTextures.START_GAME_BUTTON) {

@@ -1,7 +1,6 @@
 package com.taxe.game.map;
 
 import com.taxe.GdxTestRunner;
-import com.taxe.game.map.Map;
 import com.taxe.game.nodes.City;
 import com.taxe.game.nodes.Homebase;
 import com.taxe.game.nodes.Node;
@@ -44,9 +43,9 @@ public class MapTest {
     @Test
     public void testGetTrackWith() throws Exception {
         // Searching for a track with existing nodes
-        Node n1 = Node.getNodeById("Prague", map.getNodes());
-        Node n2 = Node.getNodeById("J1", map.getNodes());
-        String[] s1 = {"Prague", "PragueJ1-1", "PragueJ1-2", "J1"};
+        Node n1 = Node.getNodeById("Paris", map.getNodes());
+        Node n2 = Node.getNodeById("London", map.getNodes());
+        String[] s1 = {"Paris", "London", "LondonParis-1", "LondonParis-2", "LondonParis-3"};
         assertTrue(containsAll(map.getTrackWith(n1, n2).getNodes(), s1));
 
         // Searching for a track with non-existing node

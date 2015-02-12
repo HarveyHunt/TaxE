@@ -10,18 +10,21 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.taxe.Main;
 import com.taxe.game.commands.Commands;
+import com.taxe.game.gui.Gui;
 import com.taxe.game.inputhandling.Clickable;
-import com.taxe.game.nodes.Node;
 import com.taxe.game.map.Map;
+import com.taxe.game.nodes.Node;
 import com.taxe.game.player.Player;
-import com.taxe.game.resources.Fuel;
-import com.taxe.game.resources.Gold;
+import com.taxe.game.tasks.Task;
+import com.taxe.game.tasks.TaskFactory;
 import com.taxe.game.trains.BasicTrain;
 import com.taxe.game.trains.Train;
-import com.taxe.game.gui.Gui;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Deque;
 
 /**
  * The game. This is the main class for everything related to the playing of the game itself.
@@ -32,10 +35,12 @@ public class GameCore implements Screen {
     private Stage stage;
     private Gui gui;
     private ArrayList<Player> players;
+    private ArrayList<Task> tasks;
     private int activePlayer;
     private Map map;
     private Scene scene;
     private ArrayDeque<Node> selectedPath = new ArrayDeque<>();
+    public TaskFactory taskFactory;
 
     /**
      * creates an instance of GameCore
@@ -43,6 +48,7 @@ public class GameCore implements Screen {
      */
     public GameCore(Main main) {
         this.main = main;
+        tasks = new ArrayList<>();
 
         // Set up the game
         stage = new Stage(new ScreenViewport());
@@ -54,17 +60,20 @@ public class GameCore implements Screen {
         try {
             map = new Map("nodes.json", "tracks.json");
         } catch (IOException e) {
-            System.out.println("Something went wrong :(, probably Vlad's fault");
+            System.out.println("Can't find nodes.json and/or tracks.json");
+            System.exit(1);
         }
 
         // Setting up players and their trains
-        Player p1 = new Player(map.getHomebases().get(0), new ArrayList<Train>(), new Gold(500), new Fuel(10, 0));
-        Player p2 = new Player(map.getHomebases().get(1), new ArrayList<Train>(), new Gold(500), new Fuel(10, 0));
+        Player p1 = new Player(map.getHomebases().get(0), new ArrayList<Train>(), 500, 0, 10);
+        Player p2 = new Player(map.getHomebases().get(1), new ArrayList<Train>(), 500, 0, 10);
         p1.addTrain(new BasicTrain(p1.getHomebase()));
         p2.addTrain(new BasicTrain(p2.getHomebase()));
         players = new ArrayList<>();
         Collections.addAll(players, p1, p2);
         activePlayer = 0;
+
+        this.taskFactory = new TaskFactory(this);
 
         gui = new Gui(this);
 
@@ -161,8 +170,16 @@ public class GameCore implements Screen {
      * return the list of Players
      * @return list of players
      */
-    public List<Player> getPlayers() {
+    public ArrayList<Player> getPlayers() {
         return players;
+    }
+
+    /**
+     * Return the list of tasks
+     * @return List of tasks.
+     */
+    public ArrayList<Task> getTasks() {
+        return tasks;
     }
 
     /**
@@ -174,7 +191,7 @@ public class GameCore implements Screen {
     }
 
     /**
-     * Switches to the next player. This method works for any number of Players is greater than 0
+     * Switches to the next player.
      */
     public void switchActivePlayer() {
         activePlayer = (activePlayer + 1 == players.size()) ? 0 : activePlayer + 1;
@@ -212,5 +229,4 @@ public class GameCore implements Screen {
     public Stage getStage() {
         return stage;
     }
-
 }

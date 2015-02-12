@@ -9,7 +9,6 @@ import com.taxe.game.trains.TrainStates;
  * Starts the path on the node of the selected train.
  */
 public class StartPathCommand implements Commandable {
-
     /**
      *
      * @param game instance of game

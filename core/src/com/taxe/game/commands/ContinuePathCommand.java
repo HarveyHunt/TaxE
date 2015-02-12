@@ -1,6 +1,7 @@
 package com.taxe.game.commands;
 
 import com.taxe.game.GameCore;
+import com.taxe.game.nodes.City;
 import com.taxe.game.nodes.IntermediatePoint;
 import com.taxe.game.nodes.Node;
 import com.taxe.game.nodes.NodeStates;
@@ -22,6 +23,7 @@ public class ContinuePathCommand implements Commandable {
         }
         if (target instanceof IntermediatePoint)
             return;
+
         Node current = (Node) target;
         Node previous = game.getSelectedPath().peekLast();
 
@@ -37,8 +39,13 @@ public class ContinuePathCommand implements Commandable {
         // Neighbours of the current selected node become available for path selection
         for (Track t : game.getMap().getTracksWith(current)) {
             boolean alreadySelected = false;
-            for (Node n : t.getNodes())
+            for (Node n : t.getNodes()) {
                 alreadySelected |= (n.getState() == NodeStates.SELECTED);
+                /* If the city is locked, use a naughty hack to stop it from being selected. */
+                if (n instanceof City) {
+                    alreadySelected |= ((City) n).locked;
+                }
+            }
             if (!alreadySelected) {
                 for (Node n : t.getNodes())
                     n.setState(NodeStates.HIGHLIGHTED);

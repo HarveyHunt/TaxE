@@ -10,17 +10,13 @@ public abstract class NodeTextures {
     public static final Texture[] CITY = {
             new Texture("nodes/city.png"),
             new Texture("nodes/city-highlighted.png"),
-            new Texture("nodes/city-selected.png")};
+            new Texture("nodes/city-selected.png"),
+            new Texture("nodes/city-locked.png")};
 
     public static final Texture[] HOMEBASE = {
             new Texture("nodes/homebase.png"),
             new Texture("nodes/homebase-highlighted.png"),
             new Texture("nodes/homebase-selected.png")};
-
-    public static final Texture[] JUNCTION = {
-            new Texture("nodes/junction.png"),
-            new Texture("nodes/junction-highlighted.png"),
-            new Texture("nodes/junction-selected.png")};
 
     public static final Texture[] INTERMEDIATE = {
             new Texture("nodes/intermediate.png"),

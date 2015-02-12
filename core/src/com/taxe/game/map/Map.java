@@ -3,7 +3,10 @@ package com.taxe.game.map;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Group;
-import com.taxe.game.nodes.*;
+import com.taxe.game.nodes.City;
+import com.taxe.game.nodes.Homebase;
+import com.taxe.game.nodes.IntermediatePoint;
+import com.taxe.game.nodes.Node;
 import com.taxe.game.tracks.Track;
 
 import java.io.IOException;
@@ -21,7 +24,6 @@ public class Map extends Group {
     private ArrayList<Node> nodes;
     private ArrayList<City> cities;
     private ArrayList<Homebase> homebases;
-    private ArrayList<Junction> junctions;
     private ArrayList<IntermediatePoint> intermediatePoints;
     private ArrayList<Track> tracks;
     private Texture texture = new Texture("map/background.png");
@@ -37,7 +39,6 @@ public class Map extends Group {
         // Read and distribute nodes among categories
         cities = new ArrayList<>();
         homebases = new ArrayList<>();
-        junctions = new ArrayList<>();
         intermediatePoints = new ArrayList<>();
         nodes = new ArrayList<>(Node.readNodes(nodesFileName));
         for (Node n : nodes) {
@@ -45,8 +46,6 @@ public class Map extends Group {
                 cities.add((City) n);
             else if (n instanceof Homebase)
                 homebases.add((Homebase) n);
-            else if (n instanceof Junction)
-                junctions.add((Junction) n);
             else if (n instanceof IntermediatePoint)
                 intermediatePoints.add((IntermediatePoint) n);
         }
@@ -88,15 +87,6 @@ public class Map extends Group {
      */
     public List<Homebase> getHomebases() {
         return homebases;
-    }
-
-    /**
-     * Returns list of junctions on the map.
-     *
-     * @return list of junctions.
-     */
-    public List<Junction> getJunctions() {
-        return junctions;
     }
 
     /**

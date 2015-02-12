@@ -19,7 +19,7 @@ public class SavePathCommand implements Commandable {
     public void executeCommand(GameCore game, Object target) {
         ArrayDeque<Node> nodes = new ArrayDeque<>();
         ArrayDeque<Sleeper> sleepers = new ArrayDeque<>();
-        Node current = null, previous = null;
+        Node current, previous = null;
         while (!game.getSelectedPath().isEmpty()) {
             current = game.getSelectedPath().removeFirst();
             // Adding nodes and coordinates on track going from previous to current

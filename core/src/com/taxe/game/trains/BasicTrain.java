@@ -22,7 +22,5 @@ public class BasicTrain extends Train {
         setSize(t.getWidth(), t.getHeight());
         setOrigin(getWidth() / 2f, getHeight() / 2f);
         setTouchable(Touchable.enabled);
-
     }
-
 }

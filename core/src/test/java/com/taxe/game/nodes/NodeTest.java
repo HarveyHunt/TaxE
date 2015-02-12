@@ -47,7 +47,6 @@ public class NodeTest {
         // There is node with given id
         assertEquals("London", Node.getNodeById("London", nodes).getId());
         assertEquals("MadridBlue-1", Node.getNodeById("MadridBlue-1", nodes).getId());
-        assertEquals("J1", Node.getNodeById("J1", nodes).getId());
         assertEquals("Red", Node.getNodeById("Red", nodes).getId());
     }
 

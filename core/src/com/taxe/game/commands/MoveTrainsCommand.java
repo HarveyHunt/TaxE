@@ -5,7 +5,6 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.actions.SequenceAction;
 import com.taxe.game.GameCore;
 import com.taxe.game.nodes.Node;
-import com.taxe.game.player.Player;
 import com.taxe.game.tracks.Sleeper;
 import com.taxe.game.trains.Train;
 
@@ -55,5 +54,4 @@ public class MoveTrainsCommand implements Commandable {
         }
         game.getGui().getHud().lockButtons();
     }
-
 }
