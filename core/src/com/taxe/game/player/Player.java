@@ -24,7 +24,8 @@ public class Player extends Group {
     private int fuelUsage;
     private int fuelCap;
     private final Homebase homebase;
-    private ArrayList<Card> cards;
+
+    private ArrayList<Integer> cardQtys;
 
     /**
      * Creates a player with a specified homebase, set of trains, gold and fuel resources
@@ -48,9 +49,16 @@ public class Player extends Group {
             this.addActor(t);
         }
 
-        this.cards = new ArrayList<Card>();
-        this.cards.add(new Boost());
-        this.cards.add(new Block());
+        /*
+        List of integers representing the number of each card held
+        Position 0: Boost
+        Position 1: Block
+        */
+
+        cardQtys = new ArrayList<Integer>();
+
+        cardQtys.add(1);
+        cardQtys.add(1);
     }
 
     /**
@@ -150,8 +158,11 @@ public class Player extends Group {
         fuelUsage += t.getFuelCost();
     }
 
-    public Card getBoostCard() { return cards.get(0); }
-    public Card getBlockCard() { return cards.get(1); }
+    public Integer getBoostQty() { return cardQtys.get(0); }
+    public void adjustBoostQty(int v) { cardQtys.set(0, cardQtys.get(0) + v); }
+
+    public Integer getBlockQty() { return cardQtys.get(1); }
+    public void adjustBlockQty(int v) { cardQtys.set(1, cardQtys.get(1) + v); }
 
     @Override
     public void draw(Batch batch, float parentAlpha) {

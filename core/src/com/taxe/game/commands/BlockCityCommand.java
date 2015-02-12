@@ -10,6 +10,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 public class BlockCityCommand implements Commandable {
     @Override
     public void executeCommand(GameCore game, Object target) {
-        System.out.print("Block Fired\n");
+        System.out.println("Block Fired");
     }
 }

@@ -8,6 +8,6 @@ import com.taxe.game.GameCore;
 public class BoostTrainCommand implements Commandable {
     @Override
     public void executeCommand(GameCore game, Object o) {
-        System.out.print("Boost Fired\n");
+        System.out.println("Boost Fired");
     }
 }

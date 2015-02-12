@@ -21,8 +21,8 @@ import java.util.Random;
 public class Block extends Card {
     public Block() {
         command = Commands.blockCityCommand;
-        setX(64);
-        setY(0);
+
+        setPosition(64, 0);
         setSize(getTexture().getWidth(), getTexture().getHeight());
     }
 
@@ -32,6 +32,14 @@ public class Block extends Card {
 
     @Override
     public void clicked(GameCore game) {
-        command.executeCommand(game, null);
+
+        if (game.getActivePlayer().getBlockQty() > 0) {
+            command.executeCommand(game, null);
+            game.getActivePlayer().adjustBlockQty(-1);
+        }
+
+        else {
+            System.out.println("Insufficient Block Cards!");
+        }
     }
 }

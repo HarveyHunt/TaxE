@@ -20,6 +20,7 @@ import com.taxe.game.tasks.TaskFactory;
 import com.taxe.game.trains.BasicTrain;
 import com.taxe.game.trains.Train;
 import com.taxe.game.gui.Gui;
+import com.taxe.game.cards.*;
 
 import java.io.IOException;
 import java.util.*;
@@ -37,6 +38,8 @@ public class GameCore implements Screen {
     private int activePlayer;
     private Map map;
     private Scene scene;
+    private Block block;
+    private Boost boost;
     private ArrayDeque<Node> selectedPath = new ArrayDeque<>();
     public TaskFactory taskFactory;
 
@@ -82,9 +85,6 @@ public class GameCore implements Screen {
         }
         stage.addActor(gui);
 
-        scene.addActor(p1.getBlockCard());
-        scene.addActor(p1.getBoostCard());
-
         stage.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
@@ -95,6 +95,12 @@ public class GameCore implements Screen {
             }
         });
         Commands.activatePlayerCommand.executeCommand(this, getActivePlayer());
+
+        boost = new Boost();
+        block = new Block();
+
+        scene.addActor(boost);
+        scene.addActor(block);
 
         scene.scale();
     }
@@ -230,4 +236,8 @@ public class GameCore implements Screen {
     public Stage getStage() {
         return stage;
     }
+
+    public Block getBlock() { return block; }
+
+    public Boost getBoost() {return boost; }
 }
