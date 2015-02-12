@@ -2,6 +2,8 @@ package com.taxe.game.commands;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.taxe.game.GameCore;
 import com.taxe.game.gui.GuiTextures;
 import com.taxe.game.nodes.City;
@@ -15,12 +17,13 @@ import java.util.Random;
 public class SwitchPlayerCommand implements Commandable {
 
     public void executeCommand(GameCore game, Object target) {
-
         City lockableCity;
         Random rand = new Random();
 
         Commands.activatePlayerCommand.executeCommand(game, game.nextActivePlayer());
         game.switchActivePlayer();
+
+        game.UpdateCardLabels();
 
         Texture texture;
         if (game.getActivePlayer() == game.getPlayers().get(0)) {

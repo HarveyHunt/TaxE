@@ -57,8 +57,8 @@ public class Player extends Group {
 
         cardQtys = new ArrayList<Integer>();
 
-        cardQtys.add(1);
-        cardQtys.add(1);
+        cardQtys.add(2);
+        cardQtys.add(2);
     }
 
     /**

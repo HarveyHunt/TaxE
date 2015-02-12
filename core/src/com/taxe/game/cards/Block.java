@@ -20,7 +20,10 @@ import java.util.Random;
  */
 public class Block extends Card {
     public Block() {
+        super();
         command = Commands.blockCityCommand;
+
+        qtyLabel.setPosition(112, 42);
 
         setPosition(64, 0);
         setSize(getTexture().getWidth(), getTexture().getHeight());
@@ -32,10 +35,11 @@ public class Block extends Card {
 
     @Override
     public void clicked(GameCore game) {
-
         if (game.getActivePlayer().getBlockQty() > 0) {
             command.executeCommand(game, null);
             game.getActivePlayer().adjustBlockQty(-1);
+
+            game.UpdateCardLabels();
         }
 
         else {

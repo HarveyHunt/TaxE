@@ -94,13 +94,17 @@ public class GameCore implements Screen {
                 }
             }
         });
+
         Commands.activatePlayerCommand.executeCommand(this, getActivePlayer());
 
+        // Create card icons, add them to the scene and initialise their labels
         boost = new Boost();
         block = new Block();
 
         scene.addActor(boost);
         scene.addActor(block);
+
+        UpdateCardLabels();
 
         scene.scale();
     }
@@ -240,4 +244,9 @@ public class GameCore implements Screen {
     public Block getBlock() { return block; }
 
     public Boost getBoost() {return boost; }
+
+    public void UpdateCardLabels() {
+        this.getBlock().qtyLabel.setText(this.getActivePlayer().getBlockQty().toString());
+        this.getBoost().qtyLabel.setText(this.getActivePlayer().getBoostQty().toString());
+    }
 }
