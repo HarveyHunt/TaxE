@@ -1,5 +1,6 @@
 package com.taxe.game.gui;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -26,19 +27,14 @@ public class CityInfo extends Group {
 
         addActor(this.cityName);
 
-        System.out.println("Created cityinfo");
+        System.out.println("Created cityinfo at " + this.coord.getX() + "," + this.coord.getY());
     }
 
     public void draw(Batch batch, float parentAlpha) {
         batch.draw(
                 GuiTextures.CITY_INFO,
-                getX() - getOriginX(), getY() - getOriginY(),
-                getOriginX(), getOriginY(),
-                getWidth(), getHeight(),
-                1, 1, 0,
-                0, 0, GuiTextures.CITY_INFO.getWidth(),
-                GuiTextures.CITY_INFO.getHeight(),
-                false, false);
+                coord.getX(), coord.getY()
+        );
     }
 
     public City getCity() {
