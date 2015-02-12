@@ -21,8 +21,8 @@ import java.util.List;
 public class City extends Node {
 
     private float influence;
-    private ArrayList<Task> taskList;
-    private ArrayList<Cargo> cargoList;
+    private List<Task> taskList;
+    private List<Cargo> cargoList;
     public Boolean locked;
 
     /**
@@ -73,6 +73,15 @@ public class City extends Node {
      */
     public List<Cargo> getCargoList() {
         return cargoList;
+    }
+
+    /**
+     * Set the cargo that a city holds - this is done after instantiation.
+     *
+     * @param cargo The cargo to assign to this city.
+     */
+    public void setCargoList(List<Cargo> cargo) {
+        cargoList = cargo;
     }
 
     /**
