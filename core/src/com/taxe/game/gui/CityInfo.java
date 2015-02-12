@@ -30,14 +30,14 @@ public class CityInfo extends Group {
     private void setupLabels() {
         this.cityName = new Label("City name: ",  new Label.LabelStyle(new BitmapFont(),
                 Color.WHITE));
-        this.cityName.setAlignment(Align.center);
+        this.cityName.setAlignment(Align.left);
         this.cityName.setPosition(RIGHT_MARGIN, BOTTOM_MARGIN);
 
         addActor(this.cityName);
 
         this.cityInfluence = new Label("City influence: ", new Label.LabelStyle(new BitmapFont(),
                 Color.WHITE));
-        this.cityInfluence.setAlignment(Align.center);
+        this.cityInfluence.setAlignment(Align.left);
         this.cityInfluence.setPosition(RIGHT_MARGIN, BOTTOM_MARGIN + LABEL_GAP);
 
         addActor(this.cityInfluence);
