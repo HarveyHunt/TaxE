@@ -128,4 +128,9 @@ public class InfoDisplay extends Group {
         }
         System.out.println(tasks);
     }
+
+    public void updateTurns() {
+        for (Task t : tasks.keySet())
+            tasks.get(t).setText(t.toString());
+    }
 }

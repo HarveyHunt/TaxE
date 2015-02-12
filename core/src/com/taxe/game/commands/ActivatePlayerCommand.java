@@ -72,6 +72,7 @@ public class ActivatePlayerCommand implements Commandable {
                 game.getGui().getNotificationBox().addLabel(label, 5.0f);
             }
             t.completeTurn();
+            game.getGui().getInfoDisplay().updateTurns();
         }
 
         // Increase player's gold based on influence.

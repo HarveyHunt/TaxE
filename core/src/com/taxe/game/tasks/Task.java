@@ -33,7 +33,8 @@ public class Task {
     }
 
     public String toString() {
-        return "Task: Deliver " + getCargo() + " to " + getEndCity();
+        return "Task: Deliver " + getCargo() + " to " + getEndCity() + " in "
+                + getTasktime() + " turns";
     }
 
     /**
