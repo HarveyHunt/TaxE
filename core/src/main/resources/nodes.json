@@ -1,354 +1,986 @@
+
 [
   {
-    "class": "com.taxe.game.nodes.City",
-    "x": 282,
-    "y": 176,
-    "id": "London"
+    "class": "com.taxe.game.nodes.Homebase",
+    "x": 465,
+    "y": 571,
+    "id": "London",
+    "maxHealth": 500,
+    "health": 500
   },
   {
     "class": "com.taxe.game.nodes.City",
-    "x": 630,
-    "y": 132,
+    "x": 525,
+    "y": 469,
     "id": "Paris"
   },
   {
     "class": "com.taxe.game.nodes.City",
-    "x": 924,
-    "y": 124,
+    "x": 753,
+    "y": 607,
     "id": "Berlin"
   },
   {
     "class": "com.taxe.game.nodes.City",
-    "x": 1188,
-    "y": 234,
+    "x": 325,
+    "y": 145,
     "id": "Madrid"
   },
   {
     "class": "com.taxe.game.nodes.City",
-    "x": 950,
-    "y": 540,
+    "x": 769,
+    "y": 183,
     "id": "Rome"
   },
   {
     "class": "com.taxe.game.nodes.City",
-    "x": 712,
-    "y": 454,
+    "x": 485,
+    "y": 177,
     "id": "Barcelona"
   },
   {
     "class": "com.taxe.game.nodes.City",
-    "x": 410,
-    "y": 380,
+    "x": 780,
+    "y": 341,
     "id": "Venice"
   },
   {
     "class": "com.taxe.game.nodes.City",
-    "x": 230,
-    "y": 670,
+    "x": 795,
+    "y": 507,
     "id": "Prague"
   },
   {
     "class": "com.taxe.game.nodes.City",
-    "x": 500,
-    "y": 780,
-    "id": "Copanhaggen"
+    "x": 745,
+    "y": 725,
+    "id": "Copenhagen"
   },
   {
     "class": "com.taxe.game.nodes.City",
-    "x": 800,
-    "y": 780,
+    "x": 679,
+    "y": 315,
     "id": "Milan"
   },
   {
     "class": "com.taxe.game.nodes.City",
-    "x": 1130,
-    "y": 730,
+    "x": 1107,
+    "y": 337,
     "id": "Bucharest"
   },
   {
-    "class": "com.taxe.game.nodes.Homebase",
-    "x": 72,
-    "y": 344,
-    "id": "Red",
-    "maxHealth": 500,
-    "health": 500
+    "class": "com.taxe.game.nodes.City",
+    "x": 433,
+    "y": 757,
+    "id": "Edinburgh"
   },
   {
-    "class": "com.taxe.game.nodes.Homebase",
-    "x": 1346,
-    "y": 560,
-    "id": "Blue",
-    "maxHealth": 500,
-    "health": 500
+    "class": "com.taxe.game.nodes.City",
+    "x": 577,
+    "y": 239,
+    "id": "Marseille"
   },
   {
-    "class": "com.taxe.game.nodes.IntermediatePoint",
-    "x": 116,
-    "y": 258,
-    "id": "RedLondon-1"
+    "class": "com.taxe.game.nodes.City",
+    "x": 477,
+    "y": 253,
+    "id": "Toulouse"
   },
   {
-    "class": "com.taxe.game.nodes.IntermediatePoint",
-    "x": 178,
-    "y": 206,
-    "id": "RedLondon-2"
+    "class": "com.taxe.game.nodes.City",
+    "x": 727,
+    "y": 425,
+    "id": "Munich"
   },
   {
     "class": "com.taxe.game.nodes.IntermediatePoint",
-    "x": 364,
-    "y": 146,
-    "id": "LondonParis-1"
+    "x": 699,
+    "y": 639,
+    "id": "Hamburg"
+  },
+  {
+    "class": "com.taxe.game.nodes.City",
+    "x": 567,
+    "y": 533,
+    "id": "Brussels"
+  },
+  {
+    "class": "com.taxe.game.nodes.City",
+    "x": 689,
+    "y": 779,
+    "id": "Aalborg"
+  },
+  {
+    "class": "com.taxe.game.nodes.City",
+    "x": 709,
+    "y": 881,
+    "id": "Oslo"
+  },
+  {
+    "class": "com.taxe.game.nodes.City",
+    "x": 605,
+    "y": 351,
+    "id": "Geneva"
   },
   {
     "class": "com.taxe.game.nodes.IntermediatePoint",
-    "x": 444,
-    "y": 140,
-    "id": "LondonParis-2"
+    "x": 845,
+    "y": 431,
+    "id": "Vienna"
   },
   {
-    "class": "com.taxe.game.nodes.IntermediatePoint",
-    "x": 522,
-    "y": 132,
-    "id": "LondonParis-3"
-  },
-  {
-    "class": "com.taxe.game.nodes.IntermediatePoint",
-    "x": 726,
-    "y": 116,
-    "id": "ParisBerlin-1"
-  },
-  {
-    "class": "com.taxe.game.nodes.IntermediatePoint",
-    "x": 822,
-    "y": 116,
-    "id": "ParisBerlin-2"
-  },
-  {
-    "class": "com.taxe.game.nodes.IntermediatePoint",
-    "x": 1014,
-    "y": 118,
-    "id": "BerlinMadrid-1"
-  },
-  {
-    "class": "com.taxe.game.nodes.IntermediatePoint",
-    "x": 1084,
-    "y": 136,
-    "id": "BerlinMadrid-2"
-  },
-  {
-    "class": "com.taxe.game.nodes.IntermediatePoint",
-    "x": 1140,
-    "y": 190,
-    "id": "BerlinMadrid-3"
-  },
-  {
-    "class": "com.taxe.game.nodes.IntermediatePoint",
-    "x": 1264,
-    "y": 268,
-    "id": "MadridBlue-1"
-  },
-  {
-    "class": "com.taxe.game.nodes.IntermediatePoint",
-    "x": 1302,
-    "y": 332,
-    "id": "MadridBlue-2"
-  },
-  {
-    "class": "com.taxe.game.nodes.IntermediatePoint",
-    "x": 1320,
-    "y": 400,
-    "id": "MadridBlue-3"
-  },
-  {
-    "class": "com.taxe.game.nodes.IntermediatePoint",
-    "x": 1328,
-    "y": 468,
-    "id": "MadridBlue-4"
-  },
-  {
-    "class": "com.taxe.game.nodes.IntermediatePoint",
-    "x": 1252,
-    "y": 604,
-    "id": "BlueBucharest-1"
-  },
-  {
-    "class": "com.taxe.game.nodes.IntermediatePoint",
-    "x": 1190,
-    "y": 664,
-    "id": "BlueBucharest-2"
-  },
-  {
-    "class": "com.taxe.game.nodes.IntermediatePoint",
-    "x": 1022,
-    "y": 742,
-    "id": "BucharestMilan-1"
-  },
-  {
-    "class": "com.taxe.game.nodes.IntermediatePoint",
-    "x": 954,
-    "y": 752,
-    "id": "BucharestMilan-2"
-  },
-  {
-    "class": "com.taxe.game.nodes.IntermediatePoint",
-    "x": 880,
-    "y": 764,
-    "id": "BucharestMilan-3"
-  },
-  {
-    "class": "com.taxe.game.nodes.IntermediatePoint",
-    "x": 688,
-    "y": 780,
-    "id": "MilanCopanhaggen-1"
-  },
-  {
-    "class": "com.taxe.game.nodes.IntermediatePoint",
-    "x": 608,
-    "y": 780,
-    "id": "MilanCopanhaggen-2"
-  },
-  {
-    "class": "com.taxe.game.nodes.IntermediatePoint",
-    "x": 411,
-    "y": 759,
-    "id": "CopanhaggenPrague-1"
-  },
-  {
-    "class": "com.taxe.game.nodes.IntermediatePoint",
-    "x": 355,
-    "y": 738,
-    "id": "CopanhaggenPrague-2"
-  },
-  {
-    "class": "com.taxe.game.nodes.IntermediatePoint",
-    "x": 310,
-    "y": 711,
-    "id": "CopanhaggenPrague-3"
-  },
-  {
-    "class": "com.taxe.game.nodes.IntermediatePoint",
-    "x": 177,
-    "y": 597,
-    "id": "PragueRed-1"
-  },
-  {
-    "class": "com.taxe.game.nodes.IntermediatePoint",
-    "x": 152,
-    "y": 534,
-    "id": "PragueRed-2"
-  },
-  {
-    "class": "com.taxe.game.nodes.IntermediatePoint",
-    "x": 134,
-    "y": 460,
-    "id": "PragueRed-3"
-  },
-  {
-    "class": "com.taxe.game.nodes.IntermediatePoint",
-    "x": 120,
-    "y": 400,
-    "id": "PragueRed-4"
-  },
-  {
-    "class": "com.taxe.game.nodes.IntermediatePoint",
-    "x": 174,
-    "y": 342,
-    "id": "RedVenice-1"
-  },
-  {
-    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "class": "com.taxe.game.nodes.City",
     "x": 254,
-    "y": 362,
-    "id": "RedVenice-2"
+    "y": 50,
+    "id": "Seville"
+  },
+  {
+    "class": "com.taxe.game.nodes.City",
+    "x": 164,
+    "y": 122,
+    "id": "Lisbon"
+  },
+  {
+    "class": "com.taxe.game.nodes.City",
+    "x": 830,
+    "y": 882,
+    "id": "Stockholm"
+  },
+  {
+    "class": "com.taxe.game.nodes.City",
+    "x": 926,
+    "y": 614,
+    "id": "Warsaw"
+  },
+  {
+    "class": "com.taxe.game.nodes.City",
+    "x": 870,
+    "y": 685,
+    "id": "Gdansk"
+  },
+  {
+    "class": "com.taxe.game.nodes.City",
+    "x": 907,
+    "y": 407,
+    "id": "Budapest"
+  },
+  {
+    "class": "com.taxe.game.nodes.City",
+    "x": 960,
+    "y": 807,
+    "id": "Riga"
+  },
+  {
+    "class": "com.taxe.game.nodes.City",
+    "x": 967,
+    "y": 176,
+    "id": "Tirana"
+  },
+  {
+    "class": "com.taxe.game.nodes.City",
+    "x": 1080,
+    "y": 62,
+    "id": "Athens"
+  },
+  {
+    "class": "com.taxe.game.nodes.City",
+    "x": 1052,
+    "y": 163,
+    "id": "Thessaloniki"
+  },
+  {
+    "class": "com.taxe.game.nodes.City",
+    "x": 1059,
+    "y": 240,
+    "id": "Sofia"
+  },
+  {
+    "class": "com.taxe.game.nodes.City",
+    "x": 1029,
+    "y": 411,
+    "id": "Cluj-Napoca"
+  },
+  {
+    "class": "com.taxe.game.nodes.City",
+    "x": 1155,
+    "y": 582,
+    "id": "Kiev"
+  },
+  {
+    "class": "com.taxe.game.nodes.City",
+    "x": 1279,
+    "y": 621,
+    "id": "Kharkiv"
+  },
+  {
+    "class": "com.taxe.game.nodes.City",
+    "x": 1204,
+    "y": 454,
+    "id": "Odessa"
+  },
+  {
+    "class": "com.taxe.game.nodes.City",
+    "x": 1054,
+    "y": 692,
+    "id": "Minsk"
+  },
+  {
+    "class": "com.taxe.game.nodes.City",
+    "x": 941,
+    "y": 882,
+    "id": "Tallinn"
+  },
+  {
+    "class": "com.taxe.game.nodes.Homebase",
+    "x": 1307,
+    "y": 782,
+    "id": "Moscow",
+    "maxHealth": 500,
+    "health": 500
+  },
+  {
+    "class": "com.taxe.game.nodes.City",
+    "x": 1061,
+    "y": 882,
+    "id": "St.Petersburg"
+  },
+  {
+    "class": "com.taxe.game.nodes.City",
+    "x": 911,
+    "y": 270,
+    "id": "Sarajevo"
   },
   {
     "class": "com.taxe.game.nodes.IntermediatePoint",
-    "x": 330,
-    "y": 374,
-    "id": "RedVenice-3"
+    "x": 453,
+    "y": 711,
+    "id": "Newcastle"
   },
   {
     "class": "com.taxe.game.nodes.IntermediatePoint",
-    "x": 382,
-    "y": 218,
-    "id": "LondonVenice-1"
+    "x": 457,
+    "y": 666,
+    "id": "York"
   },
   {
     "class": "com.taxe.game.nodes.IntermediatePoint",
-    "x": 414,
-    "y": 294,
-    "id": "LondonVenice-2"
+    "x": 462,
+    "y": 623,
+    "id": "Peterborough"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 515,
+    "y": 544,
+    "id": "Calais"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 500,
+    "y": 420,
+    "id": "Orleans"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 489,
+    "y": 366,
+    "id": "Chateauroux"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 479,
+    "y": 313,
+    "id": "Limoges"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 562,
+    "y": 426,
+    "id": "Troyes"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 590,
+    "y": 388,
+    "id": "Dijon"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 539,
+    "y": 251,
+    "id": "Montpellier"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 581,
+    "y": 291,
+    "id": "Valence"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 511,
+    "y": 217,
+    "id": "Perpignan"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 325,
+    "y": 208,
+    "id": "Burgos"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 357,
+    "y": 253,
+    "id": "Bilbao"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 406,
+    "y": 268,
+    "id": "Bayonne"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 402,
+    "y": 178,
+    "id": "Zaragoza"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 305,
+    "y": 88,
+    "id": "Ciudad-Real"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 267,
+    "y": 159,
+    "id": "Salamanca"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 224,
+    "y": 120,
+    "id": "Badajoz"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 618,
+    "y": 246,
+    "id": "Nice"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 658,
+    "y": 274,
+    "id": "Genoa"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 716,
+    "y": 321,
+    "id": "Verona"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 727,
+    "y": 276,
+    "id": "Bologna"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 733,
+    "y": 229,
+    "id": "Florence"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 730,
+    "y": 375,
+    "id": "Villach"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 635,
+    "y": 373,
+    "id": "Bern"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 667,
+    "y": 392,
+    "id": "Zurich"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 631,
+    "y": 531,
+    "id": "Bonn"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 671,
+    "y": 505,
+    "id": "Frankfurt"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 721,
+    "y": 473,
+    "id": "Nuremburg"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 596,
+    "y": 563,
+    "id": "Eindhoven"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 644,
+    "y": 572,
+    "id": "Dortmund"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 676,
+    "y": 600,
+    "id": "Hanover"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 712,
+    "y": 591,
+    "id": "Magdeburg"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 710,
+    "y": 672,
+    "id": "Fehmarn"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 682,
+    "y": 687,
+    "id": "Flensburg"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 699,
+    "y": 747,
+    "id": "Aarhus"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 740,
+    "y": 790,
+    "id": "Gothenburg"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 733,
+    "y": 846,
+    "id": "Halden"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 789,
+    "y": 775,
+    "id": "Vaxjo"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 798,
+    "y": 839,
+    "id": "Norrkoping"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 753,
+    "y": 876,
+    "id": "Karlstad"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 793,
+    "y": 882,
+    "id": "Orebro"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 772,
+    "y": 557,
+    "id": "Dresden"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 763,
+    "y": 490,
+    "id": "Pilsen"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 770,
+    "y": 642,
+    "id": "Szczecin"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 806,
+    "y": 664,
+    "id": "Bialogard"
   },
   {
     "class": "com.taxe.game.nodes.IntermediatePoint",
     "x": 834,
-    "y": 184,
-    "id": "BerlinBarcelona-1"
+    "y": 681,
+    "id": "Slupsk"
   },
   {
     "class": "com.taxe.game.nodes.IntermediatePoint",
-    "x": 780,
-    "y": 244,
-    "id": "BerlinBarcelona-2"
+    "x": 774,
+    "y": 407,
+    "id": "Salzburg"
   },
   {
     "class": "com.taxe.game.nodes.IntermediatePoint",
-    "x": 734,
-    "y": 308,
-    "id": "BerlinBarcelona-3"
+    "x": 800,
+    "y": 424,
+    "id": "Linz"
   },
   {
     "class": "com.taxe.game.nodes.IntermediatePoint",
-    "x": 1236,
-    "y": 550,
-    "id": "BlueRome-1"
+    "x": 862,
+    "y": 480,
+    "id": "Brno"
   },
   {
     "class": "com.taxe.game.nodes.IntermediatePoint",
-    "x": 1146,
-    "y": 530,
-    "id": "BlueRome-2"
+    "x": 753,
+    "y": 319,
+    "id": "Udine"
   },
   {
     "class": "com.taxe.game.nodes.IntermediatePoint",
-    "x": 1058,
-    "y": 536,
-    "id": "BlueRome-3"
+    "x": 823,
+    "y": 382,
+    "id": "Graz"
   },
   {
     "class": "com.taxe.game.nodes.IntermediatePoint",
-    "x": 1080,
-    "y": 640,
-    "id": "BucharestRome-1"
+    "x": 815,
+    "y": 336,
+    "id": "Ljubljana"
   },
   {
     "class": "com.taxe.game.nodes.IntermediatePoint",
-    "x": 1030,
+    "x": 849,
+    "y": 330,
+    "id": "Zagreb"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 881,
+    "y": 296,
+    "id": "Banja-Luka"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 907,
+    "y": 328,
+    "id": "Osijek"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 902,
+    "y": 366,
+    "id": "Szekszard"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 967,
+    "y": 424,
+    "id": "Debrecen"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 928,
+    "y": 229,
+    "id": "Niksic"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 954,
+    "y": 199,
+    "id": "Shkoder"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 992,
+    "y": 114,
+    "id": "Ioannina"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 1037,
+    "y": 82,
+    "id": "Lamia"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 1007,
+    "y": 176,
+    "id": "Bitola"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 1039,
+    "y": 118,
+    "id": "Larissa"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 1054,
+    "y": 206,
+    "id": "Blagoevgrad"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 958,
+    "y": 268,
+    "id": "Cacak"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 1001,
+    "y": 264,
+    "id": "Nis"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 958,
+    "y": 302,
+    "id": "Belgrade"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 1005,
+    "y": 302,
+    "id": "Kladovo"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 1056,
+    "y": 319,
+    "id": "Slatina"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 1078,
+    "y": 281,
+    "id": "Pleven"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 1048,
+    "y": 377,
+    "id": "Sebes"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 1071,
+    "y": 353,
+    "id": "Ramnicu-Valcea"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 825,
+    "y": 525,
+    "id": "Nachod"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 845,
+    "y": 557,
+    "id": "Wroclaw"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 881,
+    "y": 589,
+    "id": "Lodz"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 890,
+    "y": 664,
+    "id": "Ostroda"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 909,
+    "y": 638,
+    "id": "Plonsk"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 932,
+    "y": 561,
+    "id": "Radom"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 922,
+    "y": 520,
+    "id": "Krakow"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 956,
+    "y": 482,
+    "id": "Kosice"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 1140,
+    "y": 347,
+    "id": "Slobozia"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 1148,
+    "y": 379,
+    "id": "Galati"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 1172,
+    "y": 416,
+    "id": "Artsyz"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 1069,
+    "y": 428,
+    "id": "Toplita"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 1110,
+    "y": 441,
+    "id": "Iasi"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 1148,
+    "y": 451,
+    "id": "Chisinau"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 1168,
+    "y": 535,
+    "id": "Bila-Tserkva"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 1181,
+    "y": 495,
+    "id": "Uman"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 1251,
+    "y": 565,
+    "id": "Poltava"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 1225,
+    "y": 512,
+    "id": "Kirovohrad"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 1208,
+    "y": 582,
+    "id": "Lubny"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 984,
     "y": 580,
-    "id": "BucharestRome-2"
+    "id": "Chelm"
   },
   {
     "class": "com.taxe.game.nodes.IntermediatePoint",
-    "x": 516,
-    "y": 698,
-    "id": "CoppenhaggenBarcelona-1"
+    "x": 1041,
+    "y": 578,
+    "id": "Sarny"
   },
   {
     "class": "com.taxe.game.nodes.IntermediatePoint",
-    "x": 530,
-    "y": 630,
-    "id": "CoppenhaggenBarcelona-2"
+    "x": 1095,
+    "y": 578,
+    "id": "Korosten"
   },
   {
     "class": "com.taxe.game.nodes.IntermediatePoint",
-    "x": 568,
-    "y": 564,
-    "id": "CoppenhaggenBarcelona-3"
+    "x": 973,
+    "y": 640,
+    "id": "Bialystok"
   },
   {
     "class": "com.taxe.game.nodes.IntermediatePoint",
-    "x": 620,
-    "y": 510,
-    "id": "CoppenhaggenBarcelona-4"
+    "x": 1012,
+    "y": 662,
+    "id": "Baranavichy"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 932,
+    "y": 683,
+    "id": "Suwalki"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 971,
+    "y": 721,
+    "id": "Kaunas"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 967,
+    "y": 760,
+    "id": "Pasvalys"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 1101,
+    "y": 647,
+    "id": "Mozyr"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 990,
+    "y": 788,
+    "id": "Nereta"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 1024,
+    "y": 773,
+    "id": "Daugavpils"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 1044,
+    "y": 734,
+    "id": "Pastavy"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 967,
+    "y": 856,
+    "id": "Parnu"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 994,
+    "y": 880,
+    "id": "Narva"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 1121,
+    "y": 867,
+    "id": "Okulovka"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 1191,
+    "y": 848,
+    "id": "Vyshny-Volochyok"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 1249,
+    "y": 820,
+    "id": "Tver"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 1230,
+    "y": 794,
+    "id": "Shakhovskaya"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 1168,
+    "y": 803,
+    "id": "Nelidovo"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 1114,
+    "y": 809,
+    "id": "Velikiye-Luki"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 1054,
+    "y": 809,
+    "id": "Ludza"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 1003,
+    "y": 811,
+    "id": "Koknese"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 1249,
+    "y": 771,
+    "id": "Mozhaysk"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 1198,
+    "y": 758,
+    "id": "Vyazma"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 1151,
+    "y": 743,
+    "id": "Smolensk"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 1095,
+    "y": 721,
+    "id": "Orsha"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 1288,
+    "y": 745,
+    "id": "Tula"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 1281,
+    "y": 702,
+    "id": "Oryol"
+  },
+  {
+    "class": "com.taxe.game.nodes.IntermediatePoint",
+    "x": 1279,
+    "y": 662,
+    "id": "Kursk"
   }
 ]
+
