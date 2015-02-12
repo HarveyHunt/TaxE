@@ -87,4 +87,8 @@ public class Task {
         }
         return false;
     }
+
+    public void completeTurn() {
+        taskTime--;
+    }
 }

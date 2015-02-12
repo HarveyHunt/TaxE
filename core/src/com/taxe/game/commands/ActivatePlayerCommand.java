@@ -13,6 +13,8 @@ import com.taxe.game.trains.Train;
 import com.taxe.game.trains.TrainStates;
 import com.taxe.game.util.Coordinate;
 
+import java.util.Iterator;
+
 /**
  * Activates trains of a given player and disables trains of all other players.
  */
@@ -40,10 +42,12 @@ public class ActivatePlayerCommand implements Commandable {
             t.setState(TrainStates.ACTIVE);
         }
 
-        // Complete tasks before adding a new one.
-        for (Task task : game.getTasks()) {
-            if (task.isComplete((Player) target)) {
-                task.getEndCity().changeInfluenceBy(game.getPlayers().indexOf(target), 0.1f);
+        // Complete or delete tasks before adding a new one.
+        for (Iterator<Task> iter = game.getTasks().iterator(); iter.hasNext();) {
+            Task t = iter.next();
+            
+            if (t.isComplete((Player) target)) {
+                t.getEndCity().changeInfluenceBy(game.getPlayers().indexOf(target), 0.1f);
 
                 // TODO: Check that ((Player) target) doesn't just return a
                 // memory address. If it does, implement a name for players.
@@ -54,9 +58,20 @@ public class ActivatePlayerCommand implements Commandable {
 
                 game.getGui().getNotificationBox().addLabel(label, 5.0f);
 
-                game.getTasks().remove(task);
-                game.getGui().getInfoDisplay().removeTask(task);
+                game.getGui().getInfoDisplay().removeTask(t);
+                iter.remove();
+
+            } else if (t.getTasktime() == 0) {
+                game.getGui().getInfoDisplay().removeTask(t);
+                iter.remove();
+
+                Label label = new Label(t + " has expired",
+                        new Label.LabelStyle(new BitmapFont(), Color.RED));
+                label.setAlignment(Align.center);
+
+                game.getGui().getNotificationBox().addLabel(label, 5.0f);
             }
+            t.completeTurn();
         }
 
         // Increase player's gold based on influence.
