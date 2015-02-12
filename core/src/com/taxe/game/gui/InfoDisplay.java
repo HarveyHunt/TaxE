@@ -30,7 +30,7 @@ public class InfoDisplay extends Group {
      */
     public InfoDisplay(GameCore game) {
         this.game = game;
-        maximised = false;
+        maximised = true;
         tasks = new HashMap<>(5);
 
         minimiseButton = new Button(GuiTextures.MINIMISE_BUTTON) {
@@ -42,7 +42,6 @@ public class InfoDisplay extends Group {
             }
         };
         addActor(minimiseButton);
-        minimiseButton.setVisible(false);
 
         maximiseButton = new Button(GuiTextures.MAXIMISE_BUTTON) {
             @Override
@@ -53,6 +52,7 @@ public class InfoDisplay extends Group {
             }
         };
         addActor(maximiseButton);
+        maximiseButton.setVisible(false);
 
         labelY = Gdx.graphics.getHeight() - GuiTextures.   INFODISPLAY_TOP_MAXIMISED.getHeight() - 121;
 
@@ -126,7 +126,6 @@ public class InfoDisplay extends Group {
             tasks.get(t).setPosition(50, labelY);
             labelY -= tasks.get(t).getTextBounds().height + 20;
         }
-        System.out.println(tasks);
     }
 
     public void updateTurns() {
