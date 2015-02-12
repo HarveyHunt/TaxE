@@ -15,8 +15,7 @@ public class CityInfo extends Group {
     private Label cityName;
     private Label cityInfluence;
 
-    private final int RIGHT_MARGIN = Gdx.graphics.getWidth()
-                                    - GuiTextures.CITY_INFO.getWidth();
+    private final int RIGHT_MARGIN = Gdx.graphics.getWidth() - 200;
     private final int BOTTOM_MARGIN = 10;
     private final int LABEL_GAP = 20;
 
@@ -28,35 +27,20 @@ public class CityInfo extends Group {
     }
 
     private void setupLabels() {
-        this.cityName = new Label("City name: ",  new Label.LabelStyle(new BitmapFont(),
+        this.cityName = new Label("",  new Label.LabelStyle(new BitmapFont(),
                 Color.WHITE));
         this.cityName.setAlignment(Align.left);
         this.cityName.setPosition(RIGHT_MARGIN, BOTTOM_MARGIN);
 
         addActor(this.cityName);
 
-        this.cityInfluence = new Label("City influence: ", new Label.LabelStyle(new BitmapFont(),
+        this.cityInfluence = new Label("", new Label.LabelStyle(new BitmapFont(),
                 Color.WHITE));
         this.cityInfluence.setAlignment(Align.left);
         this.cityInfluence.setPosition(RIGHT_MARGIN, BOTTOM_MARGIN + LABEL_GAP);
 
         addActor(this.cityInfluence);
 
-    }
-
-    public void draw(Batch batch, float parentAlpha) {
-        batch.draw(GuiTextures.CITY_INFO,
-                RIGHT_MARGIN - getOriginX(), BOTTOM_MARGIN - getOriginY(),
-                getOriginX(), getOriginY(),
-                GuiTextures.CITY_INFO.getWidth(),
-                GuiTextures.CITY_INFO.getHeight(),
-                getScaleX(), getScaleY(),
-                getRotation(),
-                0, 0, GuiTextures.CITY_INFO.getWidth(),
-                GuiTextures.CITY_INFO.getHeight(),
-                false, false);
-
-        drawChildren(batch, parentAlpha);
     }
 
     public City getCity() {
