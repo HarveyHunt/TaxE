@@ -7,6 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.taxe.game.nodes.NodeStates;
 import com.taxe.game.util.Coordinate;
+import com.badlogic.gdx.graphics.Texture;
 
 import com.taxe.game.GameCore;
 import com.taxe.game.nodes.City;
@@ -19,24 +20,18 @@ import java.util.Random;
  */
 public class Block extends Card {
     public Block() {
+
         command = Commands.blockCityCommand;
+        setOrigin(100, 100);
+        setSize(getTexture().getWidth(), getTexture().getHeight());
+    }
+
+    public Texture getTexture() {
+        return CardTextures.BLOCK_CARD;
     }
 
     @Override
     public void clicked(GameCore game) {
-        // On activation, the player selects a city, and the lock command is called on it
-        City target = null;
-        Random rand = new Random();
-
-        // City selection phase
-        // -- TEMP -- The city will always be selected at random for proof-of-concept
-        // Ideally this would be the user interacting with the GUI
-        target = game.getMap().getCities().get(rand.nextInt(game.getMap().getCities().size()));
-
-        // Validation stage (ensure that the city is not already locked, and unoccupied?)
-        // -- TEMP -- Ignored for the time being
-
-        // Execution stage
-        Commands.lockCityCommand.executeCommand(game, target);
+        command.executeCommand(game, null);
     }
 }

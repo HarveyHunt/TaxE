@@ -1,7 +1,11 @@
 package com.taxe.game.cards;
 
+import com.badlogic.gdx.graphics.Texture;
+
 /**
  * Created by henry on 11/02/15.
  */
-public class CardTextures {
+
+public abstract class CardTextures {
+    public static final Texture BLOCK_CARD = new Texture("cards/block.png");
 }

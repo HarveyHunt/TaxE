@@ -5,6 +5,7 @@ import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.taxe.game.nodes.Homebase;
 import com.taxe.game.trains.Train;
+import com.taxe.game.cards.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +24,7 @@ public class Player extends Group {
     private int fuelUsage;
     private int fuelCap;
     private final Homebase homebase;
+    private ArrayList<Card> cards;
 
     /**
      * Creates a player with a specified homebase, set of trains, gold and fuel resources
@@ -40,10 +42,14 @@ public class Player extends Group {
         this.gold = gold;
         this.fuelCap = fuelCap;
         this.fuelUsage = fuelUsage;
+
         for (Train t : trains) {
             this.addTrain(t);
             this.addActor(t);
         }
+
+        this.cards = new ArrayList<Card>();
+        this.cards.add(new Block());
     }
 
     /**
@@ -142,6 +148,8 @@ public class Player extends Group {
         this.addActor(t);
         fuelUsage += t.getFuelCost();
     }
+
+    public Card getCard() { return cards.get(0); }
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
