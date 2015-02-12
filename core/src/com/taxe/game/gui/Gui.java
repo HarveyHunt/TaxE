@@ -4,7 +4,10 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.taxe.game.GameCore;
+import com.taxe.game.nodes.City;
 import com.taxe.game.util.Coordinate;
+
+import java.util.ArrayList;
 
 /**
  * The main Group that holds and handles all of the elements of the GUI (Graphical User Interface)
@@ -16,6 +19,7 @@ public class Gui extends Group {
     private InfoDisplay infoDisplay;
     private GameEndMenu gameEndMenu;
     private NotificationBox notificationBox;
+    private ArrayList<CityInfo> cityinfos;
 
     /**
      * Creates an instance of Gui
@@ -23,6 +27,7 @@ public class Gui extends Group {
      */
     public Gui(GameCore game) {// Add Other Stuffs
         this.game = game;
+        this.cityinfos = new ArrayList<>();
 
         hud = new Hud(game);
         addActor(hud);
@@ -65,6 +70,17 @@ public class Gui extends Group {
     public void createNotification(Texture texture, Coordinate coordinate, float duration) {
         Notification notification = new Notification(this, texture, coordinate, duration);
         addActor(notification);
+    }
+
+    public void createCityInfo(Coordinate coordinate, City city) {
+        // Don't create a CityInfo if we already have one for the city.
+        for (CityInfo c : cityinfos)
+            if (c.getCity() == city)
+                    return;
+
+        CityInfo cityinfo = new CityInfo(coordinate, city);
+        addActor(cityinfo);
+        cityinfos.add(cityinfo);
     }
 
     /**

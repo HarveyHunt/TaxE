@@ -38,6 +38,9 @@ public class ActivatePlayerCommand implements Commandable {
         // Enable trains of given player
         for (Train t : ((Player) target).getTrains()) {
             t.setState(TrainStates.ACTIVE);
+            if (t.getNode() instanceof City)
+                game.getGui().createCityInfo(t.getNode().getCoordinate(),
+                        (City) t.getNode());
         }
 
         // Complete or delete tasks before adding a new one.

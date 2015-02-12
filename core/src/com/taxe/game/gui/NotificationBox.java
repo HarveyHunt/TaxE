@@ -32,10 +32,6 @@ public class NotificationBox extends Group {
         labelY = BOTTOM_MARGIN;
     }
 
-    public void draw(Batch batch, float parentAlpha) {
-        drawChildren(batch, parentAlpha);
-    }
-
     /**
      * Remove labels from the label list that have an alpha value of 0 -
      * implying that they have been "faded out"
