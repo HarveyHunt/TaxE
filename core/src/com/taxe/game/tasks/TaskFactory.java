@@ -1,7 +1,9 @@
 package com.taxe.game.tasks;
 
 import com.taxe.game.GameCore;
+import com.taxe.game.cargo.Bears;
 import com.taxe.game.cargo.Coal;
+import com.taxe.game.cargo.Penguins;
 import com.taxe.game.cargo.Wheat;
 import com.taxe.game.nodes.City;
 
@@ -20,15 +22,26 @@ public class TaskFactory {
         List<City> cities = this.game.getMap().getCities();
         Random rgen = new Random();
         City newEnd;
+        int turns = rgen.nextInt(5) + 1;
+        int cargoQuantity = rgen.nextInt(100);
 
         do
             newEnd = cities.get(rgen.nextInt(cities.size() - 1));
         while (!unusedCity(newEnd));
 
-        if (rgen.nextInt(2) == 0)
-            return new Task(newEnd, new Wheat((rgen.nextInt(100))), rgen.nextInt(5) + 1);
-        else
-            return new Task(newEnd, new Coal(rgen.nextInt(100)), rgen.nextInt(5) + 1);
+        switch(rgen.nextInt(4)) {
+            case 0:
+                return new Task(newEnd, new Wheat(cargoQuantity), turns);
+            case 1:
+                return new Task(newEnd, new Coal(cargoQuantity), turns);
+            case 2:
+                return new Task(newEnd, new Penguins(cargoQuantity), turns);
+            case 3:
+                return new Task(newEnd, new Bears(cargoQuantity), turns);
+        }
+
+        // We'll never get here, but Java doesn't believe that....
+        return null;
     }
 
     /**
