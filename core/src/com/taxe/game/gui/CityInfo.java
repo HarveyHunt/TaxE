@@ -8,36 +8,65 @@ import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.taxe.game.nodes.City;
-import com.taxe.game.util.Coordinate;
 
 public class CityInfo extends Group {
 
-    private final Coordinate coord;
-    private final City city;
-    private final Label cityName;
+    private City city;
+    private Label cityName;
+    private Label cityInfluence;
 
-    public CityInfo(Coordinate coordinate, City city) {
-        this.city = city;
-        this.coord = coordinate;
+    private final int RIGHT_MARGIN = Gdx.graphics.getWidth()
+                                    - GuiTextures.CITY_INFO.getWidth();
+    private final int BOTTOM_MARGIN = 10;
+    private final int LABEL_GAP = 20;
 
-        this.cityName = new Label(city.toString(),  new Label.LabelStyle(new BitmapFont(),
-                Color.RED));
+    public CityInfo() {
+        this.city = null;
+
+        setupLabels();
+
+    }
+
+    private void setupLabels() {
+        this.cityName = new Label("City name: ",  new Label.LabelStyle(new BitmapFont(),
+                Color.WHITE));
         this.cityName.setAlignment(Align.center);
-        this.cityName.setPosition(this.coord.getX(), this.coord.getY());
+        this.cityName.setPosition(RIGHT_MARGIN, BOTTOM_MARGIN);
 
         addActor(this.cityName);
 
-        System.out.println("Created cityinfo at " + this.coord.getX() + "," + this.coord.getY());
+        this.cityInfluence = new Label("City influence: ", new Label.LabelStyle(new BitmapFont(),
+                Color.WHITE));
+        this.cityInfluence.setAlignment(Align.center);
+        this.cityInfluence.setPosition(RIGHT_MARGIN, BOTTOM_MARGIN + LABEL_GAP);
+
+        addActor(this.cityInfluence);
+
     }
 
     public void draw(Batch batch, float parentAlpha) {
-        batch.draw(
-                GuiTextures.CITY_INFO,
-                coord.getX(), coord.getY()
-        );
+        batch.draw(GuiTextures.CITY_INFO,
+                RIGHT_MARGIN - getOriginX(), BOTTOM_MARGIN - getOriginY(),
+                getOriginX(), getOriginY(),
+                GuiTextures.CITY_INFO.getWidth(),
+                GuiTextures.CITY_INFO.getHeight(),
+                getScaleX(), getScaleY(),
+                getRotation(),
+                0, 0, GuiTextures.CITY_INFO.getWidth(),
+                GuiTextures.CITY_INFO.getHeight(),
+                false, false);
+
+        drawChildren(batch, parentAlpha);
     }
 
     public City getCity() {
         return city;
+    }
+
+    public void setCity(City city, int playerID) {
+        this.city = city;
+
+        this.cityName.setText("City name: " + city.getId());
+        this.cityInfluence.setText("City influence: " + city.getInfluence(playerID));
     }
 }

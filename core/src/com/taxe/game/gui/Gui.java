@@ -19,7 +19,7 @@ public class Gui extends Group {
     private InfoDisplay infoDisplay;
     private GameEndMenu gameEndMenu;
     private NotificationBox notificationBox;
-    private ArrayList<CityInfo> cityinfos;
+    private CityInfo cityInfo;
 
     /**
      * Creates an instance of Gui
@@ -27,7 +27,9 @@ public class Gui extends Group {
      */
     public Gui(GameCore game) {// Add Other Stuffs
         this.game = game;
-        this.cityinfos = new ArrayList<>();
+
+        cityInfo = new CityInfo();
+        addActor(cityInfo);
 
         hud = new Hud(game);
         addActor(hud);
@@ -72,17 +74,6 @@ public class Gui extends Group {
         addActor(notification);
     }
 
-    public void createCityInfo(Coordinate coordinate, City city) {
-        // Don't create a CityInfo if we already have one for the city.
-        for (CityInfo c : cityinfos)
-            if (c.getCity() == city)
-                    return;
-
-        CityInfo cityinfo = new CityInfo(coordinate, city);
-        addActor(cityinfo);
-        cityinfos.add(cityinfo);
-    }
-
     /**
      * returns the GameCore game instance
      * @return GameCore instance
@@ -111,4 +102,7 @@ public class Gui extends Group {
         return notificationBox;
     }
 
+    public CityInfo getCityInfo() {
+        return cityInfo;
+    }
 }
