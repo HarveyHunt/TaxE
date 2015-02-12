@@ -1,6 +1,5 @@
 package com.taxe.game.commands;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
@@ -11,7 +10,6 @@ import com.taxe.game.player.Player;
 import com.taxe.game.tasks.Task;
 import com.taxe.game.trains.Train;
 import com.taxe.game.trains.TrainStates;
-import com.taxe.game.util.Coordinate;
 
 import java.util.Iterator;
 

@@ -1,9 +1,9 @@
 package com.taxe.game.commands;
 
 import com.taxe.game.GameCore;
+import com.taxe.game.nodes.City;
 import com.taxe.game.nodes.IntermediatePoint;
 import com.taxe.game.nodes.Node;
-import com.taxe.game.nodes.City;
 import com.taxe.game.nodes.NodeStates;
 import com.taxe.game.tracks.Track;
 

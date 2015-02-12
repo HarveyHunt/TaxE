@@ -1,7 +1,6 @@
 package com.taxe.game.map;
 
 import com.taxe.GdxTestRunner;
-import com.taxe.game.map.Map;
 import com.taxe.game.nodes.City;
 import com.taxe.game.nodes.Homebase;
 import com.taxe.game.nodes.Node;

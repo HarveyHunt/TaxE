@@ -3,7 +3,10 @@ package com.taxe.game.map;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Group;
-import com.taxe.game.nodes.*;
+import com.taxe.game.nodes.City;
+import com.taxe.game.nodes.Homebase;
+import com.taxe.game.nodes.IntermediatePoint;
+import com.taxe.game.nodes.Node;
 import com.taxe.game.tracks.Track;
 
 import java.io.IOException;

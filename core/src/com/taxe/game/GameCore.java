@@ -10,19 +10,21 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.taxe.Main;
 import com.taxe.game.commands.Commands;
+import com.taxe.game.gui.Gui;
 import com.taxe.game.inputhandling.Clickable;
-import com.taxe.game.nodes.City;
-import com.taxe.game.nodes.Node;
 import com.taxe.game.map.Map;
+import com.taxe.game.nodes.Node;
 import com.taxe.game.player.Player;
 import com.taxe.game.tasks.Task;
 import com.taxe.game.tasks.TaskFactory;
 import com.taxe.game.trains.BasicTrain;
 import com.taxe.game.trains.Train;
-import com.taxe.game.gui.Gui;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Deque;
 
 /**
  * The game. This is the main class for everything related to the playing of the game itself.
