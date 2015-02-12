@@ -118,6 +118,7 @@ public class InfoDisplay extends Group {
      * @param task The Task to be removed.
      */
     public void removeTask(Task task) {
+        removeActor(tasks.get(task));
         tasks.remove(task);
         // Reset the labelY position and recalculate for Y for all labels.
         labelY = Gdx.graphics.getHeight() - GuiTextures.INFODISPLAY_TOP_MAXIMISED.getHeight() - 121;
@@ -125,5 +126,6 @@ public class InfoDisplay extends Group {
             tasks.get(t).setPosition(50, labelY);
             labelY -= tasks.get(t).getTextBounds().height + 20;
         }
+        System.out.println(tasks);
     }
 }
