@@ -43,10 +43,6 @@ public class CityInfo extends Group {
 
     }
 
-    public City getCity() {
-        return city;
-    }
-
     public void setCity(City city, int playerID) {
         this.city = city;
 
