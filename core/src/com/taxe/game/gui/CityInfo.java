@@ -2,7 +2,6 @@ package com.taxe.game.gui;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
@@ -21,11 +20,12 @@ public class CityInfo extends Group {
 
     public CityInfo() {
         this.city = null;
-
         setupLabels();
-
     }
 
+    /**
+     * Create the label objects that will store information about the city.
+     */
     private void setupLabels() {
         this.cityName = new Label("",  new Label.LabelStyle(new BitmapFont(),
                 Color.WHITE));
@@ -43,6 +43,11 @@ public class CityInfo extends Group {
 
     }
 
+    /**
+     * Update labels with the information for city.
+     * @param city The city that we are displaying info for.
+     * @param playerID The ID of the player who is currently active.
+     */
     public void setCity(City city, int playerID) {
         this.city = city;
 
