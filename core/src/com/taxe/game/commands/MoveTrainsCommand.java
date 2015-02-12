@@ -54,5 +54,4 @@ public class MoveTrainsCommand implements Commandable {
         }
         game.getGui().getHud().lockButtons();
     }
-
 }

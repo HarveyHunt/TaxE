@@ -16,6 +16,7 @@ public class Gui extends Group {
     private Hud hud;
     private InfoDisplay infoDisplay;
     private GameEndMenu gameEndMenu;
+    private NotificationBox notificationBox;
 
     /**
      * Creates an instance of Gui
@@ -29,6 +30,9 @@ public class Gui extends Group {
 
         infoDisplay = new InfoDisplay(game);
         addActor(infoDisplay);
+
+        notificationBox = new NotificationBox();
+        addActor(notificationBox);
 
         createNotification(GuiTextures.PLAYER_1_TURN_START, new Coordinate(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2), 1);
     }
@@ -65,17 +69,6 @@ public class Gui extends Group {
     }
 
     /**
-     * Create an instance of TextNotification and add it to the scene.
-     * @param label A Label object that shall be rendered.
-     * @param coordinate A coordinate object representing the location the label should be rendered at
-     * @param duration The length of time to render the notification for.
-     */
-    public void createTextNotification(Label label, Coordinate coordinate, float duration) {
-        TextNotification notification = new TextNotification(this, label, coordinate, duration);
-        addActor(notification);
-    }
-
-    /**
      * returns the GameCore game instance
      * @return GameCore instance
      */
@@ -97,6 +90,10 @@ public class Gui extends Group {
      */
     public InfoDisplay getInfoDisplay() {
         return infoDisplay;
+    }
+
+    public NotificationBox getNotificationBox() {
+        return notificationBox;
     }
 
 }

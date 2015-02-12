@@ -32,13 +32,8 @@ public class Notification extends Actor {
         SequenceAction seq = new SequenceAction();
         seq.addAction(Actions.delay(duration));
         seq.addAction(Actions.fadeOut(0.3f));
-        seq.addAction(new Action() {
-            @Override
-            public boolean act(float delta) {
-                getParent().removeActor(Notification.this);
-                return true;
-            }
-        });
+        seq.addAction(Actions.removeActor());
+
         addAction(seq);
     }
 
