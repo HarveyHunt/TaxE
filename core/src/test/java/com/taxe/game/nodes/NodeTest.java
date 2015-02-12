@@ -30,6 +30,9 @@ public class NodeTest {
         try {
             List <Node> nodes = Node.readNodes("nodes.json");
         }
+
+
+
         catch (RuntimeException e) {fail();}
     }
 
@@ -46,8 +49,8 @@ public class NodeTest {
 
         // There is node with given id
         assertEquals("London", Node.getNodeById("London", nodes).getId());
-        assertEquals("MadridBlue-1", Node.getNodeById("MadridBlue-1", nodes).getId());
-        assertEquals("Red", Node.getNodeById("Red", nodes).getId());
+        assertEquals("Stockholm", Node.getNodeById("Stockholm", nodes).getId());
+        assertEquals("Moscow", Node.getNodeById("Moscow", nodes).getId());
     }
 
 }

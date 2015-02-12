@@ -28,9 +28,9 @@ public class MapTest {
         // Searching for a track with existing node
         List<Track> t1 = map.getTracksWith(Node.getNodeById("London", map.getNodes()));
         assertEquals(3, t1.size());
-        String[] s1 = {"Red", "RedLondon-1", "RedLondon-2", "London"};
-        String[] s2 = {"London", "LondonParis-1", "LondonParis-2", "LondonParis-3", "Paris"};
-        String[] s3 = {"London", "LondonVenice-1", "LondonVenice-2", "Venice"};
+        String[] s1 = {"Edinburgh", "Newcastle", "York", "Peterborough", "London"};
+        String[] s2 = {"London", "Calais", "Paris"};
+        String[] s3 = {"London", "Calais", "Brussels"};
         assertTrue(containsAll(t1.get(0).getNodes(), s1));
         assertTrue(containsAll(t1.get(1).getNodes(), s2));
         assertTrue(containsAll(t1.get(2).getNodes(), s3));
@@ -43,9 +43,9 @@ public class MapTest {
     @Test
     public void testGetTrackWith() throws Exception {
         // Searching for a track with existing nodes
-        Node n1 = Node.getNodeById("Paris", map.getNodes());
-        Node n2 = Node.getNodeById("London", map.getNodes());
-        String[] s1 = {"Paris", "London", "LondonParis-1", "LondonParis-2", "LondonParis-3"};
+        Node n1 = Node.getNodeById("Milan", map.getNodes());
+        Node n2 = Node.getNodeById("Rome", map.getNodes());
+        String[] s1 = {"Milan", "Bologna", "Florence", "Rome"};
         assertTrue(containsAll(map.getTrackWith(n1, n2).getNodes(), s1));
 
         // Searching for a track with non-existing node

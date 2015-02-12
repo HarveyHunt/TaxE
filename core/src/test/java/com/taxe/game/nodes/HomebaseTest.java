@@ -54,7 +54,7 @@ public class HomebaseTest {
     @Test
     public void testChangeHealthBy() throws Exception {
         List <Node> nodes = Node.readNodes("nodes.json");
-        Homebase h = (Homebase)Node.getNodeById("Red", nodes);
+        Homebase h = (Homebase)Node.getNodeById("Moscow", nodes);
 
         // No clipping required
         h.changeHealthBy(-100);
