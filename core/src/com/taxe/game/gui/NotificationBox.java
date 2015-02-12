@@ -34,10 +34,6 @@ public class NotificationBox extends Group {
     }
 
     public void draw(Batch batch, float parentAlpha) {
-        batch.draw(
-                GuiTextures.NOTIFICATION_BOX,
-                30, BOTTOM_MARGIN);
-
         drawChildren(batch, parentAlpha);
     }
 
