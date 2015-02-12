@@ -82,7 +82,8 @@ public class GameCore implements Screen {
         }
         stage.addActor(gui);
 
-        scene.addActor(p1.getCard());
+        scene.addActor(p1.getBlockCard());
+        scene.addActor(p1.getBoostCard());
 
         stage.addListener(new ClickListener() {
             @Override

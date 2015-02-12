@@ -49,6 +49,7 @@ public class Player extends Group {
         }
 
         this.cards = new ArrayList<Card>();
+        this.cards.add(new Boost());
         this.cards.add(new Block());
     }
 
@@ -149,7 +150,8 @@ public class Player extends Group {
         fuelUsage += t.getFuelCost();
     }
 
-    public Card getCard() { return cards.get(0); }
+    public Card getBoostCard() { return cards.get(0); }
+    public Card getBlockCard() { return cards.get(1); }
 
     @Override
     public void draw(Batch batch, float parentAlpha) {

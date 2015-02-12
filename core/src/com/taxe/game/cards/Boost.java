@@ -13,11 +13,15 @@ import java.util.Random;
 public class Boost extends Card {
     public Boost() {
         command = Commands.boostTrainCommand;
+
+        setX(0);
+        setY(0);
+        setSize(getTexture().getWidth(), getTexture().getHeight());
     }
 
     public Texture getTexture() {
         // Temp
-        return CardTextures.BLOCK_CARD;
+        return CardTextures.BOOST_CARD;
     }
 
 

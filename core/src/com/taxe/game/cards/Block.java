@@ -20,9 +20,9 @@ import java.util.Random;
  */
 public class Block extends Card {
     public Block() {
-
         command = Commands.blockCityCommand;
-        setOrigin(100, 100);
+        setX(64);
+        setY(0);
         setSize(getTexture().getWidth(), getTexture().getHeight());
     }
 

@@ -2,6 +2,7 @@ package com.taxe.game.commands;
 
 import com.taxe.game.GameCore;
 import com.taxe.game.nodes.City;
+import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 
 /**
  * Created by henry on 09/02/15.
@@ -9,6 +10,6 @@ import com.taxe.game.nodes.City;
 public class BlockCityCommand implements Commandable {
     @Override
     public void executeCommand(GameCore game, Object target) {
-
+        System.out.print("Block Fired\n");
     }
 }
