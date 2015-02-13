@@ -1,6 +1,7 @@
 package com.taxe.game.cargo;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
 /**
@@ -69,6 +70,18 @@ public abstract class Cargo extends Actor {
     private void validateQuantity() throws RuntimeException {
         if (quantity < 0)
             throw new RuntimeException("quantity < 0");
+    }
+
+    @Override
+    public void draw(Batch batch, float parentAlpha) {
+        batch.draw(getTexture(),
+                getX() - getOriginX(), getY() - getOriginY(),
+                getOriginX(), getOriginY(),
+                getWidth(), getHeight(),
+                getScaleX(), getScaleY(),
+                getRotation(),
+                0, 0, getTexture().getWidth(), getTexture().getHeight(),
+                false, false);
     }
 }
 

@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
+import com.taxe.game.cargo.Cargo;
 import com.taxe.game.nodes.City;
 
 public class CityInfo extends Group {
@@ -13,7 +14,6 @@ public class CityInfo extends Group {
     private City city;
     private Label cityName;
     private Label cityInfluence;
-    private Label cityCargo;
 
     private final int RIGHT_MARGIN = Gdx.graphics.getWidth() - 200;
     private final int BOTTOM_MARGIN = 10;
@@ -39,12 +39,6 @@ public class CityInfo extends Group {
         this.cityInfluence.setAlignment(Align.left);
         this.cityInfluence.setPosition(RIGHT_MARGIN, BOTTOM_MARGIN + LABEL_GAP);
         addActor(this.cityInfluence);
-
-        this.cityCargo = new Label("", new Label.LabelStyle(new BitmapFont(),
-                Color.WHITE));
-        this.cityCargo.setAlignment(Align.left);
-        this.cityCargo.setPosition(RIGHT_MARGIN, BOTTOM_MARGIN + (2 * LABEL_GAP));
-        addActor(this.cityCargo);
     }
 
     /**
@@ -57,6 +51,11 @@ public class CityInfo extends Group {
 
         this.cityName.setText("City name: " + city.getId());
         this.cityInfluence.setText("City influence: " + city.getInfluence(playerID));
-        this.cityCargo.setText("City cargo: " + city.getCargoList());
+
+        for(Cargo c : city.getCargoList()) {
+            // TODO: Correctly align this
+            c.setPosition(100, 100);
+            addActor(c);
+        }
     }
 }
