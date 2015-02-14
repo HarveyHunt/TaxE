@@ -77,7 +77,7 @@ public class CityInfo extends Group {
         int i = 0;
         for(Cargo c : city.getCargoList()) {
             final Pair pair = new Pair(city, c);
-            
+
             Button button = new Button(c.getTexture()) {
                 @Override
                 public void clicked(GameCore game) {
