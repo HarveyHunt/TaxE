@@ -36,9 +36,8 @@ public class ActivatePlayerCommand implements Commandable {
         }
 
         // Enable trains of given player
-        for (Train t : ((Player) target).getTrains()) {
+        for (Train t : ((Player) target).getTrains())
             t.setState(TrainStates.ACTIVE);
-        }
 
         // Complete or delete tasks before adding a new one.
         for (Iterator<Task> iter = game.getTasks().iterator(); iter.hasNext();) {

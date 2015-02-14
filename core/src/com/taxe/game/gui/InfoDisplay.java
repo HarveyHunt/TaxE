@@ -14,6 +14,8 @@ import java.util.HashMap;
 
 /**
  * The menu on the left hand side of the screen that does not display any information yet
+ *
+ * TODO: Remove magic numbers from here.
  */
 public class InfoDisplay extends Group {
 
@@ -54,7 +56,7 @@ public class InfoDisplay extends Group {
         addActor(maximiseButton);
         maximiseButton.setVisible(false);
 
-        labelY = Gdx.graphics.getHeight() - GuiTextures.   INFODISPLAY_TOP_MAXIMISED.getHeight() - 121;
+        labelY = Gdx.graphics.getHeight() - GuiTextures.INFODISPLAY_TOP_MAXIMISED.getHeight() - 121;
 
         resize();
     }

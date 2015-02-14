@@ -16,6 +16,7 @@ public class Gui extends Group {
     private InfoDisplay infoDisplay;
     private GameEndMenu gameEndMenu;
     private NotificationBox notificationBox;
+    private CityInfo cityInfo;
 
     /**
      * Creates an instance of Gui
@@ -23,6 +24,9 @@ public class Gui extends Group {
      */
     public Gui(GameCore game) {// Add Other Stuffs
         this.game = game;
+
+        cityInfo = new CityInfo();
+        addActor(cityInfo);
 
         hud = new Hud(game);
         addActor(hud);
@@ -95,4 +99,7 @@ public class Gui extends Group {
         return notificationBox;
     }
 
+    public CityInfo getCityInfo() {
+        return cityInfo;
+    }
 }

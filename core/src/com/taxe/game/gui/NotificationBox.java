@@ -1,7 +1,5 @@
 package com.taxe.game.gui;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
@@ -26,18 +24,11 @@ public class NotificationBox extends Group {
     private static final int MAX_DISPLAYED_LABELS = 5;
     private static final int GAP = 10;
     private static final int LEFT_MARGIN = 50;
+    private static final int BOTTOM_MARGIN = 50;
 
     public NotificationBox() {
         labels = new ArrayList<>();
-        labelY = Gdx.graphics.getHeight() - 800;
-    }
-
-    public void draw(Batch batch, float parentAlpha) {
-        batch.draw(
-                GuiTextures.NOTIFICATION_BOX,
-                30, Gdx.graphics.getHeight() - 800);
-
-        drawChildren(batch, parentAlpha);
+        labelY = BOTTOM_MARGIN;
     }
 
     /**
@@ -61,7 +52,7 @@ public class NotificationBox extends Group {
      */
     private void rearrangeLabels() {
         int count = 0;
-        labelY = Gdx.graphics.getHeight() - 800;
+        labelY = BOTTOM_MARGIN;
 
         for (Label l : labels) {
             if (count == MAX_DISPLAYED_LABELS)
