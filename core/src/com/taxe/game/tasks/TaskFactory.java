@@ -46,7 +46,7 @@ public class TaskFactory {
 
     /**
      * Discover if a city is already the end point of a task, if so return false.
-     * @param  The city to be checked for.
+     * @param c The city to be checked for.
      * @return true if the city is unused, false otherwise.
      */
     private boolean unusedCity(City c) {
