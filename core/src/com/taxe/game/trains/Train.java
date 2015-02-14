@@ -203,6 +203,18 @@ public abstract class Train extends Actor implements Clickable {
                 getScaleX(), getScaleY(),
                 getRotation(),
                 0, 0, getTexture().getWidth(), getTexture().getHeight(), false, false);
+
+        if (cargo != null)
+            // Height is divided by 3 as a cargo's texture is three images
+            // stacked on top of each other.
+            batch.draw(cargo.getTexture(),
+                    getX() - getOriginX(), getY() - getOriginY(),
+                    getOriginX(), getOriginY(),
+                    cargo.getTexture().getWidth(), cargo.getTexture().getHeight() / 3,
+                    getScaleX(), getScaleY(),
+                    getRotation(),
+                    0, 0, cargo.getTexture().getWidth(), cargo.getTexture().getHeight() / 3,
+                    false, false);
     }
 
     @Override
