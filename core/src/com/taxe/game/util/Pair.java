@@ -1,5 +1,4 @@
 package com.taxe.game.util;
-
 /**
  * As Java doesn't have tuples, we need a way to mimic a 2 element tuple
  * to get around the limitations of executeCommand.
