@@ -1,6 +1,5 @@
 package com.taxe.game.gui;
 
-import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
@@ -30,10 +29,6 @@ public class NotificationBox extends Group {
     public NotificationBox() {
         labels = new ArrayList<>();
         labelY = BOTTOM_MARGIN;
-    }
-
-    public void draw(Batch batch, float parentAlpha) {
-        drawChildren(batch, parentAlpha);
     }
 
     /**

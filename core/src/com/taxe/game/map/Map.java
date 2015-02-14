@@ -3,6 +3,7 @@ package com.taxe.game.map;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Group;
+import com.taxe.game.cargo.*;
 import com.taxe.game.nodes.City;
 import com.taxe.game.nodes.Homebase;
 import com.taxe.game.nodes.IntermediatePoint;
@@ -11,7 +12,9 @@ import com.taxe.game.tracks.Track;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Represents map in the game. Map consists of a background, nodes and tracks connecting the nodes.
@@ -60,6 +63,22 @@ public class Map extends Group {
             this.addActor(n);
         setBounds(0f, 0f, 1410f, 890f);
         setOrigin(0, 0);
+
+        // Assign cargo to cities.
+        ArrayList<Cargo> cargo = new ArrayList<>();
+
+        // TODO: Make these values more interesting...
+        cargo.add(new Penguins(100));
+        cargo.add(new Wheat(100));
+        cargo.add(new Bears(100));
+        cargo.add(new Coal(100));
+
+        Random rgen = new Random();
+
+        for (City c : cities) {
+            Collections.shuffle(cargo);
+            c.setCargoList(cargo.subList(0, rgen.nextInt(cargo.size()) + 1));
+        }
     }
 
     /**

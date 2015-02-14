@@ -2,6 +2,7 @@ package com.taxe.game.nodes;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
+import com.taxe.game.GameCore;
 import com.taxe.game.cargo.Cargo;
 import com.taxe.game.tasks.Task;
 
@@ -20,8 +21,8 @@ import java.util.List;
 public class City extends Node {
 
     private float influence;
-    private ArrayList<Task> taskList;
-    private ArrayList<Cargo> cargoList;
+    private List<Task> taskList;
+    private List<Cargo> cargoList;
     public Boolean locked;
 
     /**
@@ -42,7 +43,16 @@ public class City extends Node {
         setTouchable(Touchable.enabled);
     }
 
-    /* TODO: Change texture if we are locked. */
+    /**
+     * If we are clicked, render our details in the CityInfo area.
+     * @param game The game
+     */
+    public void clicked(GameCore game) {
+        super.clicked(game);
+        game.getGui().getCityInfo().setCity(this,
+                game.getPlayers().indexOf(game.getActivePlayer()));
+    }
+
     public Texture getTexture() {
         return NodeTextures.CITY[getState()];
     }
@@ -63,6 +73,15 @@ public class City extends Node {
      */
     public List<Cargo> getCargoList() {
         return cargoList;
+    }
+
+    /**
+     * Set the cargo that a city holds - this is done after instantiation.
+     *
+     * @param cargo The cargo to assign to this city.
+     */
+    public void setCargoList(List<Cargo> cargo) {
+        cargoList = cargo;
     }
 
     /**
