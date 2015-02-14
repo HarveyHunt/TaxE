@@ -25,7 +25,7 @@ public class Gui extends Group {
     public Gui(GameCore game) {// Add Other Stuffs
         this.game = game;
 
-        cityInfo = new CityInfo();
+        cityInfo = new CityInfo(game);
         addActor(cityInfo);
 
         hud = new Hud(game);

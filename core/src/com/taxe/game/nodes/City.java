@@ -49,8 +49,7 @@ public class City extends Node {
      */
     public void clicked(GameCore game) {
         super.clicked(game);
-        game.getGui().getCityInfo().setCity(this,
-                game.getPlayers().indexOf(game.getActivePlayer()));
+        game.getGui().getCityInfo().setCity(this);
     }
 
     public Texture getTexture() {

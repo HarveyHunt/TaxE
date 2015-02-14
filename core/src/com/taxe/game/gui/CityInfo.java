@@ -24,13 +24,15 @@ public class CityInfo extends Group {
     private Label cityName;
     private Label cityInfluence;
     private ArrayList<Button> buttons;
+    private GameCore game;
 
     private final int LEFT_START = Gdx.graphics.getWidth() - 200;
     private final int BOTTOM_MARGIN = 10;
     private final int LABEL_GAP = 20;
 
-    public CityInfo() {
+    public CityInfo(GameCore game) {
         this.city = null;
+        this.game = game;
         setupLabels();
         buttons = new ArrayList<>();
     }
@@ -65,14 +67,13 @@ public class CityInfo extends Group {
     /**
      * Update labels with the information for city.
      * @param city The city that we are displaying info for.
-     * @param playerID The ID of the player who is currently active.
      */
-    public void setCity(City city, int playerID) {
+    public void setCity(City city) {
         removeCargoButtons();
 
         this.city = city;
         this.cityName.setText("City name: " + city.getId());
-        this.cityInfluence.setText("City influence: " + city.getInfluence(playerID));
+        this.cityInfluence.setText("City influence: " + city.getInfluence(game.getActivePlayer().id));
 
         int i = 0;
         for(Cargo c : city.getCargoList()) {
