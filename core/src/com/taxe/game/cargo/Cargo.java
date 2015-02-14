@@ -12,6 +12,9 @@ import com.badlogic.gdx.scenes.scene2d.Touchable;
  * Cargo is characterised by its quantity, id and texture. Quantity must always be non-negative. Id and texture are
  * specified in the extending class. Textures of each cargo type can be found in {@link
  * com.taxe.game.cargo.CargoTextures}.
+ *
+ * We don't need to specify a draw or adjustActor method as we will just render
+ * Cargo as a button.
  */
 public abstract class Cargo extends Actor {
     private final String id;
@@ -71,25 +74,6 @@ public abstract class Cargo extends Actor {
     private void validateQuantity() throws RuntimeException {
         if (quantity < 0)
             throw new RuntimeException("quantity < 0");
-    }
-
-    @Override
-    public void draw(Batch batch, float parentAlpha) {
-        batch.draw(getTexture(),
-                getX() - getOriginX(), getY() - getOriginY(),
-                getOriginX(), getOriginY(),
-                getWidth(), getHeight(),
-                getScaleX(), getScaleY(),
-                getRotation(),
-                0, 0, getTexture().getWidth(), getTexture().getHeight(),
-                false, false);
-    }
-
-    public void adjustActor() {
-        Texture t = getTexture();
-        setSize(t.getWidth(), t.getHeight());
-        setOrigin(getWidth() / 2f, getHeight() / 5f);
-        setTouchable(Touchable.enabled);
     }
 }
 

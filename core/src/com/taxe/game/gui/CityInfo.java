@@ -54,10 +54,10 @@ public class CityInfo extends Group {
 
         int i = 0;
         for(Cargo c : city.getCargoList()) {
-            c.setPosition(LEFT_START + (i * c.getWidth()),
+            Button button = new Button(c.getTexture());
+            button.setPosition(LEFT_START + (i * c.getWidth()),
                     BOTTOM_MARGIN + (2 * LABEL_GAP));
-            c.adjustActor();
-            addActor(c);
+            addActor(button);
             i++;
         }
     }
