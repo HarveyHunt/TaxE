@@ -1,8 +1,13 @@
 package com.taxe.game.commands;
 
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.taxe.game.GameCore;
 import com.taxe.game.cargo.Cargo;
 import com.taxe.game.nodes.City;
+import com.taxe.game.trains.Train;
 import com.taxe.game.util.Pair;
 
 /**
@@ -22,5 +27,20 @@ public class LoadCargoCommand implements Commandable {
             throw new IllegalArgumentException("target.left not instance of City");
         if (!(((Pair) target).right instanceof Cargo))
             throw new IllegalArgumentException("target.right not instance of Cargo");
+
+        Pair pair = (Pair) target;
+        Label label = null;
+
+        for (Train t : game.getActivePlayer().getTrains()) {
+            if (t.getNode() == pair.left)
+                if (!t.loadCargo((Cargo) pair.right))
+                    label = new Label("Loaded " + pair.right,
+                            new Label.LabelStyle(new BitmapFont(), Color.GREEN));
+                else
+                    label = new Label("Couldn't load " + pair.right,
+                            new Label.LabelStyle(new BitmapFont(), Color.RED));
+        }
+        label.setAlignment(Align.center);
+        game.getGui().getNotificationBox().addLabel(label, 5.0f);
     }
 }
