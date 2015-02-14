@@ -29,17 +29,19 @@ public class LoadCargoCommand implements Commandable {
             throw new IllegalArgumentException("target.right not instance of Cargo");
 
         Pair pair = (Pair) target;
-        Label label = null;
+        Label label = new Label("You don't own a train on " + pair.right,
+                new Label.LabelStyle(new BitmapFont(), Color.ORANGE));
 
         for (Train t : game.getActivePlayer().getTrains()) {
             if (t.getNode() == pair.left)
-                if (!t.loadCargo((Cargo) pair.right))
+                if (t.loadCargo((Cargo) pair.right))
                     label = new Label("Loaded " + pair.right,
                             new Label.LabelStyle(new BitmapFont(), Color.GREEN));
                 else
                     label = new Label("Couldn't load " + pair.right,
                             new Label.LabelStyle(new BitmapFont(), Color.RED));
         }
+
         label.setAlignment(Align.center);
         game.getGui().getNotificationBox().addLabel(label, 5.0f);
     }
