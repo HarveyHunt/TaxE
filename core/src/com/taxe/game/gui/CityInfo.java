@@ -6,8 +6,11 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
+import com.taxe.game.GameCore;
 import com.taxe.game.cargo.Cargo;
+import com.taxe.game.commands.Commands;
 import com.taxe.game.nodes.City;
+import com.taxe.game.util.Pair;
 
 import java.util.ArrayList;
 
@@ -73,7 +76,15 @@ public class CityInfo extends Group {
 
         int i = 0;
         for(Cargo c : city.getCargoList()) {
-            Button button = new Button(c.getTexture());
+            final Pair pair = new Pair(city, c);
+
+            Button button = new Button(c.getTexture()) {
+                @Override
+                public void clicked(GameCore game) {
+                    Commands.loadCargoCommand.executeCommand(game, pair);
+                }
+            };
+
             button.setPosition(LEFT_START + (i * button.getWidth()),
                     BOTTOM_MARGIN + (2 * LABEL_GAP));
 

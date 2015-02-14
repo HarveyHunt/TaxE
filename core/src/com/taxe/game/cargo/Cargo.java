@@ -1,9 +1,7 @@
 package com.taxe.game.cargo;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.Touchable;
 
 /**
  * Base-class for representing cargo. Different types of cargo (e.g. penguins, bricks, etc.) are implemented by

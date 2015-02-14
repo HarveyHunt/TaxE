@@ -68,10 +68,10 @@ public class Map extends Group {
         ArrayList<Cargo> cargo = new ArrayList<>();
 
         // TODO: Make these values more interesting...
-        cargo.add(new Penguins(100));
-        cargo.add(new Wheat(100));
-        cargo.add(new Bears(100));
-        cargo.add(new Coal(100));
+        cargo.add(new Penguins(1));
+        cargo.add(new Wheat(1));
+        cargo.add(new Bears(1));
+        cargo.add(new Coal(1));
 
         Random rgen = new Random();
 

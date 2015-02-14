@@ -106,8 +106,12 @@ public abstract class Train extends Actor implements Clickable {
      *
      * @param cargo cargo to be loaded onto the train
      */
-    public void setCargo(Cargo cargo) {
+    public boolean loadCargo(Cargo cargo) {
+        if (cargo.getQuantity() > cargoCap || this.cargo != null)
+            return false;
+
         this.cargo = cargo;
+        return true;
     }
 
     /**
