@@ -11,6 +11,10 @@ import com.taxe.game.nodes.City;
 
 import java.util.ArrayList;
 
+/**
+ * Stores information about a city, such as Name, activePlayer's level of
+ * influence and the cargoes that the city holds.
+ */
 public class CityInfo extends Group {
 
     private City city;
@@ -45,6 +49,10 @@ public class CityInfo extends Group {
         addActor(this.cityInfluence);
     }
 
+    /**
+     * Remove the buttons from the scene so that rendering a different city
+     * doesn't mean old cargo buttons are displayed.
+     */
     private void removeCargoButtons() {
         for (Button b : buttons)
             removeActor(b);
@@ -58,7 +66,7 @@ public class CityInfo extends Group {
      */
     public void setCity(City city, int playerID) {
         removeCargoButtons();
-        
+
         this.city = city;
         this.cityName.setText("City name: " + city.getId());
         this.cityInfluence.setText("City influence: " + city.getInfluence(playerID));
