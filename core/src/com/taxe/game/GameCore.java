@@ -10,10 +10,10 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.taxe.Main;
 import com.taxe.game.commands.Commands;
+import com.taxe.game.gui.Gui;
 import com.taxe.game.inputhandling.Clickable;
-import com.taxe.game.nodes.City;
-import com.taxe.game.nodes.Node;
 import com.taxe.game.map.Map;
+import com.taxe.game.nodes.Node;
 import com.taxe.game.player.Player;
 import com.taxe.game.tasks.Task;
 import com.taxe.game.tasks.TaskFactory;
@@ -23,7 +23,10 @@ import com.taxe.game.gui.Gui;
 import com.taxe.game.cards.*;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Deque;
 
 /**
  * The game. This is the main class for everything related to the playing of the game itself.
@@ -65,8 +68,8 @@ public class GameCore implements Screen {
         }
 
         // Setting up players and their trains
-        Player p1 = new Player(map.getHomebases().get(0), new ArrayList<Train>(), 500, 0, 10);
-        Player p2 = new Player(map.getHomebases().get(1), new ArrayList<Train>(), 500, 0, 10);
+        Player p1 = new Player(map.getHomebases().get(0), new ArrayList<Train>(), 500, 0, 10, 0);
+        Player p2 = new Player(map.getHomebases().get(1), new ArrayList<Train>(), 500, 0, 10, 1);
         p1.addTrain(new BasicTrain(p1.getHomebase()));
         p2.addTrain(new BasicTrain(p2.getHomebase()));
         players = new ArrayList<>();

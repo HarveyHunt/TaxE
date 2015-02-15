@@ -1,6 +1,5 @@
 package com.taxe.game.commands;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
@@ -8,7 +7,6 @@ import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.taxe.game.GameCore;
 import com.taxe.game.nodes.City;
 import com.taxe.game.nodes.NodeStates;
-import com.taxe.game.util.Coordinate;
 
 /**
  * Lock a city so that trains can't travel over it.
@@ -28,13 +26,11 @@ public class LockCityCommand implements Commandable {
         c.locked = true;
         c.setState(NodeStates.LOCKED);
 
-        Label label = new Label("City " + c + " has been locked",
+        Label label = new Label(c + " has been locked",
                 new Label.LabelStyle(new BitmapFont(), Color.RED));
         label.setAlignment(Align.center);
 
-        game.getGui().createTextNotification(label, new Coordinate(
-                Gdx.graphics.getWidth() / 2,
-                Gdx.graphics.getHeight() / 2), 1);
+        game.getGui().getNotificationBox().addLabel(label, 5.0f);
     }
 }
 

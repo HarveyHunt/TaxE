@@ -6,7 +6,8 @@ import org.junit.runner.RunWith;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 @RunWith(GdxTestRunner.class)
 public class HomebaseTest {
@@ -53,7 +54,7 @@ public class HomebaseTest {
     @Test
     public void testChangeHealthBy() throws Exception {
         List <Node> nodes = Node.readNodes("nodes.json");
-        Homebase h = (Homebase)Node.getNodeById("Red", nodes);
+        Homebase h = (Homebase)Node.getNodeById("Moscow", nodes);
 
         // No clipping required
         h.changeHealthBy(-100);

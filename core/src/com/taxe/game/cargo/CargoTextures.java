@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.Texture;
  */
 public abstract class CargoTextures {
 
+    // TODO: Change these to the correct textures.
     public static final Texture PENGUINS = new Texture("cargo/penguins.png");
     public static final Texture COAL = new Texture("cargo/coal.png");
     public static final Texture BEARS = new Texture("cargo/bears.png");

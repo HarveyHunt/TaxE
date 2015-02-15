@@ -1,6 +1,5 @@
 package com.taxe.game.commands;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
@@ -11,7 +10,8 @@ import com.taxe.game.player.Player;
 import com.taxe.game.tasks.Task;
 import com.taxe.game.trains.Train;
 import com.taxe.game.trains.TrainStates;
-import com.taxe.game.util.Coordinate;
+
+import java.util.Iterator;
 
 /**
  * Activates trains of a given player and disables trains of all other players.
@@ -36,35 +36,31 @@ public class ActivatePlayerCommand implements Commandable {
         }
 
         // Enable trains of given player
-        for (Train t : ((Player) target).getTrains()) {
+        for (Train t : ((Player) target).getTrains())
             t.setState(TrainStates.ACTIVE);
-        }
 
-        // Complete tasks before adding a new one.
-        for (Task task : game.getTasks()) {
-            if (task.isComplete((Player) target)) {
-                task.getEndCity().changeInfluenceBy(game.getPlayers().indexOf(target), 0.1f);
+        // Complete or delete tasks before adding a new one.
+        for (Iterator<Task> iter = game.getTasks().iterator(); iter.hasNext();) {
+            Task t = iter.next();
 
-                // TODO: Check that ((Player) target) doesn't just return a
-                // memory address. If it does, implement a name for players.
-                Label label = new Label("Player " + ((Player) target) +
-                        " has completed a task",
-                        new Label.LabelStyle(new BitmapFont(), Color.GREEN));
+            if (t.getTasktime() == 0) {
+                game.getGui().getInfoDisplay().removeTask(t);
+                iter.remove();
+
+                Label label = new Label(t + " has expired",
+                        new Label.LabelStyle(new BitmapFont(), Color.RED));
                 label.setAlignment(Align.center);
 
-                game.getGui().createTextNotification(label, new Coordinate(
-                        Gdx.graphics.getWidth() / 2,
-                        Gdx.graphics.getHeight() / 2), 1);
-
-                game.getTasks().remove(task);
-                game.getGui().getInfoDisplay().removeTask(task);
+                game.getGui().getNotificationBox().addLabel(label, 5.0f);
             }
+            t.completeTurn();
+            game.getGui().getInfoDisplay().updateTurns();
         }
 
         // Increase player's gold based on influence.
         // TODO: This could be made more interesting.
         for (City c: game.getMap().getCities()) {
-            int goldToAdd = Math.round(100 * c.getInfluence(game.getPlayers().indexOf(target)));
+            int goldToAdd = Math.round(100 * c.getInfluence(game.getActivePlayer().id));
             ((Player) target).changeGold(goldToAdd);
         }
 

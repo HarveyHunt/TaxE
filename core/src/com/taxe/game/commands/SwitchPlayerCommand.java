@@ -17,7 +17,8 @@ import java.util.Random;
 public class SwitchPlayerCommand implements Commandable {
 
     public void executeCommand(GameCore game, Object target) {
-        City lockableCity;
+
+        City lockableCity = null;
         Random rand = new Random();
 
         Commands.activatePlayerCommand.executeCommand(game, game.nextActivePlayer());
@@ -26,14 +27,19 @@ public class SwitchPlayerCommand implements Commandable {
         game.hand.UpdateCardLabels(game);
 
         Texture texture;
-        if (game.getActivePlayer() == game.getPlayers().get(0)) {
+        if (game.getActivePlayer() == game.getPlayers().get(0))
             texture = GuiTextures.PLAYER_1_TURN_START;
-        } else {
+        else
             texture = GuiTextures.PLAYER_2_TURN_START;
-        }
+
         game.getGui().createNotification(texture, new Coordinate(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2), 1);
 
-        lockableCity = game.getMap().getCities().get(rand.nextInt(game.getMap().getCities().size()));
+        while (lockableCity == null) {
+            City c = game.getMap().getCities().get(rand.nextInt(
+                                game.getMap().getCities().size()));
+            if (!c.locked)
+                lockableCity = c;
+        }
 
         for (City c: game.getMap().getCities()) {
             if (c.locked && rand.nextInt(3) == 0)

@@ -24,6 +24,7 @@ public class Player extends Group {
     private int fuelUsage;
     private int fuelCap;
     private final Homebase homebase;
+    public final int id;
 
     private ArrayList<Integer> cardQtys;
 
@@ -35,15 +36,15 @@ public class Player extends Group {
      * @param gold      gold
      * @param fuelCap   fuelCap
      * @param fuelUsage fuelUsage
+     * @param id The id of this player
      */
     public Player(Homebase homebase, ArrayList<Train> trains,
-                  int gold, int fuelUsage, int fuelCap) {
+                  int gold, int fuelUsage, int fuelCap, int id) {
         this.homebase = homebase;
         this.trains = new ArrayList<>(trains);
         this.gold = gold;
         this.fuelCap = fuelCap;
         this.fuelUsage = fuelUsage;
-
         for (Train t : trains) {
             this.addTrain(t);
             this.addActor(t);

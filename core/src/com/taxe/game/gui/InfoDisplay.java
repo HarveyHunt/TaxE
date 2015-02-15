@@ -14,6 +14,8 @@ import java.util.HashMap;
 
 /**
  * The menu on the left hand side of the screen that does not display any information yet
+ *
+ * TODO: Remove magic numbers from here.
  */
 public class InfoDisplay extends Group {
 
@@ -30,7 +32,7 @@ public class InfoDisplay extends Group {
      */
     public InfoDisplay(GameCore game) {
         this.game = game;
-        maximised = false;
+        maximised = true;
         tasks = new HashMap<>(5);
 
         minimiseButton = new Button(GuiTextures.MINIMISE_BUTTON) {
@@ -42,7 +44,6 @@ public class InfoDisplay extends Group {
             }
         };
         addActor(minimiseButton);
-        minimiseButton.setVisible(false);
 
         maximiseButton = new Button(GuiTextures.MAXIMISE_BUTTON) {
             @Override
@@ -53,8 +54,9 @@ public class InfoDisplay extends Group {
             }
         };
         addActor(maximiseButton);
+        maximiseButton.setVisible(false);
 
-        labelY = Gdx.graphics.getHeight() - GuiTextures.   INFODISPLAY_TOP_MAXIMISED.getHeight() - 121;
+        labelY = Gdx.graphics.getHeight() - GuiTextures.INFODISPLAY_TOP_MAXIMISED.getHeight() - 121;
 
         resize();
     }
@@ -118,12 +120,18 @@ public class InfoDisplay extends Group {
      * @param task The Task to be removed.
      */
     public void removeTask(Task task) {
+        removeActor(tasks.get(task));
         tasks.remove(task);
         // Reset the labelY position and recalculate for Y for all labels.
-        labelY = Gdx.graphics.getHeight() - GuiTextures.   INFODISPLAY_TOP_MAXIMISED.getHeight() - 121;
+        labelY = Gdx.graphics.getHeight() - GuiTextures.INFODISPLAY_TOP_MAXIMISED.getHeight() - 121;
         for (Task t : tasks.keySet()) {
             tasks.get(t).setPosition(50, labelY);
-            labelY += tasks.get(t).getTextBounds().height + 20;
+            labelY -= tasks.get(t).getTextBounds().height + 20;
         }
+    }
+
+    public void updateTurns() {
+        for (Task t : tasks.keySet())
+            tasks.get(t).setText(t.toString());
     }
 }

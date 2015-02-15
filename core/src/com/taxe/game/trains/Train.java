@@ -106,8 +106,19 @@ public abstract class Train extends Actor implements Clickable {
      *
      * @param cargo cargo to be loaded onto the train
      */
-    public void setCargo(Cargo cargo) {
+    public boolean loadCargo(Cargo cargo) {
+        if (cargo.getQuantity() > cargoCap || this.cargo != null)
+            return false;
+
         this.cargo = cargo;
+        return true;
+    }
+
+    /**
+     * Remove the cargo from the train.
+     */
+    public void unload() {
+        cargo = null;
     }
 
     /**
@@ -199,6 +210,18 @@ public abstract class Train extends Actor implements Clickable {
                 getScaleX(), getScaleY(),
                 getRotation(),
                 0, 0, getTexture().getWidth(), getTexture().getHeight(), false, false);
+
+        if (cargo != null)
+            // Height is divided by 3 as a cargo's texture is three images
+            // stacked on top of each other.
+            batch.draw(cargo.getTexture(),
+                    getX() - getOriginX(), getY() - getOriginY(),
+                    getOriginX(), getOriginY(),
+                    cargo.getTexture().getWidth(), cargo.getTexture().getHeight() / 3,
+                    getScaleX(), getScaleY(),
+                    getRotation(),
+                    0, 0, cargo.getTexture().getWidth(), cargo.getTexture().getHeight() / 3,
+                    false, false);
     }
 
     @Override

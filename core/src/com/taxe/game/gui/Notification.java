@@ -3,7 +3,6 @@ package com.taxe.game.gui;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
@@ -32,13 +31,8 @@ public class Notification extends Actor {
         SequenceAction seq = new SequenceAction();
         seq.addAction(Actions.delay(duration));
         seq.addAction(Actions.fadeOut(0.3f));
-        seq.addAction(new Action() {
-            @Override
-            public boolean act(float delta) {
-                getParent().removeActor(Notification.this);
-                return true;
-            }
-        });
+        seq.addAction(Actions.removeActor());
+
         addAction(seq);
     }
 
