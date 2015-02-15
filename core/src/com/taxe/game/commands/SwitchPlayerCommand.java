@@ -23,7 +23,7 @@ public class SwitchPlayerCommand implements Commandable {
         Commands.activatePlayerCommand.executeCommand(game, game.nextActivePlayer());
         game.switchActivePlayer();
 
-        game.UpdateCardLabels();
+        game.hand.UpdateCardLabels(game);
 
         Texture texture;
         if (game.getActivePlayer() == game.getPlayers().get(0)) {

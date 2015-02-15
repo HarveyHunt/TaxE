@@ -27,7 +27,7 @@ public class Boost extends Card {
             command.executeCommand(game, null);
             game.getActivePlayer().adjustBoostQty(-1);
 
-            game.UpdateCardLabels();
+            game.hand.UpdateCardLabels(game);
         }
 
         else {

@@ -39,7 +39,7 @@ public class Block extends Card {
             command.executeCommand(game, null);
             game.getActivePlayer().adjustBlockQty(-1);
 
-            game.UpdateCardLabels();
+            game.hand.UpdateCardLabels(game);
         }
 
         else {

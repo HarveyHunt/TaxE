@@ -38,10 +38,9 @@ public class GameCore implements Screen {
     private int activePlayer;
     private Map map;
     private Scene scene;
-    private Block block;
-    private Boost boost;
     private ArrayDeque<Node> selectedPath = new ArrayDeque<>();
     public TaskFactory taskFactory;
+    public Hand hand;
 
     /**
      * creates an instance of GameCore
@@ -98,13 +97,8 @@ public class GameCore implements Screen {
         Commands.activatePlayerCommand.executeCommand(this, getActivePlayer());
 
         // Create card icons, add them to the scene and initialise their labels
-        boost = new Boost();
-        block = new Block();
-
-        scene.addActor(boost);
-        scene.addActor(block);
-
-        UpdateCardLabels();
+        this.hand = new Hand(scene);
+        this.hand.UpdateCardLabels(this);
 
         scene.scale();
     }
@@ -239,14 +233,5 @@ public class GameCore implements Screen {
      */
     public Stage getStage() {
         return stage;
-    }
-
-    public Block getBlock() { return block; }
-
-    public Boost getBoost() {return boost; }
-
-    public void UpdateCardLabels() {
-        this.getBlock().qtyLabel.setText(this.getActivePlayer().getBlockQty().toString());
-        this.getBoost().qtyLabel.setText(this.getActivePlayer().getBoostQty().toString());
     }
 }

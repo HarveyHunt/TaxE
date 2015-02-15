@@ -157,6 +157,9 @@ public abstract class Node extends Actor implements Clickable {
             Commands.continuePathCommand.executeCommand(game, this);
         } else if (getState() == NodeStates.SELECTED) {
             Commands.undoPathCommand.executeCommand(game, this);
+        } else if (game.hand.isBlockCardActive()) {
+            Commands.lockCityCommand.executeCommand(game, this);
+            game.hand.setBlockCardState(false);
         }
     }
 
