@@ -115,6 +115,13 @@ public abstract class Train extends Actor implements Clickable {
     }
 
     /**
+     * Remove the cargo from the train.
+     */
+    public void unload() {
+        cargo = null;
+    }
+
+    /**
      * Returns a deque-view of nodes on the current train path. Modifying the returned deque will result in modifying
      * trains path.
      *

@@ -22,7 +22,7 @@ public class TaskFactory {
         List<City> cities = this.game.getMap().getCities();
         Random rgen = new Random();
         City newEnd;
-        int turns = rgen.nextInt(5) + 1;
+        int turns = rgen.nextInt(10) + 5;
         int cargoQuantity = rgen.nextInt(100);
 
         do

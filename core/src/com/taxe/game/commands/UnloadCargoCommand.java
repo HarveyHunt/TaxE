@@ -39,19 +39,21 @@ public class UnloadCargoCommand implements Commandable {
          * the cargo type is correct and the reward the player for their work.
          */
         for (Train t : game.getActivePlayer().getTrains())
-            if (t.getCargo() == task.getCargo()) {
+            if (t.getCargo().getId().equals(task.getCargo().getId())) {
                 city.changeInfluenceBy(game.getPlayers().indexOf(target), 0.1f);
 
                 // TODO: Check that ((Player) target) doesn't just return a
                 // memory address. If it does, implement a name for players.
-                Label label = new Label("Player " + ((Player) target) +
+                Label label = new Label("Player " + game.getActivePlayer() +
                         " has completed a task",
                         new Label.LabelStyle(new BitmapFont(), Color.GREEN));
                 label.setAlignment(Align.center);
 
                 game.getGui().getNotificationBox().addLabel(label, 5.0f);
+
+                t.unload();
+                game.getGui().getInfoDisplay().removeTask(task);
+                game.getTasks().remove(task);
             }
-        game.getGui().getInfoDisplay().removeTask(task);
-        game.getTasks().remove(task);
     }
 }
