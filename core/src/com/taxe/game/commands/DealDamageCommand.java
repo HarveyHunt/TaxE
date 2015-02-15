@@ -33,7 +33,7 @@ public class DealDamageCommand implements Commandable {
             if(!(p.equals(p2))) {
                 //Deal damage to enemy's base
                 Homebase h = p2.getHomebase();
-                h.changeHealthBy(- (int) (10*influenceSum));
+                h.changeHealthBy(- (int) (influenceSum));
                 game.getGui().getHud().getHealthbar(p).setPercentage((float) h.getHealth() / h.getMaxHealth());
 
                 // If homebase is destroyed, end game
