@@ -46,13 +46,13 @@ public class CityInfo extends Group {
      */
     private void setupLabels() {
         this.cityName = new Label("",  new Label.LabelStyle(new BitmapFont(),
-                Color.WHITE));
+                Color.BLACK));
         this.cityName.setAlignment(Align.left);
         this.cityName.setPosition(LEFT_START, BOTTOM_MARGIN);
         addActor(this.cityName);
 
         this.cityInfluence = new Label("", new Label.LabelStyle(new BitmapFont(),
-                Color.WHITE));
+                Color.BLACK));
         this.cityInfluence.setAlignment(Align.left);
         this.cityInfluence.setPosition(LEFT_START, BOTTOM_MARGIN + LABEL_GAP);
         addActor(this.cityInfluence);
