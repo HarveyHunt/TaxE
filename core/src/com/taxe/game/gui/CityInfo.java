@@ -10,6 +10,8 @@ import com.taxe.game.GameCore;
 import com.taxe.game.cargo.Cargo;
 import com.taxe.game.commands.Commands;
 import com.taxe.game.nodes.City;
+import com.taxe.game.tasks.Task;
+import com.taxe.game.trains.TrainTextures;
 import com.taxe.game.util.Pair;
 
 import java.util.ArrayList;
@@ -24,6 +26,7 @@ public class CityInfo extends Group {
     private Label cityName;
     private Label cityInfluence;
     private ArrayList<Button> buttons;
+    private Button unloadButton;
     private GameCore game;
 
     private final int LEFT_START = Gdx.graphics.getWidth() - 200;
@@ -64,6 +67,10 @@ public class CityInfo extends Group {
         buttons.clear();
     }
 
+    public City getCity() {
+        return city;
+    }
+
     /**
      * Update labels with the information for city.
      * @param city The city that we are displaying info for.
@@ -75,6 +82,11 @@ public class CityInfo extends Group {
         this.cityName.setText("City name: " + city.getId());
         this.cityInfluence.setText("City influence: " + city.getInfluence(game.getActivePlayer().id));
 
+        generateCargoButtons();
+        generateUnloadButton();
+    }
+
+    private void generateCargoButtons() {
         int i = 0;
         for(Cargo c : city.getCargoList()) {
             final Pair pair = new Pair(city, c);
@@ -93,5 +105,31 @@ public class CityInfo extends Group {
             buttons.add(button);
             i++;
         }
+    }
+
+    private void generateUnloadButton() {
+        boolean found = false;
+
+        for (Task t : game.getTasks()) {
+            if (t.getEndCity() == city) {
+                found = true;
+                break;
+            }
+        }
+
+        if (found) {
+            // TODO: Change this to a real texture.
+            unloadButton = new Button(GuiTextures.MINUS_BUTTON) {
+                @Override
+                public void clicked(GameCore game) {
+                    Commands.unloadCargoCommand.executeCommand(game, getCity());
+                }
+            };
+            unloadButton.setPosition(LEFT_START + (unloadButton.getWidth()),
+                    BOTTOM_MARGIN + (3 * LABEL_GAP));
+
+            addActor(unloadButton);
+        }
+
     }
 }
