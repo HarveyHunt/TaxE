@@ -42,8 +42,8 @@ public class UnloadCargoCommand implements Commandable {
 
                 // TODO: Check that ((Player) target) doesn't just return a
                 // memory address. If it does, implement a name for players.
-                Label label = new Label("Player " + game.getActivePlayer() +
-                        " has completed a task",
+                Label label = new Label("Player " + (game.getActivePlayer().id + 1)
+                        + " has completed a task",
                         new Label.LabelStyle(new BitmapFont(), Color.GREEN));
                 label.setAlignment(Align.center);
 

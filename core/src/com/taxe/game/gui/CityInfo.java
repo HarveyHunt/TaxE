@@ -128,8 +128,7 @@ public class CityInfo extends Group {
         if (task != null) {
             final Pair pair = new Pair(city, task);
 
-            // TODO: Change this to a real texture and reposition the button.
-            unloadButton = new Button(GuiTextures.MINUS_BUTTON) {
+            unloadButton = new Button(GuiTextures.UNLOAD_BUTTON) {
                 @Override
                 public void clicked(GameCore game) {
                     Commands.unloadCargoCommand.executeCommand(game, pair);
