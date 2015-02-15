@@ -12,7 +12,6 @@ import com.taxe.game.commands.Commands;
 import com.taxe.game.nodes.City;
 import com.taxe.game.tasks.Task;
 import com.taxe.game.trains.Train;
-import com.taxe.game.trains.TrainTextures;
 import com.taxe.game.util.Pair;
 
 import java.util.ArrayList;
@@ -87,6 +86,9 @@ public class CityInfo extends Group {
         generateUnloadButton();
     }
 
+    /**
+     * Create a button for each cargo that a city has.
+     */
     private void generateCargoButtons() {
         int i = 0;
         for(Cargo c : city.getCargoList()) {
@@ -108,6 +110,10 @@ public class CityInfo extends Group {
         }
     }
 
+    /**
+     * If a city is an endpoint for a task and has a train belonging
+     * to the activePlayer on it, render an unload button.
+     */
     private void generateUnloadButton() {
         Task task = null;
 
@@ -134,6 +140,5 @@ public class CityInfo extends Group {
 
             addActor(unloadButton);
         }
-
     }
 }
