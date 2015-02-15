@@ -11,6 +11,7 @@ import com.taxe.game.cargo.Cargo;
 import com.taxe.game.commands.Commands;
 import com.taxe.game.nodes.City;
 import com.taxe.game.tasks.Task;
+import com.taxe.game.trains.Train;
 import com.taxe.game.trains.TrainTextures;
 import com.taxe.game.util.Pair;
 
@@ -108,21 +109,24 @@ public class CityInfo extends Group {
     }
 
     private void generateUnloadButton() {
-        boolean found = false;
+        Task task = null;
 
-        for (Task t : game.getTasks()) {
-            if (t.getEndCity() == city) {
-                found = true;
-                break;
-            }
-        }
+        for (Train train : game.getActivePlayer().getTrains())
+            if (train.getNode() == city)
+                for (Task t : game.getTasks())
+                    if (t.getEndCity() == city) {
+                        task = t;
+                        break;
+                    }
 
-        if (found) {
-            // TODO: Change this to a real texture.
+        if (task != null) {
+            final Pair pair = new Pair(city, task);
+
+            // TODO: Change this to a real texture and reposition the button.
             unloadButton = new Button(GuiTextures.MINUS_BUTTON) {
                 @Override
                 public void clicked(GameCore game) {
-                    Commands.unloadCargoCommand.executeCommand(game, getCity());
+                    Commands.unloadCargoCommand.executeCommand(game, pair);
                 }
             };
             unloadButton.setPosition(LEFT_START + (unloadButton.getWidth()),

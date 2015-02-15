@@ -42,23 +42,8 @@ public class ActivatePlayerCommand implements Commandable {
         // Complete or delete tasks before adding a new one.
         for (Iterator<Task> iter = game.getTasks().iterator(); iter.hasNext();) {
             Task t = iter.next();
-            
-            if (t.isComplete((Player) target)) {
-                t.getEndCity().changeInfluenceBy(game.getPlayers().indexOf(target), 0.1f);
 
-                // TODO: Check that ((Player) target) doesn't just return a
-                // memory address. If it does, implement a name for players.
-                Label label = new Label("Player " + ((Player) target) +
-                        " has completed a task",
-                        new Label.LabelStyle(new BitmapFont(), Color.GREEN));
-                label.setAlignment(Align.center);
-
-                game.getGui().getNotificationBox().addLabel(label, 5.0f);
-
-                game.getGui().getInfoDisplay().removeTask(t);
-                iter.remove();
-
-            } else if (t.getTasktime() == 0) {
+            if (t.getTasktime() == 0) {
                 game.getGui().getInfoDisplay().removeTask(t);
                 iter.remove();
 
