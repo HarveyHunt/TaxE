@@ -19,7 +19,6 @@ import java.util.HashMap;
  */
 public class InfoDisplay extends Group {
 
-    private GameCore game;
     private Button maximiseButton;
     private Button minimiseButton;
     private HashMap<Task, Label> tasks;
@@ -30,8 +29,7 @@ public class InfoDisplay extends Group {
      * creates an instance of InfoDisplay
      * @param game the GameCore instance
      */
-    public InfoDisplay(GameCore game) {
-        this.game = game;
+    public InfoDisplay() {
         maximised = true;
         tasks = new HashMap<>(5);
 

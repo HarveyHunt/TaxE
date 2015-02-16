@@ -31,7 +31,7 @@ public class Gui extends Group {
         hud = new Hud(game);
         addActor(hud);
 
-        infoDisplay = new InfoDisplay(game);
+        infoDisplay = new InfoDisplay();
         addActor(infoDisplay);
 
         notificationBox = new NotificationBox();
