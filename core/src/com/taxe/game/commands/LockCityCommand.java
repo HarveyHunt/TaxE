@@ -22,6 +22,7 @@ public class LockCityCommand implements Commandable {
         if(!(target instanceof City)){
             throw new IllegalArgumentException("target not instance of City");
         }
+
         City c = (City)target;
         c.locked = true;
         c.setState(NodeStates.LOCKED);

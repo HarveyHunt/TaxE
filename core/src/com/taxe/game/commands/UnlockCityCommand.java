@@ -13,7 +13,6 @@ import com.taxe.game.nodes.NodeStates;
  */
 public class UnlockCityCommand implements Commandable {
     /**
-     *
      * @param game instance of GameCore
      * @param target The object to unlock (this needs to be a city)
      * @throws IllegalArgumentException if the target isn't a City.
@@ -23,6 +22,7 @@ public class UnlockCityCommand implements Commandable {
             throw new IllegalArgumentException("target not instance of City");
         }
         City c = (City)target;
+
         c.locked = false;
         c.setState(NodeStates.ORIGINAL);
 

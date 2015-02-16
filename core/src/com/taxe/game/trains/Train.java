@@ -117,7 +117,7 @@ public abstract class Train extends Actor implements Clickable {
     /**
      * Remove the cargo from the train.
      */
-    public void unload() {
+    public void unloadCargo() {
         cargo = null;
     }
 

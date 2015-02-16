@@ -64,6 +64,7 @@ public class ActivatePlayerCommand implements Commandable {
             game.getGui().getHud().setPlayerText((Player) target);
         }
 
+        // Generate new tasks, if needed.
         if (game.getTasks().size() < 5) {
             Task t = game.taskFactory.generateTask();
             game.getTasks().add(t);
