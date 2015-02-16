@@ -32,7 +32,6 @@ import java.util.Deque;
  */
 public class GameCore implements Screen {
 
-    public TaskFactory taskFactory;
     private Main main;
     private Stage stage;
     private Gui gui;

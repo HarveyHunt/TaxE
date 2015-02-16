@@ -13,6 +13,8 @@ public class Hand {
     public Boost boost;
 
     private boolean isBlockActive;
+    private boolean isBoostActive;
+
     private boolean canUseCard;
 
     public Hand(Scene scene) {
@@ -20,6 +22,8 @@ public class Hand {
         boost = new Boost();
 
         isBlockActive = false;
+        isBoostActive = false;
+
         canUseCard = true;
 
         scene.addActor(block);
@@ -33,6 +37,9 @@ public class Hand {
 
     public boolean isBlockCardActive() { return isBlockActive; }
     public void setBlockCardState(boolean b) { isBlockActive = b; }
+
+    public boolean isBoostCardActive() { return isBoostActive; }
+    public void setBoostCardState(boolean b) { isBoostActive = b; }
 
     public boolean isCardUsable () { return canUseCard; }
     public void setCardUsability (boolean b) { canUseCard = b; }
