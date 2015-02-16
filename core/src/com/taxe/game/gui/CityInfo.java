@@ -64,6 +64,9 @@ public class CityInfo extends Group {
     private void removeCargoButtons() {
         for (Button b : buttons)
             removeActor(b);
+        removeActor(unloadButton);
+
+        unloadButton = null;
         buttons.clear();
     }
 
@@ -134,8 +137,7 @@ public class CityInfo extends Group {
                     Commands.unloadCargoCommand.executeCommand(game, pair);
                 }
             };
-            unloadButton.setPosition(LEFT_START + (unloadButton.getWidth()),
-                    BOTTOM_MARGIN + (3 * LABEL_GAP));
+            unloadButton.setPosition(LEFT_START, BOTTOM_MARGIN + (3 * LABEL_GAP));
 
             addActor(unloadButton);
         }
