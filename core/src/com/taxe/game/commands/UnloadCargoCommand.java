@@ -52,6 +52,8 @@ public class UnloadCargoCommand implements Commandable {
                 t.unloadCargo();
                 game.getGui().getInfoDisplay().removeTask(task);
                 game.getTasks().remove(task);
+
+                Commands.rewardCardCommand.executeCommand(game, game.getActivePlayer());
             }
     }
 }

@@ -61,8 +61,8 @@ public class Player extends Group {
 
         this.cardQtys = new ArrayList<Integer>();
 
-        cardQtys.add(2);
-        cardQtys.add(2);
+        cardQtys.add(0);
+        cardQtys.add(0);
     }
 
     /**
