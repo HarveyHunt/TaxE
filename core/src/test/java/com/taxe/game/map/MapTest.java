@@ -54,12 +54,13 @@ public class MapTest {
 
     /**
      * Checks if a list of nodes contains only nodes with given ids
+     *
      * @param nodes list of nodes
-     * @param ids list of ids
+     * @param ids   list of ids
      */
     public boolean containsAll(List<Node> nodes, String[] ids) {
         if (nodes.size() != ids.length) return false;
-        for (String id: ids) {
+        for (String id : ids) {
             if (Node.getNodeById(id, nodes) == null)
                 return false;
         }

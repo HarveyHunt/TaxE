@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * City is a node that issues tasks and trades cargo. Completing tasks set by cities increases player's influence and
  * gives rewards.
- *
+ * <p/>
  * NOTE: influence represents player one's influence.
  *
  * @see com.taxe.game.tasks.Task
@@ -20,10 +20,10 @@ import java.util.List;
  */
 public class City extends Node {
 
+    public Boolean locked;
     private float influence;
     private List<Task> taskList;
     private List<Cargo> cargoList;
-    public Boolean locked;
 
     /**
      * Default constructor. Necessary for {@link #readNodes(String)}
@@ -45,6 +45,7 @@ public class City extends Node {
 
     /**
      * If we are clicked, render our details in the CityInfo area.
+     *
      * @param game The game
      */
     public void clicked(GameCore game) {
@@ -85,7 +86,7 @@ public class City extends Node {
 
     /**
      * Returns influence a player has in the city
-     *
+     * <p/>
      * The variable influence represents Player one's influence in a city,
      * Player two's influence is simply 1 - influence.
      *
@@ -98,12 +99,12 @@ public class City extends Node {
 
     /**
      * Changes influence of a player in the city.
-     *
+     * <p/>
      * The variable influence represents Player one's influence in a city,
      * Player two's influence is simply 1 - influence.
      *
      * @param playerID represents if the player is player one or two.
-     * @param delta  change of influence
+     * @param delta    change of influence
      */
     public void changeInfluenceBy(int playerID, float delta) {
         influence = Math.max(0, playerID == 0 ? influence + delta

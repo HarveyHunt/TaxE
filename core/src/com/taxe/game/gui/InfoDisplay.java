@@ -14,12 +14,11 @@ import java.util.HashMap;
 
 /**
  * The menu on the left hand side of the screen that does not display any information yet
- *
+ * <p/>
  * TODO: Remove magic numbers from here.
  */
 public class InfoDisplay extends Group {
 
-    private GameCore game;
     private Button maximiseButton;
     private Button minimiseButton;
     private HashMap<Task, Label> tasks;
@@ -28,10 +27,10 @@ public class InfoDisplay extends Group {
 
     /**
      * creates an instance of InfoDisplay
+     *
      * @param game the GameCore instance
      */
-    public InfoDisplay(GameCore game) {
-        this.game = game;
+    public InfoDisplay() {
         maximised = true;
         tasks = new HashMap<>(5);
 
@@ -63,7 +62,7 @@ public class InfoDisplay extends Group {
 
     /**
      * repositions the elements of the menu based on the size of the screen.
-     *
+     * <p/>
      * TODO: Add support for resizing task list.
      */
     public void resize() {
@@ -117,6 +116,7 @@ public class InfoDisplay extends Group {
 
     /**
      * Remove a task from the task list display and realign remaining tasks.
+     *
      * @param task The Task to be removed.
      */
     public void removeTask(Task task) {

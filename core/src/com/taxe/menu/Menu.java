@@ -16,6 +16,7 @@ public class Menu extends Group {
 
     /**
      * creates the Actors of the elements of the menu
+     *
      * @param main The main application
      */
     public Menu(final Main main) {

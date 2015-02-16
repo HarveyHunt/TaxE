@@ -117,7 +117,7 @@ public abstract class Train extends Actor implements Clickable {
     /**
      * Remove the cargo from the train.
      */
-    public void unload() {
+    public void unloadCargo() {
         cargo = null;
     }
 
@@ -178,11 +178,6 @@ public abstract class Train extends Actor implements Clickable {
     public abstract Texture getTexture();
 
     /**
-     * Adjust actor-properties of a train. This function is called internally following the change of state.
-     */
-    public abstract void adjustActor();
-
-    /**
      * Returns current state of a train.
      *
      * @return state of a train.
@@ -222,6 +217,13 @@ public abstract class Train extends Actor implements Clickable {
                     getRotation(),
                     0, 0, cargo.getTexture().getWidth(), cargo.getTexture().getHeight() / 3,
                     false, false);
+    }
+
+    public void adjustActor() {
+        Texture t = getTexture();
+        setSize(t.getWidth(), t.getHeight());
+        setOrigin(getWidth() / 2f, getHeight() / 2f);
+        setTouchable(Touchable.enabled);
     }
 
     @Override

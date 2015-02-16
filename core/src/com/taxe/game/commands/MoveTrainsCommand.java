@@ -41,7 +41,7 @@ public class MoveTrainsCommand implements Commandable {
             Action end = new Action() {
                 @Override
                 public boolean act(float delta) {
-                    for (Train t: game.getActivePlayer().getTrains())
+                    for (Train t : game.getActivePlayer().getTrains())
                         if (t != train && t.getActions().size > 0)
                             return true;
                     Commands.endMovementCommand.executeCommand(game, game.getActivePlayer());

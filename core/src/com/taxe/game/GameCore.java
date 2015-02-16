@@ -32,6 +32,7 @@ import java.util.Deque;
  */
 public class GameCore implements Screen {
 
+    public TaskFactory taskFactory;
     private Main main;
     private Stage stage;
     private Gui gui;
@@ -46,6 +47,7 @@ public class GameCore implements Screen {
 
     /**
      * creates an instance of GameCore
+     *
      * @param main the parent instance of Main
      */
     public GameCore(Main main) {
@@ -151,6 +153,7 @@ public class GameCore implements Screen {
 
     /**
      * returns the parent instance of main
+     *
      * @return instance of main
      */
     public Main getMain() {
@@ -159,6 +162,7 @@ public class GameCore implements Screen {
 
     /**
      * returns the instance of Map
+     *
      * @return map
      */
     public Map getMap() {
@@ -167,6 +171,7 @@ public class GameCore implements Screen {
 
     /**
      * returns the instance of Gui
+     *
      * @return gui
      */
     public Gui getGui() {
@@ -175,6 +180,7 @@ public class GameCore implements Screen {
 
     /**
      * return the list of Players
+     *
      * @return list of players
      */
     public ArrayList<Player> getPlayers() {
@@ -183,6 +189,7 @@ public class GameCore implements Screen {
 
     /**
      * Return the list of tasks
+     *
      * @return List of tasks.
      */
     public ArrayList<Task> getTasks() {
@@ -191,6 +198,7 @@ public class GameCore implements Screen {
 
     /**
      * returns the path of nodes currently selected
+     *
      * @return list of currently selected nodes
      */
     public Deque<Node> getSelectedPath() {
@@ -206,6 +214,7 @@ public class GameCore implements Screen {
 
     /**
      * returns the currently active Player
+     *
      * @return active player
      */
     public Player getActivePlayer() {
@@ -214,6 +223,7 @@ public class GameCore implements Screen {
 
     /**
      * returns the next player to be active
+     *
      * @return next active player
      */
     public Player nextActivePlayer() {
@@ -223,6 +233,7 @@ public class GameCore implements Screen {
 
     /**
      * returns the Scene
+     *
      * @return scene
      */
     public Scene getScene() {
@@ -231,6 +242,7 @@ public class GameCore implements Screen {
 
     /**
      * returns the Stage
+     *
      * @return stage
      */
     public Stage getStage() {
