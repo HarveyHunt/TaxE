@@ -29,7 +29,7 @@ public class LoadCargoCommand implements Commandable {
             throw new IllegalArgumentException("target.right not instance of Cargo");
 
         Pair pair = (Pair) target;
-        Label label = new Label("You don't own a train on " + pair.right,
+        Label label = new Label("You don't own a train on " + pair.left,
                 new Label.LabelStyle(new BitmapFont(), Color.ORANGE));
 
         for (Train t : game.getActivePlayer().getTrains()) {
