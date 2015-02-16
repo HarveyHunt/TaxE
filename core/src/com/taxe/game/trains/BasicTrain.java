@@ -1,7 +1,6 @@
 package com.taxe.game.trains;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.taxe.game.nodes.Node;
 
 /**
