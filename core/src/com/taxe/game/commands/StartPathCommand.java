@@ -10,7 +10,7 @@ import com.taxe.game.trains.TrainStates;
  */
 public class StartPathCommand implements Commandable {
     /**
-     * @param game instance of GameCore
+     * @param game   instance of GameCore
      * @param target train that was clicked.
      * @throws IllegalArgumentException if target not instance of train
      */

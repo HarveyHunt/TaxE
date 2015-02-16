@@ -15,10 +15,10 @@ import com.taxe.game.util.Pair;
  */
 public class LoadCargoCommand implements Commandable {
     /**
-     * @param game instance of GameCore
+     * @param game   instance of GameCore
      * @param target A Pair of the form: (City, Cargo).
      * @throws IllegalArgumentException if the Pair isn't of the form
-     * (City, Cargo).
+     *                                  (City, Cargo).
      */
     public void executeCommand(GameCore game, Object target) throws IllegalArgumentException {
         if (!(target instanceof Pair))

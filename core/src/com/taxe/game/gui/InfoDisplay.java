@@ -14,7 +14,7 @@ import java.util.HashMap;
 
 /**
  * The menu on the left hand side of the screen that does not display any information yet
- *
+ * <p/>
  * TODO: Remove magic numbers from here.
  */
 public class InfoDisplay extends Group {
@@ -27,6 +27,7 @@ public class InfoDisplay extends Group {
 
     /**
      * creates an instance of InfoDisplay
+     *
      * @param game the GameCore instance
      */
     public InfoDisplay() {
@@ -61,7 +62,7 @@ public class InfoDisplay extends Group {
 
     /**
      * repositions the elements of the menu based on the size of the screen.
-     *
+     * <p/>
      * TODO: Add support for resizing task list.
      */
     public void resize() {
@@ -115,6 +116,7 @@ public class InfoDisplay extends Group {
 
     /**
      * Remove a task from the task list display and realign remaining tasks.
+     *
      * @param task The Task to be removed.
      */
     public void removeTask(Task task) {

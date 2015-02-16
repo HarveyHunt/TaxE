@@ -171,6 +171,7 @@ public abstract class Node extends Actor implements Clickable {
 
     /**
      * Represent this node as a string.
+     *
      * @return A string representing this node.
      */
     public String toString() {

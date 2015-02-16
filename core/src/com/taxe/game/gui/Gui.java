@@ -20,6 +20,7 @@ public class Gui extends Group {
 
     /**
      * Creates an instance of Gui
+     *
      * @param game the parent instance of GameCore
      */
     public Gui(GameCore game) {// Add Other Stuffs
@@ -53,6 +54,7 @@ public class Gui extends Group {
 
     /**
      * Creates an instance of the end game menu
+     *
      * @param winner the player that won as an index value. (index value = player number - 1)
      */
     public void createGameEndMenu(int winner) {
@@ -62,9 +64,10 @@ public class Gui extends Group {
 
     /**
      * Create an instance of a notification
-     * @param texture the notification image to show
+     *
+     * @param texture    the notification image to show
      * @param coordinate the center position of the notification, usually new Coordinate(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2)
-     * @param duration time that the notification is displayed before it fades out
+     * @param duration   time that the notification is displayed before it fades out
      */
     public void createNotification(Texture texture, Coordinate coordinate, float duration) {
         Notification notification = new Notification(this, texture, coordinate, duration);
@@ -73,6 +76,7 @@ public class Gui extends Group {
 
     /**
      * returns the GameCore game instance
+     *
      * @return GameCore instance
      */
     public GameCore getGame() {
@@ -81,6 +85,7 @@ public class Gui extends Group {
 
     /**
      * returns the Hud hud instance
+     *
      * @return hud instance
      */
     public Hud getHud() {
@@ -89,6 +94,7 @@ public class Gui extends Group {
 
     /**
      * returns the InfoDisplay instance
+     *
      * @return InfoDisplay instance
      */
     public InfoDisplay getInfoDisplay() {

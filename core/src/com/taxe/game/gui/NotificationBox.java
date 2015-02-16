@@ -13,18 +13,18 @@ import java.util.Iterator;
  * A container that stores labels in it. When a label is removed, it fades out
  * and the other labels are rearranged. Only MAX_DISPLAYED_LABELS are shown at
  * once - the rest are hidden.
- *
+ * <p/>
  * TODO: Stop a label's animation if it isn't visible else it will only appear
  * for a brief time.
  */
 public class NotificationBox extends Group {
 
-    private ArrayList<Label> labels;
-    private int labelY;
     private static final int MAX_DISPLAYED_LABELS = 5;
     private static final int GAP = 10;
     private static final int LEFT_MARGIN = 50;
     private static final int BOTTOM_MARGIN = 50;
+    private ArrayList<Label> labels;
+    private int labelY;
 
     public NotificationBox() {
         labels = new ArrayList<>();
@@ -35,11 +35,11 @@ public class NotificationBox extends Group {
      * Remove labels from the label list that have an alpha value of 0 -
      * implying that they have been "faded out"
      */
-    private void removeDeadLabels(){
+    private void removeDeadLabels() {
         if (labels.size() == 0)
             return;
 
-        for (Iterator<Label> iter = labels.iterator(); iter.hasNext();) {
+        for (Iterator<Label> iter = labels.iterator(); iter.hasNext(); ) {
             if (iter.next().getColor().a == 0) {
                 iter.remove();
             }
@@ -66,11 +66,11 @@ public class NotificationBox extends Group {
 
     /**
      * Add a label to the NotificationBox that last for duration seconds.
-     *
+     * <p/>
      * Labels are given an animation and are removed once their animation has
      * finished.
      *
-     * @param label The label to be added.
+     * @param label    The label to be added.
      * @param duration How long (in seconds) to display the label for.
      */
     public void addLabel(Label label, float duration) {

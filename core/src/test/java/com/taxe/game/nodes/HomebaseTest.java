@@ -14,6 +14,7 @@ public class HomebaseTest {
 
     /**
      * Tests if reading a homebase with health not satisfying the constraints throws an exception
+     *
      * @throws Exception
      */
     @Test
@@ -22,8 +23,7 @@ public class HomebaseTest {
         try {
             List<Node> nodes = Node.readNodes("homebase-health-less-than-zero.json");
             fail();
-        }
-        catch (RuntimeException e) {
+        } catch (RuntimeException e) {
             assertEquals("health < 0", e.getMessage());
         }
 
@@ -31,30 +31,31 @@ public class HomebaseTest {
         try {
             List<Node> nodes = Node.readNodes("homebase-health-greater-than-maxhealth.json");
             fail();
-        }
-        catch (RuntimeException e) {
+        } catch (RuntimeException e) {
             assertEquals("health > maxHealth", e.getMessage());
         }
 
         // Homebase health satisfies constraints
         try {
             List<Node> nodes = Node.readNodes("homebase-health-ok.json");
-            assertEquals(500, ((Homebase)nodes.get(0)).getHealth());
-            assertEquals(500, ((Homebase)nodes.get(0)).getMaxHealth());
-            assertEquals(400, ((Homebase)nodes.get(1)).getHealth());
-            assertEquals(600, ((Homebase)nodes.get(1)).getMaxHealth());
+            assertEquals(500, ((Homebase) nodes.get(0)).getHealth());
+            assertEquals(500, ((Homebase) nodes.get(0)).getMaxHealth());
+            assertEquals(400, ((Homebase) nodes.get(1)).getHealth());
+            assertEquals(600, ((Homebase) nodes.get(1)).getMaxHealth());
+        } catch (RuntimeException e) {
+            fail();
         }
-        catch (RuntimeException e) {fail();}
     }
 
     /**
      * Tests if changing homebase's health does correct clipping to 0 or maximum health
+     *
      * @throws Exception
      */
     @Test
     public void testChangeHealthBy() throws Exception {
-        List <Node> nodes = Node.readNodes("nodes.json");
-        Homebase h = (Homebase)Node.getNodeById("Moscow", nodes);
+        List<Node> nodes = Node.readNodes("nodes.json");
+        Homebase h = (Homebase) Node.getNodeById("Moscow", nodes);
 
         // No clipping required
         h.changeHealthBy(-100);

@@ -20,6 +20,7 @@ public class GameEndMenu extends Group {
 
     /**
      * creates a new instance of GameEndMenu
+     *
      * @param winner the player that won as an index value. (index value = player number - 1)
      */
     public GameEndMenu(int winner) {

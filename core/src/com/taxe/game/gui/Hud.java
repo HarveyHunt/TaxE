@@ -31,6 +31,7 @@ public class Hud extends Group {
 
     /**
      * creates an instance of the Hud class
+     *
      * @param game the GameCore instance for the game
      */
     public Hud(GameCore game) {
@@ -95,6 +96,7 @@ public class Hud extends Group {
 
     /**
      * set the text that displays the players resources
+     *
      * @param p the player whose resources are being displayed
      */
     public void setPlayerText(Player p) {
@@ -104,6 +106,7 @@ public class Hud extends Group {
 
     /**
      * returns player's healthbar
+     *
      * @param p the player whose healthbar is returned
      * @return player's p healthbar
      */

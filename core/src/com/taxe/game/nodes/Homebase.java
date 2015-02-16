@@ -112,7 +112,8 @@ public class Homebase extends Node {
      */
     public void validate() throws RuntimeException {
         if (health < 0) throw new RuntimeException("health < 0");
-        if (health > maxHealth) throw new RuntimeException("health > maxHealth");
+        if (health > maxHealth)
+            throw new RuntimeException("health > maxHealth");
     }
 
 }
