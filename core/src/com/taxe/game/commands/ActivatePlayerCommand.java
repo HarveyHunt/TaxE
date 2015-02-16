@@ -58,10 +58,10 @@ public class ActivatePlayerCommand implements Commandable {
         }
 
         // Increase player's gold based on influence.
-        // TODO: This could be made more interesting.
         for (City c: game.getMap().getCities()) {
-            int goldToAdd = Math.round(100 * c.getInfluence(game.getActivePlayer().id));
+            int goldToAdd = Math.round(10 * c.getInfluence(game.getActivePlayer().id));
             ((Player) target).changeGold(goldToAdd);
+            game.getGui().getHud().setPlayerText((Player) target);
         }
 
         if (game.getTasks().size() < 5) {
