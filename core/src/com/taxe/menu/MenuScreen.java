@@ -15,8 +15,6 @@ import com.taxe.game.gui.Button;
  * The Screen that represents the menu
  */
 public class MenuScreen implements Screen {
-
-    private Main main;
     private Stage stage;
     private Menu menu;
 
@@ -26,8 +24,6 @@ public class MenuScreen implements Screen {
      * @param main The main application.
      */
     public MenuScreen(Main main) {
-        this.main = main;
-
         stage = new Stage(new ScreenViewport());
         Gdx.input.setInputProcessor(stage);
 
@@ -83,7 +79,7 @@ public class MenuScreen implements Screen {
 
     @Override
     public void dispose() {
-
+        
     }
 
 }
