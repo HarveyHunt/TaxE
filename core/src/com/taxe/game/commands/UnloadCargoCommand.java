@@ -37,7 +37,7 @@ public class UnloadCargoCommand implements Commandable {
          * the cargo type is correct and the reward the player for their work.
          */
         for (Train t : game.getActivePlayer().getTrains())
-            if (t.getCargo().getId().equals(task.getCargo().getId())) {
+            if (t.getCargo() != null && t.getCargo().getId().equals(task.getCargo().getId())) {
                 city.changeInfluenceBy(game.getPlayers().indexOf(target), 0.1f);
 
                 // Player IDs start at 0, so add one so it makes sense for the
