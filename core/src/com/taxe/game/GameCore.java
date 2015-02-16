@@ -19,7 +19,6 @@ import com.taxe.game.tasks.Task;
 import com.taxe.game.tasks.TaskFactory;
 import com.taxe.game.trains.BasicTrain;
 import com.taxe.game.trains.Train;
-import com.taxe.game.gui.Gui;
 import com.taxe.game.cards.*;
 
 import java.io.IOException;
@@ -101,7 +100,7 @@ public class GameCore implements Screen {
 
         // Create card icons, add them to the scene and initialise their labels
         this.hand = new Hand(scene);
-        this.hand.UpdateCardLabels(this);
+        this.hand.updateCardLabels(this);
 
         scene.scale();
     }

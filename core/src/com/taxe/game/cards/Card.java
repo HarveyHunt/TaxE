@@ -9,7 +9,6 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.taxe.game.GameCore;
 import com.taxe.game.commands.Commandable;
-import com.taxe.game.gui.TextNotification;
 import com.taxe.game.inputhandling.Clickable;
 
 import java.awt.*;

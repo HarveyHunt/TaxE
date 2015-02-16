@@ -2,8 +2,6 @@ package com.taxe.game.commands;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.taxe.game.GameCore;
 import com.taxe.game.gui.GuiTextures;
 import com.taxe.game.nodes.City;
@@ -24,7 +22,8 @@ public class SwitchPlayerCommand implements Commandable {
         Commands.activatePlayerCommand.executeCommand(game, game.nextActivePlayer());
         game.switchActivePlayer();
 
-        game.hand.UpdateCardLabels(game);
+        game.hand.setCardUsability(true);
+        game.hand.updateCardLabels(game);
 
         Texture texture;
         if (game.getActivePlayer() == game.getPlayers().get(0))

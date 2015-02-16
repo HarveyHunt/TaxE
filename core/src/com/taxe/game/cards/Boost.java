@@ -2,7 +2,6 @@ package com.taxe.game.cards;
 
 import com.taxe.game.GameCore;
 import com.taxe.game.commands.Commands;
-import com.taxe.game.nodes.City;
 import com.badlogic.gdx.graphics.Texture;
 
 /**
@@ -23,15 +22,15 @@ public class Boost extends Card {
 
     @Override
     public void clicked(GameCore game) {
-        if (game.getActivePlayer().getBoostQty() > 0) {
+        if ((game.getActivePlayer().getBoostQty() > 0) && (game.hand.isCardUsable())) {
             command.executeCommand(game, null);
             game.getActivePlayer().adjustBoostQty(-1);
 
-            game.hand.UpdateCardLabels(game);
+            game.hand.updateCardLabels(game);
         }
 
         else {
-            System.out.println("Insufficient Boost Cards!");
+            // Notification needed to indicate that the player cannot use this card
         }
     }
 }

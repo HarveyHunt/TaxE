@@ -13,22 +13,28 @@ public class Hand {
     public Boost boost;
 
     private boolean isBlockActive;
+    private boolean canUseCard;
 
     public Hand(Scene scene) {
         block = new Block();
         boost = new Boost();
 
         isBlockActive = false;
+        canUseCard = true;
 
         scene.addActor(block);
         scene.addActor(boost);
     }
 
-    public void UpdateCardLabels(GameCore game) {
+    public void updateCardLabels(GameCore game) {
         block.qtyLabel.setText(game.getActivePlayer().getBlockQty().toString());
         boost.qtyLabel.setText(game.getActivePlayer().getBoostQty().toString());
     }
 
     public boolean isBlockCardActive() { return isBlockActive; }
     public void setBlockCardState(boolean b) { isBlockActive = b; }
+
+    public boolean isCardUsable () { return canUseCard; }
+    public void setCardUsability (boolean b) { canUseCard = b; }
+
 }

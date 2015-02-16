@@ -13,5 +13,6 @@ public class BlockCityCommand implements Commandable {
         System.out.println("Block Fired");
         Commands.resetPathCommand.executeCommand(game, target);
         game.hand.setBlockCardState(true);
+        game.hand.setCardUsability(false);
     }
 }

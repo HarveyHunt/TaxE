@@ -50,13 +50,15 @@ public class Player extends Group {
             this.addActor(t);
         }
 
+        this.id=id;
+
         /*
         List of integers representing the number of each card held
         Position 0: Boost
         Position 1: Block
         */
 
-        cardQtys = new ArrayList<Integer>();
+        this.cardQtys = new ArrayList<Integer>();
 
         cardQtys.add(2);
         cardQtys.add(2);
