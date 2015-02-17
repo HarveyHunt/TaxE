@@ -52,6 +52,12 @@ public class TrainTest {
 
     /**
      * Class representing a basic train. A very simple train.
+     *
+     * NOTE: This may look like the stupidest bit of code - I even deleted it once
+     * however, Trains is an Abstract class (WOO JAVA), so we can't create an
+     * instance of it.
+     *
+     * We wouldn't have this issue in Python.... ;-)
      */
     private static class SimpleTrain extends Train {
 
