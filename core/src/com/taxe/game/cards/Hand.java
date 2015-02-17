@@ -3,8 +3,6 @@ package com.taxe.game.cards;
 import com.taxe.game.GameCore;
 import com.taxe.game.Scene;
 
-import com.taxe.game.cards.*;
-
 /**
  * Created by henry on 15/02/15.
  */
@@ -51,11 +49,11 @@ public class Hand {
         isBoostActive = b;
     }
 
-    public boolean isCardUsable () {
+    public boolean isCardUsable() {
         return canUseCard;
     }
 
-    public void setCardUsability (boolean b) {
+    public void setCardUsability(boolean b) {
         canUseCard = b;
     }
 }

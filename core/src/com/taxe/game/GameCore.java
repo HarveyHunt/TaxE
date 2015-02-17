@@ -9,6 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.taxe.Main;
+import com.taxe.game.cards.Hand;
 import com.taxe.game.commands.Commands;
 import com.taxe.game.gui.Gui;
 import com.taxe.game.inputhandling.Clickable;
@@ -19,7 +20,6 @@ import com.taxe.game.tasks.Task;
 import com.taxe.game.tasks.TaskFactory;
 import com.taxe.game.trains.BasicTrain;
 import com.taxe.game.trains.Train;
-import com.taxe.game.cards.*;
 
 import java.io.IOException;
 import java.util.ArrayDeque;
@@ -32,6 +32,8 @@ import java.util.Deque;
  */
 public class GameCore implements Screen {
 
+    public TaskFactory taskFactory;
+    public Hand hand;
     private Main main;
     private Stage stage;
     private Gui gui;
@@ -41,8 +43,6 @@ public class GameCore implements Screen {
     private Map map;
     private Scene scene;
     private ArrayDeque<Node> selectedPath = new ArrayDeque<>();
-    public TaskFactory taskFactory;
-    public Hand hand;
 
     /**
      * creates an instance of GameCore

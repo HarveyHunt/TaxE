@@ -2,7 +2,6 @@ package com.taxe.game.cards;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
-
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
@@ -34,9 +33,7 @@ public class Block extends Card {
             game.getActivePlayer().adjustBlockQty(-1);
 
             game.hand.updateCardLabels(game);
-        }
-
-        else {
+        } else {
             Label label = new Label("Cannot use card",
                     new Label.LabelStyle(new BitmapFont(), Color.RED));
             label.setAlignment(Align.center);

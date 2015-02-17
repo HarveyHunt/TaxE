@@ -5,7 +5,6 @@ import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.taxe.game.nodes.Homebase;
 import com.taxe.game.trains.Train;
-import com.taxe.game.cards.Hand;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,7 +50,7 @@ public class Player extends Group {
             this.addActor(t);
         }
 
-        this.id=id;
+        this.id = id;
 
         /*
         List of integers representing the number of each card held
@@ -164,11 +163,21 @@ public class Player extends Group {
         fuelUsage += t.getFuelCost();
     }
 
-    public Integer getBoostQty() { return cardQtys.get(0); }
-    public void adjustBoostQty(int v) { cardQtys.set(0, cardQtys.get(0) + v); }
+    public Integer getBoostQty() {
+        return cardQtys.get(0);
+    }
 
-    public Integer getBlockQty() { return cardQtys.get(1); }
-    public void adjustBlockQty(int v) { cardQtys.set(1, cardQtys.get(1) + v); }
+    public void adjustBoostQty(int v) {
+        cardQtys.set(0, cardQtys.get(0) + v);
+    }
+
+    public Integer getBlockQty() {
+        return cardQtys.get(1);
+    }
+
+    public void adjustBlockQty(int v) {
+        cardQtys.set(1, cardQtys.get(1) + v);
+    }
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
