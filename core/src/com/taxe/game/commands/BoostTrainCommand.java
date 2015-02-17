@@ -9,13 +9,9 @@ import com.taxe.game.trains.Train;
 public class BoostTrainCommand implements Commandable {
     /**
      * @param game   An instance of GameCore.
-     * @param target The train to be sped up.
-     * @throws IllegalArgumentException if target is not an instance of Train
+     * @param target Unused.
      */
-    public void executeCommand(GameCore game, Object target) throws IllegalArgumentException {
-        if (!(target instanceof Train)) {
-            throw new IllegalArgumentException("target not instance of Train");
-        }
+    public void executeCommand(GameCore game, Object target) {
         for (Train t : game.getActivePlayer().getTrains())
             t.setSpeed(t.getSpeed() + 2);
 

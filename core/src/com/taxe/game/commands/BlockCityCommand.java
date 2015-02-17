@@ -9,13 +9,9 @@ import com.taxe.game.nodes.City;
 public class BlockCityCommand implements Commandable {
     /**
      * @param game   Instance of GameCore.
-     * @param target A city that shall be locked.
-     * @throws IllegalArgumentException if target is not an instance of City
+     * @param target unused
      */
-    public void executeCommand(GameCore game, Object target) throws IllegalArgumentException {
-        if (!(target instanceof City)) {
-            throw new IllegalArgumentException("target not instance of City");
-        }
+    public void executeCommand(GameCore game, Object target) {
         Commands.resetPathCommand.executeCommand(game, target);
         game.hand.setBlockCardState(true);
         game.hand.setCardUsability(false);
