@@ -2,17 +2,16 @@ package com.taxe.game.player;
 
 import com.taxe.GdxTestRunner;
 import com.taxe.game.nodes.IntermediatePoint;
-import com.taxe.game.nodes.Node;
 import com.taxe.game.trains.BasicTrain;
 import com.taxe.game.trains.Train;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
 
 import java.util.ArrayList;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(GdxTestRunner.class)
 public class PlayerTest {

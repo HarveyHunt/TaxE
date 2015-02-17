@@ -1,16 +1,16 @@
 package com.taxe.game.tasks;
 
 import com.taxe.GdxTestRunner;
-import com.taxe.game.cargo.Cargo;
 import com.taxe.game.cargo.Penguins;
 import com.taxe.game.nodes.City;
 import com.taxe.game.player.Player;
 import com.taxe.game.trains.Train;
 import org.junit.Test;
-import static org.junit.Assert.assertFalse;
 import org.junit.runner.RunWith;
 
 import java.util.ArrayList;
+
+import static org.junit.Assert.assertFalse;
 
 @RunWith(GdxTestRunner.class)
 public class TaskTest {
