@@ -3,13 +3,16 @@ package com.taxe.game.cards;
 import com.taxe.game.GameCore;
 import com.taxe.game.Scene;
 
+/**
+ * Hand is a way of keeping all card handling logic together. The GameCore has
+ * a single instance of Hand.
+ */
 public class Hand {
     public Block block;
     public Boost boost;
 
     private boolean isBlockActive;
     private boolean isBoostActive;
-
     private boolean canUseCard;
 
     public Hand(Scene scene) {

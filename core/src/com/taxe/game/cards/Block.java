@@ -8,6 +8,9 @@ import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.taxe.game.GameCore;
 import com.taxe.game.commands.Commands;
 
+/**
+ * A block card blocks off a city. The city is unblocked randomly.
+ */
 public class Block extends Card {
     public Block() {
         super();

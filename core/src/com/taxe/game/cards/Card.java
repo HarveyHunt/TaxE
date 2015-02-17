@@ -9,6 +9,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.taxe.game.GameCore;
 import com.taxe.game.inputhandling.Clickable;
 
+/**
+ * A card is a reward that a player can receive for completing a task.
+ */
 public abstract class Card extends Actor implements Clickable {
     public Label qtyLabel;
 

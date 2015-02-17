@@ -8,6 +8,9 @@ import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.taxe.game.GameCore;
 import com.taxe.game.commands.Commands;
 
+/**
+ * A boost card increases the speed of all trains owned by a player.
+ */
 public class Boost extends Card {
     public Boost() {
         super();
