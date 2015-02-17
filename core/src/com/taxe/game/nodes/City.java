@@ -20,7 +20,7 @@ import java.util.List;
  */
 public class City extends Node {
 
-    public Boolean locked;
+    public boolean isLocked;
     private float influence;
     private List<Task> taskList;
     private List<Cargo> cargoList;
@@ -31,7 +31,7 @@ public class City extends Node {
     public City() {
         super();
         influence = 0.5f;
-        locked = false;
+        isLocked = false;
         taskList = new ArrayList<>();
         cargoList = new ArrayList<>();
     }

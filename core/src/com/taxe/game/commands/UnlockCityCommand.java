@@ -23,7 +23,7 @@ public class UnlockCityCommand implements Commandable {
         }
         City c = (City) target;
 
-        c.locked = false;
+        c.isLocked = false;
         c.setState(NodeStates.ORIGINAL);
 
         Label label = new Label(c.getId() + " has been unlocked",

@@ -44,12 +44,12 @@ public class SwitchPlayerCommand implements Commandable {
         while (lockableCity == null) {
             City c = game.getMap().getCities().get(rand.nextInt(
                     game.getMap().getCities().size()));
-            if (!c.locked)
+            if (!c.isLocked)
                 lockableCity = c;
         }
 
         for (City c : game.getMap().getCities())
-            if (c.locked && rand.nextInt(3) == 0)
+            if (c.isLocked && rand.nextInt(3) == 0)
                 Commands.unlockCityCommand.executeCommand(game, c);
 
         if (rand.nextInt(5) == 0)

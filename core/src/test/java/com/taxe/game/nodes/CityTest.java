@@ -20,7 +20,7 @@ public class CityTest {
 
     @Test
     public void testNotLocked() {
-        assertFalse(city.locked);
+        assertFalse(city.isLocked);
     }
 
     @Test

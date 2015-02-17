@@ -23,7 +23,7 @@ public class LockCityCommand implements Commandable {
         }
 
         City c = (City) target;
-        c.locked = true;
+        c.isLocked = true;
         c.setState(NodeStates.LOCKED);
 
         Label label = new Label(c + " has been locked",

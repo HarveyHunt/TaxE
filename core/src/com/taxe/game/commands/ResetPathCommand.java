@@ -21,7 +21,7 @@ public class ResetPathCommand implements Commandable {
         }
         for (Node n : game.getMap().getNodes()) {
             if (n instanceof City)
-                n.setState(((City) n).locked ? NodeStates.LOCKED : NodeStates.ORIGINAL);
+                n.setState(((City) n).isLocked ? NodeStates.LOCKED : NodeStates.ORIGINAL);
             else
                 n.setState(NodeStates.ORIGINAL);
         }
