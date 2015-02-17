@@ -7,7 +7,7 @@ import com.taxe.game.util.Coordinate;
 
 /**
  * Represents a single sleeper.
- *
+ * <p/>
  * If sleeper.isEnding() is true, that means that the sleeper is at the ending
  * of one of the sub-segments of track.
  */
@@ -17,10 +17,11 @@ public class Sleeper extends Actor {
 
     /**
      * Creates a sleeper at specified properties.
-     * @param x x-coordinate of sleeper
-     * @param y y-coordinate of sleeper
+     *
+     * @param x        x-coordinate of sleeper
+     * @param y        y-coordinate of sleeper
      * @param rotation rotation of sleeper, in degrees
-     * @param ending does sleeper mark the ending of the segment of a track
+     * @param ending   does sleeper mark the ending of the segment of a track
      */
     public Sleeper(float x, float y, float rotation, boolean ending) {
         this.ending = ending;
@@ -31,6 +32,7 @@ public class Sleeper extends Actor {
 
     /**
      * Compares sleeper to another object
+     *
      * @param other object to which sleeper is compared
      * @return true if sleeper's coordinate is the same and they both mark an ending of the track
      */
@@ -46,6 +48,7 @@ public class Sleeper extends Actor {
 
     /**
      * Returns location of the sleeper.
+     *
      * @return location of the sleeper.
      */
     public Coordinate getCoordinate() {
@@ -54,6 +57,7 @@ public class Sleeper extends Actor {
 
     /**
      * Returns if the sleeper is located at the end of one of the segments of the track.
+     *
      * @return true if sleeper is at the end of one of the segments of the track.
      */
     public boolean isEnding() {

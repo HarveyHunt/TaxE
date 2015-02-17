@@ -19,7 +19,7 @@ import java.util.Iterator;
 public class ActivatePlayerCommand implements Commandable {
 
     /**
-     * @param game instance of game
+     * @param game   instance of game
      * @param target player that must be activated
      * @throws IllegalArgumentException if target is not an instance of Player
      */
@@ -40,7 +40,7 @@ public class ActivatePlayerCommand implements Commandable {
             t.setState(TrainStates.ACTIVE);
 
         // Complete or delete tasks before adding a new one.
-        for (Iterator<Task> iter = game.getTasks().iterator(); iter.hasNext();) {
+        for (Iterator<Task> iter = game.getTasks().iterator(); iter.hasNext(); ) {
             Task t = iter.next();
 
             if (t.getTasktime() == 0) {
@@ -58,12 +58,13 @@ public class ActivatePlayerCommand implements Commandable {
         }
 
         // Increase player's gold based on influence.
-        // TODO: This could be made more interesting.
-        for (City c: game.getMap().getCities()) {
-            int goldToAdd = Math.round(100 * c.getInfluence(game.getActivePlayer().id));
+        for (City c : game.getMap().getCities()) {
+            int goldToAdd = Math.round(10 * c.getInfluence(game.getActivePlayer().id));
             ((Player) target).changeGold(goldToAdd);
+            game.getGui().getHud().setPlayerText((Player) target);
         }
 
+        // Generate new tasks, if needed.
         if (game.getTasks().size() < 5) {
             Task t = game.taskFactory.generateTask();
             game.getTasks().add(t);

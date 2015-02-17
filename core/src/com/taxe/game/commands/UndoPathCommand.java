@@ -12,8 +12,7 @@ import com.taxe.game.tracks.Track;
 public class UndoPathCommand implements Commandable {
 
     /**
-     *
-     * @param game instance of game
+     * @param game   instance of game
      * @param target node up to which path must be undone
      * @throws IllegalArgumentException if target not instance of node
      */
@@ -53,9 +52,7 @@ public class UndoPathCommand implements Commandable {
                         n.setState(NodeStates.HIGHLIGHTED);
             }
         }
-
         // Adding current selected node to path
         selected.setState(NodeStates.SELECTED);
-
     }
 }

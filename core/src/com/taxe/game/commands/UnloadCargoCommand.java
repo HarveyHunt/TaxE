@@ -15,10 +15,10 @@ import com.taxe.game.util.Pair;
  */
 public class UnloadCargoCommand implements Commandable {
     /**
-     * @param game instance of GameCore
+     * @param game   instance of GameCore
      * @param target A Pair of the form: (City, Task).
      * @throws IllegalArgumentException if the Pair isn't of the form
-     * (City, Task).
+     *                                  (City, Task).
      */
     public void executeCommand(GameCore game, Object target) throws IllegalArgumentException {
         if (!(target instanceof Pair))
@@ -40,8 +40,8 @@ public class UnloadCargoCommand implements Commandable {
             if (t.getCargo().getId().equals(task.getCargo().getId())) {
                 city.changeInfluenceBy(game.getPlayers().indexOf(target), 0.1f);
 
-                // TODO: Check that ((Player) target) doesn't just return a
-                // memory address. If it does, implement a name for players.
+                // Player IDs start at 0, so add one so it makes sense for the
+                // human.
                 Label label = new Label("Player " + (game.getActivePlayer().id + 1)
                         + " has completed a task",
                         new Label.LabelStyle(new BitmapFont(), Color.GREEN));
@@ -49,9 +49,11 @@ public class UnloadCargoCommand implements Commandable {
 
                 game.getGui().getNotificationBox().addLabel(label, 5.0f);
 
-                t.unload();
+                t.unloadCargo();
                 game.getGui().getInfoDisplay().removeTask(task);
                 game.getTasks().remove(task);
+
+                Commands.rewardCardCommand.executeCommand(game, game.getActivePlayer());
             }
     }
 }

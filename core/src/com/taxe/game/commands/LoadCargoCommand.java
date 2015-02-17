@@ -15,10 +15,10 @@ import com.taxe.game.util.Pair;
  */
 public class LoadCargoCommand implements Commandable {
     /**
-     * @param game instance of GameCore
+     * @param game   instance of GameCore
      * @param target A Pair of the form: (City, Cargo).
      * @throws IllegalArgumentException if the Pair isn't of the form
-     * (City, Cargo).
+     *                                  (City, Cargo).
      */
     public void executeCommand(GameCore game, Object target) throws IllegalArgumentException {
         if (!(target instanceof Pair))
@@ -28,17 +28,19 @@ public class LoadCargoCommand implements Commandable {
         if (!(((Pair) target).right instanceof Cargo))
             throw new IllegalArgumentException("target.right not instance of Cargo");
 
-        Pair pair = (Pair) target;
-        Label label = new Label("You don't own a train on " + pair.right,
+        City city = (City) ((Pair) target).left;
+        Cargo cargo = (Cargo) ((Pair) target).right;
+
+        Label label = new Label("You don't own a train on " + city,
                 new Label.LabelStyle(new BitmapFont(), Color.ORANGE));
 
         for (Train t : game.getActivePlayer().getTrains()) {
-            if (t.getNode() == pair.left)
-                if (t.loadCargo((Cargo) pair.right))
-                    label = new Label("Loaded " + pair.right,
+            if (t.getNode() == city)
+                if (t.loadCargo(cargo))
+                    label = new Label("Loaded " + cargo,
                             new Label.LabelStyle(new BitmapFont(), Color.GREEN));
                 else
-                    label = new Label("Couldn't load " + pair.right,
+                    label = new Label("Couldn't load " + cargo,
                             new Label.LabelStyle(new BitmapFont(), Color.RED));
         }
 

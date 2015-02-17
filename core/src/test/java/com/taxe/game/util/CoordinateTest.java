@@ -26,8 +26,8 @@ public class CoordinateTest {
             Coordinate.coordinateAlongLine(c0, c0, -0.1f);
             Coordinate.coordinateAlongLine(c0, c0, 1.1f);
             fail();
+        } catch (IllegalArgumentException e) {
         }
-        catch (IllegalArgumentException e) {}
     }
 
     @Test

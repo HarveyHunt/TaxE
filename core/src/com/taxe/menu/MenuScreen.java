@@ -15,19 +15,16 @@ import com.taxe.game.gui.Button;
  * The Screen that represents the menu
  */
 public class MenuScreen implements Screen {
-
-    private Main main;
     private Stage stage;
     private Menu menu;
 
     /**
      * The screen for the menu. Allows the user to start the game or exit.
      * The elements of the menu are stored in an instance of the Menu class.
+     *
      * @param main The main application.
      */
     public MenuScreen(Main main) {
-        this.main = main;
-
         stage = new Stage(new ScreenViewport());
         Gdx.input.setInputProcessor(stage);
 

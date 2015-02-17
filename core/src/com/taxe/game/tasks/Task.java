@@ -7,10 +7,10 @@ import com.taxe.game.trains.Train;
 
 /**
  * Top-level class for representing tasks. Different types of tasks are implemented by extending this class.
- * <p>
+ * <p/>
  * Each task has a name, objective and time when it can be completed. When the time runs out, task should not be
  * available for completion anymore.
- *
+ * <p/>
  * A task is available to all players.
  */
 public class Task {
@@ -21,9 +21,9 @@ public class Task {
     /**
      * Creates an instance of Task with given name, objective and time during which it can be completed.
      *
-     * @param endCity   The ending city of the task
-     * @param cargo The type of cargo to be delivered
-     * @param taskTime  time when tasks is available for completion
+     * @param endCity  The ending city of the task
+     * @param cargo    The type of cargo to be delivered
+     * @param taskTime time when tasks is available for completion
      */
 
     public Task(City endCity, Cargo cargo, int taskTime) {
@@ -75,6 +75,7 @@ public class Task {
 
     /**
      * Checks whether the goal has been completed
+     *
      * @param player The player that may have completed the goal.
      * @return Boolean value according to whether the task has been completed.
      */

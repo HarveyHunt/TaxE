@@ -21,7 +21,7 @@ public class Track extends Group {
     // Constants for drawing
     private static final float DISTANCE_BETWEEN_SLEEPERS = 8f;
     private static final float PRECISION = 0.02f;
-    
+
     private final ArrayList<Node> nodes;
     private final ArrayList<Sleeper> sleepers;
 
@@ -83,7 +83,8 @@ public class Track extends Group {
             for (String id : ids) {
                 Node n = Node.getNodeById(id, nodes);
                 if (n != null) t.add(n);
-                else throw new RuntimeException("can't construct track with non-existent id = " + id);
+                else
+                    throw new RuntimeException("can't construct track with non-existent id = " + id);
             }
             tracks.add(new Track(t));
         }
@@ -93,11 +94,11 @@ public class Track extends Group {
 
     /**
      * Returns a list of sleepers that form a line between two points based on a starting direction.
-     *
+     * <p/>
      * Draw a straight line between point ca and point cb.
-     *
+     * <p/>
      * Sleepers are spaced evenly.
-     *
+     * <p/>
      * TODO: This can be shrunk down hugely - just do it all in one loop....
      *
      * @param ca         first point.

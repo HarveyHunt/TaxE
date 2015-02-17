@@ -6,11 +6,11 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 /**
  * Base-class for representing cargo. Different types of cargo (e.g. penguins, bricks, etc.) are implemented by
  * extending this class.
- * <p>
+ * <p/>
  * Cargo is characterised by its quantity, id and texture. Quantity must always be non-negative. Id and texture are
  * specified in the extending class. Textures of each cargo type can be found in {@link
  * com.taxe.game.cargo.CargoTextures}.
- *
+ * <p/>
  * We don't need to specify a draw or adjustActor method as we will just render
  * Cargo as a button.
  */

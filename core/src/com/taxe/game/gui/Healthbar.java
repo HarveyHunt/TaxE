@@ -14,6 +14,7 @@ public class Healthbar extends Actor {
 
     /**
      * creates an instance of Healthbar
+     *
      * @param flipped whether the drawing of this healthbar should be flipped or not
      */
     public Healthbar(boolean flipped) {
@@ -23,6 +24,7 @@ public class Healthbar extends Actor {
 
     /**
      * set the percentage value used to draw the healthbar
+     *
      * @param percentage 1.0f is max health. 0.0f is min health
      */
     public void setPercentage(float percentage) {

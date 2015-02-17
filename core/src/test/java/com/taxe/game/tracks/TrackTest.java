@@ -15,6 +15,7 @@ public class TrackTest {
 
     /**
      * Tests if creating a track with non-existent id throws an exception
+     *
      * @throws Exception
      */
     @Test
@@ -24,8 +25,7 @@ public class TrackTest {
             List<Node> nodes = Node.readNodes("nodes.json");
             List<Track> tracks = Track.readTracks("tracks-non-existent-id.json", nodes);
             fail();
-        }
-        catch (RuntimeException e) {
+        } catch (RuntimeException e) {
             assertTrue(e.getMessage().contains("can't construct track with non-existent id"));
         }
 
@@ -33,7 +33,8 @@ public class TrackTest {
         try {
             List<Node> nodes = Node.readNodes("nodes.json");
             List<Track> tracks = Track.readTracks("tracks.json", nodes);
+        } catch (RuntimeException e) {
+            fail();
         }
-        catch (RuntimeException e) {fail();}
     }
 }

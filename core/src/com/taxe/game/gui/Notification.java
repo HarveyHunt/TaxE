@@ -18,10 +18,11 @@ public class Notification extends Actor {
 
     /**
      * creates an instance of Notification
-     * @param parent the parent group that created this.
-     * @param texture the texture of the notification
+     *
+     * @param parent     the parent group that created this.
+     * @param texture    the texture of the notification
      * @param coordinate the center position of the notification
-     * @param duration the duration it is displayed for until it fades out
+     * @param duration   the duration it is displayed for until it fades out
      */
     public Notification(Group parent, Texture texture, Coordinate coordinate, float duration) {
         setParent(parent);

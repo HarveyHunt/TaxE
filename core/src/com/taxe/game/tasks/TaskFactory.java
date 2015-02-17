@@ -29,7 +29,7 @@ public class TaskFactory {
             newEnd = cities.get(rgen.nextInt(cities.size() - 1));
         while (!unusedCity(newEnd));
 
-        switch(rgen.nextInt(4)) {
+        switch (rgen.nextInt(4)) {
             case 0:
                 return new Task(newEnd, new Wheat(cargoQuantity), turns);
             case 1:
@@ -46,6 +46,7 @@ public class TaskFactory {
 
     /**
      * Discover if a city is already the end point of a task, if so return false.
+     *
      * @param c The city to be checked for.
      * @return true if the city is unused, false otherwise.
      */

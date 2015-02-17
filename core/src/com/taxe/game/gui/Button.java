@@ -19,6 +19,7 @@ public class Button extends Actor implements Clickable {
 
     /**
      * Creates an instance of a Button
+     *
      * @param texture the button's texture
      */
     public Button(Texture texture) {
@@ -59,6 +60,7 @@ public class Button extends Actor implements Clickable {
 
     /**
      * returns the button's state
+     *
      * @return button's state
      */
     public int getState() {
@@ -89,7 +91,7 @@ public class Button extends Actor implements Clickable {
                     texture, getX() - getOriginX(), getY() - getOriginY(),
                     getOriginX(), getOriginY(), getWidth(), getHeight(),
                     1, 1, 0,
-                    0, (int)(getHeight() * state), (int)getWidth(), (int)getHeight(),
+                    0, (int) (getHeight() * state), (int) getWidth(), (int) getHeight(),
                     false, false);
         }
     }

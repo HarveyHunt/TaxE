@@ -12,6 +12,7 @@ public class TrainTest {
 
     /**
      * Tests if creating a train not satisfying the constraints throws an exception.
+     *
      * @throws Exception
      */
     @Test
@@ -20,23 +21,23 @@ public class TrainTest {
         try {
             SimpleTrain s = new SimpleTrain(-1, 0, 1, new City());
             fail();
+        } catch (RuntimeException e) {
         }
-        catch (RuntimeException e) {}
         try {
             SimpleTrain s = new SimpleTrain(1, -1, 0, new City());
             fail();
+        } catch (RuntimeException e) {
         }
-        catch (RuntimeException e) {}
         try {
             SimpleTrain s = new SimpleTrain(0, 1, -1, new City());
             fail();
+        } catch (RuntimeException e) {
         }
-        catch (RuntimeException e) {}
         try {
             SimpleTrain s = new SimpleTrain(-1, 1, 1, null);
             fail();
+        } catch (RuntimeException e) {
         }
-        catch (RuntimeException e) {}
 
         // Trying to create a train satisfying constraints
         try {
@@ -44,8 +45,9 @@ public class TrainTest {
             assertEquals(1, s.getSpeed());
             assertEquals(2, s.getCargoCap());
             assertEquals(3, s.getFuelCost());
+        } catch (RuntimeException e) {
+            fail();
         }
-        catch (RuntimeException e) {fail();}
     }
 
     /**

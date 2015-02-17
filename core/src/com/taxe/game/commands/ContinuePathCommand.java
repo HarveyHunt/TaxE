@@ -13,7 +13,7 @@ import com.taxe.game.tracks.Track;
 public class ContinuePathCommand implements Commandable {
 
     /**
-     * @param game instance of game
+     * @param game   instance of game
      * @param target new node added to the path
      * @throws IllegalArgumentException if target not instance of Node
      */

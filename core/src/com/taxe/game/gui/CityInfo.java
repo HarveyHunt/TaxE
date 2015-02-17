@@ -22,16 +22,15 @@ import java.util.ArrayList;
  */
 public class CityInfo extends Group {
 
+    private final int LEFT_START = Gdx.graphics.getWidth() - 200;
+    private final int BOTTOM_MARGIN = 10;
+    private final int LABEL_GAP = 20;
     private City city;
     private Label cityName;
     private Label cityInfluence;
     private ArrayList<Button> buttons;
     private Button unloadButton;
     private GameCore game;
-
-    private final int LEFT_START = Gdx.graphics.getWidth() - 200;
-    private final int BOTTOM_MARGIN = 10;
-    private final int LABEL_GAP = 20;
 
     public CityInfo(GameCore game) {
         this.city = null;
@@ -44,7 +43,7 @@ public class CityInfo extends Group {
      * Create the label objects that will store information about the city.
      */
     private void setupLabels() {
-        this.cityName = new Label("",  new Label.LabelStyle(new BitmapFont(),
+        this.cityName = new Label("", new Label.LabelStyle(new BitmapFont(),
                 Color.BLACK));
         this.cityName.setAlignment(Align.left);
         this.cityName.setPosition(LEFT_START, BOTTOM_MARGIN);
@@ -64,6 +63,9 @@ public class CityInfo extends Group {
     private void removeCargoButtons() {
         for (Button b : buttons)
             removeActor(b);
+        removeActor(unloadButton);
+
+        unloadButton = null;
         buttons.clear();
     }
 
@@ -73,6 +75,7 @@ public class CityInfo extends Group {
 
     /**
      * Update labels with the information for city.
+     *
      * @param city The city that we are displaying info for.
      */
     public void setCity(City city) {
@@ -91,7 +94,7 @@ public class CityInfo extends Group {
      */
     private void generateCargoButtons() {
         int i = 0;
-        for(Cargo c : city.getCargoList()) {
+        for (Cargo c : city.getCargoList()) {
             final Pair pair = new Pair(city, c);
 
             Button button = new Button(c.getTexture()) {
@@ -134,8 +137,7 @@ public class CityInfo extends Group {
                     Commands.unloadCargoCommand.executeCommand(game, pair);
                 }
             };
-            unloadButton.setPosition(LEFT_START + (unloadButton.getWidth()),
-                    BOTTOM_MARGIN + (3 * LABEL_GAP));
+            unloadButton.setPosition(LEFT_START, BOTTOM_MARGIN + (3 * LABEL_GAP));
 
             addActor(unloadButton);
         }
