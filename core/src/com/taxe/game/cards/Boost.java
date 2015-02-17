@@ -8,16 +8,10 @@ import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.taxe.game.GameCore;
 import com.taxe.game.commands.Commands;
 
-/**
- * Created by henry on 09/02/15.
- */
 public class Boost extends Card {
     public Boost() {
         super();
-        command = Commands.boostTrainCommand;
-
         qtyLabel.setPosition(48, 42);
-
         setPosition(0, 0);
         setSize(getTexture().getWidth(), getTexture().getHeight());
     }
@@ -29,7 +23,7 @@ public class Boost extends Card {
     @Override
     public void clicked(GameCore game) {
         if ((game.getActivePlayer().getBoostQty() > 0) && (game.hand.isCardUsable())) {
-            command.executeCommand(game, null);
+            Commands.boostTrainCommand.executeCommand(game, null);
             game.getActivePlayer().adjustBoostQty(-1);
 
             game.hand.updateCardLabels(game);

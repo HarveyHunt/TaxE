@@ -8,16 +8,10 @@ import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.taxe.game.GameCore;
 import com.taxe.game.commands.Commands;
 
-/**
- * Created by henry on 09/02/15.
- */
 public class Block extends Card {
     public Block() {
         super();
-        command = Commands.blockCityCommand;
-
         qtyLabel.setPosition(112, 42);
-
         setPosition(64, 0);
         setSize(getTexture().getWidth(), getTexture().getHeight());
     }
@@ -29,7 +23,7 @@ public class Block extends Card {
     @Override
     public void clicked(GameCore game) {
         if ((game.getActivePlayer().getBlockQty() > 0) && (game.hand.isCardUsable())) {
-            command.executeCommand(game, null);
+            Commands.blockCityCommand.executeCommand(game, null);
             game.getActivePlayer().adjustBlockQty(-1);
 
             game.hand.updateCardLabels(game);

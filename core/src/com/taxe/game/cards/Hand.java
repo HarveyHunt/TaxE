@@ -3,9 +3,6 @@ package com.taxe.game.cards;
 import com.taxe.game.GameCore;
 import com.taxe.game.Scene;
 
-/**
- * Created by henry on 15/02/15.
- */
 public class Hand {
     public Block block;
     public Boost boost;
@@ -21,7 +18,6 @@ public class Hand {
 
         isBlockActive = false;
         isBoostActive = false;
-
         canUseCard = true;
 
         scene.addActor(block);
