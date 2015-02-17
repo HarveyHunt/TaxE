@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 @RunWith(GdxTestRunner.class)
 public class TaskTest {
-    
+
     @Test
     public void testNotComplete() {
         // ALERT: Animal testing.
