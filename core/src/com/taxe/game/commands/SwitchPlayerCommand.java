@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.taxe.game.GameCore;
 import com.taxe.game.gui.GuiTextures;
 import com.taxe.game.nodes.City;
+import com.taxe.game.trains.Train;
 import com.taxe.game.util.Coordinate;
 
 import java.util.Random;
@@ -19,8 +20,18 @@ public class SwitchPlayerCommand implements Commandable {
         City lockableCity = null;
         Random rand = new Random();
 
+        if (game.hand.isBoostCardActive()) {
+            Train t = game.getActivePlayer().getTrains().get(0);
+            t.setSpeed(t.getSpeed() - 2);
+
+            game.hand.setBoostCardState(false);
+        }
+
         Commands.activatePlayerCommand.executeCommand(game, game.nextActivePlayer());
         game.switchActivePlayer();
+
+        game.hand.setCardUsability(true);
+        game.hand.updateCardLabels(game);
 
         Texture texture;
         if (game.getActivePlayer() == game.getPlayers().get(0))

@@ -19,6 +19,7 @@ import com.taxe.game.tasks.Task;
 import com.taxe.game.tasks.TaskFactory;
 import com.taxe.game.trains.BasicTrain;
 import com.taxe.game.trains.Train;
+import com.taxe.game.cards.*;
 
 import java.io.IOException;
 import java.util.ArrayDeque;
@@ -31,7 +32,6 @@ import java.util.Deque;
  */
 public class GameCore implements Screen {
 
-    public TaskFactory taskFactory;
     private Main main;
     private Stage stage;
     private Gui gui;
@@ -41,6 +41,8 @@ public class GameCore implements Screen {
     private Map map;
     private Scene scene;
     private ArrayDeque<Node> selectedPath = new ArrayDeque<>();
+    public TaskFactory taskFactory;
+    public Hand hand;
 
     /**
      * creates an instance of GameCore
@@ -94,7 +96,12 @@ public class GameCore implements Screen {
                 }
             }
         });
+
         Commands.activatePlayerCommand.executeCommand(this, getActivePlayer());
+
+        // Create card icons, add them to the scene and initialise their labels
+        this.hand = new Hand(scene);
+        this.hand.updateCardLabels(this);
 
         scene.scale();
     }

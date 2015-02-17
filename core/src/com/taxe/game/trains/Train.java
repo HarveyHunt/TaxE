@@ -65,6 +65,8 @@ public abstract class Train extends Actor implements Clickable {
         return speed;
     }
 
+    public void setSpeed(int s) { speed = s; }
+
     /**
      * Returns fuel cost of a train.
      *

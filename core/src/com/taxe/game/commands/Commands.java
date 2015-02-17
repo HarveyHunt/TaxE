@@ -19,6 +19,9 @@ public abstract class Commands {
     public static final SwitchPlayerCommand switchPlayerCommand = new SwitchPlayerCommand();
     public static final UndoPathCommand undoPathCommand = new UndoPathCommand();
     public static final UnlockCityCommand unlockCityCommand = new UnlockCityCommand();
+    public static final RewardCardCommand rewardCardCommand = new RewardCardCommand();
+    public static final BlockCityCommand blockCityCommand = new BlockCityCommand();
+    public static final BoostTrainCommand boostTrainCommand = new BoostTrainCommand();
     public static final LoadCargoCommand loadCargoCommand = new LoadCargoCommand();
     public static final UnloadCargoCommand unloadCargoCommand = new UnloadCargoCommand();
 }
