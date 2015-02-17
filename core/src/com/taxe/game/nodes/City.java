@@ -109,5 +109,6 @@ public class City extends Node {
     public void changeInfluenceBy(int playerID, float delta) {
         influence = Math.max(0, playerID == 0 ? influence + delta
                 : (1.0f - influence) + delta);
+        influence = Math.min(1, influence);
     }
 }
