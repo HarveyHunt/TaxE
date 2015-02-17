@@ -30,6 +30,8 @@ public class Task {
         this.endCity = endCity;
         this.cargo = cargo;
         this.taskTime = taskTime;
+
+        validate();
     }
 
     public String toString() {
@@ -92,5 +94,11 @@ public class Task {
 
     public void completeTurn() {
         taskTime--;
+    }
+
+    public void validate() throws RuntimeException {
+        if (cargo == null) throw new RuntimeException("Cargo is null");
+        if (taskTime < 0) throw new RuntimeException("taskTime < 0");
+        if (endCity == null) throw new RuntimeException("endCity is null");
     }
 }
