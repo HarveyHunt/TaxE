@@ -30,5 +30,4 @@ public class ResetPathCommand implements Commandable {
         game.getSelectedPath().clear();
         game.getGui().getHud().hidePathButtons();
     }
-
 }
