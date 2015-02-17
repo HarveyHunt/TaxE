@@ -5,7 +5,7 @@ import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.taxe.game.nodes.Homebase;
 import com.taxe.game.trains.Train;
-import com.taxe.game.cards.*;
+import com.taxe.game.cards.Hand;
 
 import java.util.ArrayList;
 import java.util.List;

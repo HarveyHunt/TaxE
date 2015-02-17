@@ -1,5 +1,9 @@
 package com.taxe.game.cards;
 
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.taxe.game.GameCore;
 import com.taxe.game.commands.Commands;
 import com.badlogic.gdx.graphics.Texture;
@@ -18,7 +22,9 @@ public class Boost extends Card {
         setSize(getTexture().getWidth(), getTexture().getHeight());
     }
 
-    public Texture getTexture() { return CardTextures.BOOST_CARD; }
+    public Texture getTexture() {
+        return CardTextures.BOOST_CARD;
+    }
 
     @Override
     public void clicked(GameCore game) {
@@ -30,7 +36,11 @@ public class Boost extends Card {
         }
 
         else {
-            // Notification needed to indicate that the player cannot use this card
+            Label label = new Label("Cannot use card",
+                    new Label.LabelStyle(new BitmapFont(), Color.RED));
+            label.setAlignment(Align.center);
+
+            game.getGui().getNotificationBox().addLabel(label, 5.0f);
         }
     }
 }

@@ -20,14 +20,12 @@ public class SwitchPlayerCommand implements Commandable {
         City lockableCity = null;
         Random rand = new Random();
 
-
         if (game.hand.isBoostCardActive()) {
             Train t = game.getActivePlayer().getTrains().get(0);
             t.setSpeed(t.getSpeed() - 2);
 
             game.hand.setBoostCardState(false);
         }
-
 
         Commands.activatePlayerCommand.executeCommand(game, game.nextActivePlayer());
         game.switchActivePlayer();

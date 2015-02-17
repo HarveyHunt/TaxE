@@ -35,13 +35,27 @@ public class Hand {
         boost.qtyLabel.setText(game.getActivePlayer().getBoostQty().toString());
     }
 
-    public boolean isBlockCardActive() { return isBlockActive; }
-    public void setBlockCardState(boolean b) { isBlockActive = b; }
+    public boolean isBlockCardActive() {
+        return isBlockActive;
+    }
 
-    public boolean isBoostCardActive() { return isBoostActive; }
-    public void setBoostCardState(boolean b) { isBoostActive = b; }
+    public void setBlockCardState(boolean b) {
+        isBlockActive = b;
+    }
 
-    public boolean isCardUsable () { return canUseCard; }
-    public void setCardUsability (boolean b) { canUseCard = b; }
+    public boolean isBoostCardActive() {
+        return isBoostActive;
+    }
 
+    public void setBoostCardState(boolean b) {
+        isBoostActive = b;
+    }
+
+    public boolean isCardUsable () {
+        return canUseCard;
+    }
+
+    public void setCardUsability (boolean b) {
+        canUseCard = b;
+    }
 }

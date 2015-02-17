@@ -23,10 +23,7 @@ public abstract class Card extends Actor implements Clickable
     public Label qtyLabel;
 
     public Card() {
-        qtyLabel = new Label("0",
-                new Label.LabelStyle(
-                        new BitmapFont(),
-                        Color.WHITE));
+        qtyLabel = new Label("0", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
 
         qtyLabel.setFontScale(1.2f);
         qtyLabel.setOrigin(qtyLabel.getWidth()/2, qtyLabel.getHeight()/2);
@@ -45,6 +42,7 @@ public abstract class Card extends Actor implements Clickable
                 getRotation(),
                 0, 0, getTexture().getWidth(), getTexture().getHeight(), false, false);
 
+        // TODO - replace with drawChildren
         qtyLabel.draw(batch, 1);
     }
 }

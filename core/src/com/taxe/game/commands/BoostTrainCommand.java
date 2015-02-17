@@ -9,7 +9,6 @@ import com.taxe.game.trains.Train;
 public class BoostTrainCommand implements Commandable {
     @Override
     public void executeCommand(GameCore game, Object target) {
-        System.out.println("Boost Fired");
         Train t = game.getActivePlayer().getTrains().get(0);
         t.setSpeed(t.getSpeed() + 2);
 
